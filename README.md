@@ -61,8 +61,8 @@ To sign off, a group edits only its own `groups/<ID>.yaml`: each sign-off names 
 
 The browser filters records by kind, chapter, status, provenance, requirement level,
 sign-off, aspect and evidence code, and shows a sign-off matrix per chapter and per group.
-It is not deployed: GitHub Pages from a private repository is publicly readable. CI uploads
-the built site as an artifact, or run `just serve` locally.
+CI deploys it to GitHub Pages from `main`, at https://geneontology.github.io/go-cdr/.
+Run `just serve` to browse a local build.
 
 ## License
 
