@@ -1,0 +1,332 @@
+id: https://w3id.org/geneontology/go-cdr
+name: go_cdr
+title: GO Consortium Decision Records
+description: >-
+  Metadata for GO Consortium Decision Records (CDRs). A CDR is one decision the
+  consortium has made or proposes: an annotation guideline, an obligation of the
+  memorandum of understanding (MOU), or a rubric that annotation pipelines are
+  judged by. Each CDR is one Markdown file, records/<CHAPTER>/<ID>.md, whose YAML
+  frontmatter is a Record; each chapter folder has a README.md whose frontmatter
+  is a Chapter. Contributing groups and pipelines record their sign-off in
+  groups/<GROUP>.yaml, a Group.
+license: CC-BY-4.0
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cdr: https://w3id.org/geneontology/go-cdr/
+default_prefix: cdr
+default_range: string
+imports:
+  - linkml:types
+
+classes:
+  Record:
+    description: One consortium decision, in the manner of an architecture decision record.
+    slots:
+      - id
+      - title
+      - status
+      - topic
+      - provenance
+      - provenance_note
+      - requirement_level
+      - aspects
+      - evidence_codes
+      - go_terms
+      - related
+      - supersedes
+      - superseded_by
+      - enforced_by
+      - differences
+      - open_questions
+      - sources
+      - date
+      - reviews
+    slot_usage:
+      id:
+        pattern: "^[A-Z]+-[0-9]+$"
+      provenance:
+        required: true
+      status:
+        required: true
+
+  Chapter:
+    description: A folder of records that share an id prefix, a kind, and who signs off on them.
+    slots:
+      - id
+      - title
+      - record_kind
+      - applies_to
+      - status
+      - aspects
+      - differences
+      - open_questions
+      - sources
+      - date
+    slot_usage:
+      id:
+        pattern: "^[A-Z]+$"
+      record_kind:
+        required: true
+      applies_to:
+        required: true
+      differences:
+        description: Differences that no single record owns (chapter-wide departures).
+      open_questions:
+        description: Open questions that no single record owns.
+
+  Group:
+    description: >-
+      A contributing group or annotation pipeline, with its sign-off on records.
+      One file per group, groups/<ID>.yaml, so that each group edits only its own.
+    slots:
+      - id
+      - name
+      - group_kind
+      - demo
+      - url
+      - contacts
+      - signoffs
+    slot_usage:
+      id:
+        pattern: "^[A-Z0-9]+(-[A-Z0-9]+)*$"
+      name:
+        required: true
+      group_kind:
+        required: true
+
+  Signoff:
+    description: >-
+      A group's position on one record, or on a whole chapter. A record-level
+      sign-off overrides the group's chapter-level one.
+    slots:
+      - target
+      - signoff_status
+      - signoff_date
+      - notes
+
+  TermRef:
+    description: A GO term. A live term carries its current label; an obsolete one is flagged instead.
+    slots:
+      - term_id
+      - label
+      - obsolete
+
+  SourceRef:
+    description: A cited source. Exactly one of url (external) or path (file in this repository) is given.
+    slots:
+      - kind
+      - title
+      - url
+      - path
+
+  Difference:
+    description: One departure from, sharpening of, or resolved contradiction in prior guidance.
+    slots:
+      - prior_source
+      - prior_said
+      - we_recommend
+      - why
+      - issue
+
+  Review:
+    description: A curator's sign-off on the text of a record.
+    slots:
+      - reviewed_by
+      - review_date
+      - review_status
+      - notes
+
+slots:
+  id:
+    identifier: true
+    required: true
+  title:
+    required: true
+  name: {}
+  status:
+    range: RecordStatusEnum
+  record_kind:
+    range: ChapterKindEnum
+    description: What kind of decision the chapter's records are.
+  applies_to:
+    range: GroupKindEnum
+    multivalued: true
+    description: Which kinds of group are asked to sign off on the chapter's records.
+  topic:
+    description: The chapter id (the id prefix, e.g. MF).
+    required: true
+    pattern: "^[A-Z]+$"
+  provenance:
+    range: ProvenanceEnum
+    description: How far the record departs from current GOC guidance; for a mixed record, the most departing part.
+  provenance_note:
+    description: Free-text provenance statement (which parts are GOC, which are new), Markdown.
+  requirement_level:
+    range: RequirementLevelEnum
+    description: For obligations and rubrics, whether the record is required (RFC 2119 sense).
+  aspects:
+    range: AspectEnum
+    multivalued: true
+  evidence_codes:
+    description: GO evidence codes the record discusses.
+    multivalued: true
+    pattern: "^[A-Z]{2,4}$"
+  go_terms:
+    description: GO terms the record names, with labels checked against the ontology.
+    range: TermRef
+    multivalued: true
+    inlined_as_list: true
+  related:
+    description: Other record ids this one refers to.
+    multivalued: true
+    pattern: "^[A-Z]+-[0-9]+$"
+  supersedes:
+    multivalued: true
+    pattern: "^[A-Z]+-[0-9]+$"
+  superseded_by:
+    pattern: "^[A-Z]+-[0-9]+$"
+  enforced_by:
+    description: URLs of validators or checks (e.g. GORULES) that implement the record.
+    multivalued: true
+    pattern: "^https?://"
+  differences:
+    range: Difference
+    multivalued: true
+    inlined_as_list: true
+  open_questions:
+    description: Questions the record could not settle, for the GOC to decide (Markdown).
+    multivalued: true
+  sources:
+    range: SourceRef
+    multivalued: true
+    inlined_as_list: true
+  date:
+    description: Date of the current text (YYYY-MM-DD).
+    pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+  reviews:
+    range: Review
+    multivalued: true
+    inlined_as_list: true
+  group_kind:
+    range: GroupKindEnum
+  demo:
+    range: boolean
+    description: True for an invented group used to demonstrate the site. Remove before real sign-off begins.
+  url:
+    pattern: "^https?://"
+  contacts:
+    description: GitHub handles of the people who speak for the group.
+    multivalued: true
+  signoffs:
+    range: Signoff
+    multivalued: true
+    inlined_as_list: true
+  target:
+    required: true
+    description: A record id (MOU-3) or a chapter id (MOU) for every record in it.
+    pattern: "^[A-Z]+(-[0-9]+)?$"
+  signoff_status:
+    range: SignoffStatusEnum
+    required: true
+  signoff_date:
+    pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+  term_id:
+    required: true
+    pattern: "^GO:\\d{7}$"
+  label:
+    description: Current ontology label; omitted for an obsolete term that has none.
+  obsolete:
+    range: boolean
+    description: True when the record names the term although it is obsolete (usually to say what not to use).
+  kind:
+    range: SourceKindEnum
+    required: true
+  path:
+    description: Path relative to the repository root.
+  prior_source:
+    description: The prior source, as Markdown (may hold links).
+    required: true
+  prior_said:
+    required: true
+  we_recommend:
+    required: true
+  why:
+    required: true
+  issue:
+    description: URL of an issue tracking the difference.
+    pattern: "^https?://"
+  reviewed_by:
+    required: true
+  review_date:
+    pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+  review_status:
+    range: ReviewStatusEnum
+  notes: {}
+
+enums:
+  RecordStatusEnum:
+    permissible_values:
+      proposed:
+        description: Drafted, not yet accepted by the consortium.
+      accepted:
+        description: Accepted; groups are asked to follow it.
+      superseded:
+        description: Replaced by another record (see superseded_by).
+      deprecated:
+        description: Withdrawn without a replacement.
+      rejected:
+        description: Considered and not adopted; kept for the record.
+  ChapterKindEnum:
+    permissible_values:
+      guideline:
+        description: How to annotate.
+      commitment:
+        description: An obligation of the memorandum of understanding between GO Central and contributing groups.
+      rubric:
+        description: A criterion an annotation pipeline is judged by.
+  GroupKindEnum:
+    permissible_values:
+      contributing_group:
+        description: A group outside GO Central that creates or maintains GO annotations or ontology content.
+      pipeline:
+        description: An automated annotation pipeline (e.g. InterPro2GO, ARBA, PAINT).
+  SignoffStatusEnum:
+    permissible_values:
+      AGREED:
+        description: Yes. The group agrees and complies.
+      DECLINED:
+        description: No. The group does not agree, or does not comply.
+      NOT_APPLICABLE:
+        description: The record does not apply to the group's work.
+      IN_PROGRESS:
+        description: The group agrees and is working towards compliance, or is still deciding.
+  ProvenanceEnum:
+    permissible_values:
+      GOC:
+        description: Restates documented, current GO Consortium guidance ([GOC]).
+      GOC_PLUS:
+        description: Clarifies, sharpens or extends GOC guidance ([GOC+]).
+      NEW:
+        description: New synthesis, absent from or departing from GOC guidance ([NEW]).
+  RequirementLevelEnum:
+    permissible_values:
+      MUST: {}
+      SHOULD: {}
+      MAY: {}
+  AspectEnum:
+    permissible_values:
+      F: {description: molecular function}
+      P: {description: biological process}
+      C: {description: cellular component}
+  SourceKindEnum:
+    permissible_values:
+      wiki: {description: GO wiki page}
+      drive: {description: GO Consortium Google Drive document}
+      issue: {description: GitHub issue}
+      paper: {description: Publication}
+      repo: {description: File in a code repository}
+      web: {description: Other web page}
+  ReviewStatusEnum:
+    permissible_values:
+      READY: {}
+      CHANGES_REQUESTED: {}

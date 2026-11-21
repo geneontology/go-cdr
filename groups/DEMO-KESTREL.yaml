@@ -1,0 +1,12 @@
+id: DEMO-KESTREL
+name: Kestrel domain-to-GO mappings (demo)
+group_kind: pipeline
+demo: true
+signoffs:
+  - target: PIPE
+    signoff_status: AGREED
+    signoff_date: 2026-11-03
+  - target: PIPE-7
+    signoff_status: IN_PROGRESS
+    signoff_date: 2026-11-03
+    notes: Waiting for the consortium benchmark; spot checks done for three species.

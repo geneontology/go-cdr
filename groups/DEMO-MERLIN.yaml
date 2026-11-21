@@ -1,0 +1,25 @@
+id: DEMO-MERLIN
+name: Merlin deep-learning function predictor (demo)
+group_kind: pipeline
+demo: true
+signoffs:
+  - target: PIPE-1
+    signoff_status: DECLINED
+    signoff_date: 2026-11-09
+    notes: Model weights cannot be corrected for individual predictions.
+  - target: PIPE-2
+    signoff_status: DECLINED
+    signoff_date: 2026-11-09
+  - target: PIPE-3
+    signoff_status: AGREED
+    signoff_date: 2026-11-09
+  - target: PIPE-5
+    signoff_status: DECLINED
+    signoff_date: 2026-11-09
+  - target: PIPE-6
+    signoff_status: IN_PROGRESS
+    signoff_date: 2026-11-09
+    notes: Training data being deposited on Hugging Face.
+  - target: PIPE-8
+    signoff_status: AGREED
+    signoff_date: 2026-11-09

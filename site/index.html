@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GO Consortium Decision Records</title>
+<style>
+  :root {
+    --bg: #f3f4f6; --panel: #fff; --ink: #111827; --muted: #6b7280; --line: #e5e7eb; --soft: #f9fafb;
+    --accent: #0f766e; --accent-dark: #115e59;
+    --yes-bg: #dcfce7; --yes: #166534; --prog-bg: #fef3c7; --prog: #92400e;
+    --no-bg: #fee2e2; --no: #991b1b; --na-bg: #e5e7eb; --na: #4b5563; --none: #9ca3af;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', sans-serif;
+         background: var(--bg); color: var(--ink); font-size: 14px; }
+  header { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: #fff; padding: 20px 28px; }
+  header h1 { margin: 0 0 6px; font-size: 1.55rem; }
+  header p { margin: 0; opacity: .92; max-width: 72rem; line-height: 1.45; }
+  .demo-banner { background: #fff7ed; color: #9a3412; border-bottom: 1px solid #fed7aa; padding: 6px 28px; font-size: .85rem; }
+  nav.links { padding: 8px 28px; background: var(--panel); border-bottom: 1px solid var(--line); display: flex; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+  nav.links a { color: var(--accent); }
+  nav.links a.on { font-weight: 700; text-decoration: none; }
+  .layout { display: grid; grid-template-columns: 260px 1fr; }
+  .layout.full { grid-template-columns: 1fr; }
+  aside { background: var(--panel); border-right: 1px solid var(--line); padding: 12px 14px; min-height: calc(100vh - 140px); }
+  aside h3 { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: #4b5563; margin: 14px 0 6px; }
+  .facet label { display: flex; gap: 6px; align-items: baseline; padding: 1px 0; cursor: pointer; font-size: .85rem; }
+  .facet label .n { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .facet label.zero { color: #9ca3af; }
+  main { padding: 14px 20px; min-width: 0; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .toolbar input[type=search] { flex: 1 1 320px; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: .95rem; }
+  .toolbar button { padding: 7px 12px; border: 1px solid #d1d5db; background: #fff; border-radius: 6px; cursor: pointer; }
+  .count { color: #374151; font-weight: 600; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); }
+  th, td { text-align: left; vertical-align: top; padding: 7px 8px; border-bottom: 1px solid #f1f5f9; }
+  th { background: var(--soft); font-size: .78rem; text-transform: uppercase; color: #4b5563; }
+  td a, .doc a { color: var(--accent); }
+  .muted { color: var(--muted); } .small { font-size: .8rem; }
+  .pill { display: inline-block; border-radius: 4px; padding: 0 6px; font-size: .75rem; font-weight: 600; margin: 1px 2px 1px 0; white-space: nowrap; }
+  .p-GOC { background: #dcfce7; color: #166534; }
+  .p-GOC_PLUS { background: #e0f2fe; color: #075985; }
+  .p-NEW { background: #ede9fe; color: #5b21b6; }
+  .k-guideline { background: #e0f2fe; color: #075985; }
+  .k-commitment { background: #fce7f3; color: #9d174d; }
+  .k-rubric { background: #fef3c7; color: #92400e; }
+  .r-MUST { background: #1f2937; color: #fff; } .r-SHOULD { background: #e5e7eb; color: #374151; } .r-MAY { background: #f3f4f6; color: #6b7280; }
+  .s-proposed { background: #fef9c3; color: #854d0e; }
+  .s-accepted { background: #dcfce7; color: #166534; }
+  .s-superseded, .s-deprecated, .s-rejected { background: #f3f4f6; color: #6b7280; }
+  .demo { background: #ffedd5; color: #9a3412; }
+  .so { display: inline-block; border-radius: 4px; padding: 0 6px; font-size: .75rem; font-weight: 600; white-space: nowrap; }
+  .so-AGREED { background: var(--yes-bg); color: var(--yes); }
+  .so-IN_PROGRESS { background: var(--prog-bg); color: var(--prog); }
+  .so-DECLINED { background: var(--no-bg); color: var(--no); }
+  .so-NOT_APPLICABLE { background: var(--na-bg); color: var(--na); }
+  .so-NONE { background: transparent; color: var(--none); border: 1px dashed #d1d5db; }
+  .bar { display: flex; height: 10px; width: 120px; border-radius: 3px; overflow: hidden; background: #f3f4f6; border: 1px solid var(--line); }
+  .bar span { display: block; height: 100%; }
+  .bar .b-AGREED { background: #22c55e; } .bar .b-IN_PROGRESS { background: #f59e0b; }
+  .bar .b-DECLINED { background: #ef4444; } .bar .b-NOT_APPLICABLE { background: #9ca3af; }
+  table.matrix td, table.matrix th { text-align: center; padding: 4px 5px; white-space: nowrap; }
+  table.matrix td:first-child, table.matrix th:first-child { text-align: left; position: sticky; left: 0; background: var(--panel); }
+  table.matrix th.rot { font-size: .7rem; }
+  .cell { display: inline-block; min-width: 26px; border-radius: 3px; font-size: .72rem; font-weight: 700; padding: 1px 3px; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; margin: 6px 0 12px; font-size: .8rem; align-items: center; }
+  .doc { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 18px 24px; max-width: 68rem; line-height: 1.55; }
+  .doc.wide { max-width: none; }
+  .doc h1 { font-size: 1.35rem; margin-top: 0; } .doc h2 { font-size: 1.1rem; margin-top: 1.6em; border-bottom: 1px solid #f1f5f9; }
+  .doc code { background: #f3f4f6; padding: 0 3px; border-radius: 3px; font-size: .9em; }
+  .doc table { font-size: .88rem; }
+  .meta td:first-child { width: 150px; color: #4b5563; font-weight: 600; }
+  .crumbs { margin-bottom: 10px; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; } aside { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+    main { padding: 12px 16px; } header, nav.links, .demo-banner { padding-left: 16px; padding-right: 16px; }
+    .doc { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>GO Consortium Decision Records</h1>
+  <p>One record per consortium decision: annotation <span class="pill k-guideline">guidelines</span>, the
+     <span class="pill k-commitment">commitments</span> of the memorandum of understanding, and the
+     <span class="pill k-rubric">rubrics</span> annotation pipelines are judged by. Each record states the decision,
+     why, how it applies, how it departs from prior guidance, what is still open, and which groups have signed off.</p>
+</header>
+<div class="demo-banner" id="demo-banner" hidden></div>
+<nav class="links">
+  <a href="#" data-view="list">Records</a>
+  <a href="#chapters" data-view="chapters">Chapters</a>
+  <a href="#groups" data-view="groups">Groups and sign-off</a>
+  <a href="#differences" data-view="differences">Differences from prior guidance</a>
+  <a href="#questions" data-view="questions">Open questions</a>
+  <a href="https://github.com/geneontology/go-cdr">Repository</a>
+  <span class="muted small" id="meta"></span>
+</nav>
+<div class="layout" id="layout">
+  <aside id="facets"></aside>
+  <main>
+    <div class="toolbar" id="toolbar">
+      <input type="search" id="q" placeholder="Search id, title, text, GO id or label…">
+      <span class="count" id="count"></span>
+      <button id="clear">Clear filters</button>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="data.js"></script>
+<script>
+const DATA = window.CDR_DATA;
+const CHAPTERS = Object.fromEntries(DATA.chapters.map(c => [c.id, c]));
+const KIND_ORDER = { commitment: 0, rubric: 1, guideline: 2 };
+const kindRank = c => KIND_ORDER[c.record_kind] ?? 9;
+DATA.chapters.sort((a, b) => kindRank(a) - kindRank(b) || a.title.localeCompare(b.title));
+const CH_RANK = Object.fromEntries(DATA.chapters.map((c, i) => [c.id, i]));
+const R = DATA.records.slice().sort((a, b) => CH_RANK[a.topic] - CH_RANK[b.topic] ||
+  Number(a.id.split('-')[1]) - Number(b.id.split('-')[1]));
+const BY_ID = Object.fromEntries(R.map(r => [r.id, r]));
+const GROUPS = Object.fromEntries(DATA.groups.map(g => [g.id, g]));
+const PROV = { GOC: 'GOC', GOC_PLUS: 'GOC+', NEW: 'NEW' };
+const KIND = { guideline: 'Guideline', commitment: 'Commitment', rubric: 'Rubric' };
+const SO = { AGREED: 'Yes', IN_PROGRESS: 'In progress', DECLINED: 'No', NOT_APPLICABLE: 'N/A', NONE: 'No response' };
+const SO_SHORT = { AGREED: 'Y', IN_PROGRESS: '…', DECLINED: 'N', NOT_APPLICABLE: 'NA', NONE: '–' };
+const SO_ORDER = ['AGREED', 'IN_PROGRESS', 'DECLINED', 'NOT_APPLICABLE'];
+const kindOf = r => CHAPTERS[r.topic].record_kind;
+const groupsFor = r => DATA.groups.filter(g => (CHAPTERS[r.topic].applies_to || []).includes(g.group_kind));
+const signoff = (r, gid) => DATA.signoffs[r.id][gid] || null;
+const statusOf = (r, gid) => (signoff(r, gid) || {}).signoff_status || 'NONE';
+
+const FACETS = [
+  ['Kind', r => [KIND[kindOf(r)]]],
+  ['Chapter', r => [r.topic]],
+  ['Status', r => [r.status]],
+  ['Provenance', r => [PROV[r.provenance]]],
+  ['Requirement', r => [r.requirement_level || 'unspecified']],
+  ['Sign-off (any group)', r => { const s = groupsFor(r).map(g => SO[statusOf(r, g.id)]); return s.length ? [...new Set(s)] : ['no groups']; }],
+  ['Aspect', r => r.aspects || []],
+  ['Evidence code', r => r.evidence_codes || []],
+  ['Enforced by a check', r => [(r.enforced_by || []).length ? 'yes' : 'no']],
+  ['Departs from prior guidance', r => [(r.differences || []).length ? 'yes' : 'no']],
+  ['Has open questions', r => [(r.open_questions || []).length ? 'yes' : 'no']],
+];
+const selected = Object.fromEntries(FACETS.map(([name]) => [name, new Set()]));
+
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const md = s => marked.parse(String(s ?? ''));
+const inline = s => marked.parseInline(String(s ?? ''));
+const provPill = p => `<span class="pill p-${p}">${PROV[p]}</span>`;
+const statusPill = s => `<span class="pill s-${esc(s)}">${esc(s)}</span>`;
+const kindPill = k => `<span class="pill k-${k}">${KIND[k]}</span>`;
+const reqPill = l => l ? `<span class="pill r-${l}">${l}</span>` : '';
+const soPill = s => `<span class="so so-${s}">${SO[s]}</span>`;
+const recLink = id => BY_ID[id] ? `<a href="#${id}" title="${esc(BY_ID[id].title)}">${id}</a>` : esc(id);
+const groupLink = g => `<a href="#group/${g.id}">${esc(g.name)}</a>${g.demo ? ' <span class="pill demo">demo</span>' : ''}`;
+
+function counts(pairs) {
+  const c = { AGREED: 0, IN_PROGRESS: 0, DECLINED: 0, NOT_APPLICABLE: 0, NONE: 0 };
+  pairs.forEach(([r, gid]) => c[statusOf(r, gid)]++);
+  return c;
+}
+function bar(c) {
+  const total = Object.values(c).reduce((a, b) => a + b, 0);
+  if (!total) return '<span class="muted small">no groups</span>';
+  const title = Object.entries(c).filter(([, n]) => n).map(([s, n]) => `${SO[s]}: ${n}`).join(', ');
+  return `<div class="bar" title="${title}">` + SO_ORDER.map(s => c[s] ? `<span class="b-${s}" style="width:${100 * c[s] / total}%"></span>` : '').join('') + '</div>';
+}
+const recordBar = r => bar(counts(groupsFor(r).map(g => [r, g.id])));
+const legend = () => `<div class="legend">${[...SO_ORDER, 'NONE'].map(s => `<span class="cell so-${s}">${SO_SHORT[s]}</span> ${SO[s]}`).join(' ')}</div>`;
+
+function haystack(r) {
+  return [r.id, r.title, r.body, r.provenance_note, ...(r.go_terms || []).flatMap(t => [t.term_id, t.label]),
+    ...(r.open_questions || []), ...(r.differences || []).flatMap(d => Object.values(d))].join(' ').toLowerCase();
+}
+const HAY = Object.fromEntries(R.map(r => [r.id, haystack(r)]));
+
+function matches(r, skip) {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  if (q && !q.split(/\s+/).every(w => HAY[r.id].includes(w))) return false;
+  return FACETS.every(([name, fn]) => name === skip || !selected[name].size || fn(r).some(v => selected[name].has(v)));
+}
+const filtered = () => R.filter(r => matches(r));
+
+function renderFacets() {
+  document.getElementById('facets').innerHTML = FACETS.map(([name, fn]) => {
+    const n = {};
+    R.forEach(r => fn(r).forEach(v => { n[v] = n[v] || 0; }));
+    R.filter(r => matches(r, name)).forEach(r => fn(r).forEach(v => n[v]++));
+    const opts = Object.keys(n).sort().map(v =>
+      `<label class="${n[v] ? '' : 'zero'}"><input type="checkbox" data-facet="${esc(name)}" value="${esc(v)}"
+        ${selected[name].has(v) ? 'checked' : ''}> ${esc(v)}<span class="n">${n[v]}</span></label>`).join('');
+    return `<h3>${esc(name)}</h3><div class="facet">${opts}</div>`;
+  }).join('');
+}
+
+function listView() {
+  const rows = filtered();
+  document.getElementById('count').textContent = `${rows.length} of ${R.length} records`;
+  return `<div class="scroll"><table><thead><tr><th>Id</th><th>Record</th><th>Kind</th><th>Status</th><th>Provenance</th><th>Sign-off</th><th>Diffs</th><th>Questions</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td><a href="#${r.id}">${r.id}</a></td><td>${inline(r.title)} ${reqPill(r.requirement_level)}</td>
+      <td>${kindPill(kindOf(r))}</td><td>${statusPill(r.status)}</td><td>${provPill(r.provenance)}</td><td>${recordBar(r)}</td>
+      <td>${(r.differences || []).length || ''}</td><td>${(r.open_questions || []).length || ''}</td></tr>`).join('') + '</tbody></table></div>';
+}
+
+function diffTable(rows) {
+  return `<div class="scroll"><table><thead><tr><th>Record</th><th>Prior source</th><th>What it said</th><th>What we recommend</th><th>Why</th></tr></thead><tbody>` +
+    rows.map(([owner, d]) => `<tr><td>${owner}</td><td>${inline(d.prior_source)}</td><td>${inline(d.prior_said)}</td>
+      <td>${inline(d.we_recommend)}</td><td>${inline(d.why)}${d.issue ? ` <a href="${esc(d.issue)}">issue</a>` : ''}</td></tr>`).join('') +
+    '</tbody></table></div>';
+}
+
+function chapterItems(key) {
+  const topics = selected['Chapter'];
+  return DATA.chapters.filter(c => !topics.size || topics.has(c.id))
+    .flatMap(c => (c[key] || []).map(x => [`<a href="#chapter/${c.id}">${c.id} (chapter)</a>`, x]));
+}
+
+function differencesView() {
+  const rows = filtered().flatMap(r => (r.differences || []).map(d => [recLink(r.id), d])).concat(chapterItems('differences'));
+  document.getElementById('count').textContent = `${rows.length} differences`;
+  return diffTable(rows);
+}
+
+function questionsView() {
+  const rows = filtered().flatMap(r => (r.open_questions || []).map(q => [recLink(r.id), q])).concat(chapterItems('open_questions'));
+  document.getElementById('count').textContent = `${rows.length} open questions`;
+  return `<table><thead><tr><th>Record</th><th>Question</th></tr></thead><tbody>` +
+    rows.map(([owner, q]) => `<tr><td>${owner}</td><td>${inline(q)}</td></tr>`).join('') + '</tbody></table>';
+}
+
+function chaptersView() {
+  const rows = DATA.chapters.map(c => [c, R.filter(r => r.topic === c.id)]);
+  return `<div class="scroll"><table><thead><tr><th>Chapter</th><th>Title</th><th>Kind</th><th>Signed off by</th><th>Records</th><th>Sign-off</th></tr></thead><tbody>` +
+    rows.map(([c, rs]) => `<tr><td><a href="#chapter/${c.id}">${c.id}</a></td><td>${esc(c.title)}</td><td>${kindPill(c.record_kind)}</td>
+      <td class="small">${(c.applies_to || []).map(a => a.replace('_', ' ')).join(', ')}</td><td>${rs.length}</td>
+      <td>${bar(counts(rs.flatMap(r => groupsFor(r).map(g => [r, g.id]))))}</td></tr>`).join('') + '</tbody></table></div>';
+}
+
+function matrix(records, groups) {
+  if (!groups.length) return '<p class="muted">No groups sign off on these records.</p>';
+  return legend() + `<div class="scroll"><table class="matrix"><thead><tr><th>Group</th>` +
+    records.map(r => `<th class="rot"><a href="#${r.id}" title="${esc(r.title)}">${r.id}</a></th>`).join('') + '</tr></thead><tbody>' +
+    groups.map(g => `<tr><td>${groupLink(g)}</td>` + records.map(r => {
+      const s = signoff(r, g.id); const st = (s || {}).signoff_status || 'NONE';
+      const tip = `${g.name} on ${r.id}: ${SO[st]}${s && s.via === 'chapter' ? ' (chapter-level)' : ''}${s && s.notes ? ' — ' + s.notes : ''}`;
+      return `<td><span class="cell so-${st}" title="${esc(tip)}">${SO_SHORT[st]}${s && s.notes ? '*' : ''}</span></td>`;
+    }).join('') + '</tr>').join('') + '</tbody></table></div><p class="small muted">* has a note; hover a cell to read it.</p>';
+}
+
+function groupsView() {
+  const kinds = [['contributing_group', 'Contributing groups'], ['pipeline', 'Pipelines']];
+  let html = '<div class="doc wide">';
+  for (const [kind, label] of kinds) {
+    const gs = DATA.groups.filter(g => g.group_kind === kind);
+    const chapters = DATA.chapters.filter(c => (c.applies_to || []).includes(kind));
+    html += `<h2>${label}</h2>` + legend() + `<div class="scroll"><table class="matrix"><thead><tr><th>Group</th><th>Overall</th>` +
+      chapters.map(c => `<th class="rot"><a href="#chapter/${c.id}" title="${esc(c.title)}">${c.id}</a></th>`).join('') + '</tr></thead><tbody>' +
+      gs.map(g => {
+        const recs = R.filter(r => chapters.some(c => c.id === r.topic));
+        return `<tr><td>${groupLink(g)}</td><td>${bar(counts(recs.map(r => [r, g.id])))}</td>` + chapters.map(c => {
+          const cs = counts(R.filter(r => r.topic === c.id).map(r => [r, g.id]));
+          const total = Object.values(cs).reduce((a, b) => a + b, 0);
+          const top = cs.NONE === total ? 'NONE' : SO_ORDER.reduce((a, b) => cs[b] > cs[a] ? b : a, 'AGREED');
+          const tip = `${g.name}, ${c.title}: ` + Object.entries(cs).filter(([, n]) => n).map(([s, n]) => `${SO[s]} ${n}`).join(', ');
+          const mixed = cs[top] !== total;
+          return `<td><a href="#group/${g.id}"><span class="cell so-${top}" title="${esc(tip)}">${SO_SHORT[top]}${mixed ? '±' : ''}</span></a></td>`;
+        }).join('') + '</tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+  return html + '<p class="small muted">Each cell shows the most common status across the chapter\'s records; ± means the records differ. Sign-offs live in <code>groups/&lt;ID&gt;.yaml</code>.</p></div>';
+}
+
+function groupView(g) {
+  const recs = R.filter(r => (CHAPTERS[r.topic].applies_to || []).includes(g.group_kind));
+  const c = counts(recs.map(r => [r, g.id]));
+  const byChapter = {};
+  recs.forEach(r => (byChapter[r.topic] = byChapter[r.topic] || []).push(r));
+  let html = `<div class="crumbs small"><a href="#groups">Groups</a> › ${esc(g.id)} · <a href="${g.source_url}">source</a></div>
+    <div class="doc"><h1>${esc(g.name)} ${g.demo ? '<span class="pill demo">demo group</span>' : ''}</h1>
+    <table class="meta"><tr><td>Kind</td><td>${esc(g.group_kind.replace('_', ' '))}</td></tr>
+    ${g.url ? `<tr><td>Web site</td><td><a href="${esc(g.url)}">${esc(g.url)}</a></td></tr>` : ''}
+    ${(g.contacts || []).length ? `<tr><td>Contacts</td><td>${g.contacts.map(esc).join(', ')}</td></tr>` : ''}
+    <tr><td>Sign-off</td><td>${bar(c)} <span class="small">${Object.entries(c).filter(([, n]) => n).map(([s, n]) => `${SO[s]} ${n}`).join(' · ')}</span></td></tr></table>`;
+  for (const [cid, rs] of Object.entries(byChapter)) {
+    html += `<h2><a href="#chapter/${cid}">${esc(CHAPTERS[cid].title)}</a> ${kindPill(CHAPTERS[cid].record_kind)}</h2><table>` +
+      rs.map(r => { const s = signoff(r, g.id) || {}; const st = s.signoff_status || 'NONE';
+        return `<tr><td style="width:80px"><a href="#${r.id}">${r.id}</a></td><td>${inline(r.title)}</td><td style="width:110px">${soPill(st)}</td>
+          <td class="small muted" style="width:30%">${s.via === 'chapter' ? 'chapter-level' : ''}${s.signoff_date ? ' ' + esc(s.signoff_date) : ''}${s.notes ? '<br>' + esc(s.notes) : ''}</td></tr>`; }).join('') + '</table>';
+  }
+  return html + '</div>';
+}
+
+function metaRows(r) {
+  const rows = [
+    ['Kind', kindPill(kindOf(r))],
+    ['Status', statusPill(r.status) + (r.superseded_by ? ` by ${recLink(r.superseded_by)}` : '')],
+    ['Provenance', provPill(r.provenance) + (r.provenance_note ? ' ' + inline(r.provenance_note) : '')],
+    ['Chapter', `<a href="#chapter/${r.topic}">${esc(CHAPTERS[r.topic]?.title || r.topic)}</a>`],
+    ['Date', esc(r.date)],
+  ];
+  if (r.requirement_level) rows.splice(1, 0, ['Requirement', reqPill(r.requirement_level)]);
+  if ((r.supersedes || []).length) rows.push(['Supersedes', r.supersedes.map(recLink).join(', ')]);
+  if ((r.related || []).length) rows.push(['Related', r.related.map(recLink).join(', ')]);
+  if ((r.enforced_by || []).length) rows.push(['Enforced by', r.enforced_by.map(u =>
+    `<a href="${esc(u)}"><code>${esc(u.replace(/^https:\/\/github\.com\//, ''))}</code></a>`).join('<br>')]);
+  if ((r.evidence_codes || []).length) rows.push(['Evidence codes', r.evidence_codes.join(', ')]);
+  if ((r.go_terms || []).length) rows.push(['GO terms', r.go_terms.map(t =>
+    `<a href="https://amigo.geneontology.org/amigo/term/${t.term_id}">${t.term_id}</a> ${esc(t.label || '')}${t.obsolete ? ' <span class="muted">(obsolete)</span>' : ''}`).join('<br>')]);
+  (r.reviews || []).forEach(v => rows.push(['Review', esc(`${v.reviewed_by} ${v.review_date || ''} ${v.review_status || ''} ${v.notes || ''}`)]));
+  return `<table class="meta">${rows.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</table>`;
+}
+
+function signoffTable(r) {
+  const gs = groupsFor(r);
+  if (!gs.length) return '';
+  return '<h2>Sign-off</h2><table><thead><tr><th>Group</th><th>Status</th><th>Date</th><th>Notes</th></tr></thead><tbody>' +
+    gs.map(g => { const s = signoff(r, g.id) || {}; const st = s.signoff_status || 'NONE';
+      return `<tr><td>${groupLink(g)}</td><td>${soPill(st)}${s.via === 'chapter' ? ' <span class="small muted">chapter-level</span>' : ''}</td>
+        <td class="small">${esc(s.signoff_date || '')}</td><td class="small">${esc(s.notes || '')}</td></tr>`; }).join('') + '</tbody></table>';
+}
+
+function detailView(r) {
+  const [first, ...more] = r.body.split('\n');
+  const [title, rest] = first.startsWith('# ') ? [first, more.join('\n')] : ['', r.body];
+  let html = `<div class="crumbs small"><a href="#">All records</a> › <a href="#chapter/${r.topic}">${r.topic}</a> ›
+    ${r.id} · <a href="${r.source_url}">source</a></div><div class="doc">${md(title)}${metaRows(r)}${md(rest)}`;
+  html += signoffTable(r);
+  if ((r.differences || []).length) html += '<h2>Differences from prior guidance</h2>' + diffTable(r.differences.map(d => ['', d]));
+  if ((r.open_questions || []).length) html += '<h2>Open questions</h2><ol>' + r.open_questions.map(q => `<li>${inline(q)}</li>`).join('') + '</ol>';
+  if ((r.sources || []).length) html += '<h2>Sources</h2><ul>' + r.sources.map(s =>
+    `<li><span class="muted small">${esc(s.kind)}</span> <a href="${esc(s.href)}">${inline(s.title)}</a></li>`).join('') + '</ul>';
+  return html + '</div>';
+}
+
+function chapterView(c) {
+  const recs = R.filter(r => r.topic === c.id);
+  const gs = DATA.groups.filter(g => (c.applies_to || []).includes(g.group_kind));
+  let html = `<div class="crumbs small"><a href="#chapters">Chapters</a> › ${c.id} · <a href="${c.source_url}">source</a></div>
+    <div class="doc wide"><p>${kindPill(c.record_kind)} ${statusPill(c.status)} <span class="small muted">signed off by
+    ${(c.applies_to || []).map(a => a.replace('_', ' ') + 's').join(', ')}</span></p>
+    <h2>Records</h2><table>${recs.map(r => `<tr><td style="width:80px"><a href="#${r.id}">${r.id}</a></td><td>${inline(r.title)}</td>
+    <td style="width:200px">${statusPill(r.status)} ${provPill(r.provenance)} ${reqPill(r.requirement_level)}</td><td style="width:130px">${recordBar(r)}</td></tr>`).join('')}</table>
+    <h2>Sign-off</h2>${matrix(recs, gs)}${md(c.body)}`;
+  if ((c.differences || []).length) html += '<h2>Chapter-wide differences</h2>' + diffTable(c.differences.map(d => ['', d]));
+  if ((c.open_questions || []).length) html += '<h2>Chapter-wide open questions</h2><ol>' + c.open_questions.map(q => `<li>${inline(q)}</li>`).join('') + '</ol>';
+  return html + '</div>';
+}
+
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const view = document.getElementById('view');
+  let name = 'list';
+  document.getElementById('count').textContent = '';
+  if (BY_ID[h]) { name = 'detail'; view.innerHTML = detailView(BY_ID[h]); }
+  else if (h.startsWith('chapter/') && CHAPTERS[h.slice(8)]) { name = 'chapters'; view.innerHTML = chapterView(CHAPTERS[h.slice(8)]); }
+  else if (h.startsWith('group/') && GROUPS[h.slice(6)]) { name = 'groups'; view.innerHTML = groupView(GROUPS[h.slice(6)]); }
+  else if (h === 'differences') { name = 'differences'; view.innerHTML = differencesView(); }
+  else if (h === 'questions') { name = 'questions'; view.innerHTML = questionsView(); }
+  else if (h === 'chapters') { name = 'chapters'; view.innerHTML = chaptersView(); }
+  else if (h === 'groups') { name = 'groups'; view.innerHTML = groupsView(); }
+  else view.innerHTML = listView();
+  const filtering = ['list', 'differences', 'questions'].includes(name) && !h.includes('/');
+  document.getElementById('toolbar').style.display = filtering ? '' : 'none';
+  document.getElementById('facets').style.display = filtering ? '' : 'none';
+  document.getElementById('layout').classList.toggle('full', !filtering);
+  document.querySelectorAll('nav.links a[data-view]').forEach(a => a.classList.toggle('on', a.dataset.view === name));
+  if (filtering) renderFacets(); else window.scrollTo(0, 0);
+}
+
+document.getElementById('facets').addEventListener('change', e => {
+  const t = e.target; if (!t.dataset.facet) return;
+  t.checked ? selected[t.dataset.facet].add(t.value) : selected[t.dataset.facet].delete(t.value);
+  route();
+});
+document.getElementById('q').addEventListener('input', route);
+document.getElementById('clear').addEventListener('click', () => {
+  Object.values(selected).forEach(s => s.clear()); document.getElementById('q').value = ''; route();
+});
+window.addEventListener('hashchange', route);
+const demo = DATA.groups.filter(g => g.demo).length;
+if (demo) {
+  const b = document.getElementById('demo-banner');
+  b.hidden = false;
+  b.textContent = `Demonstration sign-off data: ${demo} of ${DATA.groups.length} groups are invented. Records are drafts (status proposed) awaiting consortium review.`;
+}
+document.getElementById('meta').textContent = `${R.length} records · ${DATA.chapters.length} chapters · ${DATA.groups.length} groups`;
+route();
+</script>
+</body>
+</html>

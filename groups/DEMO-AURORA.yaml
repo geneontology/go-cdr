@@ -1,0 +1,25 @@
+id: DEMO-AURORA
+name: Aurora Model Organism Database (demo)
+group_kind: contributing_group
+demo: true
+signoffs:
+  - target: MOU
+    signoff_status: AGREED
+    signoff_date: 2026-10-20
+  - target: MOU-6
+    signoff_status: IN_PROGRESS
+    signoff_date: 2026-10-20
+    notes: Our new curator joins the monthly calls from January.
+  - target: MF
+    signoff_status: AGREED
+    signoff_date: 2026-11-02
+  - target: MF-5
+    signoff_status: DECLINED
+    signoff_date: 2026-11-02
+    notes: We still capture adaptor function with protein binding plus an extension; see issue discussion.
+  - target: CC
+    signoff_status: IN_PROGRESS
+    signoff_date: 2026-11-02
+  - target: CAM
+    signoff_status: AGREED
+    signoff_date: 2026-11-10

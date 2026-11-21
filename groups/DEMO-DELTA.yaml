@@ -1,0 +1,21 @@
+id: DEMO-DELTA
+name: Delta Signalling Curation Group (demo)
+group_kind: contributing_group
+demo: true
+signoffs:
+  - target: MOU
+    signoff_status: AGREED
+    signoff_date: 2026-10-15
+  - target: MOU-1
+    signoff_status: AGREED
+    signoff_date: 2026-10-15
+    notes: Scope is signalling pathways across vertebrates.
+  - target: RS
+    signoff_status: AGREED
+    signoff_date: 2026-11-01
+  - target: TR
+    signoff_status: AGREED
+    signoff_date: 2026-11-01
+  - target: RS-3
+    signoff_status: IN_PROGRESS
+    signoff_date: 2026-11-01

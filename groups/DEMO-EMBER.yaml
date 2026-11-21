@@ -1,0 +1,8 @@
+id: DEMO-EMBER
+name: Ember Disease Gene Initiative (demo)
+group_kind: contributing_group
+demo: true
+signoffs:
+  - target: MOU-1
+    signoff_status: AGREED
+    signoff_date: 2026-11-18

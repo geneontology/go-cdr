@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install
+        run: uv sync
+      - name: Validate records and groups
+        run: uv run go-cdr validate
+      - name: Tests (with doctests)
+        run: uv run pytest
+      - name: Types and lint
+        run: |
+          uv run mypy src tests
+          uv run ruff check src tests scripts
+      - name: Build the site
+        run: |
+          uv run go-cdr build
+          mkdir -p _site && cp site/index.html site/data.js _site/
+      # The site is uploaded as a downloadable artifact, not deployed:
+      # GitHub Pages from a private repository is publicly readable.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site

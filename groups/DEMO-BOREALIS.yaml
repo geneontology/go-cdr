@@ -1,0 +1,23 @@
+id: DEMO-BOREALIS
+name: Borealis Plant Genome Project (demo)
+group_kind: contributing_group
+demo: true
+signoffs:
+  - target: MOU
+    signoff_status: AGREED
+    signoff_date: 2026-10-28
+  - target: MOU-7
+    signoff_status: IN_PROGRESS
+    signoff_date: 2026-10-28
+    notes: Moving from GAF 2.1 to GAF 2.2 this quarter.
+  - target: MOU-5
+    signoff_status: DECLINED
+    signoff_date: 2026-10-28
+    notes: Our GitHub contact left; a replacement is being appointed.
+  - target: MO
+    signoff_status: AGREED
+    signoff_date: 2026-11-05
+  - target: CAM
+    signoff_status: NOT_APPLICABLE
+    signoff_date: 2026-11-05
+    notes: We do not build GO-CAM models.

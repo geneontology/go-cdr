@@ -1,0 +1,25 @@
+id: DEMO-CASCADE
+name: Cascade Microbial Annotation Team (demo)
+group_kind: contributing_group
+demo: true
+signoffs:
+  - target: MOU
+    signoff_status: IN_PROGRESS
+    signoff_date: 2026-11-12
+    notes: Under review by our steering committee.
+  - target: MOU-11
+    signoff_status: AGREED
+    signoff_date: 2026-11-12
+  - target: MOU-8
+    signoff_status: AGREED
+    signoff_date: 2026-11-12
+  - target: EV
+    signoff_status: AGREED
+    signoff_date: 2026-11-14
+  - target: MO
+    signoff_status: AGREED
+    signoff_date: 2026-11-14
+  - target: TR
+    signoff_status: NOT_APPLICABLE
+    signoff_date: 2026-11-14
+    notes: Bacterial transcription regulation only; we will revisit.

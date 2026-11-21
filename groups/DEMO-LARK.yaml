@@ -1,0 +1,12 @@
+id: DEMO-LARK
+name: Lark rule-based annotation (demo)
+group_kind: pipeline
+demo: true
+signoffs:
+  - target: PIPE
+    signoff_status: AGREED
+    signoff_date: 2026-11-06
+  - target: PIPE-4
+    signoff_status: DECLINED
+    signoff_date: 2026-11-06
+    notes: Rule conditions are published, but the evidence behind each condition is not yet linked.
