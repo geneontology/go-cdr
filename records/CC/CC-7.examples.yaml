@@ -1,0 +1,25 @@
+record: CC-7
+examples:
+- id: CC-7-E1
+  title: An IBA mitochondrion row kept after checking its PAINT seed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5JTZ9
+      symbol: AARS2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005739
+      label: mitochondrion
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The row comes from synthesis, so the record asks what it rests on before keeping it. The reviewer
+    traced it to its PAINT node, found it seeded by AARS2's own root-level mitochondrion annotation, and
+    kept the row because the organelle claim holds: mitochondria are where the protein charges tRNA.
+    The matrix location was added as a separate row rather than substituted for this one (see CC-6).
+  see_also: [CC-6]
+  derived_from:
+  - https://github.com/monarch-initiative/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AARS2/AARS2-ai-review.yaml#L23

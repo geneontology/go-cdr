@@ -72,6 +72,12 @@ brefeldin A moves CPT1 but not CEPT1, which sits in the ER and nuclear membranes
 | Date | 2026-11-15 |
 | Evidence codes | IBA, ISS, ISO, IEA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-7-E1](CC-7.examples.yaml): An IBA mitochondrion row kept after checking its PAINT seed | Conformant | AARS2 is_active_in GO:0005739 mitochondrion (IBA, GO_REF:0000033) |
+
 ## Open questions
 
 1. **Validation.** Should the repo warn on ACCEPTed root-only synthesis rows whose `reason` records no check (CC-7)?

@@ -79,6 +79,12 @@ covered; for the nucleus see CC-16.
 | Evidence codes | EXP, IDA, IMP, HTP, HDA |
 | GO terms | `GO:0005739` mitochondrion; `GO:0005783` endoplasmic reticulum; `GO:0005794` Golgi apparatus; `GO:0005777` peroxisome; `GO:0005764` lysosome; `GO:0016020` membrane |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-7-E1](CC-7.examples.yaml): An IBA mitochondrion row kept after checking its PAINT seed (from [CC-7](CC-7.md)) | Conformant | AARS2 is_active_in GO:0005739 mitochondrion (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - web: [ORGANELLES](https://ai4curation.io/ai-gene-review/pages/projects/ORGANELLES.html)

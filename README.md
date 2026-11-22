@@ -57,6 +57,21 @@ To sign off, a group edits only its own `groups/<ID>.yaml`: each sign-off names 
 (`MOU-3`) or a whole chapter (`MOU`) and a status (`AGREED`, `DECLINED`, `NOT_APPLICABLE`,
 `IN_PROGRESS`). A record-level sign-off overrides a chapter-level one.
 
+## Examples
+
+A record can have worked examples, in `records/<CHAPTER>/<ID>.examples.yaml` next to it. Each
+example has a verdict: `CONFORMANT` (follows the record), `NON_CONFORMANT` (breaks it, with the
+fix) or `CONTESTED` (disputed, linked to one of the record's open questions or to a discussion).
+An example's subject is not always an annotation: it can be a GO-CAM, a protein family, a GO
+term, a pipeline configuration or a described practice. The first examples were drafted from
+[AI Gene Review](https://github.com/monarch-initiative/ai-gene-review) and link to the review they
+came from; their verdicts are not yet reviewed by curators. See
+[docs/examples-brief.md](docs/examples-brief.md) for how to write one, and
+`go-cdr aigr-example` to copy an annotation's identifiers from a review file.
+
+Examples serve a similar purpose to the cases in
+[go-bench](https://github.com/ai4curation/go-bench) and are synced there by hand for now.
+
 ## Site
 
 The browser filters records by kind, chapter, status, provenance, requirement level,

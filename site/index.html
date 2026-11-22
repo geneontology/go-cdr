@@ -51,6 +51,17 @@
   .s-accepted { background: #dcfce7; color: #166534; }
   .s-superseded, .s-deprecated, .s-rejected { background: #f3f4f6; color: #6b7280; }
   .demo { background: #ffedd5; color: #9a3412; }
+  .v-CONFORMANT { background: #dcfce7; color: #166534; }
+  .v-NON_CONFORMANT { background: #fee2e2; color: #991b1b; }
+  .v-CONTESTED { background: #fef3c7; color: #92400e; }
+  .ex { border: 1px solid var(--line); border-left: 4px solid #d1d5db; border-radius: 6px; padding: 10px 14px; margin: 10px 0; background: var(--panel); }
+  .ex.CONFORMANT { border-left-color: #22c55e; } .ex.NON_CONFORMANT { border-left-color: #ef4444; } .ex.CONTESTED { border-left-color: #f59e0b; }
+  .ex h4 { margin: 0 0 6px; font-size: .98rem; }
+  .ex .subj { background: var(--soft); border-radius: 4px; padding: 6px 8px; font-size: .86rem; margin: 6px 0; }
+  .ex .fix { border-top: 1px dashed var(--line); margin-top: 6px; padding-top: 4px; }
+  .ex p { margin: .4em 0; }
+  .excount { font-size: .75rem; font-weight: 700; white-space: nowrap; }
+  .excount span { margin-right: 4px; }
   .so { display: inline-block; border-radius: 4px; padding: 0 6px; font-size: .75rem; font-weight: 600; white-space: nowrap; }
   .so-AGREED { background: var(--yes-bg); color: var(--yes); }
   .so-IN_PROGRESS { background: var(--prog-bg); color: var(--prog); }
@@ -86,7 +97,8 @@
   <p>One record per consortium decision: annotation <span class="pill k-guideline">guidelines</span>, the
      <span class="pill k-commitment">commitments</span> of the memorandum of understanding, and the
      <span class="pill k-rubric">rubrics</span> annotation pipelines are judged by. Each record states the decision,
-     why, how it applies, how it departs from prior guidance, what is still open, and which groups have signed off.</p>
+     why, how it applies, worked examples that follow it, break it or are disputed, how it departs from prior guidance,
+     what is still open, and which groups have signed off.</p>
 </header>
 <div class="demo-banner" id="demo-banner" hidden></div>
 <nav class="links">
@@ -94,6 +106,7 @@
   <a href="#chapters" data-view="chapters">Chapters</a>
   <a href="#groups" data-view="groups">Groups and sign-off</a>
   <a href="#differences" data-view="differences">Differences from prior guidance</a>
+  <a href="#examples" data-view="examples">Examples</a>
   <a href="#questions" data-view="questions">Open questions</a>
   <a href="https://github.com/geneontology/go-cdr">Repository</a>
   <span class="muted small" id="meta"></span>
@@ -128,6 +141,11 @@ const SO = { AGREED: 'Yes', IN_PROGRESS: 'In progress', DECLINED: 'No', NOT_APPL
 const SO_SHORT = { AGREED: 'Y', IN_PROGRESS: '…', DECLINED: 'N', NOT_APPLICABLE: 'NA', NONE: '–' };
 const SO_ORDER = ['AGREED', 'IN_PROGRESS', 'DECLINED', 'NOT_APPLICABLE'];
 const kindOf = r => CHAPTERS[r.topic].record_kind;
+const VERDICT = { CONFORMANT: 'Conformant', NON_CONFORMANT: 'Non-conformant', CONTESTED: 'Contested' };
+const VERDICT_ORDER = ['CONFORMANT', 'NON_CONFORMANT', 'CONTESTED'];
+const SUBJECT_KIND = { annotation: 'Annotation', gocam: 'GO-CAM', family: 'Family', term: 'Term', pipeline_config: 'Pipeline configuration', other: 'Other' };
+const EXAMPLES = R.flatMap(r => (r.examples || []).map(e => ({ ...e, home: r.id })));
+const EX_BY_ID = Object.fromEntries(EXAMPLES.map(e => [e.id, e]));
 const groupsFor = r => DATA.groups.filter(g => (CHAPTERS[r.topic].applies_to || []).includes(g.group_kind));
 const signoff = (r, gid) => DATA.signoffs[r.id][gid] || null;
 const statusOf = (r, gid) => (signoff(r, gid) || {}).signoff_status || 'NONE';
@@ -144,6 +162,8 @@ const FACETS = [
   ['Enforced by a check', r => [(r.enforced_by || []).length ? 'yes' : 'no']],
   ['Departs from prior guidance', r => [(r.differences || []).length ? 'yes' : 'no']],
   ['Has open questions', r => [(r.open_questions || []).length ? 'yes' : 'no']],
+  ['Examples', r => (r.examples || []).length ? [...new Set(r.examples.map(e => VERDICT[e.verdict]))] : ['none']],
+  ['Example subject', r => (r.examples || []).length ? [...new Set(r.examples.map(e => SUBJECT_KIND[e.subject.subject_kind]))] : ['none']],
 ];
 const selected = Object.fromEntries(FACETS.map(([name]) => [name, new Set()]));
 
@@ -174,6 +194,7 @@ const legend = () => `<div class="legend">${[...SO_ORDER, 'NONE'].map(s => `<spa
 
 function haystack(r) {
   return [r.id, r.title, r.body, r.provenance_note, ...(r.go_terms || []).flatMap(t => [t.term_id, t.label]),
+    ...(r.examples || []).flatMap(e => [e.id, e.title, e.summary, e.explanation, e.fix, e.subject.description]),
     ...(r.open_questions || []), ...(r.differences || []).flatMap(d => Object.values(d))].join(' ').toLowerCase();
 }
 const HAY = Object.fromEntries(R.map(r => [r.id, haystack(r)]));
@@ -200,10 +221,94 @@ function renderFacets() {
 function listView() {
   const rows = filtered();
   document.getElementById('count').textContent = `${rows.length} of ${R.length} records`;
-  return `<div class="scroll"><table><thead><tr><th>Id</th><th>Record</th><th>Kind</th><th>Status</th><th>Provenance</th><th>Sign-off</th><th>Diffs</th><th>Questions</th></tr></thead><tbody>` +
+  return `<div class="scroll"><table><thead><tr><th>Id</th><th>Record</th><th>Kind</th><th>Status</th><th>Provenance</th><th>Sign-off</th><th>Examples</th><th>Diffs</th><th>Questions</th></tr></thead><tbody>` +
     rows.map(r => `<tr><td><a href="#${r.id}">${r.id}</a></td><td>${inline(r.title)} ${reqPill(r.requirement_level)}</td>
       <td>${kindPill(kindOf(r))}</td><td>${statusPill(r.status)}</td><td>${provPill(r.provenance)}</td><td>${recordBar(r)}</td>
-      <td>${(r.differences || []).length || ''}</td><td>${(r.open_questions || []).length || ''}</td></tr>`).join('') + '</tbody></table></div>';
+      <td>${exCount(r.examples || [])}</td><td>${(r.differences || []).length || ''}</td><td>${(r.open_questions || []).length || ''}</td></tr>`).join('') + '</tbody></table></div>';
+}
+
+function exCount(exs) {
+  const c = {}; exs.forEach(e => c[e.verdict] = (c[e.verdict] || 0) + 1);
+  const sym = { CONFORMANT: '✓', NON_CONFORMANT: '✗', CONTESTED: '?' };
+  return `<span class="excount">${VERDICT_ORDER.filter(v => c[v]).map(v =>
+    `<span class="pill v-${v}" title="${VERDICT[v]}">${sym[v]}${c[v]}</span>`).join('')}</span>`;
+}
+
+function curieLink(c) {
+  const s = String(c);
+  if (/^https?:/.test(s)) return `<a href="${esc(s)}">${esc(s.replace(/^https?:\/\/(www\.)?/, '').slice(0, 60))}</a>`;
+  const [pre, ...rest] = s.split(':'); const local = rest.join(':');
+  const url = pre === 'GO' ? `https://amigo.geneontology.org/amigo/term/${s}`
+    : pre === 'UniProtKB' ? `https://www.uniprot.org/uniprotkb/${local}`
+    : pre === 'PMID' ? `https://pubmed.ncbi.nlm.nih.gov/${local}/`
+    : pre === 'gomodel' ? `https://model.geneontology.org/${local}`
+    : local ? `https://bioregistry.io/${s}` : null;
+  return url ? `<a href="${esc(url)}">${esc(s)}</a>` : esc(s);
+}
+
+function subjectBlock(sub) {
+  const bits = [];
+  const t = sub.term;
+  const termText = t ? `${curieLink(t.term_id)} ${esc(t.label || '')}${t.obsolete ? ' <span class="muted">(obsolete)</span>' : ''}` : '';
+  if (sub.subject_kind === 'annotation') {
+    const g = sub.gene || {};
+    bits.push(`<b>${esc(g.symbol || g.gene_id)}</b> ${curieLink(g.gene_id)}${sub.taxon ? ' · ' + curieLink(sub.taxon) : ''}`);
+    bits.push(`${sub.negated ? '<b>NOT</b> ' : ''}<i>${esc(sub.qualifier || '')}</i> ${termText}`);
+    bits.push(`evidence <b>${esc(sub.evidence_code)}</b>${sub.reference ? ' · ' + curieLink(sub.reference) : ''}` +
+      `${(sub.with_from || []).length ? ' · with/from ' + sub.with_from.map(curieLink).join(', ') : ''}`);
+    if (sub.extension) bits.push(`extension <code>${esc(sub.extension)}</code>`);
+  } else {
+    const head = [sub.model && curieLink(sub.model), sub.family && curieLink(sub.family), sub.pipeline && `<b>${esc(sub.pipeline)}</b>`, termText].filter(Boolean);
+    if (head.length) bits.push(head.join(' · '));
+  }
+  let html = `<div class="subj"><span class="pill">${SUBJECT_KIND[sub.subject_kind]}</span> ${bits.join('<br>')}`;
+  if (sub.description) html += md(sub.description);
+  if ((sub.refs || []).length) html += `<div class="small">refs: ${sub.refs.map(curieLink).join(', ')}</div>`;
+  return html + '</div>';
+}
+
+function exampleCard(e, showHome) {
+  const home = BY_ID[e.home];
+  let html = `<div class="ex ${e.verdict}"><h4><span class="pill v-${e.verdict}">${VERDICT[e.verdict]}</span> ${esc(e.id)} · ${inline(e.title)}</h4>`;
+  if (showHome) html += `<div class="small">illustrates <a href="#${e.home}">${e.home}</a>: ${inline(home.title)}</div>`;
+  html += subjectBlock(e.subject) + md(e.explanation);
+  if (e.fix) html += `<div class="fix"><b>Fix.</b> ${md(e.fix)}</div>`;
+  if (e.verdict === 'CONTESTED') {
+    if (e.open_question) html += `<p class="small"><b>Open question ${e.open_question}:</b> ${inline((home.open_questions || [])[e.open_question - 1] || '')}</p>`;
+    if (e.discussion) html += `<p class="small"><b>Discussion:</b> ${curieLink(e.discussion)}</p>`;
+  }
+  const foot = [];
+  if ((e.see_also || []).length) foot.push('also bears on ' + e.see_also.map(recLink).join(', '));
+  if ((e.derived_from || []).length) foot.push('from ' + e.derived_from.map(u => /ai-gene-review/.test(u)
+    ? `<a href="${esc(u)}">AI Gene Review: ${esc(u.split('/').slice(-1)[0])}</a>` : curieLink(u)).join(', '));
+  (e.sources || []).forEach(s => foot.push(`<a href="${esc(s.href)}">${inline(s.title)}</a>`));
+  (e.reviews || []).forEach(v => foot.push(esc(`reviewed by ${v.reviewed_by} ${v.review_date || ''} ${v.review_status || ''}`)));
+  foot.push(`<a href="${e.source_url}">source</a>`);
+  return html + `<div class="small muted">${foot.join(' · ')}</div></div>`;
+}
+
+function examplesSection(r) {
+  const own = (r.examples || []).map(e => ({ ...e, home: r.id }));
+  const from = (r.examples_from || []).map(x => EX_BY_ID[x.id]).filter(Boolean);
+  if (!own.length && !from.length) return '';
+  let html = '<h2>Examples</h2>';
+  for (const v of VERDICT_ORDER) {
+    const es = own.filter(e => e.verdict === v);
+    if (es.length) html += `<h3>${VERDICT[v]}</h3>` + es.map(e => exampleCard(e, false)).join('');
+  }
+  if (from.length) html += '<h3>From other records</h3>' + from.map(e => exampleCard(e, true)).join('');
+  return html;
+}
+
+function examplesView() {
+  const verdicts = new Set([...selected['Examples']].map(l => Object.keys(VERDICT).find(k => VERDICT[k] === l)).filter(Boolean));
+  const kinds = new Set([...selected['Example subject']].map(l => Object.keys(SUBJECT_KIND).find(k => SUBJECT_KIND[k] === l)).filter(Boolean));
+  const recs = new Set(filtered().map(r => r.id));
+  const rows = EXAMPLES.filter(e => recs.has(e.home) && (!verdicts.size || verdicts.has(e.verdict)) &&
+    (!kinds.size || kinds.has(e.subject.subject_kind)));
+  document.getElementById('count').textContent = `${rows.length} of ${EXAMPLES.length} examples`;
+  if (!rows.length) return '<p class="muted">No examples match.</p>';
+  return '<div class="doc wide">' + rows.map(e => exampleCard(e, true)).join('') + '</div>';
 }
 
 function diffTable(rows) {
@@ -328,6 +433,7 @@ function detailView(r) {
   const [title, rest] = first.startsWith('# ') ? [first, more.join('\n')] : ['', r.body];
   let html = `<div class="crumbs small"><a href="#">All records</a> › <a href="#chapter/${r.topic}">${r.topic}</a> ›
     ${r.id} · <a href="${r.source_url}">source</a></div><div class="doc">${md(title)}${metaRows(r)}${md(rest)}`;
+  html += examplesSection(r);
   html += signoffTable(r);
   if ((r.differences || []).length) html += '<h2>Differences from prior guidance</h2>' + diffTable(r.differences.map(d => ['', d]));
   if ((r.open_questions || []).length) html += '<h2>Open questions</h2><ol>' + r.open_questions.map(q => `<li>${inline(q)}</li>`).join('') + '</ol>';
@@ -360,10 +466,11 @@ function route() {
   else if (h.startsWith('group/') && GROUPS[h.slice(6)]) { name = 'groups'; view.innerHTML = groupView(GROUPS[h.slice(6)]); }
   else if (h === 'differences') { name = 'differences'; view.innerHTML = differencesView(); }
   else if (h === 'questions') { name = 'questions'; view.innerHTML = questionsView(); }
+  else if (h === 'examples') { name = 'examples'; view.innerHTML = examplesView(); }
   else if (h === 'chapters') { name = 'chapters'; view.innerHTML = chaptersView(); }
   else if (h === 'groups') { name = 'groups'; view.innerHTML = groupsView(); }
   else view.innerHTML = listView();
-  const filtering = ['list', 'differences', 'questions'].includes(name) && !h.includes('/');
+  const filtering = ['list', 'differences', 'questions', 'examples'].includes(name) && !h.includes('/');
   document.getElementById('toolbar').style.display = filtering ? '' : 'none';
   document.getElementById('facets').style.display = filtering ? '' : 'none';
   document.getElementById('layout').classList.toggle('full', !filtering);
@@ -385,9 +492,11 @@ const demo = DATA.groups.filter(g => g.demo).length;
 if (demo) {
   const b = document.getElementById('demo-banner');
   b.hidden = false;
-  b.textContent = `Demonstration sign-off data: ${demo} of ${DATA.groups.length} groups are invented. Records are drafts (status proposed) awaiting consortium review.`;
+  const drafted = EXAMPLES.filter(e => (e.derived_from || []).some(u => /ai-gene-review/.test(u)) && !(e.reviews || []).length).length;
+  b.textContent = `Demonstration sign-off data: ${demo} of ${DATA.groups.length} groups are invented. Records are drafts (status proposed) awaiting consortium review.` +
+    (drafted ? ` ${drafted} examples were drafted from AI Gene Review and are not yet reviewed by curators.` : '');
 }
-document.getElementById('meta').textContent = `${R.length} records · ${DATA.chapters.length} chapters · ${DATA.groups.length} groups`;
+document.getElementById('meta').textContent = `${R.length} records · ${EXAMPLES.length} examples · ${DATA.chapters.length} chapters · ${DATA.groups.length} groups`;
 route();
 </script>
 </body>

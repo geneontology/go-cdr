@@ -246,3 +246,145 @@ def test_cli_validate_and_build(repo: Path) -> None:
     result = runner.invoke(app, ["build", "--root", str(repo)])
     assert "updated" in result.output
     assert runner.invoke(app, ["validate", "--root", str(repo)]).exit_code == 0
+
+
+def _example(eid: str = "XX-1-E1", **extra: Any) -> Dict[str, Any]:
+    ex: Dict[str, Any] = {
+        "id": eid,
+        "title": "A case",
+        "verdict": "CONFORMANT",
+        "subject": {
+            "subject_kind": "annotation",
+            "gene": {"gene_id": "UniProtKB:P00001", "symbol": "ABC1"},
+            "term": {"term_id": "GO:0000001", "label": "right"},
+            "qualifier": "enables",
+            "evidence_code": "IDA",
+            "reference": "PMID:1",
+        },
+        "explanation": "It follows the record.",
+    }
+    ex.update(extra)
+    return ex
+
+
+def _examples(root: Path, rid: str, examples: list, record: Optional[str] = None) -> None:
+    path = root / RECORDS_DIR / rid.split("-")[0] / f"{rid}.examples.yaml"
+    path.write_text(yaml.safe_dump({"record": record or rid, "examples": examples}, sort_keys=False))
+
+
+def test_examples_render_and_validate(repo: Path) -> None:
+    _examples(
+        repo,
+        "XX-1",
+        [
+            _example(),
+            _example("XX-1-E2", verdict="NON_CONFORMANT", fix="Use GO:0000002.", see_also=["XX-2"]),
+            _example("XX-1-E3", verdict="CONTESTED", discussion="https://github.com/o/r/issues/1"),
+        ],
+    )
+    build(repo)
+    assert validate(repo) == []
+    text = (repo / RECORDS_DIR / "XX/XX-1.md").read_text()
+    row = "| [XX-1-E1](XX-1.examples.yaml): A case | Conformant | ABC1 enables GO:0000001 right (IDA, PMID:1) |"
+    assert row in text
+    other = (repo / RECORDS_DIR / "XX/XX-2.md").read_text()
+    assert "(from [XX-1](XX-1.md)) | Non-conformant |" in other
+    records = {r["id"]: r for r in browser_data(load(repo))["records"]}
+    assert [e["id"] for e in records["XX-1"]["examples"]] == ["XX-1-E1", "XX-1-E2", "XX-1-E3"]
+    assert records["XX-1"]["examples"][0]["summary"] == "ABC1 enables GO:0000001 right (IDA, PMID:1)"
+    assert records["XX-2"]["examples_from"] == [{"home": "XX-1", "id": "XX-1-E2"}]
+    assert build(repo) == []
+
+
+@pytest.mark.parametrize(
+    "examples, record, expected",
+    [
+        ([_example(verdict="NON_CONFORMANT")], None, "needs a fix exactly when"),
+        ([_example(fix="x")], None, "needs a fix exactly when"),
+        ([_example(verdict="CONTESTED")], None, "needs a discussion URL or an open_question"),
+        ([_example(discussion="https://x.org/1")], None, "is not CONTESTED"),
+        ([_example(verdict="CONTESTED", open_question=3)], None, "XX-1 has 0"),
+        ([_example("XX-2-E1")], None, "must start with XX-1-E"),
+        ([_example(), _example()], None, "duplicate example id"),
+        ([_example(see_also=["XX-1"])], None, "unknown or the home record"),
+        ([_example(see_also=["ZZ-9"])], None, "unknown or the home record"),
+        ([_example()], "XX-2", "does not match file name"),
+        ([_example(verdict="MAYBE")], None, "MAYBE"),
+        ([_example(subject={"subject_kind": "gocam", "description": "x"})], None, "needs model"),
+        ([_example(subject={"subject_kind": "gocam", "model": "123"})], None, "does not match"),
+        ([_example(subject={"subject_kind": "other"})], None, "needs description"),
+        ([_example(sources=[{"kind": "repo", "title": "t", "path": "nope.md"}])], None, "source path nope.md"),
+    ],
+)
+def test_validate_reports_example_problems(repo: Path, examples: list, record: Optional[str], expected: str) -> None:
+    _examples(repo, "XX-1", examples, record)
+    errors = validate(repo)
+    assert any(expected in e for e in errors), errors
+
+
+def test_examples_file_without_record(repo: Path) -> None:
+    _examples(repo, "XX-9", [_example("XX-9-E1")])
+    assert any("no record XX-9" in e for e in validate(repo))
+
+
+def test_term_errors_cover_examples(repo: Path) -> None:
+    _examples(repo, "XX-1", [_example()])
+    errors = term_errors(load(repo), FakeAdapter({"GO:0000001": "other"}, set()))
+    assert errors == ["records/XX/XX-1.examples.yaml: GO:0000001 label 'right' should be 'other'"]
+
+
+AIGR_REVIEW = """id: P00001
+gene_symbol: ABC1
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+existing_annotations:
+- term:
+    id: GO:0005515
+    label: protein binding
+  evidence_type: IPI
+  original_reference_id: PMID:1
+  qualifier: enables
+  review:
+    action: REMOVE
+    reason: Uninformative.
+- term:
+    id: GO:0005739
+    label: mitochondrion
+  evidence_type: IBA
+  original_reference_id: GO_REF:0000033
+  qualifier: is_active_in
+  extensions:
+  - predicate: RO:0002233
+    term:
+      id: UniProtKB:Q1
+      label: X
+  review:
+    action: ACCEPT
+"""
+
+
+def test_cli_aigr_example(tmp_path: Path) -> None:
+    review = tmp_path / "genes/human/ABC1/ABC1-ai-review.yaml"
+    review.parent.mkdir(parents=True)
+    review.write_text(AIGR_REVIEW)
+    runner = CliRunner()
+    args = ["aigr-example", "genes/human/ABC1/ABC1-ai-review.yaml", "--aigr-root", str(tmp_path), "--commit", "abc"]
+    listing = runner.invoke(app, args)
+    assert listing.exit_code == 0, listing.output
+    assert "1\tGO:0005739 mitochondrion\tIBA\tGO_REF:0000033\tACCEPT" in listing.output
+    drafted = yaml.safe_load(runner.invoke(app, args + ["--index", "1"]).output)
+    assert drafted["subject"] == {
+        "subject_kind": "annotation",
+        "gene": {"gene_id": "UniProtKB:P00001", "symbol": "ABC1"},
+        "taxon": "NCBITaxon:9606",
+        "term": {"term_id": "GO:0005739", "label": "mitochondrion"},
+        "qualifier": "is_active_in",
+        "evidence_code": "IBA",
+        "reference": "GO_REF:0000033",
+        "extension": "RO:0002233(UniProtKB:Q1)",
+    }
+    assert drafted["derived_from"] == [
+        "https://github.com/monarch-initiative/ai-gene-review/blob/abc/genes/human/ABC1/ABC1-ai-review.yaml#L16"
+    ]
+    assert drafted["aigr_review"]["action"] == "ACCEPT"

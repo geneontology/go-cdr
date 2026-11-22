@@ -119,6 +119,77 @@ classes:
       - url
       - path
 
+  ExampleSet:
+    description: >-
+      The examples of one record, in records/<CHAPTER>/<ID>.examples.yaml next to
+      the record they illustrate.
+    slots:
+      - record
+      - examples
+    slot_usage:
+      record:
+        required: true
+
+  Example:
+    description: >-
+      A concrete case judged against the record: something that follows it, something
+      that breaks it (with the fix), or something curators still dispute.
+    slots:
+      - id
+      - title
+      - verdict
+      - subject
+      - explanation
+      - fix
+      - see_also
+      - discussion
+      - open_question
+      - derived_from
+      - sources
+      - reviews
+    slot_usage:
+      id:
+        pattern: "^[A-Z]+-[0-9]+-E[0-9]+$"
+      verdict:
+        required: true
+      subject:
+        required: true
+      explanation:
+        required: true
+
+  Subject:
+    description: >-
+      What an example is about. Every kind may carry a Markdown description and refs;
+      the typed slots for a kind are checked by the validator.
+    slots:
+      - subject_kind
+      - description
+      - refs
+      - gene
+      - taxon
+      - term
+      - qualifier
+      - negated
+      - evidence_code
+      - reference
+      - with_from
+      - extension
+      - model
+      - family
+      - pipeline
+    slot_usage:
+      subject_kind:
+        required: true
+
+  GeneRef:
+    description: A gene product, by database id and symbol.
+    slots:
+      - gene_id
+      - symbol
+    slot_usage:
+      gene_id:
+        required: true
+
   Difference:
     description: One departure from, sharpening of, or resolved contradiction in prior guidance.
     slots:
@@ -262,6 +333,79 @@ slots:
   review_status:
     range: ReviewStatusEnum
   notes: {}
+  record:
+    description: Id of the record an example set belongs to.
+    pattern: "^[A-Z]+-[0-9]+$"
+  examples:
+    range: Example
+    multivalued: true
+    inlined_as_list: true
+    required: true
+  verdict:
+    range: VerdictEnum
+  subject:
+    range: Subject
+    inlined: true
+  explanation:
+    description: Why the verdict follows from the record (Markdown).
+  fix:
+    description: For a non-conformant example, what the conformant version is (Markdown).
+  see_also:
+    description: Other records the example also bears on.
+    multivalued: true
+    pattern: "^[A-Z]+-[0-9]+$"
+  discussion:
+    description: URL of the issue or thread where a contested example is being discussed.
+    pattern: "^https?://"
+  open_question:
+    description: For a contested example, the 1-based number of the record's open question it bears on.
+    range: integer
+    minimum_value: 1
+  derived_from:
+    description: URLs of the files the example was taken from, pinned to a commit where possible.
+    multivalued: true
+    pattern: "^https?://"
+  subject_kind:
+    range: SubjectKindEnum
+  description:
+    description: Free-text account of the subject (Markdown).
+  refs:
+    description: Identifiers (CURIEs) or URLs the subject points at.
+    multivalued: true
+  gene:
+    range: GeneRef
+    inlined: true
+  gene_id:
+    description: CURIE of the gene product, e.g. UniProtKB:P04217.
+    pattern: "^[A-Za-z][A-Za-z0-9_.]*:\\S+$"
+  symbol: {}
+  taxon:
+    description: NCBITaxon CURIE.
+    pattern: "^NCBITaxon:[0-9]+$"
+  term:
+    range: TermRef
+    inlined: true
+  qualifier:
+    description: Annotation relation, e.g. enables, involved_in, located_in.
+  negated:
+    range: boolean
+  evidence_code:
+    pattern: "^[A-Z]{2,4}$"
+  reference:
+    description: CURIE of the supporting reference (PMID:..., GO_REF:...).
+    pattern: "^[A-Za-z_]+:\\S+$"
+  with_from:
+    multivalued: true
+  extension:
+    description: Annotation extension in GAF/GPAD syntax.
+  model:
+    description: GO-CAM model CURIE (gomodel:...).
+    pattern: "^gomodel:\\S+$"
+  family:
+    description: PANTHER family, subfamily or PTN node CURIE.
+    pattern: "^PANTHER:\\S+$"
+  pipeline:
+    description: Name of the annotation pipeline a configuration belongs to.
 
 enums:
   RecordStatusEnum:
@@ -326,6 +470,28 @@ enums:
       paper: {description: Publication}
       repo: {description: File in a code repository}
       web: {description: Other web page}
+  VerdictEnum:
+    permissible_values:
+      CONFORMANT:
+        description: Follows the record.
+      NON_CONFORMANT:
+        description: Breaks the record; the example says what the conformant version is.
+      CONTESTED:
+        description: Curators dispute whether it follows the record, or the record does not settle it.
+  SubjectKindEnum:
+    permissible_values:
+      annotation:
+        description: A GO annotation (GAF or GPAD row).
+      gocam:
+        description: A GO-CAM model or part of one.
+      family:
+        description: A protein family or phylogenetic node, and what is asserted at it.
+      term:
+        description: A GO term itself; its placement, its definition, or whether to use it.
+      pipeline_config:
+        description: The configuration or mapping of an annotation pipeline.
+      other:
+        description: Anything else, described in Markdown.
   ReviewStatusEnum:
     permissible_values:
       READY: {}

@@ -39,6 +39,8 @@ BEGIN = "<!-- BEGIN GENERATED: edit the frontmatter, then run `just build` -->"
 END = "<!-- END GENERATED -->"
 INDEX_BEGIN = "<!-- BEGIN GENERATED RECORD INDEX -->"
 INDEX_END = "<!-- END GENERATED RECORD INDEX -->"
+EXAMPLES_SUFFIX = ".examples.yaml"
+VERDICT_LABEL = {"CONFORMANT": "Conformant", "NON_CONFORMANT": "Non-conformant", "CONTESTED": "Contested"}
 
 LINK = re.compile(r"(\[[^\]]*\]\()([^)\s]+)(\))")
 FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n?(.*)\Z", re.S)
@@ -98,6 +100,23 @@ class Group:
 
 
 @dataclass
+class ExampleSet:
+    """A record's examples file, ``records/<CHAPTER>/<ID>.examples.yaml``."""
+
+    path: Path
+    meta: Dict[str, Any]
+
+    @property
+    def record(self) -> str:
+        """The record id the file name says it belongs to."""
+        return self.path.name.removesuffix(EXAMPLES_SUFFIX)
+
+    @property
+    def examples(self) -> List[Dict[str, Any]]:
+        return list(self.meta.get("examples") or [])
+
+
+@dataclass
 class Collection:
     """Every record, chapter and group under a repository root."""
 
@@ -105,6 +124,16 @@ class Collection:
     records: Dict[str, Record] = field(default_factory=dict)
     chapters: Dict[str, Record] = field(default_factory=dict)
     groups: Dict[str, Group] = field(default_factory=dict)
+    examples: Dict[str, ExampleSet] = field(default_factory=dict)
+
+    def examples_bearing_on(self, record_id: str) -> List[Tuple[str, Dict[str, Any]]]:
+        """(home record, example) for examples whose see_also names ``record_id``."""
+        return [
+            (home, ex)
+            for home, es in sorted(self.examples.items(), key=lambda kv: sort_key(kv[0]))
+            for ex in es.examples
+            if record_id in (ex.get("see_also") or [])
+        ]
 
     def chapter_of(self, record_id: str) -> Record:
         return self.chapters[self.records[record_id].path.parent.name]
@@ -134,6 +163,9 @@ def load(root: Path = Path(".")) -> Collection:
             coll.chapters[md.parent.name] = rec
         else:
             coll.records[md.stem] = rec
+    for path in sorted((root / RECORDS_DIR).glob(f"*/*{EXAMPLES_SUFFIX}")):
+        es = ExampleSet(path.relative_to(root), yaml.safe_load(path.read_text()) or {})
+        coll.examples[es.record] = es
     for path in sorted((root / GROUPS_DIR).glob("*.yaml")):
         coll.groups[path.stem] = Group(path.relative_to(root), yaml.safe_load(path.read_text()) or {})
     return coll
@@ -187,6 +219,49 @@ def _differences_table(diffs: List[Dict[str, Any]]) -> List[str]:
     return lines
 
 
+def subject_summary(subject: Dict[str, Any]) -> str:
+    """One-line plain-text summary of an example's subject.
+
+    >>> subject_summary({"subject_kind": "annotation", "gene": {"gene_id": "UniProtKB:P04217", "symbol": "A1BG"},
+    ...     "qualifier": "located_in", "term": {"term_id": "GO:0005886", "label": "plasma membrane"},
+    ...     "evidence_code": "IBA", "reference": "GO_REF:0000033"})
+    'A1BG located_in GO:0005886 plasma membrane (IBA, GO_REF:0000033)'
+    >>> subject_summary({"subject_kind": "gocam", "model": "gomodel:123", "description": "A model"})
+    'gomodel:123'
+    >>> subject_summary({"subject_kind": "other", "description": "Some practice. More detail."})
+    'Some practice.'
+    """
+    kind = subject.get("subject_kind")
+    term = subject.get("term") or {}
+    term_text = " ".join(x for x in (term.get("term_id"), term.get("label")) if x)
+    if kind == "annotation":
+        gene = subject.get("gene") or {}
+        rel = ("NOT " if subject.get("negated") else "") + (subject.get("qualifier") or "")
+        ev = ", ".join(x for x in (subject.get("evidence_code"), subject.get("reference")) if x)
+        head = " ".join(x for x in (gene.get("symbol") or gene.get("gene_id"), rel.strip(), term_text) if x)
+        return f"{head} ({ev})" if ev else head
+    for key in ("model", "family", "pipeline"):
+        if subject.get(key):
+            return str(subject[key]) + (f" {term_text}" if term_text else "")
+    if term_text:
+        return term_text
+    desc = " ".join(str(subject.get("description", "")).split())
+    return desc.split(". ")[0].rstrip(".") + "." if desc else ""
+
+
+def _examples_table(coll: Collection, rec: Record) -> List[str]:
+    lines = ["| Example | Verdict | Subject |", "|---|---|---|"]
+    rows = [(rec.id, ex) for ex in (coll.examples[rec.id].examples if rec.id in coll.examples else [])]
+    for home, ex in rows + coll.examples_bearing_on(rec.id):
+        where = "" if home == rec.id else f" (from {record_link(coll, rec.path, home)})"
+        link = f"[{ex['id']}]({rel_link(rec.path, coll.examples[home].path)})"
+        verdict = VERDICT_LABEL.get(ex["verdict"], ex["verdict"])
+        lines.append(
+            f"| {link}: {_cell(ex['title'])}{where} | {verdict} | {_cell(subject_summary(ex.get('subject') or {}))} |"
+        )
+    return lines
+
+
 def generated_block(coll: Collection, rec: Record) -> str:
     """The derived Markdown block for a record (or chapter)."""
     m = rec.meta
@@ -226,6 +301,8 @@ def generated_block(coll: Collection, rec: Record) -> str:
             ]
             out.append("| Review | " + " ".join(w for w in words if w) + " |")
         out.append("")
+    if rec.id in coll.examples or coll.examples_bearing_on(rec.id):
+        out += ["## Examples", ""] + _examples_table(coll, rec) + [""]
     if m.get("differences"):
         out += ["## Differences from prior guidance", ""] + _differences_table(m["differences"]) + [""]
     if m.get("open_questions"):
@@ -327,6 +404,30 @@ def _browser_item(coll: Collection, rec: Record) -> Dict[str, Any]:
         for s in item.get("sources") or []
     ]
     item["source_url"] = REPO_BLOB + rec.path.as_posix()
+    if rec.path.name != "README.md":
+        item["examples"] = [_browser_example(coll, rec, ex) for ex in _own_examples(coll, rec.id)]
+        item["examples_from"] = [{"home": h, "id": ex["id"]} for h, ex in coll.examples_bearing_on(rec.id)]
+    return item
+
+
+def _own_examples(coll: Collection, record_id: str) -> List[Dict[str, Any]]:
+    return coll.examples[record_id].examples if record_id in coll.examples else []
+
+
+def _browser_example(coll: Collection, rec: Record, ex: Dict[str, Any]) -> Dict[str, Any]:
+    item = json.loads(json.dumps(ex, default=str))
+    path = coll.examples[rec.id].path
+    for key in ("explanation", "fix"):
+        if key in item:
+            item[key] = browser_markdown(coll, path, str(item[key]))
+    if "description" in item.get("subject", {}):
+        item["subject"]["description"] = browser_markdown(coll, path, str(item["subject"]["description"]))
+    item["summary"] = subject_summary(ex.get("subject") or {})
+    item["sources"] = [
+        {**s, "href": s.get("url") or browser_href(coll, path, rel_link(path, Path(s["path"])))}
+        for s in item.get("sources") or []
+    ]
+    item["source_url"] = REPO_BLOB + path.as_posix()
     return item
 
 
@@ -395,20 +496,27 @@ def term_errors(coll: Collection, adapter: Any) -> List[str]:
     """Check each ``go_terms`` entry against an OAK adapter."""
     obsolete = set(adapter.obsoletes())
     errors = []
-    for rec in coll.records.values():
-        for t in rec.meta.get("go_terms") or []:
+    owners: List[Tuple[Path, List[Dict[str, Any]]]] = [
+        (rec.path, list(rec.meta.get("go_terms") or [])) for rec in coll.records.values()
+    ]
+    owners += [
+        (es.path, [ex["subject"]["term"] for ex in es.examples if (ex.get("subject") or {}).get("term")])
+        for es in coll.examples.values()
+    ]
+    for path, terms in owners:
+        for t in terms:
             tid = t["term_id"]
             if tid in obsolete:
                 if not t.get("obsolete"):
-                    errors.append(f"{rec.path}: {tid} is obsolete but not flagged obsolete")
+                    errors.append(f"{path}: {tid} is obsolete but not flagged obsolete")
                 continue
             label = adapter.label(tid)
             if label is None:
-                errors.append(f"{rec.path}: {tid} is not in the ontology")
+                errors.append(f"{path}: {tid} is not in the ontology")
             elif t.get("obsolete"):
-                errors.append(f"{rec.path}: {tid} ({label}) is flagged obsolete but is live")
+                errors.append(f"{path}: {tid} ({label}) is flagged obsolete but is live")
             elif t.get("label") != label:
-                errors.append(f"{rec.path}: {tid} label {t.get('label')!r} should be {label!r}")
+                errors.append(f"{path}: {tid} label {t.get('label')!r} should be {label!r}")
     return errors
 
 
@@ -475,6 +583,56 @@ def _group_errors(coll: Collection, gid: str, group: Group) -> List[str]:
     return errors
 
 
+SUBJECT_REQUIRES = {
+    "annotation": ("gene", "term", "evidence_code"),
+    "gocam": ("model",),
+    "family": ("family",),
+    "term": ("term",),
+    "pipeline_config": ("pipeline",),
+    "other": ("description",),
+}
+
+
+def example_errors(coll: Collection, home: str, es: ExampleSet) -> List[str]:
+    """Problems in one examples file that the schema cannot express."""
+    errors = []
+    if home not in coll.records:
+        return [f"{es.path}: no record {home} for this examples file"]
+    if es.path.parent != coll.records[home].path.parent:
+        errors.append(f"{es.path}: must sit next to {coll.records[home].path}")
+    if es.meta.get("record") != home:
+        errors.append(f"{es.path}: record {es.meta.get('record')!r} does not match file name")
+    seen = set()
+    n_questions = len(coll.records[home].meta.get("open_questions") or [])
+    for ex in es.examples:
+        eid, verdict, subject = ex.get("id", ""), ex.get("verdict"), ex.get("subject") or {}
+        if not str(eid).startswith(home + "-E"):
+            errors.append(f"{es.path}: example id {eid} must start with {home}-E")
+        if eid in seen:
+            errors.append(f"{es.path}: duplicate example id {eid}")
+        seen.add(eid)
+        for ref in ex.get("see_also") or []:
+            if ref == home or ref not in coll.records:
+                errors.append(f"{es.path}: {eid} see_also names {ref}, which is unknown or the home record")
+        if (verdict == "NON_CONFORMANT") != bool(ex.get("fix")):
+            errors.append(f"{es.path}: {eid} needs a fix exactly when it is NON_CONFORMANT")
+        if verdict == "CONTESTED" and not (ex.get("discussion") or ex.get("open_question")):
+            errors.append(f"{es.path}: {eid} is CONTESTED and needs a discussion URL or an open_question")
+        if verdict != "CONTESTED" and (ex.get("discussion") or ex.get("open_question")):
+            errors.append(f"{es.path}: {eid} has a discussion or open_question but is not CONTESTED")
+        if ex.get("open_question") and ex["open_question"] > n_questions:
+            errors.append(f"{es.path}: {eid} names open question {ex['open_question']}; {home} has {n_questions}")
+        for key in SUBJECT_REQUIRES.get(subject.get("subject_kind", ""), ()):
+            if not subject.get(key):
+                errors.append(f"{es.path}: {eid} is a {subject.get('subject_kind')} subject and needs {key}")
+        for s in ex.get("sources") or []:
+            if bool(s.get("url")) == bool(s.get("path")):
+                errors.append(f"{es.path}: {eid} source {s.get('title')!r} needs exactly one of url or path")
+            elif s.get("path") and not (coll.root / s["path"]).exists():
+                errors.append(f"{es.path}: {eid} source path {s['path']} does not exist")
+    return errors
+
+
 def validate(root: Path = Path("."), check_terms: bool = False) -> List[str]:
     """Every problem found in the records and groups, as messages."""
     coll = load(root)
@@ -488,6 +646,9 @@ def validate(root: Path = Path("."), check_terms: bool = False) -> List[str]:
         errors += _schema_errors(rec.path, rec.meta, "Record")
         errors += _record_errors(coll, rid, rec)
         errors += _source_errors(root, rec)
+    for home, es in coll.examples.items():
+        errors += _schema_errors(es.path, es.meta, "ExampleSet")
+        errors += example_errors(coll, home, es)
     for gid, group in coll.groups.items():
         errors += _schema_errors(group.path, group.meta, "Group")
         errors += _group_errors(coll, gid, group)
