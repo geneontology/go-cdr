@@ -69,8 +69,8 @@ came from; their verdicts are not yet reviewed by curators. See
 [docs/examples-brief.md](docs/examples-brief.md) for how to write one, and
 `go-cdr aigr-example` to copy an annotation's identifiers from a review file.
 
-Examples serve a similar purpose to the cases in
-[go-bench](https://github.com/ai4curation/go-bench) and are synced there by hand for now.
+Examples serve a similar purpose to the benchmark cases in go-bench and are synced there by
+hand for now.
 
 ## Site
 
