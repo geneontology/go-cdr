@@ -1,0 +1,78 @@
+record: ONT-3
+examples:
+- id: ONT-3-E1
+  title: A methionine salvage enzyme moved off a replaced_by target that names the SAM cycle
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6AWN0
+      symbol: Adi1
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0033353
+      label: L-methionine cycle
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: '`GO:0019509` L-methionine salvage from methylthioadenosine is obsolete with `replaced_by`
+    to
+
+    `GO:0033353` L-methionine cycle, and the row carries the redirect. The review checked the target''s
+
+    definition, found it is the SAM cycle, which Adi1 does not take part in, and moved the row to
+
+    `GO:0071267` L-methionine salvage, the most specific live term in the right branch (the same choice
+
+    FlyBase made for the Adi1 IMP). That is the record''s decision: accept a redirect only after checking
+
+    that the target is in the right branch for what the gene does. The review does not say it flagged
+    the
+
+    redirect upstream, which the record also asks for.
+
+    '
+  see_also:
+  - ONT-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/Adi1/Adi1-ai-review.yaml#L289
+- id: ONT-3-E2
+  title: GatCAB's glutaminyl-tRNA transamidation term moved to charged-tRNA amino acid modification
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O06491
+      symbol: gatA
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0070681
+      label: glutaminyl-tRNAGln biosynthesis via transamidation
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000104
+  explanation: 'The record''s worked example says that for GatCAB genes the right term is `GO:0043039`
+    tRNA
+
+    aminoacylation, reasoning from the glutaminyl term `GO:0070681` being a subclass of it in the local
+
+    build. GO has since obsoleted `GO:0070681` with `consider` advice; the review says the live record
+
+    "cautions against automatic migration to tRNA charging", and argues that the transamidase "changes
+    the
+
+    amino-acid side chain on already-charged tRNA" and does not form the aminoacyl ester. It MODIFYs the
+
+    row to `GO:0019988` charged-tRNA amino acid modification, a different destination from the record''s.
+
+    The same choice recurs across the gatA/gatB/gatC reviews.
+
+
+    Note: GOA and QuickGO label `GO:0070681` obsolete, but the GO release used to check labels here (2026-07-26)
+    still has it live as "glutaminyl-tRNAGln biosynthesis via transamidation"; the verdict assumes the
+    obsoletion reaches a GO release.
+
+    '
+  discussion: https://github.com/ai4curation/ai-gene-review/issues/2747
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/gatA/gatA-ai-review.yaml#L189

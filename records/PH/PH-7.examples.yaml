@@ -1,0 +1,25 @@
+record: PH-7
+examples:
+- id: PH-7-E1
+  title: A mitochondrion IBA on cytosolic rat ALDH1L1 from a node seeded by its mitochondrial paralog
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P28037
+      symbol: Aldh1l1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0005739
+      label: mitochondrion
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review found the mitochondrial IBD supported by human ALDH1L2, and checked that rat ALDH1L1 lacks
+    the 22-residue N-terminal leader that targets ALDH1L2 to mitochondria. It removed the row as "a
+    paralog-specific targeting acquisition extending across the broad ancestor". This is the record's
+    worked example: paralogs with different compartments interleave below the node, so the node should
+    carry no CC and the cytosolic member should not inherit the mitochondrial one.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Aldh1l1/Aldh1l1-ai-review.yaml#L88

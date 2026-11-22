@@ -42,6 +42,13 @@ Use `part_of`(BP) on an MF to say which process the activity serves. Make the ma
 | Date | 2026-11-15 |
 | GO terms | `GO:0003924` GTPase activity; `GO:0048011` neurotrophin TRK receptor signaling pathway; `GO:0016301` kinase activity; `GO:0016310` phosphorylation |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-8-E1](AE-8.examples.yaml): An activator activity part_of heme biosynthesis, with the matching BP row from the same paper | Conformant | FXN enables GO:0008047 enzyme activator activity (IDA, PMID:15123683) |
+| [AE-8-E2](AE-8.examples.yaml): A part_of on reelin receptor activity that the ontology already entails | Non-conformant | LRP8 enables GO:0038025 reelin receptor activity (ISS, GO_REF:0000024) |
+
 ## Sources
 
 - wiki: [Column 16: Function x Process x Component extensions](https://wiki.geneontology.org/index.php/Column_16%3A_Function_x_Process_x_Component_extensions)

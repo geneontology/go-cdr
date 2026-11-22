@@ -1,0 +1,24 @@
+record: PC-5
+examples:
+- id: PC-5-E1
+  title: The F430-bearing alpha subunit enables methyl-coenzyme M reductase activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O27232
+      symbol: mcrA
+    taxon: NCBITaxon:187420
+    term:
+      term_id: GO:0050524
+      label: coenzyme-B sulfoethylthiotransferase activity
+    qualifier: enables
+    evidence_code: EXP
+    reference: PMID:2269306
+  explanation: |
+    MCR is an alpha2beta2gamma2 enzyme. The review accepted `enables` on McrA because the alpha
+    subunit carries the F430 cofactor and is the catalytic subunit, and recorded the holoenzyme
+    separately as a complex annotation. The record gives the subunit that performs the activity
+    `enables` with no qualifier even when it works inside a complex.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/METTH/mcrA/mcrA-ai-review.yaml#L102

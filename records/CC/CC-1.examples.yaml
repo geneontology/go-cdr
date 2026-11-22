@@ -1,0 +1,53 @@
+record: CC-1
+examples:
+- id: CC-1-E1
+  title: An is_active_in lysosomal membrane row backed by an activity measured there
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P54252
+      symbol: ATXN3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005765
+      label: lysosomal membrane
+    qualifier: is_active_in
+    evidence_code: IDA
+    reference: PMID:33157014
+  explanation: |
+    The record reserves `is_active_in` for a location where the molecular function is shown to happen.
+    The review accepted this IDA row because the cited study shows ataxin-3 acting at the lysosomal
+    membrane, deubiquitinating Ub-RHEB under amino-acid starvation. That is the record's "activity
+    shown in that compartment" case, not a detection result, so the strong relation is earned.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ATXN3/ATXN3-ai-review.yaml#L624
+- id: CC-1-E2
+  title: An is_active_in nucleus row from a tagged-protein screen of a mitochondrial enzyme
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q10062
+      symbol: hem14
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0005634
+      label: nucleus
+    qualifier: is_active_in
+    evidence_code: HDA
+    reference: PMID:16823372
+  explanation: |
+    A localization result alone supports `located_in`, and `is_active_in` needs the activity shown at the
+    place. This HDA row comes from a C-terminally tagged, overexpressed fission-yeast screen; the review
+    notes that protoporphyrinogen oxidase activity is confined to the mitochondrial inner membrane in
+    budding yeast and that the same screen reports extramitochondrial signal for ferrochelatase. Nothing
+    shows the enzyme working in the nucleus, so the relation claims more than the assay measured.
+  fix: |
+    At most `located_in` nucleus, kept non-core, since an extramitochondrial pool is not ruled out (the
+    review marks the row over-annotated rather than removing it for this reason). The site of activity is
+    the mitochondrial inner membrane, which should carry the `is_active_in` claim if any row does.
+  see_also:
+  - CC-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/hem14/hem14-ai-review.yaml#L62

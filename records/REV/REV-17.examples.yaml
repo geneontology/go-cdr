@@ -1,0 +1,67 @@
+record: REV-17
+examples:
+- id: REV-17-E1
+  title: SCL27 enabling an H4K5 acetyltransferase activity in a GO-CAM, repointed to HAM1
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:67e5e74400000148
+    description: Activity gomodel:67e5e74400000148/67e5e74400000172, histone H4K5 acetyltransferase activity
+      (GO:0043995) `enabled_by` AGI_LocusCode:AT2G45160 (SCARECROW-LIKE 27).
+  explanation: |
+    The record's example. The defect names its type (`WRONG_GENE_PRODUCT`), the resource that can fix
+    it (`GO_CAM`, with the activity id in `record`), the slot, the change (`REPOINT` from AT2G45160 to
+    AT5G64610), the cause (`SYMBOL_COLLISION`, both loci carry the alias HAM1) and a confidence. The
+    explanation is self-contained and names the three cited papers that study the MYST protein.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/67e5e74400000148/67e5e74400000148-review.yaml#L140
+- id: REV-17-E2
+  title: A GDSL esterase mapping on the pseudoenzyme MVP1 filed to InterPro, a MUTAGEN note to UniProt
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q7XA74
+      symbol: MVP1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0016788
+      label: hydrolase activity, acting on ester bonds
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The review removes the InterPro2GO row and records two defects, each with the group that can fix
+    it. The mapping (IPR001087 to `GO:0016788`, applied to a GDGL pseudoenzyme) goes to `INTERPRO`,
+    which can make an exception for the inactive subfamily. A UniProt MUTAGEN note that says "Restored
+    lipase activity" for a paper with no lipase assay goes to `UNIPROT` as `CHECK`.
+  see_also: [REV-6]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/MVP1/MVP1-ai-review.yaml#L385
+- id: REV-17-E3
+  title: An InterPro2GO qualifier defect on V-ATPase subunit A filed to UniProt
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P11592
+      symbol: vma-1
+    taxon: NCBITaxon:367110
+    term:
+      term_id: GO:0046961
+      label: proton-transporting ATPase activity, rotational mechanism
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The row is InterPro2GO (`GO_REF:0000002`). The defect asks for `enables` to become
+    `contributes_to`, because subunit A does not pump protons on its own, but it is filed to `UNIPROT`.
+    The record's table sends the content of an InterPro2GO mapping to `INTERPRO`, naming the mapping
+    in `record`, and warns that the mapping-versus-row filing must be checked whatever the row's
+    `assigned_by` says.
+  fix: |
+    File the defect to `INTERPRO`, naming the mapping in `record`. If the problem is that a mapping
+    cannot carry `contributes_to` at all, say so in the explanation: the fix may be to drop the
+    mapping for subunit signatures rather than to change a qualifier.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/NEUCR/vma-1/vma-1-ai-review.yaml#L317

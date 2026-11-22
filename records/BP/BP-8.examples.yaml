@@ -1,0 +1,54 @@
+record: BP-8
+examples:
+- id: BP-8-E1
+  title: A proteasome subunit's spermatogenesis row demoted to non-core
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O61742
+      symbol: rpn-10
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0007283
+      label: spermatogenesis
+    qualifier: involved_in
+    evidence_code: IGI
+    reference: PMID:17050737
+  explanation: |
+    RPN-10 is core proteasome machinery. Its GO:0007283 spermatogenesis row comes from a genetic interaction
+    in the sex-determination pathway, through degradation of TRA-2. The review kept the row but demoted it,
+    because the effect is a downstream consequence of general proteasomal function rather than a role in
+    spermatogenesis. The record allows that once the core activity is known.
+  see_also:
+  - BP-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/rpn-10/rpn-10-ai-review.yaml#L314
+- id: BP-8-E2
+  title: A ribosome-biogenesis ATPase annotated to positive regulation of translation
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O17607
+      symbol: ruvb-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0045727
+      label: positive regulation of translation
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:18804378
+  explanation: |
+    RUVB-1 is an AAA+ ATPase of ribosome biogenesis and chromatin complexes. The modest fall in protein
+    synthesis on its knockdown is, as the review records, attributed by the authors themselves to defective
+    box C/D snoRNP accumulation and hence rRNA maturation; fib-1 or pha-4 RNAi gives the same drop. The
+    record says that when the paper's own data attribute the defect to the core process, the downstream
+    row is `REMOVE`; `MARK_AS_OVER_ANNOTATED`, which the review chose, is for the case where they do not.
+  fix: |
+    REMOVE GO:0045727 positive regulation of translation; ribosome biogenesis is the process RUVB-1 is
+    part of.
+  see_also:
+  - BP-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/ruvb-1/ruvb-1-ai-review.yaml#L479

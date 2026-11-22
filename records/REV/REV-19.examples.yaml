@@ -1,0 +1,47 @@
+record: REV-19
+examples:
+- id: REV-19-E1
+  title: An organ-growth TreeGrafter row on a choanoflagellate removed despite passing taxon checks
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:F2U943
+      symbol: warts
+    taxon: NCBITaxon:946362
+    term:
+      term_id: GO:0046620
+      label: regulation of organ growth
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000118
+  explanation: |
+    The row passes GORULE:0000013, because the term's taxon constraints exclude only bacteria, archaea
+    and two yeasts. The review does not treat that pass as evidence. An organ is a multicellular
+    anatomical structure, *S. rosetta* has none, and the term was placed at a Metazoa-Choanoflagellida
+    node, so "the term cannot be true of this protein whatever its function".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SALRS/warts/warts-ai-review.yaml#L357
+- id: REV-19-E2
+  title: A root molecular_function row proposed by NAS for KCTD18
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6PI47
+      symbol: KCTD18
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003674
+      label: molecular_function
+    evidence_code: NAS
+  explanation: |
+    The review adds a `NEW` `molecular_function` row with evidence NAS, "to align core_functions with
+    existing annotations". GORULE:0000011 allows the root terms only with ND, and filters such rows
+    from GO products, so the proposal would be dropped on load. It is also an uninformative term
+    proposed as a core function.
+  fix: |
+    Withdraw the row. If the activity is unknown, record that as a biology knowledge gap (REV-12).
+  see_also: [REV-12]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/KCTD18/KCTD18-ai-review.yaml#L93

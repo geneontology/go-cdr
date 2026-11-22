@@ -1,0 +1,54 @@
+record: LIT-11
+examples:
+- id: LIT-11-E1
+  title: One of four response-to rows on a glutathione transferase
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q01579
+      symbol: Gstt1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0010269
+      label: response to selenium ion
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:9331086
+  explanation: |
+    The record's "many terms, one gene" case. Gstt1 carries response to salicylic acid, selenium ion,
+    vitamin E and xenobiotic stimulus from four induction papers. The review marked this one, and the others,
+    over-annotated because each reflects exposure and induction rather than the transferase's own chemistry.
+  fix: |
+    Drop the stimulus-by-stimulus catalogue; the record would keep at most one `GO:0009410` response to
+    xenobiotic stimulus row (which this review also marks over-annotated).
+  see_also:
+  - EV-6
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Gstt1/Gstt1-ai-review.yaml#L332
+- id: LIT-11-E2
+  title: Epithelial cell differentiation from a Caco-2 differentiation proteome
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P49748
+      symbol: ACADVL
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0030855
+      label: epithelial cell differentiation
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:21492153
+  explanation: |
+    The record's "one term, many genes" case: PMID:21492153 put `GO:0030855` on every protein that changed in
+    a Caco-2 proteome. The review read the full text: ACADVL rose 3.25-fold and the authors interpret the
+    lipid-enzyme changes as metabolic adaptation, which shows a differentiation-associated expression pattern,
+    not ACADVL performing a differentiation step.
+  fix: |
+    No epithelial cell differentiation row on ACADVL from this proteome.
+  see_also:
+  - EV-6
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ACADVL/ACADVL-ai-review.yaml#L675

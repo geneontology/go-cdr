@@ -90,6 +90,15 @@ are downstream phenotypes and should not have been projected
 | Date | 2026-11-15 |
 | Evidence codes | IDA, IPI, IMP, IGI, IEP, IBA, ISO, IEA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-10-E1](IEA-10.examples.yaml): Compara projects a nematode cuticle process onto mouse Duox1 | Non-conformant | Duox1 involved_in GO:0042335 cuticle development (IEA, GO_REF:0000107) |
+| [IEA-10-E2](IEA-10.examples.yaml): A budding-yeast nitrogen-starvation response projected onto Candida Bcy1 | Non-conformant | BCY1 involved_in GO:0006995 cellular response to nitrogen starvation (IEA, GO_REF:0000107) |
+| [IEA-10-E3](IEA-10.examples.yaml): Developmental terms projected onto mouse Wdpcp, true by the mouse's own IMP | Contested | Wdpcp involved_in GO:0042733 embryonic digit morphogenesis (IEA, GO_REF:0000107) |
+| [PIPE-1-E2](../PIPE/PIPE-1.examples.yaml): Ensembl Compara answers a relation-upgrade report at once but changes output slowly (from [PIPE-1](../PIPE/PIPE-1.md)) | Contested | Ensembl Compara |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

@@ -1,0 +1,47 @@
+record: MO-12
+examples:
+- id: MO-12-E1
+  title: The Drosophila Toll receptor on Toll signaling pathway
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P08953
+      symbol: Tl
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0008063
+      label: Toll signaling pathway
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:12872120
+  explanation: |
+    GO:0008063 is defined by ligand binding to the receptor Toll, so it fits the fly pathway. The review
+    accepted it for Toll as the insect pathway activated by Spaetzle, distinct from GO:0002224 toll-like receptor
+    signaling pathway, and noted that Toll performs the receptor step.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/Tl/Tl-ai-review.yaml#L1060
+- id: MO-12-E2
+  title: The fly Toll-pathway term propagated to human IRAK4
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NWZ3
+      symbol: IRAK4
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008063
+      label: Toll signaling pathway
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record names this leak: a ligand-specific fly term spread by phylogenetic inference onto human IRAK4.
+    The review kept the conserved node function but found that GO:0008063 "is defined by ligand binding to the Drosophila
+    receptor Toll" and is not an ancestor of the vertebrate TLR pathway term.
+  fix: |
+    GO:0002755 MyD88-dependent toll-like receptor signaling pathway, which IRAK4 already carries with experimental
+    support.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/IRAK4/IRAK4-ai-review.yaml#L1397

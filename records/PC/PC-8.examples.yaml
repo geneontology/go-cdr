@@ -1,0 +1,26 @@
+record: PC-8
+examples:
+- id: PC-8-E1
+  title: SDHA given the parent succinate dehydrogenase activity for its isolated half-reaction
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P31040
+      symbol: SDHA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000104
+      label: succinate dehydrogenase activity
+    evidence_code: IDA
+    reference: PMID:7550341
+  explanation: |
+    The review proposed a NEW `GO:0000104` succinate dehydrogenase activity row on SDHA, because the
+    flavoprotein alone oxidises succinate with a generic acceptor, while keeping `GO:0008177` as a
+    `contributes_to` complex-level activity. The record calls this defensible, because the subunit
+    performs the parent activity on its own, but notes that the complex II decision excludes substeps
+    and that the repo treats the case as unresolved. The consortium discussion of SDHA MF consistency is
+    still open.
+  discussion: https://github.com/geneontology/go-annotation/issues/6357
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SDHA/SDHA-ai-review.yaml#L1302

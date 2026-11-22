@@ -38,6 +38,12 @@ Few pipelines meet this yet because GO lacks shared benchmarks; ARBA is one that
 | Date | 2026-11-21 |
 | Related | [IEA-16](../IEA/IEA-16.md) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PIPE-7-E1](PIPE-7.examples.yaml): ARBA's training-set agreement read as a benchmark | Contested | ARBA |
+
 ## Open questions
 
 1. What tolerances for precision versus recall should the consortium share?

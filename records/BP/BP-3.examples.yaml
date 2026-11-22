@@ -1,0 +1,50 @@
+record: BP-3
+examples:
+- id: BP-3-E1
+  title: The renin-angiotensin GO-CAM represents angiotensinogen without placing it in angiotensin maturation
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:6246724f00000549
+    description: |
+      Renin-angiotensin pathway (Human). AGT (UniProtKB:P01019) appears as the enabler of the
+      GO:0005179 hormone activity node and, separately, as `has_input` (RO:0002233) molecules of the renin
+      (GO:0004190) and ACE (GO:0008241) activities, which are the ones placed in GO:0002003 angiotensin
+      maturation.
+  explanation: |
+    This is the record's worked example, checked against the cached model. The curator included AGT,
+    gave it the hormone-activity role and the proteases' input role, and put only the protease activities
+    in GO:0002003. Under the record, that is a decision to argue with explicitly, not a gap. The AGT review
+    did not propose GO:0002003 for AGT. It raised the representation of substrates as a suggested question
+    to the GO editors instead.
+  see_also:
+  - BP-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/6246724f00000549/6246724f00000549-src.yaml#L115
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/6246724f00000549/6246724f00000549-src.yaml#L211
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AGT/AGT-ai-review.yaml#L4973
+- id: BP-3-E2
+  title: A new keratinization row for a wool KAP, after a same-role comparator check
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02446
+      symbol: KRTAP3-1
+    taxon: NCBITaxon:9940
+    term:
+      term_id: GO:0031424
+      label: keratinization
+    qualifier: involved_in
+    evidence_code: TAS
+    reference: PMID:27240405
+  explanation: |
+    The review proposed GO:0031424 keratinization for a gene with no BP rows, and before doing so named
+    gene products in the same role: hair keratins and other KAPs carry keratinization. It also says why it
+    did not propose follicle development or hair-cycle terms: KAPs are downstream structural products. The
+    participation step is named too: the protein is cross-linked into the keratin-matrix composite, which
+    is a structural contribution.
+  see_also:
+  - BP-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SHEEP/KRTAP3-1/KRTAP3-1-ai-review.yaml#L96

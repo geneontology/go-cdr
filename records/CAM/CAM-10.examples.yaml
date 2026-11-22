@@ -1,0 +1,20 @@
+record: CAM-10
+examples:
+- id: CAM-10-E1
+  title: A small TOM subunit needed for the translocase, drawn as constitutively upstream
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:69729a3800007453
+    description: |
+      Activity gomodel:69729a3800007453/69729a3800007537 in the fission yeast model "protein import into
+      mitochondrial matrix (GO:0030150)": PomBase:SPBC27B12.10c (Tom7) enables GO:0003674 molecular_function,
+      `constitutively upstream of` (RO:0012009) the Tom40 channel activity.
+  explanation: |
+    Tom7 is needed for the assembly and stability of the TOM complex that every imported precursor passes
+    through, but it is not how the cell sets the rate of import, which is the record's test for
+    `constitutively upstream of` rather than regulation. The review called this an "appropriate use of the
+    root MF and a non-regulatory predicate". The model uses the same relation for Tom5, Tom6, Mgr2, Zim17
+    and Tim44.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/69729a3800007453/69729a3800007453-review.yaml#L82

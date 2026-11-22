@@ -71,6 +71,14 @@ Neither error could be traced from the GO row back to its cause without reconstr
 | Date | 2026-11-15 |
 | Evidence codes | IEA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-5-E1](IEA-5.examples.yaml): A plasma membrane row reached through an ARBA-predicted subcellular location | Non-conformant | BST1 located_in GO:0005886 plasma membrane (IEA, GO_REF:0000044) |
+| [IEA-5-E2](IEA-5.examples.yaml): EC2GO NADase activity on a receptor TIR domain, from a ProRule-assigned EC number | Non-conformant | Il1rl1 enables GO:0061809 NAD+ nucleosidase activity, cyclic ADP-ribose generating (IEA, GO_REF:0000003) |
+| [PIPE-4-E1](../PIPE/PIPE-4.examples.yaml): EC2GO on a TrEMBL entry whose EC number came from an imported record (from [PIPE-4](../PIPE/PIPE-4.md)) | Non-conformant | EC2GO |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

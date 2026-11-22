@@ -1,0 +1,52 @@
+record: QN-4
+examples:
+- id: QN-4-E1
+  title: A lipid-synthesizing enzyme is active in the membrane its substrate lives in
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0ABG1
+      symbol: cdsA
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0005886
+      label: plasma membrane
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review accepted `is_active_in` because both the substrate (phosphatidic acid) and the product
+    (CDP-diacylglycerol) are membrane lipids and the purified enzyme shows surface-dilution kinetics, so
+    "the catalysis therefore happens at the membrane". That is the record's second kind of support for
+    `is_active_in`: a function that only makes sense in that location, which places the activity and not
+    just the protein.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/cdsA/cdsA-ai-review.yaml#L370
+- id: QN-4-E2
+  title: An ortholog-transferred is_active_in kept although the review says it overstates the evidence
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O74977
+      symbol: vms1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0005789
+      label: endoplasmic reticulum membrane
+    qualifier: is_active_in
+    evidence_code: ISO
+    reference: GO_REF:0000024
+  explanation: |
+    The review kept the row as non-core while saying that "the is_active_in qualifier over-states what
+    ortholog transfer can support" and that "located_in would be the defensible qualifier", because the
+    ERAD process it was paired with is being corrected to ribosome rescue. Under the record, if the
+    evidence does not place the activity in the ER membrane, the relation is `located_in`; leaving the
+    stronger relation in place with a suggestion in prose keeps the claim the review rejects.
+  fix: |
+    MODIFY the row as a relation-only change and add a NEW row on `GO:0005789` with `located_in`
+    (QN-7).
+  see_also: [QN-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/vms1/vms1-ai-review.yaml#L290

@@ -1,0 +1,47 @@
+record: TR-1
+examples:
+- id: TR-1-E1
+  title: A Mediator subunit annotated as a transcription coactivator
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q71F56
+      symbol: MED13L
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003713
+      label: transcription coactivator activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:22249253
+  explanation: |
+    Mediator bridges DNA-bound dbTFs and RNA polymerase II, so its subunits belong to the coTF class, and the
+    GO:0003713 definition names the Mediator complex. The review accepted the IDA row for MED13L on direct evidence from
+    PMID:22249253 that MED13L is required for Rb/E2F transcriptional control.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MED13L/MED13L-ai-review.yaml#L171
+- id: TR-1-E2
+  title: An Aux/IAA repressor annotated as a DNA-binding transcription factor from a genome-wide classification
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P93830
+      symbol: IAA17
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: ISS
+    reference: PMID:11118137
+  explanation: |
+    Classifying the activity first, IAA17 represses through its ARF partners rather than by binding DNA itself,
+    which is the coTF class. The ISS row rests on "a genome-wide regulator classification, not a IAA17-specific
+    DNA-binding/transactivation assay", and the review found that the specific evidence supports "repression through ARF
+    association".
+  fix: |
+    GO:0003714 transcription corepressor activity, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/IAA17/IAA17-ai-review.yaml#L74

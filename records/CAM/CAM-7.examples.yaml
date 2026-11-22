@@ -1,0 +1,60 @@
+record: CAM-7
+examples:
+- id: CAM-7-E1
+  title: CaMKII to STAT1 left as causally upstream, positive effect, on pharmacological evidence
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:62b4ffe300004525
+    description: |
+      Activity gomodel:62b4ffe300004525/62b4ffe300004542 in "Regulation of the JAK-STAT pathway by calmodulin
+      in response to interferon-beta (Human)": UniProtKB:Q9UQM7 (CAMK2A) GO:0004683
+      calcium/calmodulin-dependent protein kinase activity, linked to STAT1 DNA-binding transcription factor
+      activity by RO:0002304 causally upstream of, positive effect.
+  explanation: |
+    The decision tree reserves the undetermined relation for cases with too little data to name a
+    mechanism, and asks for a sign whenever one is shown. The review found that RO:0002304 "suits the
+    evidence here (pharmacology and rescue, not a demonstrated phosphorylation)". The IFN-gamma sibling
+    model asserts the same step as a direct edge, which the review accepted there because that model's
+    paper shows the phosphorylation; it asked that the two models either agree or say why they differ.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004525/62b4ffe300004525-review.yaml#L99
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-review.yaml#L192
+- id: CAM-7-E2
+  title: A GAP drawn as negatively regulating the GTPase activity it stimulates
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:693b3c0900004859
+    description: |
+      Activity gomodel:693b3c0900004859/69c59f8a00002394 in the fission yeast ER-to-Golgi COPII model:
+      PomBase:SPCC31H12.07 (Sec23) enables GO:0005096 GTPase activator activity, `directly negatively
+      regulates` (RO:0002630) Sar1 GO:0003924 GTPase activity (6a0784b700000353).
+  explanation: |
+    A GAP accelerates GTP hydrolysis, so its effect on the GTPase activity is positive. The review marked
+    the activity WRONG and filed a WRONG_CAUSAL_RELATION defect, noting that the same model's Gyp10 GAP to
+    Ypt1 GTPase edge uses the positive predicate. This is the record's WRONG_CAUSAL_SIGN case.
+  fix: |
+    `directly positively regulates` (RO:0002629) from the Sec23 GAP activity to Sar1 GTPase activity, or a
+    negative edge only if the target is Sar1's G protein (switch) activity.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/693b3c0900004859/693b3c0900004859-review.yaml#L374
+- id: CAM-7-E3
+  title: A receptor-to-phosphatase regulation drawn as provides input for
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:68d5ebd600001504
+    description: |
+      Activity gomodel:68d5ebd600001504/68d5ebd600001509 in the KISS1/KISS1R osteoclast model:
+      UniProtKB:Q969F8 (KISS1R) GO:0004930 G protein-coupled receptor activity, linked to DUSP18 phosphatase
+      activity by RO:0002413 provides input for.
+  explanation: |
+    The record picks the relationship type first. `provides input for` means the upstream activity makes
+    the molecule the downstream one uses; the review found that "the receptor's activity produces no
+    molecule that the phosphatase consumes", and that the cited paper describes recruitment and
+    up-regulation, which is regulation. It filed a WRONG_CAUSAL_RELATION defect.
+  fix: |
+    A regulation relation with a sign, `directly positively regulates` (RO:0002629) as the review proposes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/68d5ebd600001504/68d5ebd600001504-review.yaml#L172

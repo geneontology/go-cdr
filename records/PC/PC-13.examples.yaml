@@ -1,0 +1,51 @@
+record: PC-13
+examples:
+- id: PC-13-E1
+  title: A GABA-A receptor subunit annotated as reducing GABAergic transmission
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P28472
+      symbol: GABRB3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0032229
+      label: negative regulation of synaptic transmission, GABAergic
+    qualifier: involved_in
+    evidence_code: NAS
+    reference: PMID:33234346
+  explanation: |
+    The Complex Portal NAS row gives GABRB3 negative regulation of synaptic transmission, GABAergic.
+    The review read the full cited review, which assigns reduced trafficking and transmission to CLPTM1
+    and altered current decay to SHISA7, with beta3-containing receptors as the regulated complexes. The
+    subunit of the regulated complex received the regulators' term, the first failure pattern in the
+    record.
+  fix: |
+    Remove the row; the regulation term belongs to the regulators the source names.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GABRB3/GABRB3-ai-review.yaml#L1278
+- id: PC-13-E2
+  title: A soluble decoy receptor's activity transferred to IL1RAP through its complex
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NPH3
+      symbol: IL1RAP
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0032690
+      label: negative regulation of interleukin-1 alpha production
+    qualifier: involved_in
+    evidence_code: NAS
+    reference: PMID:23847621
+  explanation: |
+    The Complex Portal NAS row gives IL1RAP negative regulation of interleukin-1 alpha production. The
+    review found that the cited paper attributes control of IL-1alpha to IL1R2, which binds pro-IL-1alpha
+    in the cytosol, and does not describe IL1RAP regulating its production. This is a partner's activity
+    copied to a co-subunit, a pattern the record lists among Complex Portal failures.
+  fix: |
+    Remove the row on IL1RAP.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/IL1RAP/IL1RAP-ai-review.yaml#L923

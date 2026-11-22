@@ -93,6 +93,13 @@ divergent member of an expanded family, and 41 of 46 rows were removed.
 | Evidence codes | ISS, ISO, ISA, ISM, IC, IEA |
 | GO terms | `GO:0005515` protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-8-E1](EV-8.examples.yaml): Angiogenesis transferred from human ANG to a non-angiogenic paralog | Non-conformant | Ang2 involved_in GO:0001525 angiogenesis (ISO, GO_REF:0000119) |
+| [EV-8-E2](EV-8.examples.yaml): A response to yeast row whose donor annotation has gone | Non-conformant | Ang2 involved_in GO:0001878 response to yeast (ISO, GO_REF:0000119) |
+
 ## Sources
 
 - issue: [go-annotation#1775](https://github.com/geneontology/go-annotation/issues/1775)

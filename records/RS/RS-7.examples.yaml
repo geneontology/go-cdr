@@ -1,0 +1,70 @@
+record: RS-7
+examples:
+- id: RS-7-E1
+  title: Positive regulation of MAPK cascade on SHC1, upstream of the first cassette kinase
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P29353
+      symbol: SHC1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0043410
+      label: positive regulation of MAPK cascade
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:14676841
+  explanation: |
+    SHC1 recruits GRB2-SOS to activate RAS, so it lies between the receptor and RAF. The IDA concerns
+    CD81-induced ERK activation, without a receptor pathway in view. For that case the record annotates
+    the intermediate to "positive regulation of" the cassette, and the review accepts the row. SHC1's
+    EGFR pathway rows are accepted separately.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SHC1/SHC1-ai-review.yaml#L3784
+- id: RS-7-E2
+  title: MAPK cascade on HSF1, an ERK substrate, marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q00613
+      symbol: HSF1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000165
+      label: MAPK cascade
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:12917326
+  explanation: |
+    ERK1/2 phosphorylates HSF1 and causes its cytoplasmic sequestration. The review says HSF1 "is a
+    downstream target/substrate of MAPK signalling rather than a component that executes the MAPK
+    cascade". The record keeps the targets of the cassette's last kinase off the cassette term.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HSF1/HSF1-ai-review.yaml#L74
+- id: RS-7-E3
+  title: MAPK cascade accepted on ATF2, the cascade's substrate
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P15336
+      symbol: ATF2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000165
+      label: MAPK cascade
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The review accepts the Ensembl Compara `MAPK cascade` row because ATF2 is "a well-established
+    downstream target/effector", phosphorylated by JNK, p38 and ERK. That is the reason the record
+    gives for keeping it off the cassette: an ERK substrate transcription factor is `involved_in` the
+    receptor pathway, not the cassette.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`. If the evidence places ATF2 in a specific receptor or stress pathway as
+    its last effector, that pathway is the term to use.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ATF2/ATF2-ai-review.yaml#L588

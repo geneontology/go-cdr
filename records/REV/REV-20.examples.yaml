@@ -1,0 +1,61 @@
+record: REV-20
+examples:
+- id: REV-20-E1
+  title: An obsolete unfolded protein binding IDA on an sHSP mapped to a holdase NTR
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O81822
+      symbol: HSP17.7
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0051082
+      label: unfolded protein binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:11576425
+  explanation: '`GO:0051082` was obsoleted (go-ontology#30962). The review decides the row on its biology
+    rather
+
+    than taking the suggested replacement. HSP17.7 is an ATP-independent holdase, so `protein folding
+
+    chaperone` (no active folding) is rejected and the carrier-specific term is rejected too, and the
+
+    replacement is a holdase chaperone NTR.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/HSP17.7/HSP17.7-ai-review.yaml#L306
+- id: REV-20-E2
+  title: Bovine alpha-crystallin moved to protein folding chaperone while it lacks refolding activity
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02470
+      symbol: CRYAA
+    taxon: NCBITaxon:9913
+    term:
+      term_id: GO:0051082
+      label: unfolded protein binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: 'For the same obsoletion, the CRYAA review moves the IBA row to `protein folding chaperone`
+    as "the
+
+    best available interim replacement, though imperfect because CRYAA does not assist in protein
+
+    folding per se", while the gene carries a NOT for protein refolding. The sHSP reviews (HSP17.7
+
+    above) take a holdase NTR instead. The repository''s tracking issue records that the holdase term
+
+    was never created and that the in-situ holdase migrations are still unresolved.
+
+    '
+  discussion: https://github.com/ai4curation/ai-gene-review/issues/2222
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BOVIN/CRYAA/CRYAA-ai-review.yaml#L95

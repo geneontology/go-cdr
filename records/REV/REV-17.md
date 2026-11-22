@@ -73,6 +73,16 @@ the row's `assigned_by` says.
 | Date | 2026-11-15 |
 | Evidence codes | IBA, IBD |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-17-E1](REV-17.examples.yaml): SCL27 enabling an H4K5 acetyltransferase activity in a GO-CAM, repointed to HAM1 | Conformant | gomodel:67e5e74400000148 |
+| [REV-17-E2](REV-17.examples.yaml): A GDSL esterase mapping on the pseudoenzyme MVP1 filed to InterPro, a MUTAGEN note to UniProt | Conformant | MVP1 enables GO:0016788 hydrolase activity, acting on ester bonds (IEA, GO_REF:0000002) |
+| [REV-17-E3](REV-17.examples.yaml): An InterPro2GO qualifier defect on V-ATPase subunit A filed to UniProt | Non-conformant | vma-1 enables GO:0046961 proton-transporting ATPase activity, rotational mechanism (IEA, GO_REF:0000002) |
+| [REV-16-E3](REV-16.examples.yaml): A true Pld4 exonuclease row removed because its paper did not show the activity (from [REV-16](REV-16.md)) | Non-conformant | Pld4 enables GO:0045145 single-stranded DNA 5'-3' DNA exonuclease activity (IMP, PMID:22102906) |
+| [RS-5-E3](../RS/RS-5.examples.yaml): An InterPro-derived positive regulation of transcription on SVP flipped to negative (from [RS-5](../RS/RS-5.md)) | Non-conformant | SVP involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (IEA, GO_REF:0000002) |
+
 ## Sources
 
 - repo: [source defects](https://github.com/ai4curation/ai-gene-review/blob/main/docs/source_defects.md)

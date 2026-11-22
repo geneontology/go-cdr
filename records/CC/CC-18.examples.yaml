@@ -1,0 +1,24 @@
+record: CC-18
+examples:
+- id: CC-18-E1
+  title: A Shigella effector annotated to host cell cytoplasm
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0H2US87
+      symbol: ospC3
+    taxon: NCBITaxon:623
+    term:
+      term_id: GO:0030430
+      label: host cell cytoplasm
+    qualifier: is_active_in
+    evidence_code: IDA
+    reference: PMID:34409271
+  explanation: |
+    A gene product acting inside another organism takes that organism's compartment term. OspC3 is a
+    Shigella type III effector that modifies its targets in the host cytoplasm; the review accepted the
+    `is_active_in` host cell cytoplasm row because both its catalytic and its sequestration activities
+    happen there, and named this location for the core functions.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SHIFL/ospC3/ospC3-ai-review.yaml#L267

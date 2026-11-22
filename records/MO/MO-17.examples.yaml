@@ -1,0 +1,27 @@
+record: MO-17
+examples:
+- id: MO-17-E1
+  title: A NOT row for AGO3 cleavage-mediated silencing, removed on new slicer data
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9H9G7
+      symbol: AGO3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0035279
+      label: miRNA-mediated gene silencing by mRNA destabilization
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:15260970
+    negated: true
+  explanation: |
+    The record says only AGO2 among the human Argonautes has endonuclease activity, so cleavage should not be
+    attributed to AGO3. The NOT row (PMID:15260970) agrees. The review removed the NOT because "PMID:29040713 supersedes that
+    broad negative by demonstrating guide- and target-dependent AGO3 slicer activity". The open Argonaute family
+    review names human AGO1 and AGO4 as examples of members that lack the catalytic tetrad, and plans to mark slicer
+    activity as residue-dependent.
+  discussion: https://github.com/ai4curation/ai-gene-review/issues/5798
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AGO3/AGO3-ai-review.yaml#L768

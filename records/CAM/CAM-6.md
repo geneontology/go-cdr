@@ -72,6 +72,13 @@ FBXL19's (model `63d320cd00001536`, PMID:23512198).
 | Related | [CAM-14](CAM-14.md) |
 | GO terms | `GO:0061621` canonical glycolysis; `GO:0004347` glucose-6-phosphate isomerase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-6-E1](CAM-6.examples.yaml): PSAT1 feeds EGLN3 through a shared 2-oxoglutarate molecule | Conformant | gomodel:680ad14200007201 |
+| [CAM-6-E2](CAM-6.examples.yaml): A gluconeogenesis model chained only by provides-input-for edges | Non-conformant | gomodel:61e0e55600001225 |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

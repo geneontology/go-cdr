@@ -1,0 +1,53 @@
+record: IEA-9
+examples:
+- id: IEA-9-E1
+  title: Fission-yeast Cps1 inherits adaptive thermogenesis from an older ARBA condition set
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O13968
+      symbol: SPAC24C9.08
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:1990845
+      label: adaptive thermogenesis
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000117
+  explanation: |
+    The row came from ARBA:ARBA00089174, dated 2025-11-07 in the cached GOA file. The review removed
+    it because PM20D1-dependent uncoupling is a mammalian adipocyte outcome of a secreted paralog, and
+    nothing places the vacuolar fungal Cps1 in heat production. The rule review records that the
+    PM20D1 condition set behind such rows is no longer in the live rule, whose single set is restricted
+    to Mus and matches Trpv1 and Trpv4, both with IMP annotation to a descendant of the term. Judged
+    set by set, the old set annotated a protein lacking the function and the live set does not.
+  fix: |
+    Remove the row on Cps1. The rule itself needs no further change in its retrieved version.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/cps1/cps1-ai-review.yaml#L577
+- id: IEA-9-E2
+  title: An ARBA rule upheld by reading its single condition set as a conjunction
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: ARBA
+    refs:
+    - ARBA:ARBA00090718
+    - GO:0047545
+    - InterPro:IPR006076
+    - InterPro:IPR036188
+    - PANTHER:PTHR43104
+    description: |
+      ARBA00090718 assigns `GO:0047545` (S)-2-hydroxyglutarate dehydrogenase activity when a protein
+      has `IPR006076`, `IPR036188` and PANTHER family `PTHR43104` (L-2-hydroxyglutarate
+      dehydrogenase, mitochondrial).
+  explanation: |
+    The rule review recorded the live rule's one condition set, a three-way conjunction, and found
+    that all 17 reviewed matches carry the term or a descendant, 14 by manual evidence, including
+    IDA-annotated enzymes from human, Arabidopsis, Drosophila and E. coli. It also withdrew an earlier
+    verdict made on a FunFam condition no longer in the rule, and a low-Jaccard argument it reclassed
+    as low recall, not error. That follows the record: no protein lacking the function was found, so
+    the rule stands, and the in-sample counts are reported as coherence rather than an error rate.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/arba/ARBA00090718/ARBA00090718-review.yaml#L47

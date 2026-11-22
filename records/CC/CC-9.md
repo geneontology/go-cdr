@@ -99,6 +99,14 @@ side term because it says more and because the extrinsic terms were slated for o
 | Evidence codes | IC |
 | GO terms | `GO:0098554` cytoplasmic side of endoplasmic reticulum membrane; `GO:0005789` endoplasmic reticulum membrane; `GO:0099617` matrix side of mitochondrial inner membrane; `GO:0032473` cytoplasmic side of mitochondrial outer membrane; `GO:0098574` cytoplasmic side of lysosomal membrane; `GO:0160281` cytoplasmic side of trans-Golgi network membrane; `GO:0042406` extrinsic component of endoplasmic reticulum membrane |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-9-E1](CC-9.examples.yaml): A NEW cytoplasmic side of ER membrane row for a partner-tethered protease | Conformant | UFSP2 located_in GO:0098554 cytoplasmic side of endoplasmic reticulum membrane (IC, PMID:35926457) |
+| [CC-9-E2](CC-9.examples.yaml): A cytoplasmic side of Golgi membrane row where the record says no such term exists | Contested | HID1 located_in GO:0098548 cytoplasmic side of Golgi membrane (IDA, PMID:21337012) |
+| [CC-10-E1](CC-10.examples.yaml): A generic membrane IBA row refined to the leaflet and the TGN membrane (from [CC-10](CC-10.md)) | Conformant | HID1 is_active_in GO:0016020 membrane (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

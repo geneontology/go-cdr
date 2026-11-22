@@ -58,6 +58,14 @@ date: '2026-11-15'
 | Provenance | [GOC+] [GOC]. Item 3 is [GOC+]: GOC raised it without resolving it, and we state the default. |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-3-E1](RS-3.examples.yaml): Positive regulation of triglyceride synthesis on GPAT1 moved to the process | Conformant | Gpam involved_in GO:0010867 positive regulation of triglyceride biosynthetic process (ISO, GO_REF:0000096) |
+| [RS-3-E2](RS-3.examples.yaml): Positive regulation of fatty acid beta-oxidation on CPT1A marked over-annotated | Conformant | Cpt1a involved_in GO:0032000 positive regulation of fatty acid beta-oxidation (IMP, PMID:19302064) |
+| [RS-2-E3](RS-2.examples.yaml): Positive regulation of cell division kept on the kinetochore subunit SPC24 (from [RS-2](RS-2.md)) | Non-conformant | SPC24 acts_upstream_of_or_within GO:0051781 positive regulation of cell division (IMP, PMID:29356153) |
+
 ## Sources
 
 - wiki: [Annotating regulation](https://wiki.geneontology.org/index.php/Annotating_regulation)

@@ -61,6 +61,15 @@ only evidence is necessity and the gene is the cargo, substrate or target.
 | Date | 2026-11-15 |
 | GO terms | `GO:0002003` angiotensin maturation; `GO:0016486` peptide hormone processing |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-10-E1](REV-10.examples.yaml): Protein ubiquitination removed from ACD6, the ubiquitinated substrate | Conformant | ACD6 involved_in GO:0016567 protein ubiquitination (IDA, PMID:24923602) |
+| [REV-10-E2](REV-10.examples.yaml): Establishment of protein localization marked over-annotated on the cargo GluA2 | Conformant | Gria2 involved_in GO:0045184 establishment of protein localization (IMP, PMID:11348590) |
+| [REV-10-E3](REV-10.examples.yaml): Fibrinolysis on the fibrinogen chains: the record's exception, applied chain by chain | Contested | FGG involved_in GO:0042730 fibrinolysis (IDA, PMID:16846481) |
+| [REV-11-E3](REV-11.examples.yaml): Melanin biosynthesis proposed for POMC with a boilerplate reason (from [REV-11](REV-11.md)) | Non-conformant | POMC GO:0042438 melanin biosynthetic process (NAS) |
+
 ## Sources
 
 - wiki: [QCQA call 2018-03-20](https://wiki.geneontology.org/index.php/QCQA_call_2018-03-20)

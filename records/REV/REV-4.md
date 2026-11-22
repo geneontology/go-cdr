@@ -58,6 +58,13 @@ cytoplasmic pool does something.
 | Provenance | [GOC+]. Core-function focus is GOC guidance; the explicit core/non-core split per row is ours. |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-4-E1](REV-4.examples.yaml): An osteoblast-differentiation row on PTCH1 kept as true but peripheral | Conformant | PTCH1 involved_in GO:0045668 negative regulation of osteoblast differentiation (IMP, PMID:16229683) |
+| [REV-4-E2](REV-4.examples.yaml): DAF-16 cytoplasm rows accepted although the cytoplasmic pool is the inactive one | Non-conformant | daf-16 located_in GO:0005737 cytoplasm (IEA, GO_REF:0000044) |
+
 ## Sources
 
 - wiki: [Tips](https://wiki.geneontology.org/index.php/Tips_to_Produce_High_Quality_Annotations)

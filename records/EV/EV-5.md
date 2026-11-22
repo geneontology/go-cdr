@@ -81,6 +81,13 @@ GATA6 in the extension. GATA6 gets nothing from this experiment.
 | Evidence codes | IDA, IMP, IGI |
 | GO terms | `GO:1900181` negative regulation of protein localization to nucleus |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-5-E1](EV-5.examples.yaml): A plant arginase annotated by IGI from complementation of yeast | Conformant | ARGAH1 enables GO:0004053 arginase activity (IGI, PMID:7770544) |
+| [EV-5-E2](EV-5.examples.yaml): A Golgi organization row for SERK1 from suppression of an ARF-GAP mutant | Non-conformant | SERK1 acts_upstream_of_or_within GO:0007030 Golgi organization (IGI, PMID:20230490) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

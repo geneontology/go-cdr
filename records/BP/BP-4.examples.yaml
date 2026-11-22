@@ -1,0 +1,81 @@
+record: BP-4
+examples:
+- id: BP-4-E1
+  title: A nuclease's effect on antimicrobial gene expression kept as a signed upstream annotation
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q17778
+      symbol: nuc-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0002785
+      label: negative regulation of antimicrobial peptide production
+    qualifier: acts_upstream_of_or_within_positive_effect
+    evidence_code: IMP
+    reference: PMID:26251453
+  explanation: |
+    The row already uses the signed upstream relation, which the record asks for when the mechanism linking
+    the activity to the process is not a step of it. The review found that NUC-1 does not take part in
+    regulating antimicrobial peptide production: it degrades DNA, and its undigested substrate triggers an
+    innate immune response. It kept the row as non-core, as the record says to do for a real but
+    peripheral process, rather than removing a true claim.
+  see_also:
+  - BP-6
+  - BP-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/nuc-1/nuc-1-ai-review.yaml#L23
+- id: BP-4-E2
+  title: An usher annotated as involved in cell adhesion from an adhesion-defect phenotype
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9I1Y5
+      symbol: cupA3
+    taxon: NCBITaxon:208964
+    term:
+      term_id: GO:0007155
+      label: cell adhesion
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:11381121
+  explanation: |
+    The IMP shows that a cupA3 mutant attaches to plastic at about 10% of the parental level. The review
+    found that CupA3 is the outer-membrane usher that assembles the fimbria, while the adhesion is made by
+    the fimbrial subunits. So the evidence shows an effect on GO:0007155 cell adhesion but no adhesion step,
+    and the relation is too strong. The review recorded a WRONG_QUALIFIER source defect but marked the row
+    `MARK_AS_OVER_ANNOTATED`. The record treats a relation correction as `MODIFY`, with the corrected
+    statement as its own row.
+  fix: |
+    `MODIFY` this row, saying in `reason` that only the relation changes, and add a `NEW` row for GO:0007155
+    cell adhesion with qualifier `acts_upstream_of_or_within_positive_effect` (the mutant phenotype is a
+    loss of adhesion). Keep the WRONG_QUALIFIER source defect. Alternatively, as the review's source defect
+    suggests, the `MODIFY` can propose the usher's own process, GO:0009297 pilus assembly.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEAE/cupA3/cupA3-ai-review.yaml#L176
+- id: BP-4-E3
+  title: A new upstream heat-response row without the sign its own evidence gives
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P77395
+      symbol: CnoX
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0009408
+      label: response to heat
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IMP
+    reference: PMID:18657513
+  explanation: |
+    The review correctly chose an upstream relation for a phenotype-only claim. But the record also says
+    to use the positive- or negative-effect child whenever the direction is known. Here it is known: the
+    quoted evidence says the deficient strain has increased sensitivity to thermal stress, so CnoX acts
+    positively on GO:0009408 response to heat.
+  fix: |
+    The same NEW row with qualifier `acts_upstream_of_or_within_positive_effect`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/CnoX/CnoX-ai-review.yaml#L322

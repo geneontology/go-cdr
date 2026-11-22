@@ -1,0 +1,29 @@
+record: PC-16
+examples:
+- id: PC-16-E1
+  title: Urease activity propagated with enables to the non-catalytic chain of a split urease
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P14916
+      symbol: ureA
+    taxon: NCBITaxon:85962
+    term:
+      term_id: GO:0009039
+      label: urease activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The IBA row's PAINT node (PTN002129956) spans single-chain ureases, such as the S. pombe donor, in
+    which one polypeptide carries all three regions and does enable the activity. In H. pylori the
+    chains are split, and UreB carries the catalytic residues and nickel ions while UreA carries only
+    the beta and gamma regions. The review marked the row as an over-annotation: an `enables` relation
+    on a non-catalytic subunit overstates its role, the propagation error the record asks reviewers to
+    check for.
+  fix: |
+    Express UreA's role as `contributes_to` urease activity within `GO:0035550` urease complex, as the
+    review records in core functions.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/HELPY/ureA/ureA-ai-review.yaml#L95

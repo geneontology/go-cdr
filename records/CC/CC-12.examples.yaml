@@ -1,0 +1,94 @@
+record: CC-12
+examples:
+- id: CC-12-E1
+  title: An obsolete extracellular space row on a secreted ribonuclease refined to extracellular region
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P03950
+      symbol: ANG
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005615
+      label: obsolete extracellular space
+      obsolete: true
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:23047679
+  explanation: 'The GOA row keeps its retired id, as review does not rewrite GOA identifiers, and the
+    review''s own
+
+    replacement is `GO:0005576` extracellular region, the term the record names for reviewer-authored
+
+    locations of secreted proteins. Angiogenin is secreted, so the location claim stands.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ANG/ANG-ai-review.yaml#L337
+- id: CC-12-E2
+  title: Extracellular region rows modified to the obsolete extracellular space
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: 'The SPINK5 review `MODIFY`s its six `GO:0005576` extracellular region rows (IBA, IDA,
+      IEA, NAS and
+
+      two Reactome TAS) to `GO:0005615` extracellular space and names `GO:0005615` in the core function''s
+
+      `locations`.
+
+      '
+    refs:
+    - UniProtKB:Q9NQ38
+    - GO:0005576
+    - GO:0005615
+  explanation: 'The review''s reasoning is that LEKTI is secreted between cells of the upper stratum granulosum,
+    so
+
+    the "more specific" extracellular space is preferred. The record says `GO:0005615` is obsolete as
+    a
+
+    duplicate of `GO:0005576` and must not be used for reviewer-authored locations; the replacement is
+    not
+
+    more specific, it is the same class under a retired id.
+
+    '
+  fix: '`ACCEPT` the extracellular region rows and use `GO:0005576` (or a specific extracellular structure)
+    in
+
+    `core_functions.locations`.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SPINK5/SPINK5-ai-review.yaml#L181
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SPINK5/SPINK5-ai-review.yaml#L783
+- id: CC-12-E3
+  title: A vesicle-proteome exosome row on GAPDH kept as non-core
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P04406
+      symbol: GAPDH
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0070062
+      label: extracellular exosome
+    qualifier: located_in
+    evidence_code: HDA
+    reference: PMID:23533145
+  explanation: 'The record''s default for an exosome row from vesicle proteomics is `KEEP_AS_NON_CORE`,
+    with core reserved
+
+    for proteins with a role in vesicle biogenesis. The review downgraded this HDA row from ACCEPT: GAPDH
+    is
+
+    a cytosolic glycolytic enzyme of the kind expected as promiscuous EV content, so the exosome is a
+
+    destination, not its core location. The same review set accepts ALIX''s exosome rows as core.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GAPDH/GAPDH-ai-review.yaml#L952

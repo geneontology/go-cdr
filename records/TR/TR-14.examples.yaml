@@ -1,0 +1,27 @@
+record: TR-14
+examples:
+- id: TR-14-E1
+  title: A forkhead activator row with its directly regulated target gene as input
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q12948
+      symbol: FOXC1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0001228
+      label: DNA-binding transcription activator activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:17993506
+    extension: RO:0002233(NCBI_Gene:2308)
+  explanation: |
+    The row names one target gene, FOXO1 (NCBI_Gene:2308), with `has_input`. The evidence makes it a direct
+    target: endogenous FOXC1 ChIP at the FOXO1 promoter, a responsive promoter reporter and knockdown effects on FOXO1. The
+    review accepted the row and noted that the extension "identifies the target gene and does not assert a protein
+    interaction".
+  see_also:
+  - TR-9
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FOXC1/FOXC1-ai-review.yaml#L363

@@ -1,0 +1,68 @@
+record: RS-9
+examples:
+- id: RS-9-E1
+  title: Negative regulation of smoothened signalling accepted as PTCH1's core process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q13635
+      symbol: PTCH1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0045879
+      label: negative regulation of smoothened signaling pathway
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    This is the record's worked example on a real row. PTCH1 restrains Smoothened until Hedgehog binds,
+    so the inhibitory receptor carries the regulation term with its sign. The review accepts the IBA
+    row as "the core biological process of PTCH1", with the Patched-clade PAINT node, seven human
+    experimental studies and the GO-CAM models all agreeing.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PTCH1/PTCH1-ai-review.yaml#L1648
+- id: RS-9-E2
+  title: Negative regulation of cAMP/PKA signalling accepted on Candida Pde1
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5AGE4
+      symbol: PDE1
+    taxon: NCBITaxon:237561
+    term:
+      term_id: GO:0141162
+      label: negative regulation of cAMP/PKA signal transduction
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:20558315
+  explanation: |
+    pde1 mutants fail to turn off glucose- and acidification-induced cAMP signalling. The enzyme that
+    destroys the second messenger is annotated to negative regulation of the pathway, as the record
+    asks, and the review accepts the row as core.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CANAL/PDE1/PDE1-ai-review.yaml#L341
+- id: RS-9-E3
+  title: 'An AC-activating pathway ISS on Gi1 removed: wrong sign, wrong donor'
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P63096
+      symbol: GNAI1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0007189
+      label: adenylate cyclase-activating G protein-coupled receptor signaling pathway
+    qualifier: involved_in
+    evidence_code: ISS
+    reference: GO_REF:0000024
+  explanation: |
+    The record wants G protein coupling terms from evidence on the Gα class, not from family membership.
+    The review finds the ISS donor is an adenylyl cyclase rather than a Gα ortholog, and that the term
+    has the opposite sign to Gi1's in vivo role. In vitro stimulation of some purified cyclases by high
+    Gαi does not rescue it. The row is removed and the inhibitory pathway term is kept.
+  see_also: [RS-5]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GNAI1/GNAI1-ai-review.yaml#L2013

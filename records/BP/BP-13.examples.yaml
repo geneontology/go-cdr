@@ -1,0 +1,78 @@
+record: BP-13
+examples:
+- id: BP-13-E1
+  title: A MAPK cascade row whose own readout is JNK activation
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P47809
+      symbol: Map2k4
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0000165
+      label: MAPK cascade
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:10493750
+  explanation: |
+    The row's own experiment reads out JNK activation, so its evidence supports a specific descendant of
+    GO:0000165 MAPK cascade. The record makes that a `MODIFY` to the descendant, and the review did so,
+    noting that the refinement does not contradict the curator. GO:0007254 is_a GO:0000165 and is core for
+    MKK4.
+  fix: |
+    MODIFY to GO:0007254 JNK cascade.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Map2k4/Map2k4-ai-review.yaml#L89
+- id: BP-13-E2
+  title: A regeneration-restricted myoblast fusion term without regeneration evidence
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A1B0GTQ4
+      symbol: MYMX
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0014905
+      label: myoblast fusion involved in skeletal muscle regeneration
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:35642635
+  explanation: |
+    The opposite failure the record describes: a term more specific than the evidence. The review found no
+    injury model, satellite-cell assay or adult regeneration experiment in the paper, only myoblast fusion
+    in a developmental setting. GO:0014905 myoblast fusion involved in skeletal muscle regeneration is
+    therefore over-specific, and the row goes to the parent its evidence supports. The review notes that the
+    regeneration claim is carried separately by the mouse-derived IEA and ISS rows.
+  fix: |
+    MODIFY to GO:0007520 myoblast fusion. Because the original term is precomposed, also record in
+    `decomposed_into` that the regeneration context was dropped (`context_dropped: true`), which the
+    review does not do.
+  see_also:
+  - BP-11
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MYMX/MYMX-ai-review.yaml#L384
+- id: BP-13-E3
+  title: An IBA kept at MAPK cascade although a deeper term is in core functions
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q02750
+      symbol: MAP2K1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000165
+      label: MAPK cascade
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The IBA's evidence is inheritance of cascade participation across the MAP2K clade, which stops at
+    GO:0000165 MAPK cascade. The clade includes kinases of other cascades, so the IBA does not support the
+    ERK-specific descendant. The review accepted the row at its level and carried GO:0070371 ERK1 and
+    ERK2 cascade in core functions from other evidence, as the record requires for a general term whose
+    evidence stops there.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MAP2K1/MAP2K1-ai-review.yaml#L26

@@ -68,6 +68,14 @@ shows the gene acting in the process. The rules for phenotype-derived process ro
 | Date | 2026-11-15 |
 | GO terms | `GO:0048870` cell motility; `GO:0042060` wound healing |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-5-E1](REV-5.examples.yaml): A scratch assay read as wound healing on PTK2, marked over-annotated | Conformant | PTK2 involved_in GO:0090303 positive regulation of wound healing (IDA, PMID:26763945) |
+| [REV-5-E2](REV-5.examples.yaml): Fungal cell wall organization on a GPI transamidase subunit, marked over-annotated | Conformant | gaa1 involved_in GO:0031505 fungal-type cell wall organization (NAS, PMID:15003443) |
+| [REV-5-E3](REV-5.examples.yaml): Wound healing from a scratch assay kept as non-core on FGF1 | Non-conformant | FGF1 involved_in GO:0042060 wound healing (IDA, PMID:16756958) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

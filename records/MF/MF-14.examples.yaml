@@ -1,0 +1,53 @@
+record: MF-14
+examples:
+- id: MF-14-E1
+  title: The RCK regulatory subunit of a potassium transporter given a regulator term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O07535
+      symbol: khtT
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0008324
+      label: monoatomic cation transmembrane transporter activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    Reconstitution (PMID:33790011) shows that KhtU alone transports potassium and that KhtT, a cytosolic
+    RCK-domain subunit, restrains it, with c-di-AMP relieving the restraint. The review replaced the
+    transporter term with transporter regulator activity as a correction of role. The record gives the
+    catalytic or transporting subunit the activity and the regulatory subunit a regulator term.
+  see_also: [MF-1]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/khtT/khtT-ai-review.yaml#L81
+- id: MF-14-E2
+  title: A PP2A B subunit kept as contributes_to the phosphatase activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P63151
+      symbol: PPP2R2A
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004721
+      label: phosphoprotein phosphatase activity
+    qualifier: contributes_to
+    evidence_code: IDA
+    reference: PMID:30595372
+  explanation: |
+    The review called `contributes_to` "the correct, weaker claim for a non-catalytic regulatory
+    subunit" and only refined the term to protein serine/threonine phosphatase activity. The record
+    reserves `contributes_to` for irreducible machines; PP2A's phosphatase activity belongs to the
+    catalytic C subunit, and a regulatory B subunit gets a regulator term. The review already accepts
+    protein phosphatase regulator activity for PPP2R2A on four rows.
+  fix: |
+    Do not carry the catalytic activity on the B subunit. B55-alpha's MF is `GO:0019888` protein
+    phosphatase regulator activity (accepted in this review); `GO:0004722` protein serine/threonine
+    phosphatase activity belongs on the catalytic subunit.
+  see_also: [MF-1]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PPP2R2A/PPP2R2A-ai-review.yaml#L175

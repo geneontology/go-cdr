@@ -92,6 +92,15 @@ Avoid direct annotation to GO:0007165 signal transduction when a receptor- or li
 | Date | 2026-11-15 |
 | GO terms | `GO:0007165` signal transduction; `GO:0001228` DNA-binding transcription activator activity, RNA polymerase II-specific; `GO:0007173` epidermal growth factor receptor signaling pathway; `GO:0045944` positive regulation of transcription by RNA polymerase II; `GO:0008286` insulin receptor signaling pathway; `GO:2000767` positive regulation of cytoplasmic translation |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-6-E1](RS-6.examples.yaml): Wnt signaling pathway on Pax3, a Wnt target, marked over-annotated | Conformant | pax3-a involved_in GO:0016055 Wnt signaling pathway (IEA, GO_REF:0000117) |
+| [RS-6-E2](RS-6.examples.yaml): Notch signaling pathway on p27, a readout of Notch inhibition, marked over-annotated | Conformant | Cdkn1b acts_upstream_of_or_within GO:0007219 Notch signaling pathway (ISO, GO_REF:0000121) |
+| [RS-10-E1](RS-10.examples.yaml): Canonical Wnt signaling on endothelin-1 marked over-annotated (from [RS-10](RS-10.md)) | Conformant | EDN1 involved_in GO:0060070 canonical Wnt signaling pathway (IEA, GO_REF:0000107) |
+| [RS-10-E2](RS-10.examples.yaml): Canonical Wnt signaling kept as non-core on the general coactivator p300 (from [RS-10](RS-10.md)) | Non-conformant | EP300 involved_in GO:0060070 canonical Wnt signaling pathway (IDA, PMID:12408825) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

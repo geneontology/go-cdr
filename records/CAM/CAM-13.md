@@ -97,6 +97,14 @@ chromosome.
 | Related | [MO-7](../MO/MO-7.md) |
 | GO terms | `GO:0000228` nuclear chromosome; `GO:0000785` chromatin; `GO:0016020` membrane; `GO:0005886` plasma membrane; `GO:0030430` host cell cytoplasm; `GO:0042025` host cell nucleus |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-13-E1](CAM-13.examples.yaml): A STAT1 transcription factor activity placed in the nucleus | Conformant | gomodel:62b4ffe300004489 |
+| [CAM-13-E2](CAM-13.examples.yaml): Ligand-activated ESR1 placed on chromatin | Non-conformant | gomodel:6606056e00000678 |
+| [CAM-13-E3](CAM-13.examples.yaml): UBR5 ligase activity on chromatin, evidenced by ChIP at other receptors' sites | Contested | gomodel:6606056e00000678 |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

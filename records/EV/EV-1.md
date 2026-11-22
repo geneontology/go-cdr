@@ -59,6 +59,14 @@ result was negative, so the claim is a NOT, not a positive
 | Evidence codes | EXP, IDA |
 | GO terms | `GO:0003841` 1-acylglycerol-3-phosphate O-acyltransferase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-1-E1](EV-1.examples.yaml): An EXP helicase row read as the enzyme assay it is | Conformant | uvrD enables GO:0043138 3'-5' DNA helicase activity (EXP, PMID:8419285) |
+| [EV-1-E2](EV-1.examples.yaml): An EXP outer membrane row whose experiment shows surface accessibility | Non-conformant | omcS located_in GO:0009279 cell outer membrane (EXP, PMID:16332857) |
+| [LIT-9-E2](../LIT/LIT-9.examples.yaml): A positive acyltransferase row citing the paper that found no activity (from [LIT-9](../LIT/LIT-9.md)) | Non-conformant | PNPLA3 enables GO:0003841 1-acylglycerol-3-phosphate O-acyltransferase activity (EXP, PMID:21878620) |
+
 ## Sources
 
 - wiki: [EXP wiki page](https://wiki.geneontology.org/index.php/Inferred_from_Experiment_%28EXP%29)

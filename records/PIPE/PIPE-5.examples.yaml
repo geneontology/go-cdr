@@ -1,0 +1,24 @@
+record: PIPE-5
+examples:
+- id: PIPE-5-E1
+  title: A curated rule whose inference is a conjunction of named families and a taxon
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: curated rules (ai-gene-review rules/curated)
+    refs:
+    - CDD:cd23940
+    - CDD:cd24150
+    - NCBITaxon:2157
+    - EC:1.2.1.75
+    - RHEA:26446
+    description: |
+      CR-0004: CATH FunFam 3.40.50.720:FF:000411 AND a malonyl-CoA-reductase-type CDD model AND
+      Archaea implies malonyl-CoA reductase (EC 1.2.1.75).
+  explanation: |
+    Each condition is a named entity, and the rule states why the combination means the function: the
+    FunFam alone also contains the aspartate-semialdehyde dehydrogenase paralog of each genome, and the
+    CDD model separates the two, with a cited paper on the paralog pair. A curator can read the
+    inference and see which premise to dispute, which is what the rubric asks.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/curated/CR-0004.yaml#L10

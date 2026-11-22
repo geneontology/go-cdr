@@ -1,0 +1,56 @@
+record: LIT-6
+examples:
+- id: LIT-6-E1
+  title: A GalNAc transferase IDA row citing the cloning paper of the paralog CHSY1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8TDX6
+      symbol: CSGALNACT1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008376
+      label: acetylgalactosaminyltransferase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:11514575
+  explanation: |
+    The record's paralog case. The review found that PMID:11514575 describes the 802-residue chromosome-15
+    chondroitin synthase, CHSY1, so the GalNAc transfer measured there is CHSY1's. The claim is true of
+    CSGALNACT1 on independent papers, so the review modified the term to the specific activities the gene
+    carries and recorded a reference defect for the citation.
+  fix: |
+    Cite the CSGALNACT1 papers for the activity, at `GO:0047237` glucuronylgalactosylproteoglycan
+    4-beta-N-acetylgalactosaminyltransferase activity and `GO:0047238`
+    glucuronosyl-N-acetylgalactosaminyl-proteoglycan 4-beta-N-acetylgalactosaminyltransferase activity (the
+    review's replacements); the row citing PMID:11514575 belongs to CHSY1.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CSGALNACT1/CSGALNACT1-ai-review.yaml#L146
+- id: LIT-6-E2
+  title: Skeletal system development on PAPSS1 from a paper about PAPSS2
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O43252
+      symbol: PAPSS1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0001501
+      label: skeletal system development
+    qualifier: involved_in
+    evidence_code: TAS
+    reference: PMID:9771708
+  explanation: |
+    The cited abstract names the gene mutated in spondyloepimetaphyseal dysplasia and in the brachymorphic
+    mouse as ATPSK2/Atpsk2, that is PAPSS2. Because the abstract says so explicitly, the review could record
+    a `WRONG_GENE_PRODUCT` source defect repointing the row to PAPSS2 (O95340), filed as a query since the full
+    text was not available.
+  fix: |
+    Move the row to PAPSS2 (UniProtKB:O95340), as the source defect requests.
+  see_also:
+  - LIT-13
+  - LIT-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PAPSS1/PAPSS1-ai-review.yaml#L722

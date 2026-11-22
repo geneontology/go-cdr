@@ -78,6 +78,13 @@ activity. Here the IBA is the more precise and better-supported claim
 | Evidence codes | IBA, IBD |
 | GO terms | `GO:0032452` histone demethylase activity; `GO:0019782` ISG15 activating enzyme activity; `GO:0008641` ubiquitin-like modifier activating enzyme activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-1-E1](PH-1.examples.yaml): Epe1's inherited histone demethylase activity removed on target-specific evidence | Conformant | Epe1 enables GO:0032452 histone demethylase activity (IBA, GO_REF:0000033) |
+| [PH-1-E2](PH-1.examples.yaml): UBA7's ISG15 activating enzyme activity accepted from the IBA | Conformant | UBA7 enables GO:0019782 ISG15 activating enzyme activity (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - issue: [go-annotation#2382](https://github.com/geneontology/go-annotation/issues/2382)

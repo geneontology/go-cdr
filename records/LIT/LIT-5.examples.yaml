@@ -1,0 +1,24 @@
+record: LIT-5
+examples:
+- id: LIT-5-E1
+  title: Epe1's boundary function annotated from the deletion, not the overexpression
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94603
+      symbol: Epe1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0033696
+      label: heterochromatin boundary formation
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:31206516
+  explanation: |
+    The cited paper is the record's dose example: single-copy Epe1 removes ectopic heterochromatin only partly,
+    while overexpressed Epe1 erases it. The row the review accepts rests on the loss-of-function result, that
+    epe1 deletion strains develop heterochromatin islands and ectopic heterochromatin, which describes the
+    protein's normal function at native dose rather than the capacity seen on overexpression.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/Epe1/Epe1-ai-review.yaml#L982

@@ -1,0 +1,19 @@
+record: PIPE-8
+examples:
+- id: PIPE-8-E1
+  title: TreeGrafter supplies hundreds of reviewed annotations no other source carries
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: TreeGrafter
+    refs:
+    - GO_REF:0000118
+    description: |
+      The repo's TreeGrafter evaluation of `GO_REF:0000118` rows across its gene reviews.
+  explanation: |
+    The evaluation found 623 rated TreeGrafter rows that are the protein's only annotation to that term
+    or a related one, and the reviews kept 70% of them. Where TreeGrafter and another pipeline gave
+    related terms and the review kept only one, it kept TreeGrafter's more often. That is
+    complementary coverage, which the rubric asks for, measured on reviewed rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/TREEGRAFTER.md#L65

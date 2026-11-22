@@ -1,0 +1,45 @@
+record: CAM-6
+examples:
+- id: CAM-6-E1
+  title: PSAT1 feeds EGLN3 through a shared 2-oxoglutarate molecule
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:680ad14200007201
+    description: |
+      In "GPX4 hydroxylation by EGLN3 prevents its degradation via chaperone-mediated autophagy, inhibiting
+      ferroptosis (Human)", PSAT1 GO:0004648 O-phospho-L-serine:2-oxoglutarate transaminase activity
+      (gomodel:680ad14200007201/680ad14200007243) `has output` CHEBI:16810 2-oxoglutarate(2-) (molecule
+      node gomodel:680ad14200007201/680ad14200007246), and the same molecule node is a `has input` of EGLN3
+      GO:0031545 peptidyl-proline 4-dioxygenase activity (gomodel:680ad14200007201/680ad14200007233).
+  explanation: |
+    The product of one step is the substrate of the next and is in ChEBI, so the record asks for
+    `has output` / `has input` through the molecule rather than a bare `provides input for`. The model
+    does exactly that, with no direct edge between the two enzymes. The review described PSAT1 as feeding
+    "the EGLN3 dioxygenase co-substrate".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/680ad14200007201/680ad14200007201-src.yaml#L73
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/680ad14200007201/680ad14200007201-review.yaml#L26
+- id: CAM-6-E2
+  title: A gluconeogenesis model chained only by provides-input-for edges
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:61e0e55600001225
+    description: |
+      "Gluconeogenesis 1 (Mouse)", derived from Reactome R-HSA-70263: Pcx, Mdh2, Slc25a10, Slc25a11, Mdh1,
+      Pck1, Eno1, Pgam1, Pgk1, Gapdh, Tpi1, Aldoc, Fbp1, Gpi1, Slc37a4 and G6pc1/G6pc3 activities linked by
+      18 `provides input for` (RO:0002413) edges, with no `has output` assertions.
+  explanation: |
+    Every intermediate here (oxaloacetate, malate, phosphoenolpyruvate, the phosphoglycerates, triose
+    phosphates, fructose bisphosphate, the hexose phosphates) is a ChEBI chemical, so the record calls for
+    explicit output and input molecules. The review traced every edge and found the biology right ("every
+    activity's product is the next one's substrate"); it did not object to the edge type. By the record's
+    rule the edges hide what moves between steps, which matters here because the malate carriers cross the
+    inner mitochondrial membrane.
+  fix: |
+    Replace each `provides input for` with `has output` the ChEBI intermediate on the upstream activity
+    and `has input` the same molecule on the downstream one.
+  see_also: [CAM-14]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/61e0e55600001225/61e0e55600001225-review.yaml#L5

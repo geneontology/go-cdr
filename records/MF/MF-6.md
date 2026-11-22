@@ -72,6 +72,12 @@ many identical copies exist and the copy used is rarely known
 | Evidence codes | IPI |
 | GO terms | `GO:0019901` protein kinase binding; `GO:0030971` receptor tyrosine kinase binding; `GO:0005515` protein binding; `GO:0051015` actin filament binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-6-E1](MF-6.examples.yaml): A RPTOR-S6K1 binding row refined to protein kinase binding | Conformant | RPTOR enables GO:0005515 protein binding (IPI, PMID:12150926) |
+
 ## Sources
 
 - wiki: [Guidelines for new Binding terms](https://wiki.geneontology.org/index.php/Guidelines_for_new_Binding_terms)

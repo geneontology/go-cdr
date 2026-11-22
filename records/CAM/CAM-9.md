@@ -68,6 +68,13 @@ transcriptional repressors that "directly" regulate secreted proteins
 | Related | [CAM-13](CAM-13.md) |
 | GO terms | `GO:0006357` regulation of transcription by RNA polymerase II; `GO:0045944` positive regulation of transcription by RNA polymerase II; `GO:0005634` nucleus |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-9-E1](CAM-9.examples.yaml): ATF4 with its target gene as input and an indirect edge to the target's activity | Conformant | gomodel:66b5638000001589 |
+| [CAM-9-E2](CAM-9.examples.yaml): A bacterial response regulator whose input is a protein, not its target operon | Non-conformant | gomodel:671ae02600002832 |
+
 ## Sources
 
 - drive: [MF guidelines for GO-CAM, TF section](https://drive.google.com/open?id=1DWvc_g5yH4S8-Tc2rPtaAyPOIkYzITagK1sXysj0CY4)

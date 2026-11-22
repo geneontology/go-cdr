@@ -1,0 +1,52 @@
+record: REV-4
+examples:
+- id: REV-4-E1
+  title: An osteoblast-differentiation row on PTCH1 kept as true but peripheral
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q13635
+      symbol: PTCH1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0045668
+      label: negative regulation of osteoblast differentiation
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:16229683
+  explanation: |
+    The review states PTCH1's core as negative regulation of smoothened signalling, then keeps this IMP
+    row as `KEEP_AS_NON_CORE`. Its reason says the result is real, but that Hedgehog-driven osteogenesis
+    is one of many programmes the pathway gates and that PTCH1 "set[s] pathway tone rather than act[ing]
+    within osteoblast differentiation". The row is precise, true and outside the core, which is what
+    the record reserves the action for.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PTCH1/PTCH1-ai-review.yaml#L1628
+- id: REV-4-E2
+  title: DAF-16 cytoplasm rows accepted although the cytoplasmic pool is the inactive one
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O16850
+      symbol: daf-16
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0005737
+      label: cytoplasm
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000044
+  explanation: |
+    The record's worked example is these rows. The review accepts `cytoplasm` on DAF-16 (this IEA row
+    and several IDA and NAS rows) with the reason that AKT phosphorylation and 14-3-3 binding cause
+    "cytoplasmic retention". That reason describes where the transcription factor is held inactive,
+    not where it acts. `ACCEPT` is for rows that state the core; the record says such rows are
+    `MARK_AS_OVER_ANNOTATED` when the localisation is real but not where the function acts.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`, keeping the retention mechanism in the reason. Only if the review
+    documents a function for the cytoplasmic pool does `KEEP_AS_NON_CORE` apply.
+  see_also: [REV-2]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/daf-16/daf-16-ai-review.yaml#L229

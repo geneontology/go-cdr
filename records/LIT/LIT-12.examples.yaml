@@ -1,0 +1,45 @@
+record: LIT-12
+examples:
+- id: LIT-12-E1
+  title: Epe1's experimental H3K9 demethylase row, held undecided
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94603
+      symbol: Epe1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0032454
+      label: histone H3K9 demethylase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:25838386
+  explanation: |
+    The record's contested case. The cited paper shows Epe1 is required to erase H3K9me and that this needs
+    its predicted Fe(II)/2-oxoglutarate residues; purified Epe1 shows no detectable demethylase activity, its
+    iron triad is non-canonical (H297-E299-Y370), and the cofactor-site mutants also lose Swi6 binding or
+    heterochromatin localisation. The review keeps the row visible as UNDECIDED; an earlier version removed
+    it, and the change to UNDECIDED was made in the linked pull request.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/3229
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/Epe1/Epe1-ai-review.yaml#L674
+- id: LIT-12-E2
+  title: A retracted DR6 paper flagged and checked for dependants
+  verdict: CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The TNFRSF21 review's handling of PMID:19225519 (Nikolaev et al. 2009, "APP binds DR6 to trigger axon
+      pruning and neuron death via distinct caspases"), retracted in January 2024.
+    refs:
+    - PMID:19225519
+    - PMID:38110576
+    - UniProtKB:O75509
+  explanation: |
+    The review flagged the reference `is_invalid: true` with `correctness: DISPUTED`, cited the retraction
+    notice (PMID:38110576) and its grounds, and asked what rests on it: no GO annotation on the human gene or
+    the mouse ortholog cites the paper, so nothing in `existing_annotations` changes. That is the record's
+    procedure, and it avoids stripping annotations that rest on other evidence.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TNFRSF21/TNFRSF21-ai-review.yaml#L56

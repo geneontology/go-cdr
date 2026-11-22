@@ -73,6 +73,14 @@ Curators have read `colocalizes_with` in at least three ways: transient localisa
 | Evidence codes | IBA |
 | GO terms | `GO:0005635` nuclear envelope |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-5-E1](QN-5.examples.yaml): A colocalizes_with cytosol row accepted as the core location of a cytosolic enzyme | Non-conformant | HPR2 colocalizes_with GO:0005829 cytosol (IDA, PMID:30233632) |
+| [QN-5-E2](QN-5.examples.yaml): A term refinement that deliberately preserves colocalizes_with | Non-conformant | EML1 colocalizes_with GO:0015630 microtubule cytoskeleton (IDA, PMID:24859200) |
+| [QN-9-E1](QN-9.examples.yaml): A NOT on dendrite accepted beside a positive dendritic spine row (from [QN-9](QN-9.md)) | Non-conformant | APP NOT colocalizes_with GO:0030425 dendrite (IDA, PMID:17251419) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

@@ -95,6 +95,13 @@ mitochondrial complex II assembly; the other terms were removed from the node
 | Evidence codes | IBA, IBD |
 | GO terms | `GO:0005515` protein binding; `GO:0042802` identical protein binding; `GO:0042803` protein homodimerization activity; `GO:0048254` snoRNA localization; `GO:0006979` response to oxidative stress |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-5-E1](PH-5.examples.yaml): A response to iron ion IBA on a maize iron-chelate transporter, seeded by expression rows | Conformant | LOC541800 involved_in GO:0010039 response to iron ion (IBA, GO_REF:0000033) |
+| [PH-5-E2](PH-5.examples.yaml): A protein homodimerization activity IBA accepted as TRIM5's core molecular function | Non-conformant | TRIM5 enables GO:0042803 protein homodimerization activity (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

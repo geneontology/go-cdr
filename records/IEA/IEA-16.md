@@ -73,6 +73,14 @@ the mapping to the model's lineage removed both errors ([NCBIFam](https://ai4cur
 | Evidence codes | IEA |
 | GO terms | `GO:0010285` L,L-diaminopimelate:2-oxoglutarate transaminase activity; `GO:0062045` L-lysine:pyruvate alpha-transaminase activity; `GO:0004766` spermidine synthase activity; `GO:0030750` putrescine N-methyltransferase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-16-E1](IEA-16.examples.yaml): A proposed NCBIfam mapping whose reviewed gains were checked one by one | Conformant | ncbifam2go (proposed) |
+| [IEA-16-E2](IEA-16.examples.yaml): A specific dGTPase mapping proposed for a substrate-heterogeneous family | Non-conformant | ncbifam2go (proposed) |
+| [PIPE-7-E1](../PIPE/PIPE-7.examples.yaml): ARBA's training-set agreement read as a benchmark (from [PIPE-7](../PIPE/PIPE-7.md)) | Contested | ARBA |
+
 ## Sources
 
 - drive: [IEA WG pipelines update GOC 2026](https://drive.google.com/open?id=1lkoSLtiaa_w-P_g2F74u_xii5DeeULCV_6_0kjI413Y)

@@ -1,0 +1,27 @@
+record: TR-4
+examples:
+- id: TR-4-E1
+  title: A G-quadruplex binder kept on DNA-binding transcription activator activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P22392
+      symbol: NME2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0001216
+      label: DNA-binding transcription activator activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:8392752
+  explanation: |
+    NME2 binds a G-quadruplex element in the MYC promoter, a structure-specific binding that does not give a
+    genomic address. The record says such binding does not support dbTF activity. The review accepted GO:0051880
+    G-quadruplex DNA binding on two IDA rows but kept this GO:0001216 row as non-core ("a non-core DNA/G-quadruplex
+    transcriptional regulator role"), so the dbTF claim remains.
+  fix: |
+    Annotate the binding with GO:0051880 G-quadruplex DNA binding, as the review already does, and do not keep a
+    dbTF row; a coregulator term only if regulation through a dbTF is shown.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NME2/NME2-ai-review.yaml#L413

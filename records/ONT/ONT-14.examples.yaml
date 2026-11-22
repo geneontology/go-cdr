@@ -1,0 +1,38 @@
+record: ONT-14
+examples:
+- id: ONT-14-E1
+  title: A missing RhoA-specific GEF term filed as a knowledge gap
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      A `knowledge_gaps` entry in the ARHGEF19 review with `gap_kind: [ONTOLOGY]`: the protein is a RhoA
+      exchange factor, and not a Rac1 or Cdc42 one, but this "cannot be stated in a GO term".
+  explanation: |
+    The entry's own boundary says "the biology is not in doubt" and "what is missing is vocabulary". No
+    experiment would close it, so it is an ontology gap. The record says not to file one as the other; a
+    `knowledge_gaps` entry whose only kind is `ONTOLOGY` is not allowed.
+  fix: |
+    Move the content out of `knowledge_gaps` into a `suggested_questions` entry or the notes, keeping the
+    recommendation to carry the substrate with `has_input` in an extension or GO-CAM (ONT-12).
+  see_also:
+  - ONT-12
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARHGEF19/ARHGEF19-ai-review.yaml#L440
+- id: ONT-14-E2
+  title: A missing CoQ synthome component term filed as a knowledge gap as well as a proposal
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      A `knowledge_gaps` entry in the *C. elegans* clk-1 review, `gap_kind: [ONTOLOGY]`, `dark_aspect:
+      CC_DARK`: there is no CC term for the multi-subunit coenzyme Q biosynthesis complex.
+  explanation: |
+    The review already proposes "coenzyme Q biosynthesis complex" in `proposed_new_terms`, which is the
+    place the record names for a missing term. Filing the same absence as an ONTOLOGY-only knowledge gap
+    treats a term an ontology editor can add as something nobody knows.
+  fix: |
+    Delete the knowledge-gap entry and keep the `proposed_new_terms` proposal. If there is a real
+    biological unknown (whether worm CLK-1 stabilizes the complex), record that as a BIOLOGY gap.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/clk-1/clk-1-ai-review.yaml#L890

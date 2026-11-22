@@ -1,0 +1,56 @@
+record: CC-2
+examples:
+- id: CC-2-E1
+  title: A colocalizes_with row on the P-TEFb complex resting on an interaction
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P06400
+      symbol: RB1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008024
+      label: cyclin/CDK positive transcription elongation factor complex
+    qualifier: colocalizes_with
+    evidence_code: IDA
+    reference: PMID:12037672
+  explanation: |
+    The record treats `colocalizes_with` on a protein-containing complex term as invalid and asks for a
+    complex-binding term when there is interaction evidence. The review found that the cited paper shows
+    pRb binding to and being phosphorylated by cdk9/cyclin T2, not pRb as a subunit of P-TEFb, and
+    demoted the row, saying the interaction is better represented as binding or a phospho-substrate
+    relationship than as complex membership.
+  fix: |
+    Replace the row with a protein-containing complex binding annotation (or a specific complex-binding
+    child) supported by the same interaction data, as the record directs, or remove it. Do not keep a
+    `colocalizes_with` row on the complex term.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/RB1/RB1-ai-review.yaml#L1736
+- id: CC-2-E2
+  title: A colocalizes_with lysosome row from marginal marker overlap
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9Y4I1
+      symbol: MYO5A
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005764
+      label: lysosome
+    qualifier: colocalizes_with
+    evidence_code: IDA
+    reference: PMID:24006491
+  explanation: |
+    On a cellular anatomical entity the record asks what the paper showed: activity there
+    (`is_active_in`), detection there (`located_in`), or neither. The review read the cited study as
+    reporting only limited overlap of myosin-Va with late endosome/lysosome markers, and found that
+    depleting myosin-Va did not change lysosome distribution. That is neither an activity at the lysosome
+    nor a clear detection, so the deprecated relation is covering an observation that supports no row.
+  fix: |
+    Resolve the row rather than keep `colocalizes_with`: with only limited overlap and no functional
+    effect, drop it; if a reader of the full text finds a clear marker-confirmed pool, record it as
+    `located_in` lysosome, non-core.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MYO5A/MYO5A-ai-review.yaml#L254

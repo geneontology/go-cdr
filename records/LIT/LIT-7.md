@@ -81,6 +81,13 @@ MISCITED` records ([CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blo
 | Evidence codes | IDA, IPI, IEP, TAS |
 | GO terms | `GO:0071260` cellular response to mechanical stimulus |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-7-E1](LIT-7.examples.yaml): NLRP3 IDA rows citing a 1975 psychiatry abstract | Non-conformant | NLRP3 enables GO:0060090 molecular adaptor activity (IDA, PMID:1189953) |
+| [EV-10-E2](../EV/EV-10.examples.yaml): A P2X7 plasma membrane row cited to a P2X1 Reactome event (from [EV-10](../EV/EV-10.md)) | Non-conformant | P2RX7 located_in GO:0005886 plasma membrane (TAS, Reactome:R-HSA-139855) |
+
 ## Sources
 
 - paper: [PMID:37160800](https://europepmc.org/article/MED/37160800)

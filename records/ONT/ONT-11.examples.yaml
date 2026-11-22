@@ -1,0 +1,24 @@
+record: ONT-11
+examples:
+- id: ONT-11-E1
+  title: A proposed neural plate border formation term for border specifiers such as Pax3
+  verdict: CONFORMANT
+  subject:
+    subject_kind: term
+    term:
+      term_id: GO:0014029
+      label: neural crest formation
+    description: |
+      The *Xenopus* pax3-a review proposes "neural plate border formation" under `GO:0007398` ectoderm
+      development, to replace `GO:0014029` neural crest formation for neural plate border specifiers.
+  explanation: |
+    The proposal carries what the record asks for. It names the gene products and the papers (Pax3 with
+    Msx1 and Zic1, PMID:15691759, PMID:15843410), says why the existing term fails (`GO:0014029` is defined
+    as forming this ectodermal region but placed under epithelial-to-mesenchymal transition), gives a
+    definition with a verified genus, and states the taxon scope: the border is conserved in chordates
+    without neural crest, so it cannot be part of crest formation. This is the record's example of a
+    request that clears the bar.
+  see_also:
+  - ONT-15
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/XENLA/pax3-a/pax3-a-ai-review.yaml#L809

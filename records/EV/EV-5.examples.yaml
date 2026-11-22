@@ -1,0 +1,51 @@
+record: EV-5
+examples:
+- id: EV-5-E1
+  title: A plant arginase annotated by IGI from complementation of yeast
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P46637
+      symbol: ARGAH1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0004053
+      label: arginase activity
+    qualifier: enables
+    evidence_code: IGI
+    reference: PMID:7770544
+  explanation: |
+    Complementation of a mutation in one gene by expression of another, including across species, is IGI,
+    and the annotation goes to the gene expressed. The row annotates Arabidopsis ARGAH1 from its yeast
+    complementation; the review found it corroborated by native pollen activity, argah loss-of-function
+    enzyme assays and a product-bound structure, and accepted it.
+  see_also:
+  - LIT-5
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/ARGAH1/ARGAH1-ai-review.yaml#L116
+- id: EV-5-E2
+  title: A Golgi organization row for SERK1 from suppression of an ARF-GAP mutant
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q94AG2
+      symbol: SERK1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0007030
+      label: Golgi organization
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IGI
+    reference: PMID:20230490
+  explanation: |
+    The record annotates only the gene whose role the experiment informs. The review read the full text:
+    loss of SERK1 suppresses the Golgi defect of the nev ARF-GAP mutant, but serk1 single mutants have
+    normal Golgi stacks and no work places SERK1 in Golgi organisation. The interaction informs NEV's role;
+    for SERK1, a cell-surface co-receptor in abscission signalling, the rescue is an indirect consequence.
+  fix: |
+    No Golgi organization row on SERK1; the review marks it over-annotated. The suppression result belongs,
+    if anywhere, on NEV.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/SERK1/SERK1-ai-review.yaml#L812

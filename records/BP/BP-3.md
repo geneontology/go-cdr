@@ -46,6 +46,13 @@ date: '2026-11-15'
 | Date | 2026-11-15 |
 | GO terms | `GO:0002003` angiotensin maturation |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-3-E1](BP-3.examples.yaml): The renin-angiotensin GO-CAM represents angiotensinogen without placing it in angiotensin maturation | Conformant | gomodel:6246724f00000549 |
+| [BP-3-E2](BP-3.examples.yaml): A new keratinization row for a wool KAP, after a same-role comparator check | Conformant | KRTAP3-1 involved_in GO:0031424 keratinization (TAS, PMID:27240405) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

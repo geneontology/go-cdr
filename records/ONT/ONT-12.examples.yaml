@@ -1,0 +1,64 @@
+record: ONT-12
+examples:
+- id: ONT-12-E1
+  title: A proposed "phosphomannomutase activity involved in GDP-mannose biosynthetic process"
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: term
+    term:
+      term_id: GO:0004615
+      label: phosphomannomutase activity
+    description: |
+      The PMM2 review proposes a new term "phosphomannomutase activity involved in GDP-mannose
+      biosynthetic process" with `GO:0004615` as its parent.
+  explanation: |
+    The proposal asks for a precomposed "X involved in Y" term, so that PMM2's mutase step can be tied to
+    GDP-mannose biosynthesis rather than to downstream glycosylation. The record lists "X involved in Y"
+    first among the classes GO has decided not to have: more than a thousand such terms have been
+    obsoleted, and the alternative is to annotate X and carry Y in GO-CAM or a `part_of` extension. The
+    review's aim, avoiding over-annotation to downstream processes, is sound; the vehicle is not.
+  fix: |
+    Drop the proposal. Annotate `GO:0004615` phosphomannomutase activity and record the GDP-mannose
+    biosynthesis context by reference to a module or GO-CAM (or, in GAF, a `part_of` extension).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PMM2/PMM2-ai-review.yaml#L453
+- id: ONT-12-E2
+  title: A proposed "positive regulation of base-excision repair glycosylase activity"
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      A `proposed_new_terms` entry in the DDB1 review, "positive regulation of base-excision repair
+      glycosylase activity", for the UV-DDB complex stimulating BER glycosylases in trans.
+  explanation: |
+    The proposal is a process term for regulating a molecular function. The record lists
+    "regulation of <MF>" processes among the terms GO has decided not to have (do-not-annotate and
+    scheduled obsoletion); the alternative is the regulator's own MF, such as an enzyme activator
+    activity, together with the regulated process.
+  fix: |
+    Drop the proposal and express the role with an existing enzyme regulator or activator MF for UV-DDB,
+    with base-excision repair as the process, or in a GO-CAM where the glycosylase is the regulated
+    activity.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DDB1/DDB1-ai-review.yaml#L3687
+- id: ONT-12-E3
+  title: Merged GTPase-specific GEF terms not re-requested for a RhoA-specific GEF
+  verdict: CONFORMANT
+  subject:
+    subject_kind: term
+    term:
+      term_id: GO:0005089
+      obsolete: true
+    description: |
+      `GO:0005089`, the Rho-specific GEF term, merged into `GO:0005085`; discussed in the ARHGEF19
+      review.
+  explanation: |
+    The review found that ARHGEF19's RhoA specificity cannot be stated in a term since the GTPase-specific
+    GEF terms were merged, and declined to propose one: "the merges look deliberate rather than
+    accidental, and re-proposing what was just collapsed would be arguing with an ontology decision". It
+    points to `has_input` the GTPase in an extension or GO-CAM. That follows the record's rule for a
+    substrate-specific term whose substrate an input can carry.
+  see_also:
+  - ONT-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARHGEF19/ARHGEF19-ai-review.yaml#L440

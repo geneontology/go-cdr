@@ -1,0 +1,50 @@
+record: MF-15
+examples:
+- id: MF-15-E1
+  title: A formate transporter IBA corrected to the member's bicarbonate specificity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q75NZ3
+      symbol: LCIA
+    taxon: NCBITaxon:3055
+    term:
+      term_id: GO:0015499
+      label: formate transmembrane transporter activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review accepted the family's anion-channel activity but found the solute wrong for this member:
+    FNT channels have diverged in substrate (formate, nitrite, hydrosulfide), and LciA's bicarbonate
+    selectivity is a derived property. With no evidence for formate and direct evidence for bicarbonate,
+    it made a lateral `MODIFY` to bicarbonate transmembrane transporter activity. The record asks for the
+    physiological solute and warns that substrate specificity diverges among relatives.
+  see_also: [MF-18]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CHLRE/LCIA/LCIA-ai-review.yaml#L302
+- id: MF-15-E2
+  title: Siderophore uptake removed from a haem receptor
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9HYJ7
+      symbol: hasR
+    taxon: NCBITaxon:208964
+    term:
+      term_id: GO:0015344
+      label: siderophore uptake transmembrane transporter activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The IBD sits at the root of PTHR30069 and is seeded only by siderophore and colicin receptors from
+    five other subfamilies; HasR sits in the haem uptake subfamily, and its own experimental rows are
+    for haem and haemoglobin. The review judged that the node supports the shared TonB-dependent
+    mechanism but not the solute, and removed the row. This is the record's warning against
+    transferring transporter substrate specificity across family members.
+  see_also: [MF-18]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEAE/hasR/hasR-ai-review.yaml#L105

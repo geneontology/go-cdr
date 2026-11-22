@@ -72,6 +72,13 @@ partner and HAMAP MF_01152 assigns no ATP-binding term, so the removal needs no 
 | Evidence codes | IEA |
 | GO terms | `GO:0005524` ATP binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-13-E1](IEA-13.examples.yaml): Narrow, not remove, a mapping that is the sole source of the term | Conformant | InterPro2GO |
+| [IEA-13-E2](IEA-13.examples.yaml): Removing protein phosphorylation from the kinase domain, with the cover stated | Conformant | InterPro2GO |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

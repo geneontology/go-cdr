@@ -1,0 +1,49 @@
+record: LIT-14
+examples:
+- id: LIT-14-E1
+  title: A mis-keyed IPI partner recorded as a structured source defect
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P50232
+      symbol: Syt4
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:30021165
+  explanation: |
+    Errors in a source database go in `source_defects` with the responsible resource. The review removed bare
+    protein binding under policy and, separately, recorded that the WITH/FROM names TANC2 although the paper
+    shows Syt4 binding a KIF1A tail fragment: a `WRONG_WITH_FROM` defect against UniProt, with asserted and
+    corrected values (Kif1a, F1M4A4), a confidence and a verbatim quote from the paper.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Syt4/Syt4-ai-review.yaml#L280
+- id: LIT-14-E2
+  title: A wrong IPI partner noted only in prose
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The ZBP1 review's handling of its IPI protein binding row from PMID:19590578, whose WITH/FROM lists
+      UniProtKB:Q13601 (KRR1) where the paper's partner is RIPK1 (Q13546).
+    refs:
+    - UniProtKB:Q9H171
+    - PMID:19590578
+    - UniProtKB:Q13601
+  explanation: |
+    The review spotted the error (IntAct records Q13601, a small-subunit processome component the abstract
+    does not discuss) and said it was "flagged for a curator to check", but only in the `reason` text of a
+    row it removes on protein-binding policy. Without a `source_defects` entry the error is not exported to
+    the resource that made it, which is what the record's provenance rule is for. EV-3 cites this case.
+  fix: |
+    Add a `source_defects` item on the row: `defect_type: WRONG_WITH_FROM`, the responsible resource,
+    asserted UniProtKB:Q13601, corrected UniProtKB:Q13546, a confidence reflecting that the full text was not
+    read, and the supporting quote.
+  see_also:
+  - EV-3
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ZBP1/ZBP1-ai-review.yaml#L364

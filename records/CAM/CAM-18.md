@@ -54,6 +54,12 @@ converted reactions (2025 notes).
 | Provenance | [GOC+] |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-18-E1](CAM-18.examples.yaml): The brain aldolase chosen as enabler in a Reactome-derived liver gluconeogenesis model | Non-conformant | gomodel:61e0e55600001225 |
+
 ## Sources
 
 - drive: [Complex active units notes, 2025-07](https://drive.google.com/open?id=19GdhwjKWXGzkxBIL0eVxrdDvgzunW542DGkbD9W-1c8)

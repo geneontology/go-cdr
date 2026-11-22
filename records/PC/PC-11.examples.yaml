@@ -1,0 +1,55 @@
+record: PC-11
+examples:
+- id: PC-11-E1
+  title: A receptor subunit annotated to complex assembly for being incorporated
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NPH3
+      symbol: IL1RAP
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0065003
+      label: protein-containing complex assembly
+    qualifier: involved_in
+    evidence_code: TAS
+    reference: PMID:7775431
+  explanation: |
+    The TAS row gives IL1RAP protein-containing complex assembly from a paper showing it is a subunit
+    of the ligand-induced IL-1 receptor complex. The review marked it as an over-annotation: being
+    incorporated is captured by membership of the receptor complex and by coreceptor activity, and the
+    assembly term implies a role beyond being a subunit. The record requires evidence that a subunit
+    acts on the assembly of other parts.
+  fix: |
+    Keep IL1RAP's complex membership and coreceptor activity; do not annotate it to the assembly
+    process.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/IL1RAP/IL1RAP-ai-review.yaml#L1451
+- id: PC-11-E2
+  title: A heme-ligating SDH subunit annotated to cytochrome complex assembly
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q88FA6
+      symbol: sdhD
+    taxon: NCBITaxon:160488
+    term:
+      term_id: GO:0017004
+      label: cytochrome complex assembly
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000118
+  explanation: |
+    The TreeGrafter row gives P. putida SdhD cytochrome complex assembly. The review marked it as an
+    over-annotation: SdhD is the membrane-anchoring subunit that ligates heme with its partner, the
+    accessory assembly role for complex II belongs to SdhE, and "being the thing assembled is not the
+    same as doing the assembling". The review kept the row flagged rather than removed because a
+    heme-ligating subunit may contribute to forming its own module, which the record would require to
+    be shown before the term is used.
+  fix: |
+    Do not annotate SdhD to the assembly process unless it is shown to act on other parts; its
+    subunit membership and heme binding describe it.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEPK/sdhD/sdhD-ai-review.yaml#L79

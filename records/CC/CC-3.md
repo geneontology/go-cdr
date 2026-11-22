@@ -79,6 +79,14 @@ mitochondrial pool has no assigned activity
 | Evidence codes | IBA, IBD |
 | GO terms | `GO:0005739` mitochondrion |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-3-E1](CC-3.examples.yaml): An IBA is_active_in nucleus row kept as a location claim only | Conformant | ACTL7B is_active_in GO:0005634 nucleus (IBA, GO_REF:0000033) |
+| [CC-3-E2](CC-3.examples.yaml): An IBA is_active_in cytoplasm row marked over-annotated for its qualifier alone | Contested | ACTR5 is_active_in GO:0005737 cytoplasm (IBA, GO_REF:0000033) |
+| [CC-17-E1](CC-17.examples.yaml): A Golgi IBA row propagated from the cholinephosphotransferase paralog (from [CC-17](CC-17.md)) | Non-conformant | CEPT1 is_active_in GO:0005794 Golgi apparatus (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

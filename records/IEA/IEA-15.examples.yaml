@@ -1,0 +1,26 @@
+record: IEA-15
+examples:
+- id: IEA-15-E1
+  title: A GEF activity by similarity to RCC1 that experiments on UVR8 refute
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9FN03
+      symbol: UVR8
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0005085
+      label: guanyl-nucleotide exchange factor activity
+    qualifier: enables
+    evidence_code: ISS
+    reference: PMID:12226503
+  explanation: |
+    The ISS row transfers guanyl-nucleotide exchange factor activity to UVR8 from its similarity to
+    RCC1. The review removed it because UVR8 has only about 7 percent of RCC1's GEF activity, does not
+    bind Ran, and does not complement yeast RCC1 loss. A similarity-based prediction kept against
+    direct experimental evidence on the same protein is what the record says must not stand.
+  fix: |
+    Remove the row; UVR8's experimentally established functions take precedence.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/UVR8/UVR8-ai-review.yaml#L302

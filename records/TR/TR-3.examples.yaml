@@ -1,0 +1,47 @@
+record: TR-3
+examples:
+- id: TR-3-E1
+  title: Sequence-specific DNA binding from gel retardation and footprinting of purified SopB
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P62558
+      symbol: sopB
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0043565
+      label: sequence-specific DNA binding
+    evidence_code: IDA
+    reference: PMID:2670941
+  explanation: |
+    The record reserves DNA-binding MF terms for purified-protein assays. The review replaced an electronic
+    DNA-binding row with this IDA row because the source shows "gel retardation and footprinting of purified SopB, and
+    SopB-DNA crystal structures".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/sopB/sopB-ai-review.yaml#L48
+- id: TR-3-E2
+  title: A dbTF row from ChIP occupancy and a requirement for induced transcription
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5TGY3
+      symbol: AHDC1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:35585237
+  explanation: |
+    ChIP shows where a protein is, not that it binds DNA. The review read the full study and found tagged AHDC1
+    occupancy at regulatory chromatin, proximity to transcription complexes and a requirement for GATA3-induced
+    transcription, but "the examined ChIP and perturbation assays do not isolate" sequence-selective binding by AHDC1
+    itself.
+  fix: |
+    GO:0003712 transcription coregulator activity, the review's replacement; a chromatin CC row can carry the ChIP
+    result.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AHDC1/AHDC1-ai-review.yaml#L248

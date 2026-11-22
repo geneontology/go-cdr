@@ -1,0 +1,58 @@
+record: AE-12
+examples:
+- id: AE-12-E1
+  title: A manual ISS from an orthologue carrying a human cargo as has_input
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P98164
+      symbol: LRP2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006898
+      label: receptor-mediated endocytosis
+    qualifier: involved_in
+    evidence_code: ISS
+    reference: PMID:9228033
+    extension: RO:0002233(UniProtKB:P05067-PRO_0000000093)
+  explanation: |
+    The record allows a manually transferred extension when it uses the target-species filler and a curator
+    has judged that the orthologous relationship holds. This ARUK-UCL ISS row transfers LRP2-mediated uptake
+    from an orthologue (with/from UniProtKB:C0HL13, PMID:9228033) and names the human amyloid-beta 40 chain, not the orthologue's own cargo, as
+    the input. The review accepted the row as a conserved part of LRP2's endocytic role.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LRP2/LRP2-ai-review.yaml#L1762
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=P98164&goId=GO:0006898
+- id: AE-12-E2
+  title: A substrate extension authored onto IBA, IEA and ISS GEF rows
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5JSL3
+      symbol: DOCK11
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005085
+      label: guanyl-nucleotide exchange factor activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+    extension: RO:0002233(UniProtKB:P60953)
+  explanation: |
+    In GOA none of DOCK11's GO:0005085 rows (IBA, IEA, ISS) carries an extension, as the record expects for
+    pipeline rows. After a PR reviewer asked for the CDC42 substrate, the review added `has_input` CDC42 to
+    all three propagated rows. Its notes say that "these extensions are authored additions, not inherited GOA
+    fields". The substrate is supported by DOCK11 experiments (PMID:16968698, PMID:25851601), but those are
+    not this row's evidence. A PAINT IBD over the whole clade does not say that every member exchanges on
+    human CDC42.
+  fix: |
+    Leave the IBA, IEA and ISS rows without extensions. Record CDC42 where the evidence is DOCK11's own:
+    in `core_functions` (as the review also does), or on an experimental GEF annotation from PMID:16968698
+    carrying `has_input`(UniProtKB:P60953).
+  see_also: [AE-3]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DOCK11/DOCK11-ai-review.yaml#L130
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DOCK11/DOCK11-notes.md#L15
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DOCK11/DOCK11-notes.md#L53

@@ -83,7 +83,11 @@ covered; for the nucleus see CC-16.
 
 | Example | Verdict | Subject |
 |---|---|---|
+| [CC-6-E1](CC-6.examples.yaml): A MitoCoP mitochondrion row accepted although the matrix is known | Conformant | DARS2 located_in GO:0005739 mitochondrion (HTP, PMID:34800366) |
+| [CC-6-E2](CC-6.examples.yaml): An HPA Golgi apparatus row refined to cisternae by MODIFY | Non-conformant | The HID1 review's `MODIFY` of the Human Protein Atlas IDA row `GO:0005794` Golgi apparatus (GO_REF:0000052) to Golgi trans cisterna, Golgi medial cisterna and trans-Golgi network membrane, terms the gene already carries from higher-resolution studies. |
 | [CC-7-E1](CC-7.examples.yaml): An IBA mitochondrion row kept after checking its PAINT seed (from [CC-7](CC-7.md)) | Conformant | AARS2 is_active_in GO:0005739 mitochondrion (IBA, GO_REF:0000033) |
+| [CC-8-E2](CC-8.examples.yaml): An HDA mitochondrion row replaced by the inner-membrane term (from [CC-8](CC-8.md)) | Non-conformant | The Drosophila MCU review's `MODIFY` of an HDA `GO:0005739` mitochondrion row (PMID:25294944, organelle proteomics) to `GO:0005743` mitochondrial inner membrane, a term the gene already carries. |
+| [CC-14-E1](CC-14.examples.yaml): An HPA mitochondria call on an aminoacyl-tRNA synthetase accepted at the organelle (from [CC-14](CC-14.md)) | Conformant | DARS2 located_in GO:0005739 mitochondrion (IDA, GO_REF:0000052) |
 
 ## Sources
 

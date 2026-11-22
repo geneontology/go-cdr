@@ -60,6 +60,13 @@ requires reading beyond the paper in hand.
 | Related | [LIT-8](LIT-8.md) |
 | GO terms | `GO:0032454` histone H3K9 demethylase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-12-E1](LIT-12.examples.yaml): Epe1's experimental H3K9 demethylase row, held undecided | Contested | Epe1 enables GO:0032454 histone H3K9 demethylase activity (IDA, PMID:25838386) |
+| [LIT-12-E2](LIT-12.examples.yaml): A retracted DR6 paper flagged and checked for dependants | Conformant | The TNFRSF21 review's handling of PMID:19225519 (Nikolaev et al. |
+
 ## Sources
 
 - web: [CONTESTED_FUNCTION](https://ai4curation.io/ai-gene-review/pages/projects/CONTESTED_FUNCTION.html)

@@ -51,6 +51,14 @@ receptors) now carries its own mechanism.
 | Related | [MO-1](MO-1.md) |
 | GO terms | `GO:0008061` chitin binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MO-5-E1](MO-5.examples.yaml): A secreted chorismate mutase with its activity, host locations and effector process | Conformant | CMU1 involved_in GO:0140502 effector-mediated suppression of host salicylic acid-mediated innate immune signaling (IDA, PMID:30651637) |
+| [MO-5-E2](MO-5.examples.yaml): PWL2 given an effector process but still no molecular function | Non-conformant | PWL2 involved_in GO:0052034 effector-mediated suppression of host pattern-triggered immunity (IDA, PMID:40341381) |
+| [MO-4-E2](MO-4.examples.yaml): AVR4 on effector-mediated activation of plant hypersensitive response (from [MO-4](MO-4.md)) | Non-conformant | AVR4 involved_in GO:0080185 effector-mediated activation of plant hypersensitive response by symbiont (EXP, PMID:10998185) |
+
 ## Sources
 
 - web: [PLANT_FUNGAL_INTERACTIONS](https://ai4curation.io/ai-gene-review/pages/projects/PLANT_FUNGAL_INTERACTIONS.html)

@@ -1,0 +1,29 @@
+record: IEA-7
+examples:
+- id: IEA-7-E1
+  title: Rhea2GO acyl-CoA hydrolase term from a non-physiological substrate
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NV23
+      symbol: OLAH
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0052816
+      label: long-chain fatty acyl-CoA hydrolase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000116
+  explanation: |
+    The row is a Rhea2GO annotation (`GO_REF:0000116`) of long-chain fatty acyl-CoA hydrolase activity
+    on OLAH. The review found the reaction outside the enzyme's
+    characterised product range and against a non-physiological substrate, and marked the row as an
+    over-annotation because the enzyme plausibly retains weak activity. The record excludes reactions
+    that are not physiological from driving GO terms, and points to the promiscuous-activity tiers for
+    the gene-level action.
+  fix: |
+    Keep the reaction out of the GO mapping for this protein; at gene level, MARK_AS_OVER_ANNOTATED as
+    the review did (in vitro activity of unknown relevance).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/OLAH/OLAH-ai-review.yaml#L111

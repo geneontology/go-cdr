@@ -1,0 +1,54 @@
+record: QN-11
+examples:
+- id: QN-11-E1
+  title: A NOT response to bile acid that rests only on an unchanged protein level, removed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P22455
+      symbol: FGFR4
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:1903412
+      label: response to bile acid
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:19085950
+    negated: true
+  explanation: |
+    The review removed the NOT because "the only negative result in the paper is that CDCA did not change
+    total FGFR4 protein", an abundance observation that "cannot show that FGFR4 lacks a function". The
+    record says a process NOT needs evidence that the product could not do the process's work, and names
+    "NOT response to X" for an abundance or expression null as unacceptable; this is the FGFR4 case the
+    chapter cites.
+  see_also: [QN-8, QN-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FGFR4/FGFR4-ai-review.yaml#L1931
+- id: QN-11-E2
+  title: A NOT response to lipopolysaccharide kept from an expression null
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P30793
+      symbol: GCH1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0032496
+      label: response to lipopolysaccharide
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:15604419
+    negated: true
+  explanation: |
+    The review read the original paper, which reports no GCH1 protein induction in HUVECs by LPS alone
+    (data not shown), and kept the row as non-core to "preserve this conditional expression result".
+    That is the case the record rules out: "NOT response to X" for an expression null is not an activity
+    negative stated as a process, and the review itself says the result does not show LPS
+    unresponsiveness.
+  fix: |
+    REMOVE the NOT row as an expression null (QN-8, QN-16).
+  see_also: [QN-8, QN-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GCH1/GCH1-ai-review.yaml#L1322

@@ -88,6 +88,12 @@ is known not to be catalytic ([go-annotation#3242](https://github.com/geneontolo
 | Evidence codes | IBA, IBD, ISS, ISO, ISA |
 | GO terms | `GO:0003899` DNA-directed RNA polymerase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-8-E1](PH-8.examples.yaml): A contributes_to rotary ATPase IBA on a V-ATPase central-stalk subunit | Conformant | VMA8 contributes_to GO:0046961 proton-transporting ATPase activity, rotational mechanism (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

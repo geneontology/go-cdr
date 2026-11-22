@@ -1,0 +1,51 @@
+record: EV-9
+examples:
+- id: EV-9-E1
+  title: A nucleus IBA seeded by the target alone
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q15847
+      symbol: ADIRF
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005634
+      label: nucleus
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review found that the PAINT node reaches seven mammalian ADIRF orthologues and that every one lists
+    human ADIRF as the seed, because it is the only family member with experimental annotation. It did not
+    treat the single, self-seeded donor as weakness or circularity, accepted the row, and raised its
+    reservation about the `is_active_in` qualifier as a question rather than a downgrade.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ADIRF/ADIRF-ai-review.yaml#L324
+- id: EV-9-E2
+  title: A ribosome binding IBA carried across a subfamily boundary
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9VCN7
+      symbol: orb
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0043022
+      label: ribosome binding
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review said explicitly that a single donor is not weak support, and challenged the node instead: the
+    donor is a CPEB2-subfamily protein (SF8), no CPEB1-subfamily or fly evidence supports ribosome binding,
+    and a subfamily-specific term should not descend into SF9, where orb sits. That is an argument about node
+    placement, the only kind the record accepts.
+  fix: |
+    Mark the row over-annotated (as the review does) and report to PAINT that the IBD should sit within the
+    CPEB2 subfamily rather than above the split.
+  see_also:
+  - CC-17
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/orb__Q9VCN7/orb__Q9VCN7-ai-review.yaml#L699

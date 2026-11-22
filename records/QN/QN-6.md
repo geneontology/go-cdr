@@ -64,6 +64,12 @@ Positive claims propagate up the ontology with their relation, and some relation
 | Date | 2026-11-15 |
 | GO terms | `GO:0008177` succinate dehydrogenase (quinone) activity; `GO:0000104` succinate dehydrogenase activity; `GO:0006303` double-strand break repair via nonhomologous end joining; `GO:0006281` DNA repair |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-1-E3](QN-1.examples.yaml): A proposed SDHA succinate dehydrogenase row with no relation (from [QN-1](QN-1.md)) | Non-conformant | SDHA GO:0000104 succinate dehydrogenase activity (IDA, PMID:7550341) |
+
 ## Sources
 
 - repo: [action consistency](https://github.com/ai4curation/ai-gene-review/blob/main/docs/action_consistency.md)

@@ -1,0 +1,41 @@
+record: CAM-4
+examples:
+- id: CAM-4-E1
+  title: TIR-1 typed as a signalling adaptor rather than by its binding partner
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:568b0f9600000284
+    description: |
+      Activity gomodel:568b0f9600000284/57ec3a7e00000079 in "Antibacterial innate immune response in the
+      intestine via MAPK cascade (C. elegans)": WB:WBGene00006575 (TIR-1) enables GO:0035591 signaling
+      adaptor activity, part_of GO:0140367 antibacterial innate immune response, directly positively
+      regulating NSY-1 MAPKKK activity.
+  explanation: |
+    TIR-1's role in the flow is to bring the NSY-1 MAPKKK into a signalling complex, which is the record's
+    adaptor role. The review judged it "correctly typed ... rather than a bare binding term", citing the
+    paper that TIR-1 binds and localises NSY-1, and found it consistent with the tir-1 gene review's core
+    function.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/568b0f9600000284/568b0f9600000284-review.yaml#L43
+- id: CAM-4-E2
+  title: A JNK-family kinase typed as protein binding
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:568b0f9600000284
+    description: |
+      Activity gomodel:568b0f9600000284/5b91dbd100000659: WB:WBGene00002187 (KGB-1) enables GO:0005515
+      protein binding, part_of GO:1900181, occurs_in GO:0005737 cytoplasm, downstream of a VHP-1
+      phosphatase edge.
+  explanation: |
+    A bare binding term has no causal consequence, so it says nothing about what KGB-1 does in the flow.
+    The review marked the activity WRONG with BINDING_AS_FUNCTION: the IPI evidence comes from germline
+    P-granule and two-hybrid interactions, while KGB-1 is a catalytically active JNK-family kinase that
+    phosphorylates FOS-1 (PMID:23437011).
+  fix: |
+    Type the node by its catalytic role, GO:0004707 MAP kinase activity or GO:0004705 JUN kinase activity,
+    as the review recommends, and add the substrate as `has input`, or drop the leaf if it does not feed
+    the model's process.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/568b0f9600000284/568b0f9600000284-review.yaml#L368

@@ -55,6 +55,16 @@ Two failure modes recur. The first is an action that contradicts its own reason:
 | Date | 2026-11-15 |
 | GO terms | `GO:0016020` membrane |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-2-E1](REV-2.examples.yaml): ATP binding kept as non-core, with the reason saying why it is not TOO_GENERAL | Conformant | LPXK enables GO:0005524 ATP binding (IEA, GO_REF:0000002) |
+| [REV-2-E2](REV-2.examples.yaml): A membrane row kept as non-core while the reason calls it uninformative | Non-conformant | LYM2 located_in GO:0016020 membrane (TAS, PMID:12068095) |
+| [REV-4-E2](REV-4.examples.yaml): DAF-16 cytoplasm rows accepted although the cytoplasmic pool is the inactive one (from [REV-4](REV-4.md)) | Non-conformant | daf-16 located_in GO:0005737 cytoplasm (IEA, GO_REF:0000044) |
+| [REV-5-E3](REV-5.examples.yaml): Wound healing from a scratch assay kept as non-core on FGF1 (from [REV-5](REV-5.md)) | Non-conformant | FGF1 involved_in GO:0042060 wound healing (IDA, PMID:16756958) |
+| [RS-2-E3](../RS/RS-2.examples.yaml): Positive regulation of cell division kept on the kinetochore subunit SPC24 (from [RS-2](../RS/RS-2.md)) | Non-conformant | SPC24 acts_upstream_of_or_within GO:0051781 positive regulation of cell division (IMP, PMID:29356153) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

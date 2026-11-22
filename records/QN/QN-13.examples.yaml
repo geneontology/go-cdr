@@ -1,0 +1,54 @@
+record: QN-13
+examples:
+- id: QN-13-E1
+  title: A synaptotagmin's lost calcium-dependent phospholipid binding
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P50232
+      symbol: Syt4
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0005544
+      label: calcium-dependent phospholipid binding
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:7791877
+    negated: true
+  explanation: |
+    The review accepted the NOT because the first C2 domain of Syt IV, unlike those of Syt I, II, III, V
+    and VII, does not bind phospholipids calcium-dependently, consistent with several further papers, and
+    called it "the defining biochemical feature of this inhibitory isoform". This is the exception the
+    record allows: a specific binding term with a functional consequence, negated where the family makes
+    a reader expect it.
+  see_also: [QN-9]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Syt4/Syt4-ai-review.yaml#L353
+- id: QN-13-E2
+  title: A NOT protein homodimerization activity from a negative BiFC result
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:D3GE74
+      symbol: STR
+    taxon: NCBITaxon:3880
+    term:
+      term_id: GO:0042803
+      label: protein homodimerization activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:20453115
+    negated: true
+  explanation: |
+    The row rests on BiFC assays in which STR-STR gave no signal while STR-STR2 did. The review accepted
+    it while conceding that "negative BiFC results are not absolute proof". The record says not to make
+    NOT annotations to binding terms: failure to bind one partner in one assay is not a property worth
+    negating. The obligate STR-STR2 heterodimer the review describes is better stated positively.
+  fix: |
+    REMOVE the NOT row, and capture the heterodimer positively (complex membership or an informative MF)
+    rather than as a negated binding term.
+  see_also: [QN-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/MEDTR/STR/STR-ai-review.yaml#L292

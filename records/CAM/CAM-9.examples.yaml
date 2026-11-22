@@ -1,0 +1,40 @@
+record: CAM-9
+examples:
+- id: CAM-9-E1
+  title: ATF4 with its target gene as input and an indirect edge to the target's activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:66b5638000001589
+    description: |
+      Activity gomodel:66b5638000001589/66b5638000001597: UniProtKB:P18848 (ATF4) enables GO:0003700
+      DNA-binding transcription factor activity, `has input` COX7A2L, `indirectly positively regulates`
+      COX7A2L activity.
+  explanation: |
+    The TF's input is the target gene and its edge to the target protein's activity is indirect, as the
+    record requires for control through expression. The review called the edge "rightly indirect" and the
+    input "the correct GO-CAM convention"; its reservations are a generic MF (the ATF4 review uses
+    GO:0001228) and the references on the edge.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/66b5638000001589/66b5638000001589-review.yaml#L261
+- id: CAM-9-E2
+  title: A bacterial response regulator whose input is a protein, not its target operon
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:671ae02600002832
+    description: |
+      Activity gomodel:671ae02600002832/6792e70800000096 in "Response to antibiotic - vancomycin resistance
+      vanA cluster (E.faecium)": UniProtKB:Q06239 (VanR) enables GO:0001216 DNA-binding transcription
+      activator activity, `has input` UniProtKB:Q05709 (VanH protein), with `indirectly positively
+      regulates` edges to the VanH, VanA and VanX activities and no `occurs in`.
+  explanation: |
+    The edges are correctly indirect, but the record also says the regulator's input is the target gene.
+    The review flagged HAS_INPUT_MISUSE: "the input of a DNA-binding transcription activator activity is the
+    target gene, not its protein product", and the regulated unit is the vanH-vanA-vanX operon.
+  fix: |
+    `has input` the vanH gene (and vanA, vanX on their own activity units, one target each), keep the
+    indirect edges, and add a location.
+  see_also: [CAM-5, TR-14]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/671ae02600002832/671ae02600002832-review.yaml#L101

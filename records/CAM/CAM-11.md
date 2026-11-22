@@ -50,6 +50,13 @@ PMID:27338793).
 | Date | 2026-11-15 |
 | GO terms | `GO:0140944` histone H4K20 monomethyltransferase activity; `GO:0140566` histone reader activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-11-E1](CAM-11.examples.yaml): RNF115 ubiquitination of RAB1A and RAB13 removes the input of GDI1 | Conformant | gomodel:65692e7e00001822 |
+| [CAM-11-E2](CAM-11.examples.yaml): A coactivator removes input for a ligase, with no shared input stated and no evidence | Non-conformant | gomodel:6606056e00000678 |
+
 ## Sources
 
 - wiki: [Removes input for](https://wiki.geneontology.org/index.php/Removes_input_for)

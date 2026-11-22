@@ -1,0 +1,48 @@
+record: MF-18
+examples:
+- id: MF-18-E1
+  title: A monoacylglycerol lipase IBA traced to a paralog's PAINT seed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5AMS2
+      symbol: LPL1
+    taxon: NCBITaxon:237561
+    term:
+      term_id: GO:0047372
+      label: monoacylglycerol lipase activity
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review traced the IBA to PANTHER:PTN000773837, seeded by S. cerevisiae ROG1, a
+    monoacylglycerol lipase in a different branch. C. albicans LPL1 sits in the phospholipase B branch,
+    and no source in that branch supports the activity, so the review removed the row. The challenge
+    is member-specific (wrong subfamily), not an objection to IBA evidence. This is the record's worked
+    example.
+  see_also: [MF-12]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CANAL/LPL1/LPL1-ai-review.yaml#L108
+- id: MF-18-E2
+  title: POU transcription factor activity removed from netrin-1
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O95631
+      symbol: NTN1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000981
+      label: DNA-binding transcription factor activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The source node PTN000180816 has POU transcription factor seeds, while netrin-1 has a laminin, EGF
+    and NTR architecture and acts as a secreted ligand. The review removed the row on that
+    member-specific mismatch, said explicitly that removal is not based on secreted localisation
+    alone, and recorded the PAINT provenance discrepancy for upstream inspection.
+  see_also: [MF-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NTN1/NTN1-ai-review.yaml#L19

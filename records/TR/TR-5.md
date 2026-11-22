@@ -108,6 +108,13 @@ non-specific binding) alongside the coTF term, not `GO:0003700`
 | Evidence codes | IDA |
 | GO terms | `GO:0003712` transcription coregulator activity; `GO:0003713` transcription coactivator activity; `GO:0003714` transcription corepressor activity; `GO:0000976` transcription cis-regulatory region binding; `GO:0003700` DNA-binding transcription factor activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-5-E1](TR-5.examples.yaml): An MBF subunit that reaches promoters through its DNA-binding partners | Non-conformant | cdc10 enables GO:0001228 DNA-binding transcription activator activity, RNA polymerase II-specific (EXP, PMID:14648198) |
+| [TR-5-E2](TR-5.examples.yaml): A plant coactivator recruited by methyl-DNA readers rather than by a dbTF | Contested | EIP9 enables GO:0001228 DNA-binding transcription activator activity, RNA polymerase II-specific (IDA, PMID:30523112) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

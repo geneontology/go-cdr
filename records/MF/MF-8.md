@@ -120,6 +120,16 @@ event the child does not cover; otherwise the parent is `TOO_GENERAL`
 | Evidence codes | IPI |
 | GO terms | `GO:0140378` protein complex scaffold activity; `GO:0160072` ubiquitin ligase complex scaffold activity; `GO:0005198` structural molecule activity; `GO:0060090` molecular adaptor activity; `GO:0140693` molecular condensate scaffold activity; `GO:0140566` histone reader activity; `GO:0035615` clathrin-cargo adaptor activity; `GO:1990756` ubiquitin-like ligase-substrate adaptor activity; `GO:0140311` protein sequestering activity; `GO:0140104` molecular carrier activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-8-E1](MF-8.examples.yaml): CD14's LPS receptor row changed to molecular carrier activity | Conformant | CD14 enables GO:0001875 lipopolysaccharide immune receptor activity (IDA, PMID:15294986) |
+| [MF-8-E2](MF-8.examples.yaml): LDLRAP1 signaling adaptor row corrected to clathrin-cargo adaptor | Conformant | LDLRAP1 enables GO:0035591 signaling adaptor activity (IDA, PMID:12221107) |
+| [MF-8-E3](MF-8.examples.yaml): An adaptor row on a complex I assembly factor with no two bridged partners | Contested | ACAD9 enables GO:0030674 protein-macromolecule adaptor activity (IDA, PMID:32320651) |
+| [MF-3-E1](MF-3.examples.yaml): A GRB2 protein binding row refined to receptor tyrosine kinase adaptor activity (from [MF-3](MF-3.md)) | Conformant | GRB2 enables GO:0005515 protein binding (IPI, PMID:19172738) |
+| [MF-6-E1](MF-6.examples.yaml): A RPTOR-S6K1 binding row refined to protein kinase binding (from [MF-6](MF-6.md)) | Conformant | RPTOR enables GO:0005515 protein binding (IPI, PMID:12150926) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

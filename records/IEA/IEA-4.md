@@ -77,6 +77,13 @@ in the current ontology it is in `gocheck_do_not_annotate`, so no mapping or rul
 | Evidence codes | ND, IEA |
 | GO terms | `GO:0003674` molecular_function; `GO:0008150` biological_process; `GO:0005575` cellular_component; `GO:0005515` protein binding; `GO:0006139` nucleobase-containing compound metabolic process |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-4-E1](IEA-4.examples.yaml): ARBA rule targeting an obsolete lipid X process term | Non-conformant | LPXC1 involved_in GO:2001289 lipid X metabolic process (IEA, GO_REF:0000117) |
+| [IEA-4-E2](IEA-4.examples.yaml): A withdrawn ARBA rule whose only consequent is an obsolete term | Non-conformant | ARBA |
+
 ## Sources
 
 - issue: [go-annotation#1020](https://github.com/geneontology/go-annotation/issues/1020)

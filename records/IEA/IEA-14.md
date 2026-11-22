@@ -76,6 +76,16 @@ proteomes although the relay was found in 3 of 504 complete ones.
 | Evidence codes | IEA |
 | GO terms | `GO:0007034` vacuolar transport; `GO:0006511` ubiquitin-dependent protein catabolic process; `GO:0044548` S100 protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-14-E1](IEA-14.examples.yaml): Sevenless binding restricted by a second family entry and Diptera | Conformant | curated rules (ai-gene-review rules/curated) |
+| [IEA-14-E2](IEA-14.examples.yaml): Malonyl-CoA reductase separated from its same-genome paralog by a CDD model | Conformant | curated rules (ai-gene-review rules/curated) |
+| [IEA-2-E2](IEA-2.examples.yaml): A PRINTS fingerprint carries sevenless binding to a mouse GPRC5 receptor (from [IEA-2](IEA-2.md)) | Non-conformant | Gprc5c enables GO:0005118 sevenless binding (IEA, GO_REF:0000002) |
+| [IEA-13-E1](IEA-13.examples.yaml): Narrow, not remove, a mapping that is the sole source of the term (from [IEA-13](IEA-13.md)) | Conformant | InterPro2GO |
+| [PIPE-3-E2](../PIPE/PIPE-3.examples.yaml): A curated rule checked against the taxon constraint of its process term (from [PIPE-3](../PIPE/PIPE-3.md)) | Conformant | curated rules (ai-gene-review rules/curated) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

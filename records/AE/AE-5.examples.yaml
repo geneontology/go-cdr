@@ -1,0 +1,78 @@
+record: AE-5
+examples:
+- id: AE-5-E1
+  title: An enzyme activity placed in the nucleus where it was assayed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P30793
+      symbol: GCH1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003934
+      label: GTP cyclohydrolase I activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:16778797
+    extension: BFO:0000066(GO:0005634)
+  explanation: |
+    On an MF, `occurs_in` names the compartment where the activity was observed. PMID:16778797 reports
+    GTP cyclohydrolase I activity in nuclei of human epidermal keratinocytes and melanocytes, and the
+    review accepted the row on that basis. It also noted that the paper does not show the same nuclear pool
+    in every cell type. The nucleus resolves to one compartment and is not part of the term.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GCH1/GCH1-ai-review.yaml#L585
+- id: AE-5-E2
+  title: A lysosomal enzyme placed in "cytoplasm"
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P16278
+      symbol: GLB1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004565
+      label: beta-galactosidase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:11927518
+    extension: BFO:0000066(CL:0002544),BFO:0000066(GO:0005737)
+  explanation: |
+    The record asks for a location that places the activity unambiguously. The review accepted the row and
+    defended `occurs_in`(GO:0005737 cytoplasm) on the grounds that "Cytoplasm includes lysosomes; the context
+    is not a cytosolic-enzyme assertion". The defence makes the record's point: a reader of the extension
+    cannot tell lysosome from cytosol. The cell-type atom (aortic endothelial cell) is informative.
+  fix: |
+    Keep `occurs_in`(CL:0002544) and drop `occurs_in`(GO:0005737). The staining assay does not resolve the
+    organelle, and the lysosomal location is already carried by GLB1's GO:0005764 lysosome rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GLB1/GLB1-ai-review.yaml#L107
+- id: AE-5-E3
+  title: occurs_in nucleus on an anti-apoptotic process
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P15976
+      symbol: GATA1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0043066
+      label: negative regulation of apoptotic process
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:17167422
+    extension: BFO:0000066(GO:0005634)
+  explanation: |
+    On a BP, `occurs_in` is allowed only if every step of the process happens there. Regulating apoptosis
+    does not happen entirely in the nucleus, even when the regulator is a transcription factor: in this
+    paper the effect runs through caspase cleavage of GATA1 and Hsp70. That is the `occurs_in` versus
+    `regulates_o_occurs_in` slip the record warns about. The review told itself to "Preserve the occurs_in
+    nucleus atom" and kept the row as non-core.
+  fix: |
+    Drop the extension from the BP row. GATA1's nuclear location from the same paper is already its own
+    row, GO:0005634 nucleus (IDA, PMID:17167422).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GATA1/GATA1-ai-review.yaml#L2551

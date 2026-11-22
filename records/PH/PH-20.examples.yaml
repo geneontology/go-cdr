@@ -1,0 +1,25 @@
+record: PH-20
+examples:
+- id: PH-20-E1
+  title: An adherens junction location grafted onto a choanoflagellate cadherin by TreeGrafter
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:F2UD23
+      symbol: PTSG_05882
+    taxon: NCBITaxon:946362
+    term:
+      term_id: GO:0005912
+      label: adherens junction
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000118
+  explanation: |
+    The review identified the row as a TreeGrafter transfer (`GO_REF:0000118`, IEA) of the PTN000616280
+    IBD, not as an IBA, and removed it because *S. rosetta* forms no adherens junctions and the protein
+    lacks the beta-catenin-binding domain. The record asks reviewers to keep TreeGrafter distinct from IBA
+    and to decide whether the node term or the graft is wrong; these *S. rosetta* cadherins are its worked
+    example, where the inherited animal-junction terms are the problem.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SALRS/PTSG_05882/PTSG_05882-ai-review.yaml#L100

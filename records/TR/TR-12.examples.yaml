@@ -1,0 +1,48 @@
+record: TR-12
+examples:
+- id: TR-12-E1
+  title: FACT annotated to transcription elongation-coupled chromatin remodeling
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P32558
+      symbol: SPT16
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0140673
+      label: transcription elongation-coupled chromatin remodeling
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record sends genome-wide chromatin roles to chromatin processes rather than to coTF or regulation terms.
+    The review accepted GO:0140673 because it "captures Spt16/FACT's direct nucleosome reassembly activity in the wake of
+    elongating RNA polymerase II better than a generic regulation-of-elongation parent".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/SPT16/SPT16-ai-review.yaml#L1281
+- id: TR-12-E2
+  title: A histone chaperone accepted as a core regulator of Pol II transcription
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P32447
+      symbol: ASF1
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:19620280
+  explanation: |
+    The record allows regulation of transcription for a chaperone only when it is shown to be recruited to
+    specific genes and to change their transcription. The review accepted this IMP row as a "core function in transcriptional
+    regulation" on ASF1's requirement for the stress response "through cooperation with chromatin remodeling complexes",
+    which is the pleiotropic chromatin role the record warns can be mistaken for coTF function.
+  fix: |
+    Carry the role with the chromatin terms the review already accepts, such as GO:0006337 nucleosome disassembly, and
+    keep a regulation-of-transcription row only with evidence of dbTF-directed recruitment.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/ASF1/ASF1-ai-review.yaml#L416

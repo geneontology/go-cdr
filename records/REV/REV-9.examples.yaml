@@ -1,0 +1,54 @@
+record: REV-9
+examples:
+- id: REV-9-E1
+  title: JAK-STAT IBA on worm STA-1 removed by arguing with the node
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NAD6
+      symbol: sta-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0007259
+      label: cell surface receptor signaling pathway via JAK-STAT
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record's example. The review argues with what produced the row: the term presupposes a
+    receptor-associated JAK, *C. elegans* has none, and STA-1 instead needs the ACK-family kinase
+    SID-3. It treats the absence of JAK in the worm as a lineage-specific loss. This is a
+    target-specific loss argument, not a complaint about donors.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/sta-1/sta-1-ai-review.yaml#L435
+- id: REV-9-E2
+  title: A photosystem I assembly IBA on PsbP1 removed without examining its PAINT seed
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q42029
+      symbol: PSBP1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0048564
+      label: photosystem I assembly
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The IBA comes from PTN001584458 with AGI AT4G15510 as WITH/FROM. The review removes it because
+    "falcon deep research provides no support for photosystem I assembly" and PsbP1 is a PSII
+    subunit, calling it "an erroneous phylogenetic/paralog propagation". It never names or examines
+    the seed or the node. The record requires the argument to address the PAINT node: whether PsbP1
+    lies inside the clade that inherited the function. The only quoted support is the deep-research
+    file, which REV-18 says is not literature.
+  fix: |
+    Open the PTN001584458 node and the AT4G15510 seed. If photosystem I assembly is specific to the
+    seed's branch, say that PsbP1 lies outside it, `REMOVE` with a `source_defects` entry to
+    `GO_CENTRAL` asking for the IBD to be moved. If it is not, reconsider the action. Cite the
+    literature behind the PSII assignment rather than the deep-research summary.
+  see_also: [REV-18]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/AT1G06680/AT1G06680-ai-review.yaml#L55

@@ -1,0 +1,45 @@
+record: PH-17
+examples:
+- id: PH-17-E1
+  title: Angiogenesis transferred to a non-angiogenic rodent angiogenin paralog
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q64438
+      symbol: Ang2
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0001525
+      label: angiogenesis
+    qualifier: involved_in
+    evidence_code: ISO
+    reference: GO_REF:0000119
+  explanation: |
+    The review removed the ISO row because PMID:8633065 shows that mouse Ang2 (Angrp) is non-angiogenic.
+    The record treats physiological and tissue processes as unsafe to transfer without target evidence,
+    and flags a donor that is not the target's namesake; Ang2 is a divergent member of an expanded rodent
+    family, and this is the record's worked example.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Ang2/Ang2-ai-review.yaml#L635
+- id: PH-17-E2
+  title: Ribonuclease activity transferred to the same paralog, with its own mouse biochemistry
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q64438
+      symbol: Ang2
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0004540
+      label: RNA nuclease activity
+    qualifier: enables
+    evidence_code: ISO
+    reference: GO_REF:0000119
+  explanation: |
+    From the same donor, the review accepted the RNA nuclease activity because mouse Ang2 biochemical
+    assays support it independently. The record's rule is that conserved molecular function may move by
+    orthology while context does not; the row shows both halves on one gene.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Ang2/Ang2-ai-review.yaml#L712

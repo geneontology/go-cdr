@@ -95,6 +95,13 @@ now obsolete, so the example should be read with `GO:0003899`.
 | Related | [PC-7](PC-7.md) |
 | GO terms | `GO:0003878` ATP citrate synthase activity; `GO:0008177` succinate dehydrogenase (quinone) activity; `GO:0046933` proton-transporting ATP synthase activity, rotational mechanism; `GO:0046961` proton-transporting ATPase activity, rotational mechanism; `GO:0003899` DNA-directed RNA polymerase activity; `GO:0001671` ATPase activator activity; `GO:0001055`  (obsolete) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-6-E1](PC-6.examples.yaml): SDHB given enables on the whole-complex succinate:quinone reaction | Non-conformant | SDHB enables GO:0008177 succinate dehydrogenase (quinone) activity (IMP, PMID:26925370) |
+| [PC-6-E2](PC-6.examples.yaml): The catalytic A subunit of V-ATPase contributes to the rotary activity | Conformant | TFP1 contributes_to GO:0046961 proton-transporting ATPase activity, rotational mechanism (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - wiki: [Annotation Relations](https://wiki.geneontology.org/index.php/Annotation_Relations)

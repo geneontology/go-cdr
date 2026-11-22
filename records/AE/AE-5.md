@@ -68,6 +68,14 @@ Use `occurs_in` for the place where an MF happens, or where *every* step of a BP
 | Evidence codes | IDA |
 | GO terms | `GO:0003909` DNA ligase activity; `GO:0005739` mitochondrion; `GO:0050852` T cell receptor signaling pathway; `GO:0000785` chromatin; `GO:0000228` nuclear chromosome |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-5-E1](AE-5.examples.yaml): An enzyme activity placed in the nucleus where it was assayed | Conformant | GCH1 enables GO:0003934 GTP cyclohydrolase I activity (IDA, PMID:16778797) |
+| [AE-5-E2](AE-5.examples.yaml): A lysosomal enzyme placed in "cytoplasm" | Non-conformant | GLB1 enables GO:0004565 beta-galactosidase activity (IDA, PMID:11927518) |
+| [AE-5-E3](AE-5.examples.yaml): occurs_in nucleus on an anti-apoptotic process | Non-conformant | GATA1 involved_in GO:0043066 negative regulation of apoptotic process (IMP, PMID:17167422) |
+
 ## Sources
 
 - wiki: [Occurs in](https://wiki.geneontology.org/index.php/Occurs_in)

@@ -81,6 +81,12 @@ metal ion binding beside an activity that specifies the metal-dependent chemistr
 | Evidence codes | IDA, IEA |
 | GO terms | `GO:0004674` protein serine/threonine kinase activity; `GO:0005524` ATP binding; `GO:0046872` metal ion binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-4-E1](MF-4.examples.yaml): ATP binding beside a receptor tyrosine kinase kept as non-core | Conformant | Kdr enables GO:0005524 ATP binding (IEA, GO_REF:0000002) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

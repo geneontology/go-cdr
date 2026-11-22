@@ -1,0 +1,21 @@
+record: CAM-18
+examples:
+- id: CAM-18-E1
+  title: The brain aldolase chosen as enabler in a Reactome-derived liver gluconeogenesis model
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:61e0e55600001225
+    description: |
+      Activity gomodel:61e0e55600001225/61e0e55600001805 in "Gluconeogenesis 1 (Mouse)", derived from
+      Reactome R-HSA-70263: MGI:MGI:101863 (Aldoc) enables GO:0004332 fructose-bisphosphate aldolase activity,
+      part_of GO:0006094 gluconeogenesis.
+  explanation: |
+    The record asks that an imported catalyst be mapped to the gene product that performs the reaction.
+    The review found the MF and the chaining right but noted that gluconeogenesis is confined to liver and
+    kidney, "where the aldolase is aldolase B", that aldolase C is the brain isoform, and that "Aldob would
+    be the expected enabler". It recorded this as a choice of isoform rather than a source defect.
+  fix: |
+    Enable the gluconeogenic aldolase step by Aldob.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/61e0e55600001225/61e0e55600001225-review.yaml#L336

@@ -1,0 +1,72 @@
+record: PH-13
+examples:
+- id: PH-13-E1
+  title: A cysteine biosynthesis IBA on a neofunctionalized cysteine-degrading subfamily
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O69652
+      symbol: cds1
+    taxon: NCBITaxon:83332
+    term:
+      term_id: GO:0019344
+      label: L-cysteine biosynthetic process
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review removed the IBA because the PTHR10314 SF135 (Cds1) subfamily diverged from the cysteine
+    synthases at the family root: its active-site motif differs and it shares only 24% identity with
+    them. The record's case (a) is a post-duplication subclade with a documented different function, and
+    names Cds1 inheriting `GO:0019344` from the family root as a worked example.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/MYCTU/cds1/cds1-ai-review.yaml#L22
+- id: PH-13-E2
+  title: An aerobic respiration IBA on a poplar plastid NDH subunit
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A4GYX1
+      symbol: ndhA
+    taxon: NCBITaxon:3694
+    term:
+      term_id: GO:0009060
+      label: aerobic respiration
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review removed the IBA because ndhA is a subunit of the plastid NDH complex in photosynthetic
+    electron transport, not of the mitochondrial respiratory chain from which the term was inherited.
+    The record names the poplar plastid NDH subunits as a context-transfer case, where an organelle-specific
+    process reaches homologs that work in a different organelle.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/POPTR/ndhA/ndhA-ai-review.yaml#L11
+- id: PH-13-E3
+  title: A positive regulation of apoptosis IBA on anti-apoptotic BCL2, kept as non-core on re-review
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P10415
+      symbol: BCL2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0043065
+      label: positive regulation of apoptotic process
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record names this row as regulatory-sign inversion: a node whose donors mix BAX and BAK1 with
+    anti-apoptotic members passes the pro-apoptotic term to BCL2, whose core term is negative regulation.
+    The re-reviewed row instead keeps it as non-core, saying "the former categorical rejection overlooked
+    conditional target activity": converted BCL2 neutralizes BCL-XL to permit Bax-dependent
+    permeabilization (PMID:18835031), and caspase cleavage and Nur77 conversion are reported. The record
+    reads the row as sign inversion; the review reads it as a real, conditional target activity.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/3214
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/BCL2/BCL2-ai-review.yaml#L10
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/IBA_REVIEW/rereview-2026-09-20/bcl2-apoptosis-and-signaling.yaml#L2

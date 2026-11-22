@@ -1,0 +1,53 @@
+record: EV-10
+examples:
+- id: EV-10-E1
+  title: A plasma membrane TAS row from a Reactome event about CK2 and Timeless
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P08646
+      symbol: Ras85D
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0005886
+      label: plasma membrane
+    qualifier: located_in
+    evidence_code: TAS
+    reference: Reactome:R-DME-432535
+  explanation: |
+    The record keeps a TAS row unless its claim is wrong or its source does not support it. Ras85D is at the
+    plasma membrane, but the cited event, R-DME-432535, describes CK2 phosphorylating Timeless. The review
+    removed the row for that reason while keeping the plasma membrane claim on its FlyBase, UniProt and
+    PAINT rows, so the removal is not a deduplication.
+  fix: |
+    Remove the Reactome-derived row and report the mis-mapped event; the other plasma membrane rows stand.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/Ras85D/Ras85D-ai-review.yaml#L321
+- id: EV-10-E2
+  title: A P2X7 plasma membrane row cited to a P2X1 Reactome event
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q99572
+      symbol: P2RX7
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005886
+      label: plasma membrane
+    qualifier: located_in
+    evidence_code: TAS
+    reference: Reactome:R-HSA-139855
+  explanation: |
+    The record names this pattern as the typical TAS failure. The cached event R-HSA-139855 is "P2X1-mediated
+    entry of Ca++ from plasma", about the P2X1 receptor, not P2X7. The review accepted the row as a core,
+    undisputed location without examining the event; the location is right, but this source does not
+    support it for P2RX7.
+  fix: |
+    Re-cite the row to a Reactome event executed by P2X7, or remove it under the record's "source does not
+    support it" clause; the plasma membrane location stays on the gene's other rows.
+  see_also:
+  - LIT-7
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/P2RX7/P2RX7-ai-review.yaml#L1048

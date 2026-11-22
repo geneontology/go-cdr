@@ -96,6 +96,13 @@ given BBSome membership, because they assemble the complex rather than belong to
 | Evidence codes | IDA, IPI, IBA, ISS, ISO |
 | GO terms | `GO:0044877` protein-containing complex binding; `GO:0034464` BBSome |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-1-E1](PC-1.examples.yaml): A Ku70-binding protein from a two-hybrid screen annotated as a DNA-PK complex subunit | Non-conformant | ATP23 part_of GO:0005958 DNA-dependent protein kinase-DNA ligase 4 complex (NAS, PMID:10219089) |
+| [PC-1-E2](PC-1.examples.yaml): Chaperonin recovered with bait proteins annotated to a generic complex | Non-conformant | HSPD1 part_of GO:0032991 protein-containing complex (IDA, PMID:21328542) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

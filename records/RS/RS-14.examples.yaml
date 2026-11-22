@@ -1,0 +1,51 @@
+record: RS-14
+examples:
+- id: RS-14-E1
+  title: Negative regulation of cell proliferation on fat-body lamin, several steps away
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P08928
+      symbol: Lam
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0008285
+      label: negative regulation of cell population proliferation
+    qualifier: acts_upstream_of
+    evidence_code: IMP
+    reference: PMID:25417159
+  explanation: |
+    Lamin-B loss in the fat body derepresses immune genes, the fat body secretes PGRPs, and those
+    change IMD signalling in the midgut, where stem cells over-proliferate. The review marks the row
+    over-annotated: Lam is "several steps upstream in a different tissue", so the proliferation term is
+    not the level at which it acts.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/Lam/Lam-ai-review.yaml#L1239
+- id: RS-14-E2
+  title: Negative regulation of cell proliferation kept on SHP-1 as a downstream phenotype
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P29350
+      symbol: PTPN6
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008285
+      label: negative regulation of cell population proliferation
+    qualifier: involved_in
+    evidence_code: NAS
+    reference: PMID:10497187
+  explanation: |
+    The review's own reason is that "these phenotypes are secondary to SHP-1-mediated dephosphorylation
+    of receptor-proximal and JAK/STAT signaling components". It keeps the proliferation row as
+    non-core. The record's worked example is this pattern: a phosphatase acting on a signalling cascade
+    is annotated to regulation of that cascade, and not to proliferation unless the paper shows that
+    its action controls proliferation of a named cell type. The reason says nothing about a cell
+    type.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`, unless PMID:10497187 shows SHP-1's action controlling proliferation of a
+    named cell type. The proximal regulation belongs on the signalling terms.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PTPN6/PTPN6-ai-review.yaml#L2362

@@ -81,6 +81,13 @@ shown to be in the electron-transfer mechanism.
 | Evidence codes | IMP |
 | GO terms | `GO:0008137` NADH dehydrogenase (ubiquinone) activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-4-E1](PC-4.examples.yaml): Surf1 knockout loss of complex IV activity annotated as the oxidase activity | Non-conformant | Surf1 enables GO:0004129 cytochrome-c oxidase activity (IMP, PMID:23838831) |
+| [PC-4-E2](PC-4.examples.yaml): Complex I activity on an accessory subunit from a cDNA sequencing paper | Non-conformant | NDUFA2 enables GO:0008137 NADH dehydrogenase (ubiquinone) activity (NAS, PMID:9878551) |
+
 ## Sources
 
 - wiki: [Contributes to](https://wiki.geneontology.org/index.php/Contributes_to)

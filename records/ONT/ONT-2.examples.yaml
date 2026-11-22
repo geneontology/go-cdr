@@ -1,0 +1,48 @@
+record: ONT-2
+examples:
+- id: ONT-2-E1
+  title: GTPase-specific GEF terms confirmed merged in three services, with QuickGO's behaviour noted
+  verdict: CONFORMANT
+  subject:
+    subject_kind: term
+    term:
+      term_id: GO:0005089
+      obsolete: true
+    description: |
+      `GO:0005089`, the Rho-specific GEF term, recorded in the ARHGEF19 review as obsolete and merged
+      into `GO:0005085` guanyl-nucleotide exchange factor activity.
+  explanation: |
+    The ARHGEF19 review's case that a RhoA-specific GEF can no longer be stated in GO rests on the merges of
+    the GTPase-specific GEF terms, so their state is load-bearing. The review checked it in "three
+    independent services - OLS4 reports is_obsolete with term_replaced_by, the GO API returns no record,
+    and this repository's cache/go/terms.csv has no row - while QuickGO silently resolves each merge and
+    returns the replacement as a live term". That is the record's procedure, and the QuickGO behaviour it
+    found is the one the record warns about.
+  see_also:
+  - ONT-12
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARHGEF19/ARHGEF19-ai-review.yaml#L440
+- id: ONT-2-E2
+  title: A methionine salvage redirect checked in QuickGO and OLS against a named release
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9VN95
+      symbol: Enoph
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0033353
+      label: L-methionine cycle
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review established that the specific term the row should carry is obsolete with a `replaced_by`
+    to the SAM-cycle term "checked in QuickGO and in OLS, GO release 2026-07-26", before choosing a live
+    term. The record asks for two services and the release whenever obsoletion is load-bearing; here it
+    decides which term the row can use.
+  see_also:
+  - ONT-3
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/Enoph/Enoph-ai-review.yaml#L88

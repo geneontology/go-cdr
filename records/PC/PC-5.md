@@ -84,6 +84,12 @@ complexes, kinase complexes
 | Date | 2026-11-15 |
 | GO terms | `GO:0004579` dolichyl-diphosphooligosaccharide-protein glycotransferase activity; `GO:0000030` mannosyltransferase activity; `GO:0003924` GTPase activity; `GO:0004298` threonine-type endopeptidase activity; `GO:0008320` transmembrane protein transporter activity; `GO:0140436` mitochondrial signal sequence receptor activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-5-E1](PC-5.examples.yaml): The F430-bearing alpha subunit enables methyl-coenzyme M reductase activity | Conformant | mcrA enables GO:0050524 coenzyme-B sulfoethylthiotransferase activity (EXP, PMID:2269306) |
+
 ## Sources
 
 - wiki: [Enables](https://wiki.geneontology.org/index.php/Enables)

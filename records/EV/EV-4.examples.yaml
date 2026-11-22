@@ -1,0 +1,50 @@
+record: EV-4
+examples:
+- id: EV-4-E1
+  title: An IMP polymerase row resting on catalytic-residue mutants
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P11124
+      symbol: P2
+    taxon: NCBITaxon:2928686
+    term:
+      term_id: GO:0003968
+      label: RNA-directed RNA polymerase activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:18614640
+  explanation: |
+    IMP may support an MF only with supporting molecular evidence, and the record singles out active-site
+    mutants as the strong case. The review accepted the RNA-directed RNA polymerase row because the
+    mutational analysis targets the conserved catalytic aspartates of the P2 active site, tying the
+    activity to the protein itself rather than to a requirement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BPPH6/P2/P2-ai-review.yaml#L136
+- id: EV-4-E2
+  title: A kinase inhibitor activity row from a genetic requirement for ERK2 adaptation
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P34099
+      symbol: pkaC
+    taxon: NCBITaxon:44689
+    term:
+      term_id: GO:0004860
+      label: protein kinase inhibitor activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:8670837
+  explanation: |
+    A requirement shown by a mutant does not show that the product carries the activity. The review found
+    that the genetic requirement of PKA for ERK2 adaptation does not establish a direct protein kinase
+    inhibitor function; it over-interprets a downstream inhibitory signalling effect of a kinase.
+  fix: |
+    No MF row from this experiment; at most a non-core process row with a causally upstream relation for
+    ERK2 adaptation (see LIT-8). The review marks the row over-annotated.
+  see_also:
+  - LIT-8
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DICDI/pkaC/pkaC-ai-review.yaml#L370

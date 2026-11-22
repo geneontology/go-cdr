@@ -94,6 +94,13 @@ phenotypes are IMP.
 | Evidence codes | IDA, IPI, IMP, IEP |
 | GO terms | `GO:0005488` binding; `GO:0005515` protein binding; `GO:0004596` protein-N-terminal amino-acid acetyltransferase activity; `GO:0051015` actin filament binding; `GO:0004383` guanylate cyclase activity; `GO:0006897` endocytosis; `GO:0006914` autophagy |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-2-E1](EV-2.examples.yaml): An IDA process row from deletion and complementation | Non-conformant | PA5455 involved_in GO:0009243 O antigen biosynthetic process (IDA, PMID:23341552) |
+| [EV-2-E2](EV-2.examples.yaml): An IDA protein binding row on a Cascade subunit | Non-conformant | casB enables GO:0005515 protein binding (IDA, PMID:18703739) |
+
 ## Sources
 
 - issue: [go-annotation#6468](https://github.com/geneontology/go-annotation/issues/6468)

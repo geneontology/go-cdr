@@ -111,6 +111,14 @@ TYROBP enables molecular adaptor activity, bridging the virion receptor SIGLEC1 
 | Related | [CAM-9](CAM-9.md), [CAM-5](CAM-5.md) |
 | GO terms | `GO:0048018` receptor ligand activity; `GO:0038023` signaling receptor activity; `GO:0015026` coreceptor activity; `GO:0060090` molecular adaptor activity; `GO:0140313` molecular sequestering activity; `GO:0140311` protein sequestering activity; `GO:0000981` DNA-binding transcription factor activity, RNA polymerase II-specific; `GO:0001228` DNA-binding transcription activator activity, RNA polymerase II-specific; `GO:0001227` DNA-binding transcription repressor activity, RNA polymerase II-specific; `GO:0005515` protein binding; `GO:0005488` binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-4-E1](CAM-4.examples.yaml): TIR-1 typed as a signalling adaptor rather than by its binding partner | Conformant | gomodel:568b0f9600000284 |
+| [CAM-4-E2](CAM-4.examples.yaml): A JNK-family kinase typed as protein binding | Non-conformant | gomodel:568b0f9600000284 |
+| [CAM-2-E1](CAM-2.examples.yaml): Calmodulin drawn as two nodes, calcium binding directly activating its own kinase-activator node (from [CAM-2](CAM-2.md)) | Non-conformant | gomodel:62b4ffe300004489 |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

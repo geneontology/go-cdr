@@ -77,6 +77,14 @@ A pathway-specific scaffold that tethers cassette components is part of the cass
 | Date | 2026-11-15 |
 | GO terms | `GO:0141124` intracellular signaling cassette; `GO:0000165` MAPK cascade; `GO:0043491` phosphatidylinositol 3-kinase/protein kinase B signal transduction; `GO:0005078` MAP kinase scaffold activity; `GO:0007173` epidermal growth factor receptor signaling pathway; `GO:0043410` positive regulation of MAPK cascade |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-7-E1](RS-7.examples.yaml): Positive regulation of MAPK cascade on SHC1, upstream of the first cassette kinase | Conformant | SHC1 involved_in GO:0043410 positive regulation of MAPK cascade (IDA, PMID:14676841) |
+| [RS-7-E2](RS-7.examples.yaml): MAPK cascade on HSF1, an ERK substrate, marked over-annotated | Conformant | HSF1 involved_in GO:0000165 MAPK cascade (IDA, PMID:12917326) |
+| [RS-7-E3](RS-7.examples.yaml): MAPK cascade accepted on ATF2, the cascade's substrate | Non-conformant | ATF2 involved_in GO:0000165 MAPK cascade (IEA, GO_REF:0000107) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

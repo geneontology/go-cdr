@@ -83,6 +83,13 @@ not whether it is in the title.
 | Date | 2026-11-15 |
 | Evidence codes | IDA, ISO, TAS, ND |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-6-E1](LIT-6.examples.yaml): A GalNAc transferase IDA row citing the cloning paper of the paralog CHSY1 | Non-conformant | CSGALNACT1 enables GO:0008376 acetylgalactosaminyltransferase activity (IDA, PMID:11514575) |
+| [LIT-6-E2](LIT-6.examples.yaml): Skeletal system development on PAPSS1 from a paper about PAPSS2 | Non-conformant | PAPSS1 involved_in GO:0001501 skeletal system development (TAS, PMID:9771708) |
+
 ## Sources
 
 - wiki: [TAS](https://wiki.geneontology.org/index.php/Traceable_Author_Statement_%28TAS%29)

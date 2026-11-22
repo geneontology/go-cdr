@@ -1,0 +1,98 @@
+record: MF-3
+examples:
+- id: MF-3-E1
+  title: A GRB2 protein binding row refined to receptor tyrosine kinase adaptor activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P62993
+      symbol: GRB2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:19172738
+  explanation: 'The record''s GRB2 worked example, row by row. The review read the paper as showing GRB2
+    linking
+
+    GAB2 to an activated receptor tyrosine kinase or its docking protein, so the binding achieves
+
+    bridging, and it replaced bare protein binding with transmembrane receptor protein tyrosine kinase
+
+    adaptor activity. Across the gene, most of GRB2''s other protein binding rows were removed or
+
+    refined only to phosphotyrosine or proline-rich region binding where no bridging was shown.
+
+    '
+  see_also:
+  - MF-5
+  - MF-8
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GRB2/GRB2-ai-review.yaml#L2262
+- id: MF-3-E2
+  title: An obsolete unfolded protein binding row moved to the proposed holdase term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O75190
+      symbol: DNAJB6
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0051082
+      label: unfolded protein binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:21231916
+  explanation: 'The paper shows DNAJB6b suppressing polyQ and heat-induced luciferase aggregation but
+    not
+
+    improving luciferase refolding. The review ruled out protein folding chaperone (which needs
+
+    folding) and unfolded protein carrier activity (which needs delivery to an acceptor), and moved the
+
+    row to the proposed "holdase chaperone activity" term, as the record''s Application prescribes for
+
+    in-situ holdases.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DNAJB6/DNAJB6-ai-review.yaml#L706
+- id: MF-3-E3
+  title: CRYAB's holdase evidence moved to the carrier term
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02511
+      symbol: CRYAB
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0051082
+      label: unfolded protein binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:16303126
+  explanation: 'The review reads the paper as showing that CRYAB suppresses aggregation of a destabilised
+
+    gamma C-crystallin without refolding it, and replaces the obsolete term with `GO:0140309`, which it
+
+    calls "unfolded protein holdase activity". That id is now labelled unfolded protein carrier
+
+    activity and, as the record says, still requires escorting the client to an acceptor, which the
+
+    paper does not show. The record names CRYAB among the in-situ holdases that should use a proposed
+
+    holdase term, so the review and the record disagree. The case turns on the record''s open question
+
+    about the missing general holdase term.
+
+    '
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CRYAB/CRYAB-ai-review.yaml#L1934

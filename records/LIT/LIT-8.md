@@ -90,6 +90,14 @@ Details on relations, regulation and causal distance are in
 | Date | 2026-11-15 |
 | GO terms | `GO:0006412` translation; `GO:0002003` angiotensin maturation; `GO:0090200` positive regulation of release of cytochrome c from mitochondria |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-8-E1](LIT-8.examples.yaml): Chromosome segregation for ParB with molecular work behind the phenotype | Conformant | spo0J involved_in GO:0007059 chromosome segregation (IMP, PMID:8071208) |
+| [LIT-8-E2](LIT-8.examples.yaml): Defense response to fungus for a MAP3K from a resistance phenotype | Non-conformant | MAPKKK5 involved_in GO:0050832 defense response to fungus (IMP, PMID:27679653) |
+| [EV-4-E2](../EV/EV-4.examples.yaml): A kinase inhibitor activity row from a genetic requirement for ERK2 adaptation (from [EV-4](../EV/EV-4.md)) | Non-conformant | pkaC enables GO:0004860 protein kinase inhibitor activity (IMP, PMID:8670837) |
+
 ## Sources
 
 - repo: [CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blob/main/CLAUDE.md)

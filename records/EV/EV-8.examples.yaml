@@ -1,0 +1,47 @@
+record: EV-8
+examples:
+- id: EV-8-E1
+  title: Angiogenesis transferred from human ANG to a non-angiogenic paralog
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q64438
+      symbol: Ang2
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0001525
+      label: angiogenesis
+    qualifier: involved_in
+    evidence_code: ISO
+    reference: GO_REF:0000119
+  explanation: |
+    The record's question two: is the donor the target's ortholog? Mouse Ang2 (Angrp) is a divergent member
+    of the expanded mouse angiogenin family, and this ISO row comes from human ANG (P03950). The review
+    removed it because a direct study of Ang2 found it non-angiogenic even at high doses (PMID:8633065).
+  fix: |
+    No angiogenesis row on Ang2; ISO from human ANG belongs on the mouse gene that is its ortholog.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Ang2/Ang2-ai-review.yaml#L635
+- id: EV-8-E2
+  title: A response to yeast row whose donor annotation has gone
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q64438
+      symbol: Ang2
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0001878
+      label: response to yeast
+    qualifier: involved_in
+    evidence_code: ISO
+    reference: GO_REF:0000119
+  explanation: |
+    The record's first question for an ISO row is whether the donor annotation is still present. The
+    review found that human ANG no longer carries this term, so the transfer is stale, and removed it.
+  fix: |
+    Remove the transfer; revisit ISO rows when the donor's annotations change.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Ang2/Ang2-ai-review.yaml#L664

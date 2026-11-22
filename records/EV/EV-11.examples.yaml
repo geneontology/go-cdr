@@ -1,0 +1,28 @@
+record: EV-11
+examples:
+- id: EV-11-E1
+  title: A cell-cell adhesion NAS row from a speculative discussion
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8WXG9
+      symbol: ADGRV1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0098609
+      label: cell-cell adhesion
+    qualifier: involved_in
+    evidence_code: NAS
+    reference: PMID:11606593
+  explanation: |
+    NAS is for an author's assertion, not speculation. The review read the full paper: its introduction and
+    discussion use sponge aggregation-factor Calx-beta repeats as an analogy and explicitly speculate about
+    possible VLGR1 homotypic interactions. No adhesion result stands behind the statement, so the review
+    marked the row over-annotated.
+  fix: |
+    No cell-cell adhesion row from this paper; hedged discussion is not annotatable.
+  see_also:
+  - LIT-10
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ADGRV1/ADGRV1-ai-review.yaml#L1689

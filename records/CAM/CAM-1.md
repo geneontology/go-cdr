@@ -71,6 +71,13 @@ polymerase II-specific, occurring in `GO:0005634` nucleus, in the same process.
 | Date | 2026-11-15 |
 | GO terms | `GO:0004707` MAP kinase activity; `GO:0005829` cytosol; `GO:0140367` antibacterial innate immune response; `GO:0000981` DNA-binding transcription factor activity, RNA polymerase II-specific; `GO:0005634` nucleus |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-1-E1](CAM-1.examples.yaml): A substrate-adaptor activity with one enabler, one location and one nested process chain | Conformant | gomodel:69729a3800005900 |
+| [CAM-1-E2](CAM-1.examples.yaml): A lipid carrier activity with no process | Non-conformant | gomodel:5fb9cc0600000727 |
+
 ## Sources
 
 - drive: [GO-CAM modeling guidelines](https://drive.google.com/open?id=1DS2ObQc1EVcQKAHjKNt-0jzFCSSVLDQ4Osm-1dsTwdA)

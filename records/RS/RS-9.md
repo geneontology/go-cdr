@@ -83,6 +83,14 @@ Statement.
 | Date | 2026-11-15 |
 | GO terms | `GO:0004941` beta2-adrenergic receptor activity; `GO:0004930` G protein-coupled receptor activity; `GO:0007189` adenylate cyclase-activating G protein-coupled receptor signaling pathway; `GO:0007193` adenylate cyclase-inhibiting G protein-coupled receptor signaling pathway; `GO:0007200` phospholipase C-activating G protein-coupled receptor signaling pathway; `GO:0019933`  (obsolete); `GO:0141156` cAMP/PKA signal transduction; `GO:0045879` negative regulation of smoothened signaling pathway; `GO:0007224` smoothened signaling pathway |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-9-E1](RS-9.examples.yaml): Negative regulation of smoothened signalling accepted as PTCH1's core process | Conformant | PTCH1 involved_in GO:0045879 negative regulation of smoothened signaling pathway (IBA, GO_REF:0000033) |
+| [RS-9-E2](RS-9.examples.yaml): Negative regulation of cAMP/PKA signalling accepted on Candida Pde1 | Conformant | PDE1 involved_in GO:0141162 negative regulation of cAMP/PKA signal transduction (IMP, PMID:20558315) |
+| [RS-9-E3](RS-9.examples.yaml): An AC-activating pathway ISS on Gi1 removed: wrong sign, wrong donor | Conformant | GNAI1 involved_in GO:0007189 adenylate cyclase-activating G protein-coupled receptor signaling pathway (ISS, GO_REF:0000024) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

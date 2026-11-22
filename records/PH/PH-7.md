@@ -72,6 +72,12 @@ a valid REMOVE; `GO:0005737` cytoplasm over a mitochondrial protein is not, beca
 | Evidence codes | IDA, IBA |
 | GO terms | `GO:0005739` mitochondrion; `GO:0005634` nucleus; `GO:0005737` cytoplasm |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-7-E1](PH-7.examples.yaml): A mitochondrion IBA on cytosolic rat ALDH1L1 from a node seeded by its mitochondrial paralog | Conformant | Aldh1l1 is_active_in GO:0005739 mitochondrion (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

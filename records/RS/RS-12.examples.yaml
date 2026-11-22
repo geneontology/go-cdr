@@ -1,0 +1,50 @@
+record: RS-12
+examples:
+- id: RS-12-E1
+  title: Response to salicylic acid on Gstt1, one of a stimulus cloud, marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q01579
+      symbol: Gstt1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0009751
+      label: response to salicylic acid
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:9729437
+  explanation: |
+    The record's worked example. Gstt1 carries salicylic acid, selenium, vitamin E and xenobiotic
+    response terms, each from a separate induction paper. The review marks this sibling stimulus term
+    over-annotated because it "reflects source-pipeline stimulus-response provenance" rather than the
+    enzyme's conjugation chemistry.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Gstt1/Gstt1-ai-review.yaml#L313
+- id: RS-12-E2
+  title: Response to xenobiotic stimulus on Gstt1 marked over-annotated with its siblings
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q01579
+      symbol: Gstt1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0009410
+      label: response to xenobiotic stimulus
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:9794803
+  explanation: |
+    The record's worked example says to keep the xenobiotic term on Gstt1 as non-core and to mark only
+    the sibling stimulus terms. The review marks the xenobiotic row over-annotated too, with the same
+    templated reason as the others. The repository's IEP survey says GSTT1 activity "is part of how a
+    cell handles a xenobiotic". The induction is a sound observation that is not the gene's job, which
+    is the record's default case for `KEEP_AS_NON_CORE`.
+  fix: |
+    `KEEP_AS_NON_CORE`, with a reason that says the transferase is part of xenobiotic handling and
+    that the induction does not make it a stimulus specialist.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Gstt1/Gstt1-ai-review.yaml#L571

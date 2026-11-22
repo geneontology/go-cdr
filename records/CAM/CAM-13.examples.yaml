@@ -1,0 +1,52 @@
+record: CAM-13
+examples:
+- id: CAM-13-E1
+  title: A STAT1 transcription factor activity placed in the nucleus
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:62b4ffe300004489
+    description: |
+      Activity gomodel:62b4ffe300004489/62b4ffe300004627: UniProtKB:P42224 (STAT1) enables GO:0000981
+      DNA-binding transcription factor activity, RNA polymerase II-specific, occurs_in GO:0005634 nucleus.
+  explanation: |
+    The location is a single cellular component that resolves to a compartment, so edges into and out of
+    the node can be checked. The review found that the activity and its nuclear location match the STAT1
+    gene review's primary core function; it raised no location flag on this node, unlike the cytosolic
+    calmodulin and CaMKII nodes of the same model, which lack `occurs in`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-review.yaml#L34
+- id: CAM-13-E2
+  title: Ligand-activated ESR1 placed on chromatin
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:6606056e00000678
+    description: |
+      Activity gomodel:6606056e00000678/6606056e00000694: UniProtKB:P03372 (ESR1) enables GO:0004879 nuclear
+      receptor activity, occurs_in GO:0000785 chromatin.
+  explanation: |
+    In GO chromatin is part of chromosome and chromosome is not part of nucleus, so the location resolves to
+    no compartment. The review flagged UNRESOLVED_COMPARTMENT and noted that the ChIP evidence places the
+    receptor on nuclear chromatin.
+  fix: |
+    occurs_in GO:0000228 nuclear chromosome, as the review proposes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/6606056e00000678/6606056e00000678-review.yaml#L156
+- id: CAM-13-E3
+  title: UBR5 ligase activity on chromatin, evidenced by ChIP at other receptors' sites
+  verdict: CONTESTED
+  subject:
+    subject_kind: gocam
+    model: gomodel:6606056e00000678
+    description: |
+      Activity gomodel:6606056e00000678/6606056e00000689: UniProtKB:O95071 (UBR5) GO:0061630 ubiquitin protein
+      ligase activity, `has input` ESR1, occurs_in GO:0000785 chromatin.
+  explanation: |
+    The review flagged the location UNRESOLVED_COMPARTMENT, as the record directs, and proposed nuclear
+    chromosome. Whether that is a curator error or an ontology gap is the record's open question: if GO
+    adds a part_of path from chromatin to nucleus for eukaryotes, this location resolves as written and
+    roughly 290 cached activities stop being flagged.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/6606056e00000678/6606056e00000678-review.yaml#L31

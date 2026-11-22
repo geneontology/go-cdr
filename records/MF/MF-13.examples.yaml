@@ -1,0 +1,71 @@
+record: MF-13
+examples:
+- id: MF-13-E1
+  title: Monooxygenase activity removed from a P450-fold glycosyltransferase activator
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A4F7P2
+      symbol: eryCII
+    taxon: NCBITaxon:405948
+    term:
+      term_id: GO:0004497
+      label: monooxygenase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The structure paper shows EryCII lacks the heme-ligating cysteine, the crystal structure has no
+    heme, and the authors call it "not an active P450 enzyme". The review removed the catalytic row
+    and, with it, the iron and heme binding rows, and added a `NEW` enzyme activator activity row for
+    its shown role in activating EryCIII. That is step 4 of the record's ladder.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SACEN/eryCII/eryCII-ai-review.yaml#L113
+- id: MF-13-E2
+  title: ATP binding removed from a pseudokinase with no nucleotide binding
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8TEA7
+      symbol: TBCK
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005524
+      label: ATP binding
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The row is an electronic inference from the kinase-fold signature. The review cites differential
+    scanning fluorimetry showing no thermal shift with ATP, GTP, ADP, GDP or Mg2+, and the loss of the
+    glycine-rich loop and VAIK motif. With the cofactor binding refuted biochemically, the record calls
+    for `REMOVE` of the dependent cofactor rows, and the review removed the protein kinase activity row
+    on the same basis.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TBCK/TBCK-ai-review.yaml#L66
+- id: MF-13-E3
+  title: Experimental H3K9 demethylase rows on Epe1 left undecided
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94603
+      symbol: Epe1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0032454
+      label: histone H3K9 demethylase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:25838386
+  explanation: |
+    The review removed Epe1's electronic demethylase, dioxygenase and oxidoreductase rows, but left this
+    experimental row `UNDECIDED`. The paper shows that erasing ectopic H3K9me needs Epe1's predicted
+    cofactor-binding residues, but not that Epe1 catalyses demethylation; purified Epe1 shows no
+    activity, and the same mutations weaken Swi6 binding. The JmjC triad is non-canonical, yet the
+    related PHF2 has latent activity, so catalysis is disputed, not refuted. The record's own worked
+    example takes the same position.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/Epe1/Epe1-ai-review.yaml#L674

@@ -100,6 +100,13 @@ siRNA-directed silencing, not to dbTF annotation.
 | Date | 2026-11-15 |
 | GO terms | `GO:0000981` DNA-binding transcription factor activity, RNA polymerase II-specific; `GO:0001228` DNA-binding transcription activator activity, RNA polymerase II-specific; `GO:0001227` DNA-binding transcription repressor activity, RNA polymerase II-specific; `GO:0000978` RNA polymerase II cis-regulatory region sequence-specific DNA binding; `GO:0006357` regulation of transcription by RNA polymerase II; `GO:0001181` RNA polymerase I general transcription initiation factor activity; `GO:0000995` RNA polymerase III general transcription initiation factor activity; `GO:0006360` transcription by RNA polymerase I; `GO:0006383` transcription by RNA polymerase III; `GO:0003700` DNA-binding transcription factor activity; `GO:0001216` DNA-binding transcription activator activity; `GO:0001217` DNA-binding transcription repressor activity; `GO:0006355` regulation of DNA-templated transcription; `GO:0000785` chromatin; `GO:0001059` transcription by RNA polymerase IV; `GO:0001060` transcription by RNA polymerase V |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-8-E1](TR-8.examples.yaml): A bacterial response regulator on the unqualified dbTF term | Conformant | spo0A enables GO:0003700 DNA-binding transcription factor activity (IEA, GO_REF:0000002) |
+| [TR-8-E2](TR-8.examples.yaml): A plant MADS-box factor on the unqualified dbTF term | Non-conformant | AG enables GO:0003700 DNA-binding transcription factor activity (IEA, GO_REF:0000002) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

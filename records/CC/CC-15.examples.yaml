@@ -1,0 +1,74 @@
+record: CC-15
+examples:
+- id: CC-15-E1
+  title: A stress-granule localization-process row from redistribution into granules
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O00571
+      symbol: DDX3X
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:1903608
+      label: protein localization to cytoplasmic stress granule
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:24965446
+  explanation: 'The record says co-localization never supports a localization process. The review found
+    that the
+
+    source observes DDX3 redistributing into stress granules after viral Npro and arsenite treatment,
+
+    not DDX3 transporting or retaining other proteins there, and noted that GO has obsoleted
+
+    `GO:1903608` for exactly this misuse.
+
+
+    Note: GOA and QuickGO label `GO:1903608` obsolete, but the GO release used to check labels here (2026-07-26)
+    still has it live as "protein localization to cytoplasmic stress granule"; the verdict assumes the
+    obsoletion reaches a GO release.
+
+    '
+  fix: 'The compartment observation belongs on the gene''s `GO:0010494` cytoplasmic stress granule rows,
+    which
+
+    the review keeps as non-core (DDX3X is a client); no localization-process row.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DDX3X/DDX3X-ai-review.yaml#L3072
+- id: CC-15-E2
+  title: TIA1's stress-granule localization-process row from the same paper
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P31483
+      symbol: TIA1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:1903608
+      label: protein localization to cytoplasmic stress granule
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:24965446
+  explanation: 'This IMP row cites the same AgBase-curated interactome paper as the DDX3X row. The review
+    accepts it,
+
+    arguing that TIA1 actively recruits proteins and mRNAs to stress granules. The GO review of the term
+
+    in go-annotation#6484 lists this very row among those to remove, calling TIA1 a canonical
+
+    stress-granule nucleator but a component in this paper, to become `located_in GO:0010494`. The two
+
+    readings agree that TIA1 is a scaffold (it also carries `GO:0034063` stress granule assembly by IDA);
+
+    they disagree on whether this paper''s result supports a localization process, which by the record''s
+
+    rule it does not.
+
+    '
+  discussion: https://github.com/geneontology/go-annotation/issues/6484
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TIA1/TIA1-ai-review.yaml#L626

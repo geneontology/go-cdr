@@ -1,0 +1,55 @@
+record: PC-1
+examples:
+- id: PC-1-E1
+  title: A Ku70-binding protein from a two-hybrid screen annotated as a DNA-PK complex subunit
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9Y6H3
+      symbol: ATP23
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005958
+      label: DNA-dependent protein kinase-DNA ligase 4 complex
+    qualifier: part_of
+    evidence_code: NAS
+    reference: PMID:10219089
+  explanation: |
+    ATP23 was first described as KUB3, a Ku70-binding protein recovered in a two-hybrid screen and
+    confirmed by co-immunoprecipitation. The review marked the `part_of` row as an over-annotation
+    because binding one known member does not make KUB3 a subunit of the DNA-dependent protein
+    kinase-DNA ligase 4 complex. The record lists two-hybrid and simple co-IP results as insufficient
+    for membership; at most they support a binding function.
+  fix: |
+    Do not assert membership; record the interaction, if at all, as a binding function.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ATP23/ATP23-ai-review.yaml#L303
+- id: PC-1-E2
+  title: Chaperonin recovered with bait proteins annotated to a generic complex
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P10809
+      symbol: HSPD1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0032991
+      label: protein-containing complex
+    qualifier: part_of
+    evidence_code: IDA
+    reference: PMID:21328542
+  explanation: |
+    The IDA row rests on HSPD1 co-purifying with a bait protein (ZNF703 or a METTL methyltransferase).
+    The review marked it as an over-annotation: co-purification with a bait shows an interaction, not a
+    defined stable complex, and many such baits are chaperonin clients. The record requires evidence
+    that a stable complex exists and that the protein is an intrinsic member; a client pull-down
+    provides neither.
+  fix: |
+    Drop the generic complex row. The informative complex for HSPD1 is the Hsp60-Hsp10 chaperonin,
+    which needs its own evidence.
+  see_also:
+  - PC-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HSPD1/HSPD1-ai-review.yaml#L2334

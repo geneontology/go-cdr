@@ -1,0 +1,31 @@
+record: CC-17
+examples:
+- id: CC-17-E1
+  title: A Golgi IBA row propagated from the cholinephosphotransferase paralog
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9Y6K0
+      symbol: CEPT1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005794
+      label: Golgi apparatus
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review read the PAINT node: the Golgi IBD at PTN000045767 is seeded only by members of the CHPT1
+    lineage (fly cpt, mouse Chpt1, human CHPT1), while CEPT1 seeds the ER membrane IBD at the same node.
+    CEPT1's own data place it elsewhere: brefeldin A relocalizes CPT1 but not CEPT1, and marker-controlled
+    imaging and fractionation put CEPT1 in the ER and nuclear membranes. That is the record's case of a CC
+    IBD above a paralog split.
+  fix: |
+    No Golgi row on CEPT1 (the review marks it over-annotated); its locations are the ER and nuclear
+    membranes. The node placement is a matter for PAINT.
+  see_also:
+  - CC-7
+  - CC-3
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CEPT1/CEPT1-ai-review.yaml#L70

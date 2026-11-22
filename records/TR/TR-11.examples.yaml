@@ -1,0 +1,48 @@
+record: TR-11
+examples:
+- id: TR-11-E1
+  title: A cytoplasmic MAP2K annotated to negative regulation of transcription
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q13163
+      symbol: MAP2K5
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000122
+      label: negative regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The record does not allow signalling molecules to carry regulation-of-transcription terms because they
+    change a gene's expression. The review marked the row over-annotated: MEK5 "is a cytoplasmic MAP2K with no direct role in
+    transcription", and the repression seen is mediated by ERK5 and KLF4.
+  fix: |
+    No transcription row on MAP2K5; its kinase activity and pathway process carry the biology.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MAP2K5/MAP2K5-ai-review.yaml#L32
+- id: TR-11-E2
+  title: A prolyl hydroxylase on positive regulation of transcription from qPCR data
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9GZT9
+      symbol: EGLN1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    Steady-state mRNA alone supports at most regulation of gene expression. The review read the donor paper and
+    found that it quantifies ATP13A2 mRNA by qPCR, and that PHD2 knockdown increases it, so the source neither shows a
+    transcriptional effect nor the stated direction.
+  fix: |
+    Remove the row, as the review did; at most a regulation-of-gene-expression term with the measured direction.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/EGLN1/EGLN1-ai-review.yaml#L1726

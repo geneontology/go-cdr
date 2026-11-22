@@ -74,6 +74,13 @@ questions.)
 | Date | 2026-11-15 |
 | GO terms | `GO:0005488` binding; `GO:0051378` serotonin binding; `GO:0016594` glycine binding; `GO:0003755` peptidyl-prolyl cis-trans isomerase activity; `GO:0005528` FK506 binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-7-E1](MF-7.examples.yaml): Binding of a synthetic allosteric compound replaced by cAMP binding | Conformant | Prkar2a enables GO:0036094 small molecule binding (IDA, PMID:21177871) |
+| [MF-7-E2](MF-7.examples.yaml): FK506 binding accepted as a characteristic FKBP function | Contested | FKBP4 enables GO:0005528 FK506 binding (TAS, PMID:1376003) |
+
 ## Open questions
 
 1. **Drug-named binding terms.** `GO:0005528` FK506 binding names an exogenous compound. Should such terms be reviewed under the 2020 drug-binding rules?

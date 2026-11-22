@@ -51,6 +51,13 @@ Folding works only if term plus extension is a subclass of the term. "Protein lo
 | Related | [QN-12](../QN/QN-12.md) |
 | GO terms | `GO:0034504` protein localization to nucleus |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-1-E1](AE-1.examples.yaml): A neuronal occurs_in on an enzyme activity, which survives the delete-the-extension test | Conformant | GBA1 enables GO:0004348 glucosylceramidase activity (IMP, PMID:21700325) |
+| [AE-1-E2](AE-1.examples.yaml): A cofactor-dependent Cdc42 arm kept as a bare annotation rather than given a condition extension | Conformant | ARHGEF16 involved_in GO:0032489 regulation of Cdc42 protein signal transduction (IDA, PMID:21139582) |
+
 ## Sources
 
 - wiki: [Happens during](https://wiki.geneontology.org/index.php/Happens_during)

@@ -1,0 +1,48 @@
+record: ONT-13
+examples:
+- id: ONT-13-E1
+  title: A zebrafish alpha-crystallin holdase row moved to an NTR placeholder
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9PUR2
+      symbol: cryaba
+    taxon: NCBITaxon:7955
+    term:
+      term_id: GO:0140309
+      label: unfolded protein holdase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:15692462
+  explanation: |
+    The review kept the measured aggregation-suppression activity but did not leave it on the
+    carrier-specific `GO:0140309`. It recorded MODIFY with `{id: NTR, label: holdase chaperone activity}`,
+    and the core function sets `proposed_molecular_function: holdase chaperone activity` to match a
+    proposal. This is the record's pattern for small heat shock proteins, pending a GO term.
+  see_also:
+  - ONT-1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DANRE/cryaba/cryaba-ai-review.yaml#L324
+- id: ONT-13-E2
+  title: TMF1's core function moved to the newly minted vesicle membrane tethering activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P82094
+      symbol: TMF1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:7770062
+      label: vesicle membrane tethering activity
+    evidence_code: NAS
+  explanation: |
+    When GO minted `GO:7770062`, the TMF1 review added it as the core MF, "the MF formerly requested here
+    as a proposed new term", replacing the stand-in `GO:0060090` molecular adaptor activity, and dropped
+    the proposal. That is the record's second example: swap the id in once the term exists. The NEW row
+    still lacks an explicit relation, which QN-1 requires.
+  see_also:
+  - QN-1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TMF1/TMF1-ai-review.yaml#L368

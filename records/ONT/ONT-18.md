@@ -76,6 +76,15 @@ naming is deprecated ([wiki: Species-Specific Terms](https://wiki.geneontology.o
 | Evidence codes | IBA, IRD |
 | GO terms | `GO:0007259` cell surface receptor signaling pathway via JAK-STAT; `GO:0097696` cell surface receptor signaling pathway via STAT; `GO:0046425` regulation of receptor signaling pathway via JAK-STAT; `GO:0007260` tyrosine phosphorylation of STAT protein; `GO:0009274` peptidoglycan-based cell wall; `GO:0009505` plant-type cell wall; `GO:0009277` fungal-type cell wall; `GO:0005618` cell wall |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-18-E1](ONT-18.examples.yaml): A Dictyostelium STAT's JAK-STAT pathway row moved to the STAT-only sibling | Conformant | statC involved_in GO:0007259 cell surface receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+| [ONT-18-E2](ONT-18.examples.yaml): A worm STAT's JAK-STAT pathway row removed | Conformant | sta-1 involved_in GO:0007259 cell surface receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+| [PH-4-E1](../PH/PH-4.examples.yaml): A JAK-STAT pathway term inherited by a Dictyostelium STAT, moved to the STAT-only term (from [PH-4](../PH/PH-4.md)) | Conformant | statA involved_in GO:0007259 cell surface receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+| [PH-14-E1](../PH/PH-14.examples.yaml): A JAK-STAT negative regulation IBA on worm GEI-17 removed, with the fix routed to the node (from [PH-14](../PH/PH-14.md)) | Conformant | gei-17 involved_in GO:0046426 negative regulation of receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - web: [TAXON_PATHWAY_VARIANCE](https://ai4curation.io/ai-gene-review/pages/projects/TAXON_PATHWAY_VARIANCE.html)

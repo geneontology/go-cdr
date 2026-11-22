@@ -1,0 +1,55 @@
+record: IEA-11
+examples:
+- id: IEA-11-E1
+  title: Proton transport inferred from a cytochrome-c oxidase activity the assembly factor lacks
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q15526
+      symbol: SURF1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:1902600
+      label: proton transmembrane transport
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000108
+  explanation: |
+    The row is a GO inter-ontology inference (`GO_REF:0000108`) whose WITH/FROM in the cached GOA file
+    is `GO:0004129` cytochrome-c oxidase activity, itself a Compara row on SURF1. The review removed the
+    activity because SURF1 is a complex IV assembly factor, and removed the proton-transport row for
+    the same reason. With its premise removed, the inferred row goes too, as the record requires.
+  fix: |
+    Remove both the `GO:0004129` premise and this inferred row.
+  see_also:
+  - PC-10
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SURF1/SURF1-ai-review.yaml#L129
+- id: IEA-11-E2
+  title: Viral entry inferred from a virus receptor row that contradicts its own donor
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0P6J1Y4
+      symbol: Hyal2
+    taxon: NCBITaxon:10181
+    term:
+      term_id: GO:0046718
+      label: symbiont entry into host cell
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000108
+  explanation: |
+    The naked mole-rat row's WITH/FROM is `GO:0001618` virus receptor activity, so it exists only
+    because that row does. The review removed the receptor row (its donor set includes mouse Hyal2,
+    which carries a curated NOT for the same term) and removed this row with it, noting also that no
+    rodent HYAL2 mediates entry of the ovine and caprine viruses concerned. The inferred row falls with
+    its premise.
+  fix: |
+    Remove the premise `GO:0001618` row and this `GO_REF:0000108` row together.
+  see_also:
+  - PIPE-3
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/HETGA/Hyal2/Hyal2-ai-review.yaml#L407

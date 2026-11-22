@@ -1,0 +1,51 @@
+record: BP-12
+examples:
+- id: BP-12-E1
+  title: MEK1 annotated to the ERK1 and ERK2 cascade step
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q02750
+      symbol: MAP2K1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0070371
+      label: ERK1 and ERK2 cascade
+    qualifier: involved_in
+    evidence_code: TAS
+    reference: Reactome:R-HSA-110056
+  explanation: |
+    The evidence identifies the cascade: MEK1 phosphorylates and activates ERK1/2. The review accepted the
+    step term GO:0070371 ERK1 and ERK2 cascade as core. Its ancestor GO:0000165 MAPK cascade follows by
+    inference; the gene's existing MAPK cascade rows have their own IBA and IEA sources and are not
+    re-derived from this evidence.
+  see_also:
+  - BP-1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MAP2K1/MAP2K1-ai-review.yaml#L2960
+- id: BP-12-E2
+  title: An amino-acid-specific aminoacylation process that only restates the MF
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5JTZ9
+      symbol: AARS2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006419
+      label: alanyl-tRNA aminoacylation
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    GO:0006419 alanyl-tRNA aminoacylation pairs one-to-one with GO:0004813 alanine-tRNA ligase activity,
+    which AARS2 already carries. The process term added no specificity beyond the MF; the review notes that
+    GO has since obsoleted these terms for that reason. The informative process-level specificity for AARS2
+    is the compartment.
+  fix: |
+    MODIFY to GO:0070127 tRNA aminoacylation for mitochondrial protein translation, leaving the alanine
+    specificity on the GO:0004813 row.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AARS2/AARS2-ai-review.yaml#L515

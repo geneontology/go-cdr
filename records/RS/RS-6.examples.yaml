@@ -1,0 +1,45 @@
+record: RS-6
+examples:
+- id: RS-6-E1
+  title: Wnt signaling pathway on Pax3, a Wnt target, marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q645N4
+      symbol: pax3-a
+    taxon: NCBITaxon:8355
+    term:
+      term_id: GO:0016055
+      label: Wnt signaling pathway
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000117
+  explanation: |
+    Pax3 is induced by Wnt and mediates Wnt-dependent Slug induction. The review reads that as "a
+    downstream transcriptional target, not a Wnt pathway component" and marks the ARBA row
+    over-annotated, matching its treatment of the IGI row. The record excludes target genes from the
+    pathway term.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/XENLA/pax3-a/pax3-a-ai-review.yaml#L504
+- id: RS-6-E2
+  title: Notch signaling pathway on p27, a readout of Notch inhibition, marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O08769
+      symbol: Cdkn1b
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0007219
+      label: Notch signaling pathway
+    qualifier: acts_upstream_of_or_within
+    evidence_code: ISO
+    reference: GO_REF:0000121
+  explanation: |
+    The donor paper shows that Notch inhibition triggers supporting-cell proliferation in the cochlea.
+    The review says p27 "is at most a downstream readout of the pathway, not a signalling component",
+    and marks the ISO row over-annotated.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Cdkn1b/Cdkn1b-ai-review.yaml#L582

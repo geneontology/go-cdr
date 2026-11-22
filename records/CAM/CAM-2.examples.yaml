@@ -1,0 +1,54 @@
+record: CAM-2
+examples:
+- id: CAM-2-E1
+  title: Calmodulin drawn as two nodes, calcium binding directly activating its own kinase-activator node
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:62b4ffe300004489
+    description: |
+      In "Regulation of the JAK-STAT pathway by calmodulin in response to interferon-gamma (Human)",
+      UniProtKB:P0DP23 (CALM1) enables GO:0005509 calcium ion binding
+      (gomodel:62b4ffe300004489/62b4ffe300004564), which `directly positively regulates` (RO:0002629) a
+      second CALM1 node enabling GO:0043539 protein serine/threonine kinase activator activity
+      (gomodel:62b4ffe300004489/62b4ffe300004590).
+  explanation: |
+    The two nodes have the same enabler and represent a switch inside one gene product: Ca2+ binding turns
+    on calmodulin's activation of CaMKII. The record forbids chaining two nodes of one gene product with a
+    causal edge to represent an activation state. The review, which incorporates a manual review of the
+    model and its three siblings, confirmed the CALM1 -> CALM1 same-gene chain in all four models and called
+    the activator node redundant with the preceding calcium-binding node.
+  fix: |
+    One CALM1 node, enabling GO:0043539 protein serine/threonine kinase activator activity with
+    `has input` CAMK2A, and the calcium dependence carried by that node's type rather than by a second
+    node. The review notes that retyping the first node to GO:0061891 calcium ion sensor activity would
+    also collapse the pair into one.
+  see_also: [CAM-8, CAM-4]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-review.yaml#L128
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-review.yaml#L163
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-src.yaml#L163
+- id: CAM-2-E2
+  title: One PERK phosphorylation drawn as opposite-sign edges to two eIF2alpha nodes
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:66b5638000001589
+    description: |
+      In the PERK / integrated stress response model, UniProtKB:Q9NZJ5 (EIF2AK3) GO:0004694 eukaryotic
+      translation initiation factor 2alpha kinase activity (gomodel:66b5638000001589/66b5638000001633)
+      `directly negatively regulates` one EIF2S1 node (66b5638000001590) and `directly positively
+      regulates` a second EIF2S1 node (66b5638000001608, GO:0160297 IRES-mediated translation initiation
+      factor activity, `has input` ATF4).
+  explanation: |
+    The phosphorylation is a state change caused by another gene product, which the record says is an
+    incoming edge on one node, not a second node for the "activated" form. The review found that
+    phosphorylation only reduces eIF2 activity, that the positive edge "asserts a sign that no eIF2 activity
+    has", and asked for the edge and the duplicate node to be deleted (source defect, PROBABLE).
+  fix: |
+    One eIF2alpha node with the negative edge from PERK; the preferential translation of ATF4 follows from
+    that node by an indirectly negatively regulates edge, as the review proposes.
+  see_also: [CAM-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/66b5638000001589/66b5638000001589-review.yaml#L31
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/66b5638000001589/66b5638000001589-review.yaml#L161

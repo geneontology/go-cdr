@@ -1,0 +1,63 @@
+record: CAM-19
+examples:
+- id: CAM-19-E1
+  title: A TOLLIP adaptor activity consistent with its gene review but carrying the wrong edge sign
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:59cc772c00000000
+    description: |
+      Review of activity gomodel:59cc772c00000000/626b20c100001914: UniProtKB:Q9H0E2 (TOLLIP) GO:0060090
+      molecular adaptor activity, `has input` IRAK1, `directly positively regulates` IRAK1 kinase activity;
+      recorded as verdict WRONG, consistency CONSISTENT, QC flag WRONG_CAUSAL_SIGN, with a source defect
+      asking for RO:0002630.
+  explanation: |
+    The record says consistency judges the function: a correct function with a wrong edge is CONSISTENT plus
+    WRONG_CAUSAL_SIGN, not CONFLICT. The review did exactly that: the MF, input and location agree with the
+    TOLLIP gene review, while the positive edge conflicts with the cited paper (TOLLIP overexpression impairs
+    NF-kappaB activation) and the curated UniProt function. The verdict is anchored in quoted text from the
+    cited paper.
+  see_also: [CAM-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/59cc772c00000000/59cc772c00000000-review.yaml#L322
+- id: CAM-19-E2
+  title: A GO-CAM enabler checked against the gene review that removes the same claims
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:6796b94c00004996
+    description: |
+      Review of activity gomodel:6796b94c00004996/6796b94c00005069: UniProtKB:P24752 enables GO:0034736
+      cholesterol O-acyltransferase activity in the ER; recorded as verdict WRONG, consistency CONFLICT,
+      with a WRONG_GENE_PRODUCT source defect proposing SOAT1 (UniProtKB:P35610).
+  explanation: |
+    The model and the gene review were treated as two assertions to reconcile, not as evidence for each
+    other. The ACAT1 gene review removes the GO:0034736 and GO:0005783 rows that the same paper generated
+    for P24752, and the GO-CAM review reached the same conclusion from the model side: the paper's "ACAT"
+    is the ER sterol O-acyltransferase. It kept the defect at PROBABLE because the paper's hairpin sequence
+    matches mitochondrial ACAT1.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/6796b94c00004996/6796b94c00004996-review.yaml#L23
+- id: CAM-19-E3
+  title: A precomposed CMA targeting term decomposed with a pointer to the GO-CAM that models the context
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P11142
+      symbol: HSPA8
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0061740
+      label: protein targeting to lysosome involved in chaperone-mediated autophagy
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:11559757
+  explanation: |
+    The review modified the row to GO:0006622 protein targeting to lysosome and recorded where the
+    chaperone-mediated autophagy context went: `decomposed_into.gocam_associations` names
+    gomodel:63c0ac2b00001252 and the HSPA8 activity in it, alongside the CMA module element. That is the
+    record's instruction for decomposing an "X involved in Y" term whose Y is modelled.
+  see_also: [BP-11]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HSPA8/HSPA8-ai-review.yaml#L1496

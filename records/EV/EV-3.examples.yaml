@@ -1,0 +1,54 @@
+record: EV-3
+examples:
+- id: EV-3-E1
+  title: An IPI protein binding row whose WITH/FROM names haemoglobin beta
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9ULK0
+      symbol: GRID1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:28514442
+  explanation: |
+    The record's own case. Both GRID1 IPI rows come from large-scale affinity-purification screens and name
+    UniProtKB:P68871, haemoglobin subunit beta, a classic contaminant and not a credible partner for a
+    postsynaptic receptor. The review removed the row under the protein-binding policy and pointed to the
+    trans-synaptic complex annotation for the interactions that matter (cerebellin, neurexins).
+  fix: |
+    Remove bare protein binding. The wrong partner is a source error and should be recorded as a
+    `WRONG_WITH_FROM` source defect, which this review does in prose only (see LIT-14).
+  see_also:
+  - LIT-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GRID1/GRID1-ai-review.yaml#L494
+- id: EV-3-E2
+  title: A NEW signaling adaptor row from an IPI paper on RHIM recruitment
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9H171
+      symbol: ZBP1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0035591
+      label: signaling adaptor activity
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:19590578
+  explanation: |
+    The review proposes `GO:0035591` signaling adaptor activity by IPI from the paper that identified the
+    RHIMs in human DAI and showed they recruit RIPK1 and RIPK3 to relay signals to NF-kappaB. The record's
+    sharpening allows an adaptor MF from IPI only when the same paper shows the binding bridges two named
+    partners or changes a partner's activity, and asks that assay to be recorded as well. Whether
+    recruitment of two kinases plus an NF-kappaB readout meets that bar, and whether the restriction
+    should be formal, is the record's open question.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ZBP1/ZBP1-ai-review.yaml#L869

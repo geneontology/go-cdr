@@ -1,0 +1,44 @@
+record: PC-15
+examples:
+- id: PC-15-E1
+  title: SDHB's own electron transfer as its MF, the complex reaction as its contribution
+  verdict: CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The `core_functions` entry of the human SDHB review: `molecular_function` `GO:0009055` electron
+      transfer activity and `contributes_to_molecular_function` `GO:0008177` succinate dehydrogenase
+      (quinone) activity.
+    refs:
+    - UniProtKB:P21912
+    - GO:0009055
+    - GO:0008177
+  explanation: |
+    SDHB relays electrons through its iron-sulfur clusters within complex II. The review names that
+    subunit-level activity as SDHB's MF and puts the whole-complex reaction, which no subunit performs
+    alone, in `contributes_to_molecular_function`. That is the record's row for a member of an
+    irreducible machine whose part is in the mechanism.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SDHB/SDHB-ai-review.yaml#L1415
+- id: PC-15-E2
+  title: A core Complex I subunit with the machine's activity as its own MF
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The `core_functions` entry of the human NDUFS7 review: `molecular_function` `GO:0008137` NADH
+      dehydrogenase (ubiquinone) activity, with no `contributes_to_molecular_function`.
+    refs:
+    - UniProtKB:O75251
+    - GO:0008137
+  explanation: |
+    The review describes NDUFS7 as a core subunit that binds the [4Fe-4S] cluster N2 and passes
+    electrons to ubiquinone, so it is part of the mechanism of an activity that belongs to the whole
+    complex. Putting the complex activity in `molecular_function` states that NDUFS7 enables it alone.
+    The record asks for the subunit's own part in `molecular_function` and the machine's activity in
+    `contributes_to_molecular_function`, as the NDUFS1 and NDUFV1 reviews in the repo do.
+  fix: |
+    Move `GO:0008137` NADH dehydrogenase (ubiquinone) activity to `contributes_to_molecular_function`
+    and state NDUFS7's own electron-relay activity in `molecular_function`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NDUFS7/NDUFS7-ai-review.yaml#L746

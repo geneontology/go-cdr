@@ -1,0 +1,49 @@
+record: LIT-8
+examples:
+- id: LIT-8-E1
+  title: Chromosome segregation for ParB with molecular work behind the phenotype
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P26497
+      symbol: spo0J
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0007059
+      label: chromosome segregation
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:8071208
+  explanation: |
+    `involved_in` needs the product's own activity to be part of the process. The review accepted the IMP row
+    because the anucleate-cell phenotype is backed by direct parS DNA binding and clamp activity and by
+    recruitment of the Smc machinery, so Spo0J does structural and recruitment work in segregation; the row
+    does not rest on necessity alone.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/spo0J/spo0J-ai-review.yaml#L171
+- id: LIT-8-E2
+  title: Defense response to fungus for a MAP3K from a resistance phenotype
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9C5H5
+      symbol: MAPKKK5
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0050832
+      label: defense response to fungus
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:27679653
+  explanation: |
+    The review found that the phenotype shows necessity for full resistance but that MAPKKK5 only relays the
+    signal through the MAPK cascade and performs none of the defensive steps, and kept the row as non-core.
+    By the record, a requirement without the MF being part of the process takes the weakest relation that
+    fits, not `involved_in`.
+  fix: |
+    `acts_upstream_of_or_within` defense response to fungus, non-core; the core role is the MAP3K activity in
+    PRR-triggered MAPK signalling, which the review already records.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/MAPKKK5/MAPKKK5-ai-review.yaml#L404

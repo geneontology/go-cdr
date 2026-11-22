@@ -1,0 +1,49 @@
+record: IEA-16
+examples:
+- id: IEA-16-E1
+  title: A proposed NCBIfam mapping whose reviewed gains were checked one by one
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: ncbifam2go (proposed)
+    refs:
+    - NCBIFAM:TIGR02791
+    - GO:0043684
+    description: |
+      The repo's proposed mapping of NCBIfam TIGR02791 (P-type DNA transfer protein VirB5) to
+      `GO:0043684` type IV secretion system complex, as `skos:broadMatch` because VirB5 is part of the
+      complex.
+  explanation: |
+    The proposal measured unique value (298 entries matched, none already carrying the term) and then
+    inspected the reviewed entries behind the reviewed gain rather than trusting the count: all four
+    are Brucella VirB5, real T4SS subunits. The same check overturned two other proposed gains, which
+    were plant and tobacco paralogs. Showing value and checking accuracy on the entries that matter is
+    what the record asks of a new pipeline.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/NCBIFam/ncbifam2go.sssom.yaml#L521
+- id: IEA-16-E2
+  title: A specific dGTPase mapping proposed for a substrate-heterogeneous family
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: ncbifam2go (proposed)
+    refs:
+    - NCBIFAM:NF002326
+    - GO:0008832
+    - GO:0016793
+    - GO:0106375
+    description: |
+      An earlier proposal refined NCBIfam NF002326 from NCBI's `GO:0016793` to the strict
+      `GO:0008832` dGTPase activity for the whole family.
+  explanation: |
+    Structural verification on 2026-07-18 showed the family is substrate-heterogeneous, so the strict
+    term was not true of every member, and the 13 reviewed entries it would add were all "dGTPase-like"
+    proteins on which curators had withheld an EC number. The proposal's apparent gain was measured
+    before its accuracy, which the record's rubric puts the other way round.
+  fix: |
+    The repo's corrected proposal: map the family to `GO:0016793` triphosphoric monoester hydrolase
+    activity, true for all members, and record `GO:0008832` dGTPase activity and `GO:0106375`
+    deoxynucleoside triphosphate hydrolase activity as narrowMatch sub-clades to resolve per member, not
+    to propagate family-wide.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/NCBIFam/ncbifam2go.sssom.yaml#L351

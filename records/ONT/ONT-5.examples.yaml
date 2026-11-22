@@ -1,0 +1,67 @@
+record: ONT-5
+examples:
+- id: ONT-5-E1
+  title: An obsolete vesicle docking process on USO1 moved to the tethering activity through consider
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O60763
+      symbol: USO1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0048211
+      label: Golgi vesicle docking
+      obsolete: true
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: '`GO:0048211` Golgi vesicle docking was obsoleted because it represents a molecular function,
+    with
+
+    `consider` targets in the MF aspect. The review chose between them by mechanism (p115 bridges COPII
+
+    vesicles to cis-Golgi membranes through GM130/giantin, which is long-range tethering) and moved the
+
+    row to `GO:7770062` vesicle membrane tethering activity. The record says a cross-aspect replacement
+    is a
+
+    curator''s choice, never a mechanical redirect; note that the row''s `involved_in` relation must also
+
+    become an MF relation, which the review does not state.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/USO1/USO1-ai-review.yaml#L169
+- id: ONT-5-E2
+  title: An obsolete vesicle tethering row on a TRAPP subunit moved to the transport process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9Y5R8
+      symbol: TRAPPC1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0099022
+      label: obsolete vesicle tethering
+      obsolete: true
+    qualifier: involved_in
+    evidence_code: NAS
+    reference: PMID:27066478
+  explanation: 'For `GO:0099022` vesicle tethering, the review did not repoint the row to the new tethering
+    MF, saying
+
+    mammalian TRAPP tethering "remains unresolved", and instead chose the transport process the subunit
+
+    takes part in, `GO:0006888` endoplasmic reticulum to Golgi vesicle-mediated transport. The record
+    says
+
+    each such annotation needs a curator to choose the transport process the activity is part of, and
+    that
+
+    the complex term is not the MF replacement.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TRAPPC1/TRAPPC1-ai-review.yaml#L346

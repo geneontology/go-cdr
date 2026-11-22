@@ -1,0 +1,44 @@
+record: CAM-11
+examples:
+- id: CAM-11-E1
+  title: RNF115 ubiquitination of RAB1A and RAB13 removes the input of GDI1
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:65692e7e00001822
+    description: |
+      Activity gomodel:65692e7e00001822/657ba49f00000074 in "RNF115 inhibition of TLR transport to cell surface
+      (Human)": UniProtKB:Q9Y4L5 (RNF115) GO:0061630 ubiquitin protein ligase activity, `has input` RAB1A and
+      RAB13, part_of protein K11-linked ubiquitination, `removes input for` (RO:0012010) GDI1
+      GO:0005092 GDP-dissociation inhibitor activity.
+  explanation: |
+    Both activities act on the same targets, and the upstream modification makes them unavailable to the
+    downstream one, which is the ubiquitin-code case the record names. The review found the relation "the
+    mechanistically accurate representation: RNF115 does not act on GDI1 at all, it modifies GDI1's
+    substrate so that GDI1 can no longer recover it", citing K11-linked ubiquitination of specific RAB
+    lysines (PMID:35343654).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/65692e7e00001822/65692e7e00001822-review.yaml#L222
+- id: CAM-11-E2
+  title: A coactivator removes input for a ligase, with no shared input stated and no evidence
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:6606056e00000678
+    description: |
+      Activity gomodel:6606056e00000678/6606056e00000679 in "UBR5 ubiquitinates ligand-bound ESR1 when ESR1
+      is not associated with Nuclear receptor coactivators (NCOAs) (Human)": UniProtKB:Q15788 (NCOA1)
+      GO:0003713 transcription coactivator activity, no `has input`, `removes input for` (RO:0012010) the
+      UBR5 ubiquitin protein ligase activity, whose input is ESR1.
+  explanation: |
+    The record applies `removes input for` only when both activities act on the same site of the same
+    target. In this model the NCOA1 activity names no input, so the shared target is not stated, and the
+    edge has no evidence line (review source defect, CONFIRMED). The review also doubted that competitive
+    occupancy of the receptor cleft, rather than a modification, is what the relation means, but raised it
+    only as part of that defect.
+  fix: |
+    Add ESR1 (UniProtKB:P03372) as `has input` of the NCOA1 activity and attach evidence to the edge,
+    noting that the competition was shown for RARA (PMID:37478846), as the review requests.
+  see_also: [CAM-15]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/6606056e00000678/6606056e00000678-review.yaml#L205

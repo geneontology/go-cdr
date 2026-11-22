@@ -1,0 +1,51 @@
+record: BP-5
+examples:
+- id: BP-5-E1
+  title: RDR6 acts upstream of siRNA-mediated translational repression by making the dsRNA precursor
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9SG02
+      symbol: RDR6
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0070549
+      label: siRNA-mediated gene silencing by inhibition of translation
+    qualifier: acts_upstream_of_positive_effect
+    evidence_code: IMP
+    reference: PMID:32376953
+  explanation: |
+    The mechanism is known and lies outside the process: RDR6 synthesizes the double-stranded RNA that DCL2
+    processes into the 22-nt siRNAs, and those siRNAs then repress translation. RDR6 neither performs the
+    translational repression nor regulates it, so `acts upstream of, positive effect` GO:0070549 is the
+    honest relation. RDR6 also carries `involved_in` GO:0030422 siRNA processing for its own step, as the
+    record prefers, so this row adds only the downstream link.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/RDR6/RDR6-ai-review.yaml#L203
+- id: BP-5-E2
+  title: acts_upstream_of on a regulation term for a transcription factor that induces NOS3
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9ET58
+      symbol: Klf2
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0045429
+      label: positive regulation of nitric oxide biosynthetic process
+    qualifier: acts_upstream_of
+    evidence_code: ISO
+    reference: GO_REF:0000121
+  explanation: |
+    The record defines `acts upstream of` as excluding activities that regulate the process. The review
+    kept this ISO row as non-core because KLF2 transcriptionally induces NOS3 and so increases NO synthase
+    activity. By the record's definition, inducing the enzyme's expression makes KLF2 a regulator of
+    GO:0045429 positive regulation of nitric oxide biosynthetic process, and the relation would be
+    `involved_in`. The review read `acts_upstream_of` as "indirect". Where indirect regulation through
+    gene expression falls is the boundary the record says is still debated, so the example is contested
+    rather than settled.
+  discussion: https://github.com/geneontology/go-annotation/issues/1532
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Klf2/Klf2-ai-review.yaml#L880

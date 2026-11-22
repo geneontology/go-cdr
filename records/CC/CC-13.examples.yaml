@@ -1,0 +1,54 @@
+record: CC-13
+examples:
+- id: CC-13-E1
+  title: An IDA Golgi row from an overexpressed protein "resembling the Golgi"
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NPB3
+      symbol: CABP2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005794
+      label: Golgi apparatus
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:19338761
+  explanation: |
+    The record's own case. The review read the full text: fluorescent CaBP2 overexpressed in Neuro2A cells
+    gives a perinuclear signal "resembling the Golgi apparatus", and every marker co-localisation in the
+    paper was done on CaBP7 and CaBP8, not CaBP2. A pattern without a marker is not a compartment, and
+    because the paper is readable, curator deference does not save the row.
+  fix: |
+    No Golgi row for CABP2 until a marker co-stain (GM130, giantin or TGN46) of tagged or endogenous
+    CaBP2 shows one; the review marks the IDA and IEA rows over-annotated.
+  see_also:
+  - LIT-4
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CABP2/CABP2-ai-review.yaml#L737
+- id: CC-13-E2
+  title: A minor marker-confirmed Golgi pool of wild-type ABCA1
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O95477
+      symbol: ABCA1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005794
+      label: Golgi apparatus
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    A wild-type tagged protein at moderate expression with a marker co-stain counts, including a minor
+    pool beside the main location. The review could not read the mouse donor paper behind this Ensembl
+    projection, so it used the human gene's own evidence: in cells stably expressing wild-type HA-ABCA1
+    the minor intracellular pool co-stains with giantin, and brefeldin A lowers surface ABCA1. It kept the
+    row non-core as a transit pool and added no Golgi membrane row.
+  see_also:
+  - CC-4
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ABCA1/ABCA1-ai-review.yaml#L276

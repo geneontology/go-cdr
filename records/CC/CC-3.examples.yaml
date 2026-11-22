@@ -1,0 +1,50 @@
+record: CC-3
+examples:
+- id: CC-3-E1
+  title: An IBA is_active_in nucleus row kept as a location claim only
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9Y614
+      symbol: ACTL7B
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005634
+      label: nucleus
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    PAINT emits `is_active_in` for CC IBA rows, so the record asks the reviewer to judge the location and
+    to say when the activity is not shown there. The review kept the nuclear row as non-core and said
+    explicitly that `located_in` would be the defensible qualifier: no nuclear activity has been measured
+    for ACTL7B, the proposed remodeller mechanism is computational docking, and the HDAC mislocalisation
+    phenotype shows a requirement, not an activity.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ACTL7B/ACTL7B-ai-review.yaml#L327
+- id: CC-3-E2
+  title: An IBA is_active_in cytoplasm row marked over-annotated for its qualifier alone
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9H9F9
+      symbol: ACTR5
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005737
+      label: cytoplasm
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review found the donors sound (Arabidopsis ARP5 and ACTR5 itself each have a cytoplasm IDA from
+    nucleo-cytoplasmic shuttling) but every characterised ARP5 activity nuclear, and marked the row
+    over-annotated as "a qualifier defect, not a term defect", recommending that PAINT node PTN000233752
+    emit `located_in`. The record would instead keep the location and say the row is accepted as a
+    location claim only. Which is right turns on the record's open question: if PAINT emitted
+    `located_in` for CC IBDs with `located_in` seeds, this row would not exist in its current form.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ACTR5/ACTR5-ai-review.yaml#L430

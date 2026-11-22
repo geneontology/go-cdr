@@ -87,6 +87,13 @@ code (`GO:0042800` histone H3K4 methyltransferase activity) and ncRNA modificati
 | Evidence codes | IPI |
 | GO terms | `GO:0003824` catalytic activity; `GO:0004620` glycerophospholipase activity; `GO:0036424` L-phosphoserine phosphatase activity; `GO:0042800` histone H3K4 methyltransferase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-9-E1](MF-9.examples.yaml): An IPI row refined to a peroxiredoxin catalytic term | Non-conformant | TSA2 enables GO:0008379 thioredoxin peroxidase activity (IPI, PMID:41807831) |
+| [MF-9-E2](MF-9.examples.yaml): The NAD(P)+ glutamate dehydrogenase term chosen as core because the enzyme uses both | Non-conformant | GLUD2 enables GO:0004353 L-glutamate dehydrogenase [NAD(P)+] activity (IEA, GO_REF:0000003) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

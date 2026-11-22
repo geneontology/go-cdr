@@ -1,0 +1,76 @@
+record: BP-2
+examples:
+- id: BP-2-E1
+  title: A ubiquitination substrate annotated to protein ubiquitination
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8LPS2
+      symbol: ACD6
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0016567
+      label: protein ubiquitination
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:24923602
+  explanation: |
+    The IDA paper shows that ACD6 is ubiquitinated. The review asked which gene product performs the step
+    and found that the ubiquitin transfer is done by other proteins: ACD6 has no E2, E3 or adaptor activity.
+    Being the substrate of GO:0016567 protein ubiquitination is not participation, and ACD6 contributes no
+    scaffold, cofactor or chemistry to the reaction.
+  fix: |
+    REMOVE the process row; the modification of ACD6 itself is recorded as a PTM (the review notes it is in
+    UniProt), not as a process annotation.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/ACD6/ACD6-ai-review.yaml#L301
+- id: BP-2-E2
+  title: Fibrin(ogen) alpha chain kept in fibrinolysis as the cofactor case
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02671
+      symbol: FGA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0042730
+      label: fibrinolysis
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:16846481
+  explanation: |
+    Fibrin is the substrate of plasmin, so the record's exception has to be earned. The review found
+    participation evidence: human alpha-C oligomers enhance tPA-mediated plasmin formation and alpha-C
+    truncation reduces that support, which is the record's cofactor case for GO:0042730 fibrinolysis. It
+    also limited the claim, noting that the alpha chain is not a plasminogen activator and that free
+    fibrinopeptide A is not assigned the cofactor role.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FGA/FGA-ai-review.yaml#L1598
+- id: BP-2-E3
+  title: Growth on glycerol read as COQ3 participation in glycerol metabolism
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NZJ6
+      symbol: COQ3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006071
+      label: glycerol metabolic process
+    qualifier: involved_in
+    evidence_code: IGI
+    reference: PMID:10777520
+  explanation: |
+    This is the record's necessity-data case. The IGI row rests on growth on glycerol, which the review
+    reads as a readout of restored respiration: respiration needs coenzyme Q, which COQ3 helps make. COQ3
+    performs no step of GO:0006071 glycerol metabolic process; the growth medium is not the function.
+  fix: |
+    REMOVE. COQ3's process is GO:0006744 ubiquinone biosynthetic process, which the gene already carries;
+    the growth data can corroborate that row but cannot create a glycerol-metabolism one.
+  see_also:
+  - BP-6
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/COQ3/COQ3-ai-review.yaml#L511

@@ -1,0 +1,27 @@
+record: QN-15
+examples:
+- id: QN-15-E1
+  title: A virus receptor activity propagated from a donor set that contains a curated NOT
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0P6J1Y4
+      symbol: Hyal2
+    taxon: NCBITaxon:10181
+    term:
+      term_id: GO:0001618
+      label: virus receptor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    The naked mole-rat review removed the row after finding that its `WITH/FROM` lists mouse Hyal2
+    alongside human HYAL2, and that GOA records a curated NOT `enables` `GO:0001618` IDA on that same
+    mouse protein (it neither binds Env nor mediates entry). "The pipeline propagated a positive assertion
+    from a donor set that contains a curated negation for the identical term." The record names this
+    case as the pattern: a propagated positive that contradicts a sound curated NOT is not accepted by
+    deference. The row is an IEA rule transfer rather than an IBA, so the fix lies in the transfer rule
+    rather than a PAINT loss.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/HETGA/Hyal2/Hyal2-ai-review.yaml#L463

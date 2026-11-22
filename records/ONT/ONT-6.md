@@ -66,6 +66,12 @@ is removed if nothing fits ([Drive: Protein oligomerization obsoletion proposal]
 | Evidence codes | IDA, ISO |
 | GO terms | `GO:0140355` cargo receptor ligand activity; `GO:0038024` cargo receptor activity; `GO:0031419` cobalamin binding; `GO:0015889` cobalamin transport |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-6-E1](ONT-6.examples.yaml): Transcobalamin's cargo receptor ligand activity accepted as its core function | Non-conformant | TCN2 enables GO:0140355 cargo receptor ligand activity (EXP, PMID:3782074) |
+
 ## Sources
 
 - web: [CARGO_RECEPTOR_LIGAND_ACTIVITY_OBSOLETION](https://ai4curation.io/ai-gene-review/pages/projects/CARGO_RECEPTOR_LIGAND_ACTIVITY_OBSOLETION.html)

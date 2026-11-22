@@ -1,0 +1,50 @@
+record: CC-5
+examples:
+- id: CC-5-E1
+  title: DAF-16 in the cytoplasm recorded with located_in
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O16850
+      symbol: daf-16
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0005737
+      label: cytoplasm
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:11381260
+  explanation: |
+    The record's own example: DAF-16 is held in the cytoplasm until insulin signalling is relieved and
+    acts as a transcription factor in the nucleus. This IDA row records the cytoplasmic pool with
+    `located_in`, which is the relation the record asks for on a sequestering compartment, and the review
+    accepts it beside the gene's direct-evidence nucleus rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/daf-16/daf-16-ai-review.yaml#L2390
+- id: CC-5-E2
+  title: An is_active_in row for heat-stress sequestration in a nucleolar inclusion
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O59790
+      symbol: ark1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0140602
+      label: nucleolar peripheral inclusion body
+    qualifier: is_active_in
+    evidence_code: IDA
+    reference: PMID:33176152
+  explanation: |
+    The record reserves `is_active_in` for the compartment where the protein works and puts sequestration
+    under `located_in`. The review kept this IDA row as non-core but noted that "is_active_in" is generous,
+    because the observation is acute heat-stress aggregation of the Aurora kinase at the nucleolar
+    periphery, which "represents sequestration rather than function". The location is real; the relation
+    is not.
+  fix: |
+    `located_in` nucleolar peripheral inclusion body, kept non-core; the kinase's working compartments
+    carry the `is_active_in` claim.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/ark1/ark1-ai-review.yaml#L551

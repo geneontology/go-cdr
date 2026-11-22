@@ -95,6 +95,15 @@ unless the activity is core.
 | Evidence codes | IBA, ISS, IEA |
 | GO terms | `GO:0005789` endoplasmic reticulum membrane |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-4-E1](CC-4.examples.yaml): An ISS Golgi row resting on transit of a plasma-membrane pump | Non-conformant | ATP1A1 located_in GO:0005794 Golgi apparatus (ISS, GO_REF:0000024) |
+| [CC-4-E2](CC-4.examples.yaml): An agonist-driven retrograde Golgi pool of a GPCR kept as non-core | Conformant | ADRB2 located_in GO:0005794 Golgi apparatus (IDA, PMID:27481942) |
+| [CC-13-E2](CC-13.examples.yaml): A minor marker-confirmed Golgi pool of wild-type ABCA1 (from [CC-13](CC-13.md)) | Conformant | ABCA1 located_in GO:0005794 Golgi apparatus (IEA, GO_REF:0000107) |
+| [LIT-4-E1](../LIT/LIT-4.examples.yaml): An ER row for a sodium pump resting on a retained migraine mutant (from [LIT-4](../LIT/LIT-4.md)) | Non-conformant | ATP1A2 is_active_in GO:0005783 endoplasmic reticulum (IEA, GO_REF:0000107) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

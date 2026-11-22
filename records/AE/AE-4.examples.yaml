@@ -1,0 +1,54 @@
+record: AE-4
+examples:
+- id: AE-4-E1
+  title: A specific vitamin K epoxide recorded as the output of gamma-carboxylation
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P38435
+      symbol: GGCX
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008488
+      label: gamma-glutamyl carboxylase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:17073445
+    extension: BFO:0000050(GO:0042373),RO:0002233(CHEBI:28433),RO:0002234(CHEBI:15759)
+  explanation: |
+    GO:0008488 names only a generic "vitamin K epoxide" as a product. The `has_output` CHEBI:15759
+    2,3-epoxyphylloquinone names the specific epoxide formed from the specific input, phyllohydroquinone, and
+    both belong to one reaction. That is the case the record allows. The review accepted the row and
+    judged the chemistry supported by the cited abstract and by direct assays of the human enzyme.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GGCX/GGCX-ai-review.yaml#L883
+- id: AE-4-E2
+  title: Water recorded as an output of a peroxidase
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P22079
+      symbol: LPO
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004601
+      label: peroxidase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:6295491
+    extension: RO:0002233(CHEBI:16240),RO:0002233(CHEBI:18022),RO:0002234(CHEBI:15377),RO:0002234(CHEBI:133907)
+  explanation: |
+    The UniProt row lists water (CHEBI:15377) as a `has_output`, alongside hypothiocyanous acid. Water is a
+    currency product, which the record excludes, and the generic peroxidase definition already names it
+    ("ROH + H2O"). The remaining atoms describe thiocyanate peroxidation, for which GO has a specific term.
+    The review MODIFYed the row to that term, which makes the whole extension redundant, but did not say
+    what should happen to the extension.
+  fix: |
+    Use the review's replacement, GO:0036393 thiocyanate peroxidase activity, without an extension: its
+    definition names thiocyanate, H2O2, hypothiocyanous acid and water. If GO:0004601 were kept, keep the
+    thiocyanate input and hypothiocyanous acid output and drop the water output.
+  see_also: [AE-3, AE-10]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LPO/LPO-ai-review.yaml#L365

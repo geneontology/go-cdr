@@ -69,6 +69,14 @@ The relation was introduced at the 2017 Cambridge GOC meeting for this case ([go
 | Related | [BP-7](BP-7.md), [QN-7](../QN/QN-7.md) |
 | GO terms | `GO:0006915` apoptotic process; `GO:0090200` positive regulation of release of cytochrome c from mitochondria |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-4-E1](BP-4.examples.yaml): A nuclease's effect on antimicrobial gene expression kept as a signed upstream annotation | Conformant | nuc-1 acts_upstream_of_or_within_positive_effect GO:0002785 negative regulation of antimicrobial peptide production (IMP, PMID:26251453) |
+| [BP-4-E2](BP-4.examples.yaml): An usher annotated as involved in cell adhesion from an adhesion-defect phenotype | Non-conformant | cupA3 involved_in GO:0007155 cell adhesion (IMP, PMID:11381121) |
+| [BP-4-E3](BP-4.examples.yaml): A new upstream heat-response row without the sign its own evidence gives | Non-conformant | CnoX acts_upstream_of_or_within GO:0009408 response to heat (IMP, PMID:18657513) |
+
 ## Sources
 
 - issue: [go-annotation#1517](https://github.com/geneontology/go-annotation/issues/1517)

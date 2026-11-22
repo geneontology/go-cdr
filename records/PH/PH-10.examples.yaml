@@ -1,0 +1,28 @@
+record: PH-10
+examples:
+- id: PH-10-E1
+  title: A protein refolding IBA on CRYAA removed because the gene carries a curated NOT
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02489
+      symbol: CRYAA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0042026
+      label: protein refolding
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review removed the IBA because CRYAA is a holdase that does not refold proteins, and because
+    GOA's own NOT `involved_in` `GO:0042026` on CRYAA states this directly; the six Drosophila seeds do
+    refold, so this is "a transfer-failure rather than a bad source". The record says a curated NOT on a
+    gene should block a contradicting positive IBA on that gene, and uses this pair as its worked
+    example. The broader protein folding term is not blocked by the NOT.
+  see_also:
+  - QN-15
+  - QN-16
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CRYAA/CRYAA-ai-review.yaml#L174

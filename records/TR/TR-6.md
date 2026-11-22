@@ -76,6 +76,14 @@ sequence-specific DNA binding transcription factors and RNA polymerase".
 | Evidence codes | IBA |
 | GO terms | `GO:0006351` DNA-templated transcription; `GO:0003713` transcription coactivator activity; `GO:0016251` RNA polymerase II general transcription initiation factor activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-6-E1](TR-6.examples.yaml): TFIIF annotated to RNA polymerase II general transcription initiation factor activity | Conformant | GTF2F2 enables GO:0016251 RNA polymerase II general transcription initiation factor activity (ISS, GO_REF:0000024) |
+| [TR-6-E2](TR-6.examples.yaml): TFIIF annotated to positive regulation of transcription by RNA polymerase II | Non-conformant | GTF2F2 involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (IDA, PMID:15351637) |
+| [TR-6-E3](TR-6.examples.yaml): A Mediator subunit annotated to DNA-templated transcription | Non-conformant | MED13L involved_in GO:0006351 DNA-templated transcription (IEA, GO_REF:0000043) |
+
 ## Sources
 
 - issue: [go-annotation#4554](https://github.com/geneontology/go-annotation/issues/4554)

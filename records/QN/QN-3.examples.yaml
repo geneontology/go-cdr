@@ -1,0 +1,73 @@
+record: QN-3
+examples:
+- id: QN-3-E1
+  title: A depalmitoylase placed upstream of sperm mitochondrial sheath assembly, with a direction
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6PE15
+      symbol: Abhd10
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0120317
+      label: sperm mitochondrial sheath assembly
+    qualifier: acts_upstream_of_positive_effect
+    evidence_code: IMP
+    reference: PMID:41285782
+  explanation: |
+    The review proposed this row from a knockout with a sheath-assembly defect and hyper-palmitoylated
+    tethering factors, and argued that ABHD10 does not itself tether mitochondria (SPATA19/GK2 do) but
+    acts earlier, enzymatically, by depalmitoylation. That is the record's case for `acts_upstream_of`
+    with a direction: the mechanism is known, the activity comes earlier, and it is not a step of the
+    process, so `involved_in` would claim too much.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Abhd10/Abhd10-ai-review.yaml#L751
+- id: QN-3-E2
+  title: A receptor's involved_in neuron projection development moved to the regulation term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0AAX6QC09
+      symbol: Ntrk1
+    taxon: NCBITaxon:10181
+    term:
+      term_id: GO:0031175
+      label: neuron projection development
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000117
+  explanation: |
+    The naked mole-rat review found that TrkA converts an NGF signal into neurite elaboration "it is not
+    itself part of the machinery that builds the projection", and replaced the term with `GO:0010976`
+    positive regulation of neuron projection development. The record's rule detail says a regulator is
+    `involved_in` "regulation of X", not `involved_in` X, and that the regulation term carries the
+    direction itself.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/HETGA/Ntrk1/Ntrk1-ai-review.yaml#L441
+- id: QN-3-E3
+  title: A loss-of-function conidiation defect proposed with the bare upstream relation
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q7SB37
+      symbol: acon-3
+    taxon: NCBITaxon:367110
+    term:
+      term_id: GO:0048315
+      label: conidium formation
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IMP
+    reference: PMID:15126394
+  explanation: |
+    The review rightly declined `involved_in`, because ACON-3's molecular activity is uncharacterized,
+    and proposed the row from a loss-of-function conidiation defect. But it used the bare
+    `acts_upstream_of_or_within`. The record says phenotype-based BP rows should pick a direction
+    whenever the data show one and that the bare relation is a grouping relation that should be rare; a
+    mutant that fails to form conidia shows a positive effect.
+  fix: |
+    Propose the row with `acts_upstream_of_or_within_positive_effect` on `GO:0048315` conidium formation.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/NEUCR/acon-3/acon-3-ai-review.yaml#L34

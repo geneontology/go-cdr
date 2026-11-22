@@ -1,0 +1,24 @@
+record: PH-9
+examples:
+- id: PH-9-E1
+  title: A fungal IRD on protein refolding whose loss clade contains a seed of the blocked IBD
+  verdict: CONFORMANT
+  subject:
+    subject_kind: family
+    family: PANTHER:PTN001065099
+    description: |
+      Fungal cytosolic Hsp70 node in PTHR19375 (HEAT SHOCK PROTEIN 70KDA), carrying an IRD (NOT) for
+      `GO:0042026` protein refolding sourced from the ancestral IBD at PTN000452648.
+    refs:
+    - PANTHER:PTHR19375
+  explanation: |
+    The family review assessed the IRD as `LOSS_TOO_BROAD`. The node spans the SSA, SSB, SSZ1 and
+    LHS1-like branches; the loss is defensible for SSB and SSZ1, which fold nascent chains on the
+    ribosome, but *S. cerevisiae* SSA1 "is itself one of the experimental seeds of the ancestral refolding
+    IBD" and carries two refolding IDA rows. The record requires checking, before placing a loss, that the
+    loss clade does not contain a seed of the IBD it blocks, and this is its counter-example; the review
+    asks for the IRD to move onto the SSB/SSZ1 branches.
+  see_also:
+  - PH-19
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/interpro/panther/PTHR19375/PTHR19375-review.yaml#L314

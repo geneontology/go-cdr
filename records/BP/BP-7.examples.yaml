@@ -1,0 +1,76 @@
+record: BP-7
+examples:
+- id: BP-7-E1
+  title: The polycystin sensory channel LOV-1 kept in mating behavior
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q09624
+      symbol: lov-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0007617
+      label: mating behavior
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:10517638
+  explanation: |
+    This is one of the record's worked examples. Behaviour is annotated when the gene product acts in the
+    circuit that produces it: LOV-1 is a polycystin channel in the male sensory neurons that mediate the
+    mating response and vulva location. The review accepted the general GO:0007617 mating behavior row as
+    covering those specific defects.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/lov-1/lov-1-ai-review.yaml#L485
+- id: BP-7-E2
+  title: An InterPro mapping to egg-laying behavior for a presenilin
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P52166
+      symbol: sel-12
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0018991
+      label: egg-laying behavior
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    GO:0018991 egg-laying behavior is an organism-level process, and the row is an InterPro2GO mapping
+    with no mechanism behind it. The review found that the sel-12 egg-laying defect is an anatomical
+    consequence of failed Notch-dependent uterine pi cell fate, not an action of SEL-12 in the egg-laying
+    circuit. A family signature cannot supply the mechanism the record requires.
+  fix: |
+    REMOVE the electronic row. The phenotype bears on Notch-dependent pi cell fate, which is where any
+    annotation from it would belong.
+  see_also:
+  - BP-15
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/sel-12/sel-12-ai-review.yaml#L415
+- id: BP-7-E3
+  title: HGF kept on the bare positive regulation of cell population proliferation
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P17945
+      symbol: Hgf
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0008284
+      label: positive regulation of cell population proliferation
+    qualifier: involved_in
+    evidence_code: TAS
+    reference: PMID:12181355
+  explanation: |
+    The record follows the 2018–2019 threads: GO:0008284 should not be used directly, and a cell-type child
+    or a cell-type extension is preferred. The review accepted this TAS row because HGF is a mitogen for
+    many cell types (hepatocytes, satellite cells, epithelia), so it judged the general term the right fit
+    for a broad-spectrum growth factor. The mechanism is not in question; what is open is whether a
+    multi-cell-type mitogen should carry the cell-type-free term, or several cell-type-specific rows. The
+    record notes that this is practice, not enforcement.
+  discussion: https://github.com/geneontology/go-annotation/issues/2204
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Hgf/Hgf-ai-review.yaml#L256

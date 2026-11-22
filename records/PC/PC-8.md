@@ -71,6 +71,12 @@ error; one 2017 audit found such rows produced by inference pipelines
 | Date | 2026-11-15 |
 | GO terms | `GO:0008177` succinate dehydrogenase (quinone) activity; `GO:0000104` succinate dehydrogenase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-8-E1](PC-8.examples.yaml): SDHA given the parent succinate dehydrogenase activity for its isolated half-reaction | Contested | SDHA GO:0000104 succinate dehydrogenase activity (IDA, PMID:7550341) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

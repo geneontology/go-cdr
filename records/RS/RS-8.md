@@ -97,6 +97,14 @@ Receptor-specific binding terms (GO:0005112 Notch binding, GO:0005109 frizzled b
 | Date | 2026-11-15 |
 | GO terms | `GO:0048018` receptor ligand activity; `GO:0005112` Notch binding; `GO:0005109` frizzled binding; `GO:0005113` patched binding; `GO:0048495` Roundabout binding; `GO:0061355` Wnt protein secretion; `GO:0007225` patched ligand maturation; `GO:0038109` Kit signaling pathway; `GO:0005173` stem cell factor receptor binding; `GO:0090263` positive regulation of canonical Wnt signaling pathway; `GO:0038034` signal transduction in absence of ligand |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-8-E1](RS-8.examples.yaml): Kit signaling pathway proposed for KITLG, the gap the ligand survey found | Conformant | KITLG involved_in GO:0038109 Kit signaling pathway (IDA, PMID:17662946) |
+| [RS-8-E2](RS-8.examples.yaml): Positive regulation of PLC-activating GPCR signalling on GRP moved to the pathway | Conformant | GRP involved_in GO:1900738 positive regulation of phospholipase C-activating G protein-coupled receptor signaling pathway (IEA, GO_REF:0000107) |
+| [RS-8-E3](RS-8.examples.yaml): Positive regulation of Notch signaling kept as non-core on the ligand Jag1 | Non-conformant | Jag1 involved_in GO:0045747 positive regulation of Notch signaling pathway (ISO, GO_REF:0000121) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

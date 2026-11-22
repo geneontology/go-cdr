@@ -104,6 +104,14 @@ Worked examples.
 | Related | [MF-6](MF-6.md) |
 | GO terms | `GO:0005515` protein binding; `GO:0005068` transmembrane receptor protein tyrosine kinase adaptor activity; `GO:0005091` guanyl-nucleotide exchange factor adaptor activity; `GO:0001784` phosphotyrosine residue binding; `GO:0051082`  (obsolete); `GO:0044183` protein folding chaperone; `GO:0140309` unfolded protein holdase activity; `GO:0140318` protein transporter activity; `GO:0019901` protein kinase binding; `GO:0035612` AP-2 adaptor complex binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-3-E1](MF-3.examples.yaml): A GRB2 protein binding row refined to receptor tyrosine kinase adaptor activity | Conformant | GRB2 enables GO:0005515 protein binding (IPI, PMID:19172738) |
+| [MF-3-E2](MF-3.examples.yaml): An obsolete unfolded protein binding row moved to the proposed holdase term | Conformant | DNAJB6 enables GO:0051082 unfolded protein binding (IDA, PMID:21231916) |
+| [MF-3-E3](MF-3.examples.yaml): CRYAB's holdase evidence moved to the carrier term | Contested | CRYAB enables GO:0051082 unfolded protein binding (IPI, PMID:16303126) |
+
 ## Open questions
 
 1. **Holdase term.** `GO:0051082` unfolded protein binding is obsolete, and `GO:0140309` still requires escorting the client to an acceptor. In-situ holdases (CRYAA, CRYAB, HSPB6, CLU, DNAJB6, DNAJB8) need a general holdase chaperone term.

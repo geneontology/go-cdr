@@ -1,0 +1,52 @@
+record: PH-5
+examples:
+- id: PH-5-E1
+  title: A response to iron ion IBA on a maize iron-chelate transporter, seeded by expression rows
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A1D6HET4
+      symbol: LOC541800
+    taxon: NCBITaxon:4577
+    term:
+      term_id: GO:0010039
+      label: response to iron ion
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review found that the descendant evidence behind the PAINT node is expression evidence (the
+    Arabidopsis YSL1 and YSL2 rows are IEP), and that a transporter whose transcript responds to iron
+    status "performs no step of sensing or responding to iron ions". It marked the row over-annotated
+    and kept the transport function as core. The record lists "response to" terms among those that
+    should not be placed on an IBD at all.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/MAIZE/LOC541800/LOC541800-ai-review.yaml#L68
+- id: PH-5-E2
+  title: A protein homodimerization activity IBA accepted as TRIM5's core molecular function
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9C035
+      symbol: TRIM5
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0042803
+      label: protein homodimerization activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review accepted this IBA as a "core molecular function" because coiled-coil dimerization and
+    B-box multimerization are essential for capsid-lattice recognition. The self-association is real,
+    but the record names `GO:0042803` protein homodimerization activity among the uninformative binding
+    children that should never be placed on an IBD. Accepting the propagated row as core endorses a
+    placement the record rules out and lets a structural property stand in for TRIM5's activity.
+  fix: |
+    Do not take the IBA row as a core function: mark it over-annotated with the node noted for PAINT,
+    describe the self-association in the core function's description, and anchor the core function on
+    an informative activity term supported by TRIM5's own evidence.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TRIM5/TRIM5-ai-review.yaml#L153

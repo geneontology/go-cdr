@@ -1,0 +1,42 @@
+record: CAM-3
+examples:
+- id: CAM-3-E1
+  title: FSH hormone activity enabled by the heterodimeric complex
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:69b3372b00003343
+    description: |
+      Activity gomodel:69b3372b00003343/69b3372b00003379 in "FSH delivery to granulosa cells promotes
+      follicle development (Human)": GO:0016914 follicle-stimulating hormone complex, `has part` FSHB
+      (UniProtKB:P01225) and CGA (UniProtKB:P01215), enables GO:0016913 follicle-stimulating hormone
+      activity, `has input` the receptor, directly positively regulating the receptor activity.
+  explanation: |
+    FSH activity needs both chains, so this is the record's case 2: the most specific complex term is the
+    enabler and `has part` names the two contributing subunits. The review called this "the right
+    representation of the ligand" and contrasted it with a sister model that enables the same activity by
+    FSHB alone (CAM-3-E2). Its remaining doubts on this activity concern a reference and a missing process,
+    not the enabler.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/69b3372b00003343/69b3372b00003343-review.yaml#L277
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/69b3372b00003343/69b3372b00003343-src.yaml#L347
+- id: CAM-3-E2
+  title: FSH hormone activity enabled by the beta subunit alone
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:59dc728000000351
+    description: |
+      Activity gomodel:59dc728000000351/59dc728000000353 in "GPCR - AC activating": UniProtKB:P01225 (FSHB)
+      enables GO:0016913 follicle-stimulating hormone activity in the extracellular region, `has input`
+      the receptor (UniProtKB:P23945).
+  explanation: |
+    The hormone activity is emergent: the review notes that FSH is the CGA-FSHB heterodimer and "the beta
+    chain alone does not carry the hormone activity". Under case 2 the enabler should be the complex, not
+    one subunit, and the review flagged COMPLEX_SUBUNIT_REPRESENTATION. It did not file a source defect,
+    because GOA also annotates GO:0016913 to the individual subunits.
+  fix: |
+    Enable the activity by GO:0016914 follicle-stimulating hormone complex with `has part` FSHB and CGA,
+    as gomodel:69b3372b00003343 does (CAM-3-E1).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/59dc728000000351/59dc728000000351-review.yaml#L198

@@ -62,6 +62,13 @@ two different substrates in two different processes is two nodes.
 | Related | [CAM-5](CAM-5.md), [CAM-8](CAM-8.md) |
 | GO terms | `GO:0004714` transmembrane receptor protein tyrosine kinase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-2-E1](CAM-2.examples.yaml): Calmodulin drawn as two nodes, calcium binding directly activating its own kinase-activator node | Non-conformant | gomodel:62b4ffe300004489 |
+| [CAM-2-E2](CAM-2.examples.yaml): One PERK phosphorylation drawn as opposite-sign edges to two eIF2alpha nodes | Non-conformant | gomodel:66b5638000001589 |
+
 ## Sources
 
 - drive: [GO-CAM modeling guidelines](https://drive.google.com/open?id=1DS2ObQc1EVcQKAHjKNt-0jzFCSSVLDQ4Osm-1dsTwdA)

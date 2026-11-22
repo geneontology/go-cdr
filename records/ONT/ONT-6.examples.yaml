@@ -1,0 +1,32 @@
+record: ONT-6
+examples:
+- id: ONT-6-E1
+  title: Transcobalamin's cargo receptor ligand activity accepted as its core function
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P20062
+      symbol: TCN2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0140355
+      label: cargo receptor ligand activity
+    qualifier: enables
+    evidence_code: EXP
+    reference: PMID:3782074
+  explanation: |
+    The review accepted `GO:0140355` as "the informative molecular function" of transcobalamin, the ligand
+    of its uptake receptor CD320. The record's worked example is this protein: being recognized by a cargo
+    receptor is something done to it, the term is retired with no replacement (the ontology ticket closed
+    in September 2026), CD320 carries `GO:0038024` cargo receptor activity with the ligand as input, and
+    the carrier keeps what it does. TCN2 already carries accepted cobalamin binding and cobalamin
+    transport rows.
+  fix: |
+    Do not ACCEPT the row: REMOVE it, or MODIFY it only if a curator wants the content carried, leaving
+    TCN2's function on its existing `GO:0031419` cobalamin binding and `GO:0015889` cobalamin transport
+    rows and the receptor relationship on CD320.
+  see_also:
+  - ONT-7
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TCN2/TCN2-ai-review.yaml#L205

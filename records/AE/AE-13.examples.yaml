@@ -1,0 +1,88 @@
+record: AE-13
+examples:
+- id: AE-13-E1
+  title: Five target-gene groups read from QuickGO before an over-annotation verdict
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O75074
+      symbol: LRP3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0010628
+      label: positive regulation of gene expression
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:28340487
+    extension: BFO:0000066(CL:0002092),RO:0002233(UniProtKB:P05186),BFO:0000066(CL:0002092),RO:0002233(UniProtKB:P10451),BFO:0000066(CL:0002092),RO:0002233(UniProtKB:O75578),BFO:0000066(CL:0002092),RO:0002233(UniProtKB:P55287),BFO:0000066(CL:0002092),RO:0002233(UniProtKB:Q9UBU2)
+  explanation: |
+    The cached GOA file shows only "positive regulation of gene expression, IMP". The review looked the row up
+    and recorded the five `occurs_in` bone marrow cell plus `has_input` marker-gene groups, saying they "are
+    retained from the QuickGO annotation payload". With the extension in view, it then judged the row over-annotated
+    because the marker genes are readouts of osteoblast differentiation. That is the order the record asks
+    for: read the extension, record it, then judge.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LRP3/LRP3-ai-review.yaml#L179
+- id: AE-13-E2
+  title: A gene-expression row marked over-annotated without its target gene and cell type
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    description: |
+      In GOA (QuickGO) the BHF-UCL row carries `has_input(UniProtKB:Q92570),occurs_in(CL:0002539)`; the
+      review's row has no `extensions`.
+    gene:
+      gene_id: UniProtKB:P01127
+      symbol: PDGFB
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0010628
+      label: positive regulation of gene expression
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:23554459
+  explanation: |
+    The record's first step is to read the extension before marking a broad term over-annotated. The review
+    marked the row MARK_AS_OVER_ANNOTATED as "a downstream transcriptional response to PDGF signaling", but
+    the GOA row names a specific regulated gene and a cell type. Neither is recorded or weighed. The verdict
+    may still stand, but the reasoning addresses a bare term that is not what the curator asserted.
+  fix: |
+    Record the verified `has_input`(UniProtKB:Q92570) and `occurs_in`(CL:0002539) in the row's `extensions`,
+    then judge that statement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PDGFB/PDGFB-ai-review.yaml#L983
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=P01127&goId=GO:0010628
+- id: AE-13-E3
+  title: Two GOA rows that differ only in extension, collapsed into one reviewed row
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    description: |
+      GOA has two UniProt IDA rows from PMID:25834989, one with `occurs_in(CL:0002600)` and one with
+      `part_of(UBERON:0002048)`. The cached GOA file has a single row, and the review has one entry carrying
+      only the first extension.
+    gene:
+      gene_id: UniProtKB:P02751
+      symbol: FN1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008284
+      label: positive regulation of cell population proliferation
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:25834989
+    extension: BFO:0000066(CL:0002600)
+  explanation: |
+    This is the collapse the record describes: `fetch_goa_data` merged two GOA rows that differ only in their
+    extension. The review recorded the tracheal smooth muscle cell extension but not the second row's lung
+    extension, and its reason does not say that the entry stands for two annotations, as step 3 asks. The
+    review's argument ("avoid transferring every fibroblast endpoint to airway smooth muscle") applies to the
+    first extension, not clearly to the second. The record's open question asks whether `fetch-gene` should
+    stop collapsing such rows, which would prevent this case altogether.
+  open_question: 1
+  see_also: [AE-10]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FN1/FN1-ai-review.yaml#L2447
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FN1/FN1-goa.tsv#L132
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=P02751&goId=GO:0008284

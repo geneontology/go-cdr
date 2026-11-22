@@ -1,0 +1,55 @@
+record: LIT-4
+examples:
+- id: LIT-4-E1
+  title: An ER row for a sodium pump resting on a retained migraine mutant
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P50993
+      symbol: ATP1A2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005783
+      label: endoplasmic reticulum
+    qualifier: is_active_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The record ranks overexpressed constructs low and says mutant or misfolded protein retained in the ER does
+    not localise the wild-type product. The review traced this projection to a mouse IDA in which Myc-tagged
+    alpha2 was overexpressed in HeLa cells: the wild-type protein was mainly at the plasma membrane with
+    slight ER staining, while the R887 migraine mutant sat with calnexin and was degraded. That is transit
+    plus quality-control retention.
+  fix: |
+    No ER row for ATP1A2 (the review marks it over-annotated); the pump's location is the plasma membrane.
+  see_also:
+  - CC-4
+  - CC-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ATP1A2/ATP1A2-ai-review.yaml#L353
+- id: LIT-4-E2
+  title: CERKL's ER row from overexpressed tagged constructs with a calnexin co-stain
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q49MI3
+      symbol: CERKL
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005783
+      label: endoplasmic reticulum
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000044
+  explanation: |
+    All of CERKL's ER evidence is on transiently overexpressed tagged constructs: calnexin overlap in COS-7
+    cells and HA-tagged protein in PDI-containing sucrose fractions that also hold Golgi markers; no endogenous
+    ER staining exists, and a later paper describes aggregates around the ER without matching marker overlap.
+    The review kept the row as non-core and called it a close call. On the record's ranking this is level 3
+    (overexpressed with a marker), which can support the organelle term; the open question is whether
+    overexpressed localisation should support it at all.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CERKL/CERKL-ai-review.yaml#L325

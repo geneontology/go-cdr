@@ -59,6 +59,13 @@ transcription factor activity ([INTERPRO](https://ai4curation.io/ai-gene-review/
 | Date | 2026-11-15 |
 | GO terms | `GO:0003677` DNA binding; `GO:0003676` nucleic acid binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-3-E1](IEA-3.examples.yaml): Z-binding domain entry carries ADAR1's deaminase activity to ZBP1 | Non-conformant | ZBP1 enables GO:0003726 double-stranded RNA adenosine deaminase activity (IEA, GO_REF:0000002) |
+| [IEA-3-E2](IEA-3.examples.yaml): Helicase/UvrB N-terminal entry gives an RNA sensor DNA binding | Non-conformant | IFIH1 enables GO:0003677 DNA binding (IEA, GO_REF:0000002) |
+
 ## Sources
 
 - paper: [PMID:22301074](https://europepmc.org/article/MED/22301074)

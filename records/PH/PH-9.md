@@ -99,6 +99,15 @@ it blocked; that sample is biased towards conflicts and is not an error rate.
 | Evidence codes | IDA, IBA, IBD, IKR, IRD |
 | GO terms | `GO:0004252` serine-type endopeptidase activity; `GO:0042026` protein refolding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-9-E1](PH-9.examples.yaml): A fungal IRD on protein refolding whose loss clade contains a seed of the blocked IBD | Conformant | PANTHER:PTN001065099 |
+| [PH-1-E1](PH-1.examples.yaml): Epe1's inherited histone demethylase activity removed on target-specific evidence (from [PH-1](PH-1.md)) | Conformant | Epe1 enables GO:0032452 histone demethylase activity (IBA, GO_REF:0000033) |
+| [PH-19-E1](PH-19.examples.yaml): SSB1's refolding IBA generalized to protein folding under the fungal IRD (from [PH-19](PH-19.md)) | Conformant | SSB1 involved_in GO:0042026 protein refolding (IBA, GO_REF:0000033) |
+| [PH-19-E2](PH-19.examples.yaml): SSA3's refolding IBA kept while arguing explicitly against the IRD that withdrew it (from [PH-19](PH-19.md)) | Conformant | SSA3 involved_in GO:0042026 protein refolding (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

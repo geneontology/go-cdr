@@ -1,0 +1,54 @@
+record: IEA-3
+examples:
+- id: IEA-3-E1
+  title: Z-binding domain entry carries ADAR1's deaminase activity to ZBP1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9H171
+      symbol: ZBP1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003726
+      label: double-stranded RNA adenosine deaminase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The WITH/FROM is `InterPro:IPR042371`, the generic Z-binding domain entry, which maps
+    double-stranded RNA adenosine deaminase activity because the prototypical Zalpha protein, ADAR1, is
+    a deaminase. The review removed the row: ZBP1 has two Zalpha domains and three RHIMs, no deaminase
+    domain and no catalytic residues, and no editing activity has been reported. This is a domain entry
+    carrying the function of a neighbouring domain in one family member, which the record excludes.
+  fix: |
+    Remove the row on ZBP1, and move the deaminase mapping off `IPR042371` to the deaminase domain
+    entry, as the record proposes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ZBP1/ZBP1-ai-review.yaml#L276
+- id: IEA-3-E2
+  title: Helicase/UvrB N-terminal entry gives an RNA sensor DNA binding
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9BYX4
+      symbol: IFIH1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003677
+      label: DNA binding
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The row's WITH/FROM is `InterPro:IPR006935` (Helicase/UvrB, N-terminal), whose DNA-binding mapping
+    reflects a family dominated by DNA-acting enzymes such as UvrB and type III restriction
+    endonucleases. The review removed it because every characterised MDA5 ligand is RNA and its
+    helicase core is resolved in complex with dsRNA. DNA binding is a property of some proteins
+    containing the domain, not of the domain, so the mapping fails the record's test.
+  fix: |
+    Remove the row on IFIH1. For the entry, the record proposes `GO:0003676` nucleic acid binding, as
+    on the sibling helicase entries.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/IFIH1/IFIH1-ai-review.yaml#L131

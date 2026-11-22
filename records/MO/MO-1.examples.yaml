@@ -1,0 +1,49 @@
+record: MO-1
+examples:
+- id: MO-1-E1
+  title: A fungal effector given the symbiont-side immune-suppression term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0D1EAR7
+      symbol: PIT2
+    taxon: NCBITaxon:5270
+    term:
+      term_id: GO:0140403
+      label: effector-mediated suppression of host innate immune response
+    evidence_code: IMP
+    reference: PMID:23459172
+  explanation: |
+    The step is done by the symbiont product to a host process, so the record's first row applies: a
+    symbiont-mediated or effector-mediated term. The review proposed GO:0140403 effector-mediated suppression of host
+    innate immune response because Pit2 itself inhibits the host immune proteases, chose it "over plant-side defence
+    terms or a bare virulence phenotype", and ran the comparator check against EPIC2B.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/MYCMD/PIT2/PIT2-ai-review.yaml#L116
+- id: MO-1-E2
+  title: A bacterial host factor annotated to the phage's own transcription process
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q48EH2
+      symbol: PSPPH_4093
+    taxon: NCBITaxon:264730
+    term:
+      term_id: GO:0039696
+      label: RNA-templated viral transcription
+    qualifier: acts_upstream_of_or_within_positive_effect
+    evidence_code: IDA
+    reference: PMID:18836083
+  explanation: |
+    PSPPH_4093 is a protein of Pseudomonas syringae, the host of the dsRNA phage phi6, yet the row puts it in
+    GO:0039696 RNA-templated viral transcription, a viral-process term. The record says a host acting on a virus takes the
+    host-side term family. The review agreed that "the term is the wrong side of the host/virus boundary" and noted that
+    GO:0140181 was created from this same paper two months after the row was made.
+  fix: |
+    GO:0140181 host-mediated activation of viral RNA-templated transcription, the review's replacement term.
+  see_also:
+  - MO-3
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSE14/PSPPH_4093/PSPPH_4093-ai-review.yaml#L138

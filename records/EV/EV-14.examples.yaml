@@ -1,0 +1,28 @@
+record: EV-14
+examples:
+- id: EV-14-E1
+  title: A NEW beta-lactamase row coded RCA from a family-identity mapping
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A097A0C1
+      symbol: blaOXA-400
+    taxon: NCBITaxon:470
+    term:
+      term_id: GO:0008800
+      label: beta-lactamase activity
+    qualifier: enables
+    evidence_code: RCA
+    reference: file:projects/ANTIMICROBIAL_RESISTANCE/aro2go.sssom.yaml
+  explanation: |
+    RCA is for curator-reviewed predictions from computational analysis of large experimental datasets, not
+    for sequence-only inference. This reviewer-authored row projects beta-lactamase activity from the
+    gene's CARD/ARO determinant cross-reference through an ARO-to-GO mapping, which is an inference from
+    family identity. The reason calls the row "a curator lead", so it has not been confirmed against data on
+    this protein either.
+  fix: |
+    An inference from family membership takes the ISS family (ISM, with the model in WITH/FROM, once a
+    curator has reviewed it) or IEA if the transfer is unreviewed.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ACIBA/blaOXA-400/blaOXA-400-ai-review.yaml#L27

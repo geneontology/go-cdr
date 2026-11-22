@@ -1,0 +1,71 @@
+record: MF-8
+examples:
+- id: MF-8-E1
+  title: CD14's LPS receptor row changed to molecular carrier activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P08571
+      symbol: CD14
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0001875
+      label: lipopolysaccharide immune receptor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:15294986
+  explanation: |
+    CD14 has no transmembrane or cytoplasmic domain; it extracts LPS and hands it to TLR4-MD-2, which
+    transduces the signal. The review kept the evidence and changed the term to molecular carrier
+    activity, matching the production GO-CAMs. This is the record's CD14 example: a carrier moves with
+    its cargo to an acceptor, which is not what a receptor does.
+  see_also: [MF-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CD14/CD14-ai-review.yaml#L119
+- id: MF-8-E2
+  title: LDLRAP1 signaling adaptor row corrected to clathrin-cargo adaptor
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5SW96
+      symbol: LDLRAP1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0035591
+      label: signaling adaptor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:12221107
+  explanation: |
+    The paper shows LDLRAP1 coupling the LDL receptor to the endocytic machinery. The review judged
+    that this bridging serves endocytosis, not signaling, and made a lateral correction to
+    clathrin-cargo adaptor activity, the term the record's Application gives for LDLRAP1. The adaptor
+    class is chosen by what the bridging achieves.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LDLRAP1/LDLRAP1-ai-review.yaml#L903
+- id: MF-8-E3
+  title: An adaptor row on a complex I assembly factor with no two bridged partners
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9H845
+      symbol: ACAD9
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0030674
+      label: protein-macromolecule adaptor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:32320651
+  explanation: |
+    The paper shows that ACAD9 is needed for MCIA complex integrity and associates with assembly
+    intermediates, but the review found no two macromolecules that ACAD9 directly bridges, and a later
+    study (PMID:33320993) resolved ECSIT as the bridge. The review left the curator's row `UNDECIDED`
+    rather than removing it. Whether an adaptor annotation must show two inputs is the record's open
+    question, and the record's Decision would treat it as a requirement.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ACAD9/ACAD9-ai-review.yaml#L279

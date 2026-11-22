@@ -1,0 +1,51 @@
+record: ONT-17
+examples:
+- id: ONT-17-E1
+  title: An inflammatory response IBA on a mosquito Toll receptor removed for a Vertebrata constraint
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5TWL7
+      symbol: TOLL9
+    taxon: NCBITaxon:7165
+    term:
+      term_id: GO:0006954
+      label: inflammatory response
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review removed the IBA because `GO:0006954` is `only_in_taxon` Vertebrata, which excludes
+    *Anopheles*, and noted that the frozen row came from an older node while the current IBD sits outside
+    the target lineage. A non-experimental row that violates a constraint is removed, and the cause is at
+    the node; the review also says insect innate defense remains valid, so the removal is about the term,
+    not the biology.
+  see_also:
+  - PH-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ANOGA/TOLL9/TOLL9-ai-review.yaml#L10
+- id: ONT-17-E2
+  title: A bacterial flagellar regulator's experimental row on a cilium motility term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:G3XCV0
+      symbol: fleQ
+    taxon: NCBITaxon:208964
+    term:
+      term_id: GO:2000155
+      label: positive regulation of cilium-dependent cell motility
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:12218010
+  explanation: |
+    The row is an experimental IMP on positive regulation of cilium-dependent cell motility for a
+    bacterium. The review judged it "wrong organelle term for a bacterium" and moved it to
+    `GO:1902210` positive regulation of bacterial-type flagellum assembly, which is what the promoter
+    evidence supports. The record's test for an experimental row in the wrong lineage is whether the
+    organism really does the thing; *P. aeruginosa* has no cilium, so the annotation is wrong in its choice
+    of term, not the constraint.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEAE/fleQ/fleQ-ai-review.yaml#L630

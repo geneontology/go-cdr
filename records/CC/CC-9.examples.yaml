@@ -1,0 +1,50 @@
+record: CC-9
+examples:
+- id: CC-9-E1
+  title: A NEW cytoplasmic side of ER membrane row for a partner-tethered protease
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NUQ7
+      symbol: UFSP2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0098554
+      label: cytoplasmic side of endoplasmic reticulum membrane
+    qualifier: located_in
+    evidence_code: IC
+    reference: PMID:35926457
+  explanation: |
+    The review checked all four of the record's conditions: the endogenous protein is at the ER (IDA,
+    PMID:35926457); a named integral partner, the tail-anchored ODR4, binds it; endogenous UFSP2 is
+    markedly reduced in ODR4 knockout cells, and worm ODR-8 is released from permeabilised cells without
+    ODR-4; and UniProt and the literature give no signal peptide or TM segment. It added the side term as
+    IC beside the accepted ER root rows and explained why the row is IC and `located_in`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/UFSP2/UFSP2-ai-review.yaml#L439
+- id: CC-9-E2
+  title: A cytoplasmic side of Golgi membrane row where the record says no such term exists
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8IV36
+      symbol: HID1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0098548
+      label: cytoplasmic side of Golgi membrane
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:21337012
+  explanation: |
+    The record states that GO has no cytoplasmic-side term for the Golgi stack, but HID1 carries
+    `GO:0098548` cytoplasmic side of Golgi membrane by IDA, and the review accepts it: HID1 is
+    peripheral, not transmembrane, and Golgi binding needs its N-terminal myristoylation site. The term is
+    live in GO. HID1 is lipid-anchored rather than held by an integral partner, so the record's tethering
+    route does not apply, but the case bears directly on the open question of which organelles have side
+    terms.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HID1/HID1-ai-review.yaml#L619

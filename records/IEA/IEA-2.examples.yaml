@@ -1,0 +1,57 @@
+record: IEA-2
+examples:
+- id: IEA-2-E1
+  title: Domain-level kinase activity on a catalytically dead LysM receptor
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O64825
+      symbol: LYK4
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0004672
+      label: protein kinase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The row comes from InterPro2GO with `InterPro:IPR001245` in WITH/FROM, a kinase catalytic-domain
+    signature that also matches pseudokinases. The review removed it because LYK4 lacks key catalytic
+    residues and showed no activity in an in vitro kinase assay, with CERK1 supplying the kinase
+    activity in the receptor complex. The mapping therefore does not hold for every protein the
+    signature matches, which is the record's test for a signature mapping.
+  fix: |
+    Remove the row on LYK4. Upstream, carry protein kinase activity on entries that require the
+    catalytic motifs (the active-site entries the record names) rather than on the domain signature.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/LYK4/LYK4-ai-review.yaml#L23
+- id: IEA-2-E2
+  title: A PRINTS fingerprint carries sevenless binding to a mouse GPRC5 receptor
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8K3J9
+      symbol: Gprc5c
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0005118
+      label: sevenless binding
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    `IPR002956` (Bride of sevenless protein) maps `GO:0005118` sevenless binding, which is right for
+    Drosophila BOSS. The review removed the row on mouse Gprc5c because the match is a PRINTS hit in
+    transmembrane segments that the human ortholog does not share, Gprc5c has no BOSS-like
+    extracellular region, and no study links any GPRC5 receptor to ROS1. The repo's mapping review
+    counted 172 GPRC5-family entries among the 414 that match the entry, so the term is true only for a
+    subset of members.
+  fix: |
+    Remove the row on Gprc5c and replace the unconditional mapping with a rule that also requires the
+    class C GPCR entry BOSS carries; the repo records this as curated rule CR-0006 (IEA-14).
+  see_also:
+  - IEA-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Gprc5c/Gprc5c-ai-review.yaml#L58

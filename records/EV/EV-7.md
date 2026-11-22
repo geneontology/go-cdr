@@ -112,6 +112,13 @@ shows that what predicts whether an omics row holds up is how the data were used
 | Evidence codes | EXP, IDA, IPI, IMP, IGI, IEP, HTP, HDA, HMP, HGI, HEP |
 | GO terms | `GO:0070062` extracellular exosome; `GO:0016020` membrane; `GO:0045296` cadherin binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-7-E1](EV-7.examples.yaml): Cadherin binding on aldolase A from E-cadherin proximity labelling | Non-conformant | ALDOA enables GO:0045296 cadherin binding (HDA, PMID:25468996) |
+| [EV-7-E2](EV-7.examples.yaml): A response to copper row from a fall in CRAC abundance | Non-conformant | dagA acts_upstream_of_or_within GO:0046688 response to copper ion (HDA, PMID:40863941) |
+
 ## Sources
 
 - issue: [go-annotation#1390](https://github.com/geneontology/go-annotation/issues/1390)

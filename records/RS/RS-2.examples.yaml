@@ -1,0 +1,75 @@
+record: RS-2
+examples:
+- id: RS-2-E1
+  title: Regulation of beta-glucan biosynthesis on Cdc42 marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q01112
+      symbol: cdc42
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0032951
+      label: regulation of beta-glucan biosynthetic process
+    qualifier: involved_in
+    evidence_code: IGI
+    reference: PMID:8887550
+  explanation: |
+    The cited paper shows that neither wild-type nor constitutively active Cdc42 changes glucan
+    synthase activity; Rho1 is the direct activator. Cdc42's link is through trafficking of the Bgs
+    synthases. The review marks the regulation term over-annotated, as the record asks when no
+    participant of the process is shown to be modulated (the jamboree excluded trafficking-only
+    effects).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/cdc42/cdc42-ai-review.yaml#L1437
+- id: RS-2-E2
+  title: Ebola VP35 negative regulation of gene expression replaced by its IRF3 mechanism
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q05127
+      symbol: VP35
+    taxon: NCBITaxon:128952
+    term:
+      term_id: GO:0010629
+      label: negative regulation of gene expression
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:12829834
+  explanation: |
+    The CACAO row matched the readout (less host reporter expression). The review reads the figures:
+    VP35 blocks virus-induced IRF-3 phosphorylation and dimerisation but not the constitutively active
+    IRF-3 5D mutant. It `MODIFY`s to the term that names the regulated participant, suppression of
+    host PRR signalling via inhibition of IRF3 activity.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/EBOZM/VP35/VP35-ai-review.yaml#L290
+- id: RS-2-E3
+  title: Positive regulation of cell division kept on the kinetochore subunit SPC24
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q67XT3
+      symbol: SPC24
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0051781
+      label: positive regulation of cell division
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IMP
+    reference: PMID:29356153
+  explanation: |
+    The review's own reason says the term "over-interprets" the phenotype: SPC24 is a structural NDC80
+    subunit, and a lower division rate is "the trivial downstream result of broken chromosome
+    segregation". It keeps the row as `KEEP_AS_NON_CORE` because the qualifier is
+    `acts_upstream_of_or_within`. The record says a perturbation with no regulated target does not
+    support a regulation term at all, whatever the qualifier, and RS-3 excludes genes whose mutation
+    creates the problem the readout detects.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`, the alternative the reason itself names, keeping the kinetochore and
+    chromosome-segregation rows as the core.
+  see_also: [RS-3, REV-2]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/SPC24/SPC24-ai-review.yaml#L287

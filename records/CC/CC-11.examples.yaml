@@ -1,0 +1,49 @@
+record: CC-11
+examples:
+- id: CC-11-E1
+  title: KRAS plasma membrane rows moved to the cytoplasmic side
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P01116
+      symbol: KRAS
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005886
+      label: plasma membrane
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:23524970
+  explanation: |
+    The record's first named `MODIFY` case. For an inner-leaflet protein the generic plasma membrane term
+    reads as "surface protein" and misleads. The review modified this IDA row, and the gene's other plasma
+    membrane rows, to `GO:0009898` cytoplasmic side of plasma membrane, because KRAS is lipid-anchored to
+    the inner leaflet and faces the cytosol.
+  fix: |
+    `GO:0009898` cytoplasmic side of plasma membrane, the review's replacement, which the gene already
+    carries.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/KRAS/KRAS-ai-review.yaml#L777
+- id: CC-11-E2
+  title: GUCY2C plasma membrane rows kept at their resolution, apical surface added as NEW
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P25092
+      symbol: GUCY2C
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005886
+      label: plasma membrane
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    Here the generic term does not mislead: GUCY2C is a transmembrane receptor whose ligand-binding domain
+    is outside the cell. The review accepted the IBA row "at the resolution its surface-localization
+    evidence supports" and recorded the apical sub-localization in enterocytes as a separate `NEW`
+    `GO:0016324` apical plasma membrane row, which is the record's second pattern, named for GUCY2C.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GUCY2C/GUCY2C-ai-review.yaml#L264

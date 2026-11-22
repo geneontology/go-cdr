@@ -1,0 +1,70 @@
+record: TR-16
+examples:
+- id: TR-16-E1
+  title: An IBA dbTF row on a zebrafish T-box paralog that keeps its T-box
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:E3W6T6
+      symbol: tbx5b
+    taxon: NCBITaxon:7955
+    term:
+      term_id: GO:0000981
+      label: DNA-binding transcription factor activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record accepts a propagated dbTF row when the member has a dbTF-family DNA-binding domain and nothing
+    contradicts it. The review found the T-box domain retained and 83% identical to tbx5a's, the PAINT node covering the
+    Tbx2/3/4/5 subfamily, and no evidence of lost DNA binding; mRNA rescue and a truncating allele support a functional
+    factor.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DANRE/tbx5b/tbx5b-ai-review.yaml#L113
+- id: TR-16-E2
+  title: An IBA dbTF row on a type-A response regulator with no DNA-binding domain
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9SB04
+      symbol: ARR5
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record flags any dbTF row on a protein without a recognised DNA-binding domain family. The review
+    removed the IBA row because ARR5 "consists essentially of a receiver domain and lacks the Myb-related GARP (B-motif)
+    DNA-binding output domain of type-B ARRs" and acts in phosphorelay feedback, not as a dbTF.
+  fix: |
+    Remove the dbTF row, as the review did.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/ARR5/ARR5-ai-review.yaml#L73
+- id: TR-16-E3
+  title: An IBA dbTF activator row on the non-DNA-binding subunit of SBF and MBF
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09959
+      symbol: SWI6
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0001228
+      label: DNA-binding transcription activator activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    Swi6 regulates transcription through the DNA-binding Swi4 and Mbp1, which the record says is MODIFY to the
+    coTF term. The review found that the PAINT family "conflates the two DNA-binding paralogs (Swi4, Mbp1) with the
+    regulatory subunit", and that SGD annotates Swi6's own activity as coactivator activity.
+  fix: |
+    GO:0003713 transcription coactivator activity, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/SWI6/SWI6-ai-review.yaml#L257

@@ -1,0 +1,51 @@
+record: PH-1
+examples:
+- id: PH-1-E1
+  title: Epe1's inherited histone demethylase activity removed on target-specific evidence
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94603
+      symbol: Epe1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0032452
+      label: histone demethylase activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review did not argue with the size of the donor set. It argued that the leaf changed after the
+    node: purified Epe1 shows no demethylase activity on methylated H3K9 peptides, and its JmjC Fe(II)
+    triad has Tyr370 in place of the third His. It says explicitly that what is removed is "the PAINT
+    inference path" to Epe1, not the proposition that Epe1 has the activity, and it keeps the H3K9
+    demethylase rows UNDECIDED. That is the record's worked example and the challenge the record allows: target-specific loss below a sound node.
+  see_also:
+  - PH-9
+  - PH-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/Epe1/Epe1-ai-review.yaml#L21
+- id: PH-1-E2
+  title: UBA7's ISG15 activating enzyme activity accepted from the IBA
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P41226
+      symbol: UBA7
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0019782
+      label: ISG15 activating enzyme activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review accepted the IBA as UBA7's core function, citing UBA7 as the dedicated ISG15 E1 with
+    knockout and structural support. The record uses this row as its counter-example: the IBA is more
+    precise than the InterPro2GO row (`GO:0008641` ubiquitin-like modifier activating enzyme activity)
+    and nothing places UBA7 outside the clade that inherited the function, so there is no ground to
+    challenge it.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/UBA7/UBA7-ai-review.yaml#L27

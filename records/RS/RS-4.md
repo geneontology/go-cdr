@@ -58,6 +58,15 @@ date: '2026-11-15'
 | Date | 2026-11-15 |
 | GO terms | `GO:0000165` MAPK cascade; `GO:0043410` positive regulation of MAPK cascade; `GO:0035329` hippo signaling |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-4-E1](RS-4.examples.yaml): Positive regulation of ERK1/2 cascade on MEK1 moved to the cascade | Conformant | MAP2K1 involved_in GO:0070374 positive regulation of ERK1 and ERK2 cascade (IMP, PMID:24375836) |
+| [RS-4-E2](RS-4.examples.yaml): Positive regulation of MAPK cascade on MKK6 refined to positive regulation of p38 cascade | Non-conformant | Map2k6 involved_in GO:0043410 positive regulation of MAPK cascade (IEA, GO_REF:0000117) |
+| [RS-4-E3](RS-4.examples.yaml): Positive regulation of JNK cascade on MKK7: reversed in review to the curator convention | Contested | Map2k7 involved_in GO:0046330 positive regulation of JNK cascade (IDA, PMID:10051439) |
+| [RS-8-E3](RS-8.examples.yaml): Positive regulation of Notch signaling kept as non-core on the ligand Jag1 (from [RS-8](RS-8.md)) | Non-conformant | Jag1 involved_in GO:0045747 positive regulation of Notch signaling pathway (ISO, GO_REF:0000121) |
+
 ## Sources
 
 - wiki: [Annotating regulation](https://wiki.geneontology.org/index.php/Annotating_regulation)

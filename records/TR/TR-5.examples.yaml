@@ -1,0 +1,51 @@
+record: TR-5
+examples:
+- id: TR-5-E1
+  title: An MBF subunit that reaches promoters through its DNA-binding partners
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P01129
+      symbol: cdc10
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0001228
+      label: DNA-binding transcription activator activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: EXP
+    reference: PMID:14648198
+  explanation: |
+    Cdc10 is recruited to MCB promoters by Res1 and Res2, whose APSES domains bind the DNA, and is needed for
+    MBF to activate transcription. That is the record's first recruitment route for a coTF. The review found that Cdc10 "has
+    no demonstrated sequence-specific DNA-binding activity of its own" and that the dbTF term "fits the Res subunits, not
+    the shared Swi6-like subunit", matching the SWI6 review.
+  fix: |
+    GO:0003713 transcription coactivator activity, the review's replacement (it notes that `contributes_to`
+    GO:0001228 would also be acceptable).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/cdc10/cdc10-ai-review.yaml#L397
+- id: TR-5-E2
+  title: A plant coactivator recruited by methyl-DNA readers rather than by a dbTF
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9FMF3
+      symbol: EIP9
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0001228
+      label: DNA-binding transcription activator activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:30523112
+  explanation: |
+    SDJ1 activates transcription only when tethered to DNA, and in vivo reaches DNA through SUVH1 and SUVH3,
+    which read DNA methylation. The review modified the dbTF row to coactivator activity as "a coactivator recruited by a
+    DNA-binding partner". Whether that fits GO:0003712 depends on the record's open question: under the cascade reading,
+    recruitment by a mark reader counts; under a strict reading, GO:0003712 needs a dbTF, and the methylation here is not
+    shown to be laid down at a dbTF-specified locus.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/EIP9/EIP9-ai-review.yaml#L83

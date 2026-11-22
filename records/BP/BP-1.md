@@ -75,6 +75,14 @@ The relation means "enables some f, and f is part_of P" ([wiki: Annotation Relat
 | Related | [BP-4](BP-4.md) |
 | GO terms | `GO:0004708` MAP kinase kinase activity; `GO:0000165` MAPK cascade; `GO:0006913` nucleocytoplasmic transport; `GO:0006998` nuclear envelope organization; `GO:0055088` lipid homeostasis |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-1-E1](BP-1.examples.yaml): MEK1 involved in the MAPK cascade through its own kinase step | Conformant | MAP2K1 involved_in GO:0000165 MAPK cascade (IBA, GO_REF:0000033) |
+| [BP-1-E2](BP-1.examples.yaml): INSIG1 annotated as involved in cholesterol biosynthesis it only restrains | Non-conformant | INSIG1 involved_in GO:0006695 cholesterol biosynthetic process (IDA, PMID:32322062) |
+| [BP-12-E1](BP-12.examples.yaml): MEK1 annotated to the ERK1 and ERK2 cascade step (from [BP-12](BP-12.md)) | Conformant | MAP2K1 involved_in GO:0070371 ERK1 and ERK2 cascade (TAS, Reactome:R-HSA-110056) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

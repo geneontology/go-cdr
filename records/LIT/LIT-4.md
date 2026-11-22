@@ -73,6 +73,14 @@ or `is_active_in` is a CC question ([cellular-component.md](../CC/README.md)).
 | Evidence codes | IDA |
 | GO terms | `GO:0005743` mitochondrial inner membrane; `GO:0005789` endoplasmic reticulum membrane |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-4-E1](LIT-4.examples.yaml): An ER row for a sodium pump resting on a retained migraine mutant | Non-conformant | ATP1A2 is_active_in GO:0005783 endoplasmic reticulum (IEA, GO_REF:0000107) |
+| [LIT-4-E2](LIT-4.examples.yaml): CERKL's ER row from overexpressed tagged constructs with a calnexin co-stain | Contested | CERKL located_in GO:0005783 endoplasmic reticulum (IEA, GO_REF:0000044) |
+| [CC-13-E1](../CC/CC-13.examples.yaml): An IDA Golgi row from an overexpressed protein "resembling the Golgi" (from [CC-13](../CC/CC-13.md)) | Non-conformant | CABP2 located_in GO:0005794 Golgi apparatus (IDA, PMID:19338761) |
+
 ## Open questions
 
 1. Should the GOC adopt an explicit localisation-evidence ranking (LIT-4), and should overexpressed localisation require a compartment marker to support IDA at all?

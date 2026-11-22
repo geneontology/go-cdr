@@ -1,0 +1,55 @@
+record: QN-5
+examples:
+- id: QN-5-E1
+  title: A colocalizes_with cytosol row accepted as the core location of a cytosolic enzyme
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9CA90
+      symbol: HPR2
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0005829
+      label: cytosol
+    qualifier: colocalizes_with
+    evidence_code: IDA
+    reference: PMID:30233632
+  explanation: |
+    The review accepted the row as "the core location", citing direct localization, the absence of
+    targeting signals and earlier biochemical work defining HPR2 as the cytosolic hydroxypyruvate
+    reductase. That evidence makes HPR2 a resident of the cytosol, and arguably active there, which is
+    exactly the case the record's conversion table sends to `located_in` (or `is_active_in`). Accepting
+    the deprecated relation as-is keeps the weak reading the evidence has outgrown.
+  fix: |
+    MODIFY the row as a relation-only change and add a NEW row on `GO:0005829` cytosol with
+    `is_active_in` (the reductase acts there) or at least `located_in` (QN-7).
+  see_also: [QN-4, QN-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/HPR2/HPR2-ai-review.yaml#L117
+- id: QN-5-E2
+  title: A term refinement that deliberately preserves colocalizes_with
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O00423
+      symbol: EML1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0015630
+      label: microtubule cytoskeleton
+    qualifier: colocalizes_with
+    evidence_code: IDA
+    reference: PMID:24859200
+  explanation: |
+    The review refined the term to `GO:0005874` microtubule on the strength of detergent-resistant
+    microtubule association and binding to purified polymer, and then said to "preserve the imported
+    colocalizes_with relation". The record says a reviewed `colocalizes_with` row is converted when the
+    evidence supports a stronger relation; binding to the polymer makes EML1 a resident of the structure,
+    so the relation should change along with the term.
+  fix: |
+    MODIFY to `GO:0005874` microtubule with the relation `located_in`, recording the relation change in
+    the structured row rather than carrying `colocalizes_with` forward.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/EML1/EML1-ai-review.yaml#L608

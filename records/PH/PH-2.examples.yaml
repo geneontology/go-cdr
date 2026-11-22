@@ -1,0 +1,26 @@
+record: PH-2
+examples:
+- id: PH-2-E1
+  title: A catalase IBD seeded by one IMP row from a pleiotropic cytochrome c maturation mutant
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9I3N5
+      symbol: ccmC
+    taxon: NCBITaxon:208964
+    term:
+      term_id: GO:0004096
+      label: catalase activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review traced the IBA at PTN001247822 to its sole seed, the PseudoCAP IMP row on *P. aeruginosa*
+    ccmC, and found that it "turns the loss of catalase activity in a ccmC mutant into a molecular
+    function of CcmC"; the loss is explained by poor heme supply to the heme catalases. CcmC has no
+    catalase domain. The record says an IMP phenotype grounds "needed for" a process, not an MF, and uses
+    this node as its worked example; the review removes the catalase IBA while keeping the node's sound
+    plasma membrane and cytochrome c biosynthesis IBDs.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEAE/ccmC/ccmC-ai-review.yaml#L85

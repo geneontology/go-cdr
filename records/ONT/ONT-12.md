@@ -92,6 +92,16 @@ nothing. Specificity that no other aspect carries (compartment, for example) rem
 | Date | 2026-11-15 |
 | GO terms | `GO:0030369`  (obsolete); `GO:0061678` Entner-Doudoroff pathway |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-12-E1](ONT-12.examples.yaml): A proposed "phosphomannomutase activity involved in GDP-mannose biosynthetic process" | Non-conformant | GO:0004615 phosphomannomutase activity |
+| [ONT-12-E2](ONT-12.examples.yaml): A proposed "positive regulation of base-excision repair glycosylase activity" | Non-conformant | A `proposed_new_terms` entry in the DDB1 review, "positive regulation of base-excision repair glycosylase activity", for the UV-DDB complex stimulating BER glycosylases in trans. |
+| [ONT-12-E3](ONT-12.examples.yaml): Merged GTPase-specific GEF terms not re-requested for a RhoA-specific GEF | Conformant | GO:0005089 |
+| [ONT-2-E1](ONT-2.examples.yaml): GTPase-specific GEF terms confirmed merged in three services, with QuickGO's behaviour noted (from [ONT-2](ONT-2.md)) | Conformant | GO:0005089 |
+| [ONT-14-E1](ONT-14.examples.yaml): A missing RhoA-specific GEF term filed as a knowledge gap (from [ONT-14](ONT-14.md)) | Non-conformant | A `knowledge_gaps` entry in the ARHGEF19 review with `gap_kind: [ONTOLOGY]`: the protein is a RhoA exchange factor, and not a Rac1 or Cdc42 one, but this "cannot be stated in a GO term". |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

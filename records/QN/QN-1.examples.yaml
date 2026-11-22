@@ -1,0 +1,83 @@
+record: QN-1
+examples:
+- id: QN-1-E1
+  title: An is_active_in relation kept on a protein-complex term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q16394
+      symbol: EXT1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:1902494
+      label: catalytic complex
+    qualifier: is_active_in
+    evidence_code: IDA
+    reference: PMID:36593275
+  explanation: |
+    The review refined this row to `GO:0120504` EXT1-EXT2 complex, which is right on the term, but
+    said explicitly that it would "preserve the imported is_active_in qualifier rather than treating it
+    as a source defect". Both the original and the replacement term sit below GO:0032991
+    protein-containing complex, and the record says such terms take `part_of`; `is_active_in` on a
+    complex term is malformed. EXT1 is a subunit of the heterodimer, so the membership claim is the
+    one to state.
+  fix: |
+    MODIFY to `GO:0120504` EXT1-EXT2 complex with the relation `part_of`, and record the imported
+    `is_active_in` as a relation correction (a relation-only NEW row under QN-7), not as something
+    to preserve.
+  see_also: [QN-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/EXT1/EXT1-ai-review.yaml#L1528
+- id: QN-1-E2
+  title: A located_in relation kept on a respiratory-chain complex term for a non-subunit
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P31161
+      symbol: sod-2
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0098803
+      label: respiratory chain complex
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:23895727
+  explanation: |
+    The review kept this row as non-core "with the located_in qualifier", reasoning that worm SOD-2
+    associates with the I:III:IV supercomplex but is a matrix MnSOD rather than a structural subunit.
+    The record does not allow `located_in` on a term below protein-containing complex: complex terms
+    take `part_of`, which asserts membership. If SOD-2 is not a member, the complex term is the wrong
+    term for its location, and the row's relation cannot rescue it.
+  fix: |
+    Decide the membership question. If the supercomplex association is judged stable membership, the
+    row becomes `part_of` `GO:0098803`; if not, express the location with a non-complex term (SOD-2's
+    matrix location) and do not carry the supercomplex as a `located_in` row.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/sod-2/sod-2-ai-review.yaml#L389
+- id: QN-1-E3
+  title: A proposed SDHA succinate dehydrogenase row with no relation
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P31040
+      symbol: SDHA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000104
+      label: succinate dehydrogenase activity
+    evidence_code: IDA
+    reference: PMID:7550341
+  explanation: |
+    The review proposed this NEW row because "SDHA alone can oxidize succinate to fumarate", which is the
+    separate judgement on `GO:0000104` that QN-2 and QN-6 ask for, distinct from the subunits'
+    `contributes_to` the whole-complex `GO:0008177`. But the row carries no qualifier. The record requires
+    every annotation to carry an explicit relation matching its aspect; for an MF that is `enables` or
+    `contributes_to`, and the review's own reasoning picks `enables`.
+  fix: |
+    Give the NEW row `qualifier: enables`.
+  see_also: [QN-6, QN-2]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SDHA/SDHA-ai-review.yaml#L1302

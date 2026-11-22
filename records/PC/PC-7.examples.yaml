@@ -1,0 +1,80 @@
+record: PC-7
+examples:
+- id: PC-7-E1
+  title: A structural cytochrome-c oxidase subunit given the oxidase activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P24311
+      symbol: COX7B
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004129
+      label: cytochrome-c oxidase activity
+    qualifier: enables
+    evidence_code: TAS
+    reference: PMID:8382530
+  explanation: |
+    The TAS row gives COX7B `enables` cytochrome-c oxidase activity. The review found that COX7B does
+    not take part in catalysis and that its role is structural, contributing to the integrity and
+    assembly of complex IV. The record gives structural subunits their own MF and not the complex's
+    catalytic activity.
+  fix: |
+    MODIFY to `GO:0005198` structural molecule activity, as the review proposes. The review also keeps
+    `contributes_to` cytochrome-c oxidase activity in COX7B's core functions; under this record that
+    goes too unless COX7B is shown to be in the mechanism.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/COX7B/COX7B-ai-review.yaml#L373
+- id: PC-7-E2
+  title: A regulatory phosphorylase kinase subunit given the holoenzyme's kinase activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P46019
+      symbol: PHKA2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004689
+      label: phosphorylase kinase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000117
+  explanation: |
+    The ARBA row gives PHKA2 `enables` phosphorylase kinase activity. The review marked it as an
+    over-annotation because UniProt states that the alpha and beta chains are regulatory and gamma is
+    the catalytic subunit. The record gives regulatory subunits regulator terms, not the complex's
+    catalytic activity.
+  fix: |
+    Do not give PHKA2 the catalytic activity. Its MF, if any, is a regulator activity; the review's
+    `contributes_to` entry in core functions is the attribution the record rejects for regulatory
+    subunits.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PHKA2/PHKA2-ai-review.yaml#L44
+- id: PC-7-E3
+  title: A cofactor-free Complex I subunit with contributes_to in its core functions
+  verdict: CONTESTED
+  subject:
+    subject_kind: other
+    description: |
+      The `core_functions` entry of the human NDUFA5 review: `molecular_function` `GO:0005198`
+      structural molecule activity and `contributes_to_molecular_function` `GO:0008137` NADH
+      dehydrogenase (ubiquinone) activity, for a non-catalytic accessory subunit that carries no redox
+      cofactor.
+    refs:
+    - UniProtKB:Q16718
+    - GO:0005198
+    - GO:0008137
+  explanation: |
+    The review marked NDUFA5's `enables` rows as over-annotations and moved the activity to
+    `contributes_to_molecular_function`, as the schema's slot description suggests for an accessory
+    subunit of Complex I. The record takes the narrower view that only subunits whose part is in the
+    mechanism contribute, which would leave NDUFA5 with its structural MF alone. Many Complex I, III,
+    IV and ATP synthase reviews in the repo follow the same pattern. The record's open question on the
+    schema text is exactly this disagreement.
+  see_also:
+  - PC-15
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NDUFA5/NDUFA5-ai-review.yaml#L486

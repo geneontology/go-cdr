@@ -76,6 +76,14 @@ route the cytokine through it.
 | Date | 2026-11-15 |
 | GO terms | `GO:0004197` cysteine-type endopeptidase activity; `GO:0005829` cytosol; `GO:0005125` cytokine activity; `GO:0005576` extracellular region; `GO:0022829` wide pore channel activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-14-E1](CAM-14.examples.yaml): Cytokine release routed through the gasdermin D pore | Conformant | gomodel:635b1e3e00001811 |
+| [CAM-14-E2](CAM-14.examples.yaml): Cytosolic caspase-1 directly activating extracellular IL-1beta with no release step | Non-conformant | gomodel:59cc772c00000000 |
+| [CAM-6-E2](CAM-6.examples.yaml): A gluconeogenesis model chained only by provides-input-for edges (from [CAM-6](CAM-6.md)) | Non-conformant | gomodel:61e0e55600001225 |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

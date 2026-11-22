@@ -1,0 +1,74 @@
+record: REV-5
+examples:
+- id: REV-5-E1
+  title: A scratch assay read as wound healing on PTK2, marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q05397
+      symbol: PTK2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0090303
+      label: positive regulation of wound healing
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:26763945
+  explanation: |
+    The row annotates `positive regulation of wound healing` from a fibroblast monolayer
+    scratch-closure assay. The review marks it over-annotated because the assay "measures cell
+    migration rather than tissue wound healing", and notes the finding is captured by the cell
+    migration terms. This is the GOC example the record cites: the scratch assay is a readout of
+    motility.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PTK2/PTK2-ai-review.yaml#L3359
+- id: REV-5-E2
+  title: Fungal cell wall organization on a GPI transamidase subunit, marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9US48
+      symbol: gaa1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0031505
+      label: fungal-type cell wall organization
+    qualifier: involved_in
+    evidence_code: NAS
+    reference: PMID:15003443
+  explanation: |
+    The NAS row places Gaa1 in `fungal-type cell wall organization`. The review argues that GPI-anchored
+    proteins build the cell wall, so the effect is "an indirect downstream effect" of the direct
+    function, GPI-anchor attachment. That is the record's "gene affects X, X affects Y" pattern,
+    handled with the action the record prescribes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/gaa1/gaa1-ai-review.yaml#L164
+- id: REV-5-E3
+  title: Wound healing from a scratch assay kept as non-core on FGF1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P05230
+      symbol: FGF1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0042060
+      label: wound healing
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:16756958
+  explanation: |
+    The review's own reason says "a scratch-closure assay is better captured by cell migration terms
+    than by the organismal 'wound healing' process", and that Fgf1-null mice show no wound-healing
+    defect beyond that of FGF2-null mice. It then keeps the row as `KEEP_AS_NON_CORE`, which asserts
+    the term is true and precise. By the record, an assay-readout term is over-annotation, and the
+    review's reason agrees with that.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`, with the existing reason. The migration finding belongs on a cell
+    migration term if the full text supports one.
+  see_also: [REV-2]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FGF1/FGF1-ai-review.yaml#L3650

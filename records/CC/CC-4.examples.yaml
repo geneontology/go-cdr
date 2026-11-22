@@ -1,0 +1,54 @@
+record: CC-4
+examples:
+- id: CC-4-E1
+  title: An ISS Golgi row resting on transit of a plasma-membrane pump
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P05023
+      symbol: ATP1A1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005794
+      label: Golgi apparatus
+    qualifier: located_in
+    evidence_code: ISS
+    reference: GO_REF:0000024
+  explanation: |
+    The record's test for a synthesis row on a protein that acts elsewhere is whether its source shows
+    residence or only transit. The review traced this ISS row to rat P06685, whose Golgi IDA comes from a
+    paper measuring ankyrin R-dependent ER-to-Golgi export with VSV-G reporters and beta-subunit
+    glycosylation; the alpha subunit is never shown in a marker-defined Golgi compartment and moves on to
+    the plasma membrane. That is biosynthetic transit, the record's `MARK_AS_OVER_ANNOTATED` case.
+  fix: |
+    No Golgi row for ATP1A1; the pump's location is the plasma membrane. The review marks the row
+    over-annotated and adds no Golgi sub-compartment.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ATP1A1/ATP1A1-ai-review.yaml#L620
+- id: CC-4-E2
+  title: An agonist-driven retrograde Golgi pool of a GPCR kept as non-core
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P07550
+      symbol: ADRB2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005794
+      label: Golgi apparatus
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:27481942
+  explanation: |
+    The record distinguishes biosynthetic transit from retrograde or ligand-driven pools reached from the
+    plasma membrane, which are real locations, non-core unless the activity is core. The review read the
+    full text: antibody-fed surface ADRB2 reaches a Golgi-RFP-marked Golgi after isoproterenol and meets
+    the zDHHC9/14/18 palmitoyltransferases there, and brefeldin A blocks agonist-induced Cys-265
+    palmitoylation. It kept the row non-core and added no Golgi membrane row, since topology does not
+    force a sub-compartment on a protein that passes through.
+  see_also:
+  - CC-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ADRB2/ADRB2-ai-review.yaml#L1581

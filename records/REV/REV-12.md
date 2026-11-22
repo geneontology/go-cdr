@@ -54,6 +54,15 @@ no data (`nd_case`), and pair a true gap with a biology knowledge gap
 | Date | 2026-11-15 |
 | Evidence codes | IPI, IBA, ISS, ISO, TAS, NAS, ND, IEA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-12-E1](REV-12.examples.yaml): An accepted BP ND that cites its literature search | Conformant | At5g03810 involved_in GO:0008150 biological_process (ND, GO_REF:0000015) |
+| [REV-12-E2](REV-12.examples.yaml): A stale BP ND on rat Aga removed, quoting the paper | Conformant | Aga involved_in GO:0008150 biological_process (ND, GO_REF:0000015) |
+| [REV-12-E3](REV-12.examples.yaml): A NEW ND row proposed for a microprotein of unknown function | Non-conformant | P3R3URF GO:0003674 molecular_function (ND) |
+| [REV-19-E2](REV-19.examples.yaml): A root molecular_function row proposed by NAS for KCTD18 (from [REV-19](REV-19.md)) | Non-conformant | KCTD18 GO:0003674 molecular_function (NAS) |
+
 ## Sources
 
 - drive: [GO rules update 2023](https://drive.google.com/open?id=1BAti-J62GG1ajan2sVK7M3Vzw6ZQol3syA-soAjiQjI)

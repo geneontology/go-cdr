@@ -1,0 +1,19 @@
+record: AE-7
+examples:
+- id: AE-7-E1
+  title: A checkpoint kinase activity placed in mitotic S phase in a GO-CAM
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:653b0ce600000721
+    description: |
+      Activity gomodel:653b0ce600000721/653b0ce600000743 in "A checkpoint mediated by ATR that restricts
+      activation of CDK1 during S-phase (Human)": UniProtKB:Q13535 enables GO:0004674, part_of GO:0044818,
+      happens_during GO:0000084 (mitotic S phase), each with ECO:0000314 from PMID:30139873.
+  explanation: |
+    `happens_during` is used with a descendant of GO:0044848 biological phase, which is the only use the
+    record allows. The activity's role in the process is stated separately with `part_of` the checkpoint,
+    so `happens_during` carries only the timing. In the cached GO-CAMs, all `happens_during` fillers found
+    were cell-cycle phases of this kind (mitotic S, G1, M phase, interphase, metaphase and others).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/653b0ce600000721/653b0ce600000721-src.yaml#L7

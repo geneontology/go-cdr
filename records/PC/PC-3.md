@@ -74,6 +74,13 @@ P2GO table excludes for complex terms.
 | Evidence codes | IBA |
 | GO terms | `GO:0044877` protein-containing complex binding; `GO:0022627` cytosolic small ribosomal subunit; `GO:0043022` ribosome binding; `GO:0043024` ribosomal small subunit binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-3-E1](PC-3.examples.yaml): Ran annotated as part of the importin complex that it dissociates | Non-conformant | Ran part_of GO:0042564 NLS-dependent protein nuclear import complex (NAS, PMID:17287812) |
+| [PC-3-E2](PC-3.examples.yaml): Cargo transporter given membership of the AP-1 adaptor complex by IBA | Non-conformant | SLC18A3 part_of GO:0030121 AP-1 adaptor complex (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - wiki: [Located in](https://wiki.geneontology.org/index.php/Located_in)

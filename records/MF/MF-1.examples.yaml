@@ -1,0 +1,51 @@
+record: MF-1
+examples:
+- id: MF-1-E1
+  title: Kinase activity removed from a cyclin regulatory subunit
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P24864
+      symbol: CCNE1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0016301
+      label: kinase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The record reserves `enables` for an activity the gene product carries out itself. The review
+    removed this electronic kinase row because cyclin E1 is the regulatory subunit that binds and
+    activates CDK2, citing PMID:8207080 ("Cyclin E is a regulatory subunit of the cdc2-related protein
+    kinase cdk2"). The kinase activity belongs to CDK2; the review points to the cyclin-dependent kinase
+    regulator activity row already on the gene as the MF cyclin E1 does perform.
+  see_also: [MF-14]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CCNE1/CCNE1-ai-review.yaml#L769
+- id: MF-1-E2
+  title: GTPase activity removed from a G beta subunit despite an IDA row
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P62873
+      symbol: GNB1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003924
+      label: GTPase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:1543505
+  explanation: |
+    The review removed GTPase activity from G beta 1 because the protein is a WD40 beta-propeller with
+    no nucleotide-binding domain, and GDP/GTP exchange and hydrolysis take place on the G alpha subunit
+    of the heterotrimer. G beta-gamma is needed for the heterotrimer to work, but the record is explicit
+    that being necessary for an activity does not make a product its performer. [MF-13](MF-13.md)
+    names this exact pattern (G beta and gamma subunits annotated `enables` GTPase activity) as a
+    flag raised by function-requirement rules.
+  see_also: [MF-13, MF-14]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GNB1/GNB1-ai-review.yaml#L45

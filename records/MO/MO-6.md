@@ -52,6 +52,12 @@ triggered a taxon violation on `GO:0046929`; the fix was the symbiont term
 | Date | 2026-11-15 |
 | GO terms | `GO:0046929` negative regulation of neurotransmitter secretion; `GO:0044762` symbiont-mediated suppression of host neurotransmitter secretion |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MO-6-E1](MO-6.examples.yaml): A phage endolysin on its own-organism peptidoglycan catabolism term | Non-conformant | lysK involved_in GO:0009253 peptidoglycan catabolic process (IEA, GO_REF:0000002) |
+
 ## Sources
 
 - issue: [go-annotation#4582](https://github.com/geneontology/go-annotation/issues/4582)

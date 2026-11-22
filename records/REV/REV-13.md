@@ -65,6 +65,13 @@ binding as non-core when nothing more specific is evidenced. Details:
 | Evidence codes | ISS, IEA |
 | GO terms | `GO:0005515` protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-13-E1](REV-13.examples.yaml): A Pelle-Tube protein binding IPI replaced by death domain binding | Conformant | pll enables GO:0005515 protein binding (IPI, PMID:10589682) |
+| [REV-13-E2](REV-13.examples.yaml): Bare protein binding proposed as a NEW core function for worm MKS-1 | Non-conformant | mks-1 GO:0005515 protein binding (NAS) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

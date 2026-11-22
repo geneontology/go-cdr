@@ -1,0 +1,74 @@
+record: QN-2
+examples:
+- id: QN-2-E1
+  title: SDHB contributes to the whole-complex succinate:quinone activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P21912
+      symbol: SDHB
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008177
+      label: succinate dehydrogenase (quinone) activity
+    qualifier: contributes_to
+    evidence_code: IDA
+    reference: PMID:37098072
+  explanation: |
+    The review added this `contributes_to` row because SDHB supplies the Fe-S electron relay between
+    the SDHA flavin and the quinone site but "cannot catalyse it alone". That is the record's first two
+    questions answered in order: the activity belongs to the complex, and SDHB is part of the active unit
+    rather than an assembly or regulatory subunit. It is the record's own succinate dehydrogenase example.
+  see_also: [QN-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SDHB/SDHB-ai-review.yaml#L1175
+- id: QN-2-E2
+  title: An assembly factor's complex IV activity row moved to the assembly process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09925
+      symbol: Surf1
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0004129
+      label: cytochrome-c oxidase activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:23838831
+  explanation: |
+    The review found that SURF1 "is not a catalytic or structural COX subunit" and that the mutant
+    phenotype supports a role in complex IV assembly, not oxidase activity, and replaced the term with
+    `GO:0033617` mitochondrial respiratory chain complex IV assembly. The record names exactly this
+    pattern (assembly factors such as SURF1 carrying `GO:0004129`) as the misuse that `contributes_to`
+    or `enables` on the complex activity produces; an assembly subunit is not part of the active unit.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Surf1/Surf1-ai-review.yaml#L235
+- id: QN-2-E3
+  title: An enables row for a single SDH subunit accepted while its own text calls for contributes_to
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P21911
+      symbol: sdh2
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0008177
+      label: succinate dehydrogenase (quinone) activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    The *S. pombe* review ACCEPTs `enables` `GO:0008177` for the iron-sulfur subunit while noting that
+    "the activity belongs to the complex (contributes_to in core_functions)". Under the record no single
+    SDH subunit carries out the succinate-to-quinone reaction, so every catalytic-core subunit, sdh2
+    included, `contributes_to` it; `enables` on the row says the opposite.
+  fix: |
+    MODIFY the row as a relation-only change and add a NEW row on `GO:0008177` with `contributes_to`
+    (the pattern in QN-7).
+  see_also: [QN-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/sdh2/sdh2-ai-review.yaml#L87

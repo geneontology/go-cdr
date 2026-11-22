@@ -1,0 +1,78 @@
+record: PH-12
+examples:
+- id: PH-12-E1
+  title: A Pol II transcription factor IBA on secreted netrin-1 from POU-domain donors
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O95631
+      symbol: NTN1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000981
+      label: DNA-binding transcription factor activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review resolved the source node PTN000180816 and found its experimental seeds to be POU
+    transcription factors, while NTN1 has the laminin/EGF/NTR architecture of a secreted guidance cue. It
+    removed the row because the Pol II sequence-specific activities are supported neither by the target's
+    architecture nor by source-to-target homology, and said the removal "is not based on secreted
+    localization alone". The record treats wrong-family donors as near-mechanical evidence of a placement
+    error and uses NTN1 as a worked example.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NTN1/NTN1-ai-review.yaml#L19
+- id: PH-12-E2
+  title: An axon guidance IBA on NOTCH1 whose donors are SLIT genes, left undecided on re-review
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P46531
+      symbol: NOTCH1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0007411
+      label: axon guidance
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record lists this row as a wrong-family case (NOTCH1 carrying `GO:0007411` with SLIT1/2/3 as
+    donors). The review confirms that the PTN002911625 source "is SLIT-grounded" but, after the 2026-09
+    IBA re-review, holds that this "does not disprove an independent NOTCH1 guidance mechanism", citing
+    Drosophila Notch/Disabled/Trio axon patterning, and keeps the row UNDECIDED. The record reads
+    wrong-family donors as near-mechanical evidence against the row; the re-review reads them as evidence
+    about the inference only, leaving the claim open.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/3214
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NOTCH1/NOTCH1-ai-review.yaml#L51
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/IBA_REVIEW/rereview-2026-09-20/context-transfer.yaml#L350
+- id: PH-12-E3
+  title: A spindle-assembly IBA on ABRAXAS1 whose only donor is its paralog, left undecided
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6UWZ7
+      symbol: ABRAXAS1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0090307
+      label: mitotic spindle assembly
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record lists ABRAXAS1's spindle terms, whose only donor is its paralog ABRAXAS2, as a wrong-paralog
+    placement error. The re-reviewed row records the same donor (ABRAXAS2/Q15018, from BRISC/ABRO1
+    microtubule and NuMA work) and agrees that divergence is plausible, since ABRAXAS1 assembles the
+    distinct BRCA1-A complex, but keeps the row UNDECIDED because "donor identity" without a
+    target-specific loss is not refutation. The case turns on whether a single wrong-paralog donor is
+    enough, which the record says it nearly is and the review says it is not.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/3214
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ABRAXAS1/ABRAXAS1-ai-review.yaml#L129
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/IBA_REVIEW/rereview-2026-09-20/context-transfer.yaml#L546

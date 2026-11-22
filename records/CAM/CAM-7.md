@@ -60,6 +60,17 @@ wrong sign is `WRONG_CAUSAL_SIGN`.
 | Date | 2026-11-15 |
 | Related | [CAM-6](CAM-6.md), [CAM-10](CAM-10.md), [CAM-11](CAM-11.md), [CAM-8](CAM-8.md) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-7-E1](CAM-7.examples.yaml): CaMKII to STAT1 left as causally upstream, positive effect, on pharmacological evidence | Conformant | gomodel:62b4ffe300004525 |
+| [CAM-7-E2](CAM-7.examples.yaml): A GAP drawn as negatively regulating the GTPase activity it stimulates | Non-conformant | gomodel:693b3c0900004859 |
+| [CAM-7-E3](CAM-7.examples.yaml): A receptor-to-phosphatase regulation drawn as provides input for | Non-conformant | gomodel:68d5ebd600001504 |
+| [CAM-2-E2](CAM-2.examples.yaml): One PERK phosphorylation drawn as opposite-sign edges to two eIF2alpha nodes (from [CAM-2](CAM-2.md)) | Non-conformant | gomodel:66b5638000001589 |
+| [CAM-8-E2](CAM-8.examples.yaml): Protein kinase D drawn as directly activating p38 with the mechanism unknown (from [CAM-8](CAM-8.md)) | Non-conformant | gomodel:568b0f9600000284 |
+| [CAM-19-E1](CAM-19.examples.yaml): A TOLLIP adaptor activity consistent with its gene review but carrying the wrong edge sign (from [CAM-19](CAM-19.md)) | Conformant | gomodel:59cc772c00000000 |
+
 ## Sources
 
 - drive: [New Causal Relations Decision Tree for VPE (2022-12-20)](https://drive.google.com/open?id=1ODFtV2aEeUeOUDs8dupre-3hUJchLFMMu-kChPKR1Oc)

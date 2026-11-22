@@ -94,6 +94,15 @@ mentions are annotated in their own right.
 | Evidence codes | IDA, IMP, IEP |
 | GO terms | `GO:0009408` response to heat; `GO:0009410` response to xenobiotic stimulus; `GO:0007507` heart development; `GO:0030855` epithelial cell differentiation |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-6-E1](EV-6.examples.yaml): A heat-shock chaperone annotated to response to heat by IEP | Conformant | hsp-16.2 involved_in GO:0009408 response to heat (IEP, PMID:1550963) |
+| [EV-6-E2](EV-6.examples.yaml): Heart development from a postnatal rise in creatine kinase expression | Non-conformant | Ckmt2 involved_in GO:0007507 heart development (IEP, PMID:8086475) |
+| [LIT-11-E1](../LIT/LIT-11.examples.yaml): One of four response-to rows on a glutathione transferase (from [LIT-11](../LIT/LIT-11.md)) | Non-conformant | Gstt1 involved_in GO:0010269 response to selenium ion (IEP, PMID:9331086) |
+| [LIT-11-E2](../LIT/LIT-11.examples.yaml): Epithelial cell differentiation from a Caco-2 differentiation proteome (from [LIT-11](../LIT/LIT-11.md)) | Non-conformant | ACADVL involved_in GO:0030855 epithelial cell differentiation (IEP, PMID:21492153) |
+
 ## Sources
 
 - paper: [GO best-practices paper](https://europepmc.org/article/MED/23842463)

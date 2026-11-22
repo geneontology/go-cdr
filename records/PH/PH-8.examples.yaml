@@ -1,0 +1,27 @@
+record: PH-8
+examples:
+- id: PH-8-E1
+  title: A contributes_to rotary ATPase IBA on a V-ATPase central-stalk subunit
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P87220
+      symbol: VMA8
+    taxon: NCBITaxon:237561
+    term:
+      term_id: GO:0046961
+      label: proton-transporting ATPase activity, rotational mechanism
+    qualifier: contributes_to
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review accepted the IBA with its `contributes_to` relation because Vma8 is "not an isolated
+    ATPase" but a subunit required for full V-ATPase activity, with residues that tune the coupling of
+    ATP hydrolysis to proton transport. The record allows `contributes_to` on an IBD only where the target
+    is a subunit of the same complex in which the activity is distributed; a rotary-mechanism ATPase is
+    that kind of complex, like the ATP synthase case in QN-2.
+  see_also:
+  - QN-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CANAL/VMA8/VMA8-ai-review.yaml#L423

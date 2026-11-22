@@ -1,0 +1,40 @@
+record: CAM-14
+examples:
+- id: CAM-14-E1
+  title: Cytokine release routed through the gasdermin D pore
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:635b1e3e00001811
+    description: |
+      Activity gomodel:635b1e3e00001811/635b1e3e00001926 in "The NLRP3 inflammasome (Human)": the GSDMD
+      N-terminal fragment (UniProtKB:P57764-PRO_0000437526) enables GO:0022829 wide pore channel activity,
+      `has input` IL-18 and IL-1beta, directly positively regulating IL18 and IL1B GO:0005125 cytokine
+      activity in the extracellular region.
+  explanation: |
+    The cytokines move from the cytosol, where CASP1 cleaves them, to the extracellular region where they
+    act, and the model includes the activity that moves them. The review called this "the key node that the
+    IL-1 model (gomodel:59cc772c00000000) was missing" and found "no compartment-crossing shortcut here".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/635b1e3e00001811/635b1e3e00001811-review.yaml#L422
+- id: CAM-14-E2
+  title: Cytosolic caspase-1 directly activating extracellular IL-1beta with no release step
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:59cc772c00000000
+    description: |
+      Activity gomodel:59cc772c00000000/626b20c100001883 in "IL1beta-mediated signaling pathway (Human)":
+      UniProtKB:P29466 (CASP1) GO:0004197 cysteine-type endopeptidase activity in GO:0005829 cytosol,
+      `directly positively regulates` IL1B GO:0005125 cytokine activity in GO:0005576 extracellular region.
+  explanation: |
+    The edge joins an interior space to the exterior with nothing that crosses the membrane. The review
+    flagged NONADJACENT_COMPARTMENTS and DIRECT_VS_INDIRECT_CAUSAL: mature IL-1beta lacks a signal peptide,
+    leaves through gasdermin D pores, and "a cleaved IL-1beta that stays in the cytosol signals nothing".
+    The record uses this model as its own example.
+  fix: |
+    Add the CASP1 -> GSDMD wide pore channel activity step at the plasma membrane, with mature IL-1beta as
+    the pore's input, and let the pore activate IL1B cytokine activity (the NLRP3 model, CAM-14-E1, does
+    this). The minimal fix the review offers is `indirectly positively regulates` (RO:0002407).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/59cc772c00000000/59cc772c00000000-review.yaml#L157

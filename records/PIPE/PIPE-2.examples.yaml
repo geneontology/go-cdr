@@ -1,0 +1,22 @@
+record: PIPE-2
+examples:
+- id: PIPE-2-E1
+  title: An ARBA rule whose conditions were rebuilt between two reviews
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: ARBA
+    refs:
+    - ARBA:ARBA00090718
+    - GO:0047545
+    description: |
+      ARBA00090718, modified 2026-07-18 and retrieved 2026-11-09, as recorded in the repo's rule review.
+  explanation: |
+    An earlier review judged the rule on a CATH FunFam condition. When the rule was retrieved again,
+    its one condition set was a different conjunction (`IPR006076`, `IPR036188` and PANTHER
+    `PTHR43104`), and the review withdrew its verdict as a `STALE_RULE_VERSION` error. Other reviewed
+    ARBA rules had been withdrawn outright (UniProt returned 404 on 2026-11-09). The rule set is being
+    curated and rebuilt, which is what the rubric asks; the cost, which the repo's corrections record,
+    is that reviews made against one version go stale.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/arba/ARBA00090718/ARBA00090718-review.yaml#L75

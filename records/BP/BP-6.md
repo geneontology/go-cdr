@@ -73,6 +73,16 @@ date: '2026-11-15'
 | Provenance | [GOC] |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-6-E1](BP-6.examples.yaml): An SRE-luciferase readout of RhoA activation annotated as transcription regulation | Non-conformant | rhgf-2 involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (IDA, PMID:22363657) |
+| [BP-6-E2](BP-6.examples.yaml): An IP3 biosensor readout annotated as regulation of IP3 biosynthesis | Non-conformant | Arrb1 involved_in GO:0032960 regulation of inositol trisphosphate biosynthetic process (IMP, PMID:20705669) |
+| [BP-2-E3](BP-2.examples.yaml): Growth on glycerol read as COQ3 participation in glycerol metabolism (from [BP-2](BP-2.md)) | Non-conformant | COQ3 involved_in GO:0006071 glycerol metabolic process (IGI, PMID:10777520) |
+| [BP-4-E1](BP-4.examples.yaml): A nuclease's effect on antimicrobial gene expression kept as a signed upstream annotation (from [BP-4](BP-4.md)) | Conformant | nuc-1 acts_upstream_of_or_within_positive_effect GO:0002785 negative regulation of antimicrobial peptide production (IMP, PMID:26251453) |
+| [BP-15-E2](BP-15.examples.yaml): A vagina development term transferred to mouse Tacr3 from a rat pubertal-timing readout (from [BP-15](BP-15.md)) | Non-conformant | Tacr3 involved_in GO:0060068 vagina development (IEA, GO_REF:0000107) |
+
 ## Sources
 
 - wiki: [Annotating from phenotypes](https://wiki.geneontology.org/index.php/Annotating_from_phenotypes)

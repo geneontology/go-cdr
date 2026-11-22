@@ -54,6 +54,12 @@ If the gap is a genuine biological unknown, record a `knowledge_gaps` entry with
 | Date | 2026-11-15 |
 | GO terms | `GO:0005515` protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-9-E1](PC-9.examples.yaml): An archaeal AmoA row refined to the complex activity although the active subunit is unknown | Non-conformant | amoA enables GO:0004497 monooxygenase activity (IEA, GO_REF:0000043) |
+
 ## Sources
 
 - wiki: [Contributes to](https://wiki.geneontology.org/index.php/Contributes_to)

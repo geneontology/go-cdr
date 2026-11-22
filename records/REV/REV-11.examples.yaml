@@ -1,0 +1,71 @@
+record: REV-11
+examples:
+- id: REV-11-E1
+  title: CRISPR-cas system proposed for Cas10 with a participation test and comparators
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0A7HFE1
+      symbol: cas10
+    taxon: NCBITaxon:1308
+    term:
+      term_id: GO:0099048
+      label: CRISPR-cas system
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:27105119
+  explanation: |
+    The `NEW` row does what the record asks. It names the step Cas10 performs (target interference,
+    one of the three stages in the term's definition), runs the comparator check (every curated E. coli
+    K-12 Cas protein carries the term) and ties the evidence code to reconstituted interference assays
+    on the purified complex.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/STRTR/cas10/cas10-ai-review.yaml#L405
+- id: REV-11-E2
+  title: Nodulation proposed for the CASTOR channel, not from the mutant phenotype alone
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5H8A6
+      symbol: CASTOR
+    taxon: NCBITaxon:34305
+    term:
+      term_id: GO:0009877
+      label: nodulation
+    evidence_code: IMP
+    reference: PMID:31420535
+  explanation: |
+    The review argues participation rather than necessity. CASTOR's channel activity is a step in
+    nuclear Ca2+ spiking, and channel-dead point mutants fail to rescue the mutant. It then runs the
+    comparator check: CNGC15A/B, CCaMK and CYCLOPS, which play the same kind of role, carry the term
+    by IMP. That is the record's bar for a process `NEW`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/LOTJA/CASTOR/CASTOR-ai-review.yaml#L161
+- id: REV-11-E3
+  title: Melanin biosynthesis proposed for POMC with a boilerplate reason
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P01189
+      symbol: POMC
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0042438
+      label: melanin biosynthetic process
+    evidence_code: NAS
+  explanation: |
+    The row proposes POMC `involved_in` melanin biosynthetic process, with the reason "Core function
+    term not present in existing_annotations", added "to align core_functions with existing
+    annotations". POMC-derived peptides are hormones. The review names no step of melanin synthesis
+    that POMC performs, runs no comparator check and reads no parent terms. This is the
+    necessity-for-participation substitution of REV-10, in the one action that manufactures a claim.
+  fix: |
+    Withdraw the `NEW` row. If melanocyte stimulation is to be recorded, use the hormone's receptor
+    ligand activity and the pathway it starts. Leave melanin synthesis to the enzymes that catalyse its
+    steps.
+  see_also: [REV-10, REV-18]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/POMC/POMC-ai-review.yaml#L1198

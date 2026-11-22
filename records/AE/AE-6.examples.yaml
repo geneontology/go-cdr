@@ -1,0 +1,79 @@
+record: AE-6
+examples:
+- id: AE-6-E1
+  title: A telomere location limited to S phase with an existence relation
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P84243
+      symbol: H3-3A
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000781
+      label: chromosome, telomeric region
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:20110566
+    extension: RO:0002490(GO:0000084)
+  explanation: |
+    The record asks for an existence relation, such as `existence_overlaps` (RO:0002490), to give a CC
+    annotation its stage. Here the filler is a phase, GO:0000084 mitotic S phase. The review accepted the
+    row because the paper describes replication-linked loading of H3.3 at telomeres, and it kept the S-phase
+    extension.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/H3-3A/H3-3A-ai-review.yaml#L53
+- id: AE-6-E2
+  title: A protein complex given part_of a kidney cell type and tissue
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P54710
+      symbol: FXYD2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005890
+      label: sodium:potassium-exchanging ATPase complex
+    qualifier: part_of
+    evidence_code: ISS
+    reference: GO_REF:0000024
+    extension: BFO:0000050(CL:1000616),BFO:0000050(UBERON:0000362)
+  explanation: |
+    The record says the extension rules allow only existence relations on protein-containing-complex
+    terms: a complex is not "part of" a cell type in the way a membrane is. This BHF-UCL row puts the Na,K-ATPase
+    complex `part_of` a kidney outer medulla cell and the renal medulla. The review accepted the row and
+    asked for "both part_of renal cell/kidney atoms" to be preserved.
+  fix: |
+    Keep the complex membership without the `part_of` atoms. If the renal context matters, state it on the
+    membrane location or activity rows, where a cell or anatomy filler is allowed.
+  see_also: [AE-12]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FXYD2/FXYD2-ai-review.yaml#L140
+- id: AE-6-E3
+  title: An existence relation filled with a signalling pathway, not a stage
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O75581
+      symbol: LRP6
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0031410
+      label: cytoplasmic vesicle
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:20093472
+    extension: RO:0002490(GO:0016055)
+  explanation: |
+    The record limits the temporal extension on a CC to a stage, and AE-7 excludes a process that only
+    coincides. GO:0016055 Wnt signaling pathway is neither a biological phase nor a life stage, so
+    `existence_overlaps` it only says that the vesicle location coincides with signalling. The review left
+    the row UNDECIDED because the full text was unavailable, and it did not comment on the extension.
+  fix: |
+    Drop the extension. If the point is that LRP6 is internalised into vesicles as part of Wnt signalling,
+    that belongs in the BP annotation or a GO-CAM, not in the stage slot of the CC row.
+  see_also: [AE-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LRP6/LRP6-ai-review.yaml#L1864

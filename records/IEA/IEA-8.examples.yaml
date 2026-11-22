@@ -1,0 +1,76 @@
+record: IEA-8
+examples:
+- id: IEA-8-E1
+  title: Flowering keyword annotates a flowering-time regulator to flower development
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O04211
+      symbol: ELF4
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0009908
+      label: flower development
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000043
+  explanation: |
+    The keyword row asserts that ELF4 takes part in flower development. The review found that ELF4
+    controls when flowering occurs through the circadian clock, not the formation of the flower, and
+    that the regulation term is already annotated with IMP evidence. A regulator annotated as a
+    participant is the first distinction the record asks reviewers to check on keyword rows.
+  fix: |
+    MODIFY to `GO:0009909` regulation of flower development, as the review proposes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/ELF4/ELF4-ai-review.yaml#L107
+- id: IEA-8-E2
+  title: Metal ion binding from the keyword for a protein that binds iron-sulfur clusters
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q00914
+      symbol: psaC
+    taxon: NCBITaxon:3055
+    term:
+      term_id: GO:0046872
+      label: metal ion binding
+    evidence_code: IEA
+    reference: GO_REF:0000043
+  explanation: |
+    PsaC binds iron only within two [4Fe-4S] cluster cofactors. The review removed the keyword-derived
+    metal ion binding row because `GO:0051539` 4 iron, 4 sulfur cluster binding is not a descendant of
+    metal ion binding in GO, so the keyword row describes the cofactor imprecisely rather than adding a
+    function. This is the cofactor-versus-binding distinction in the record, and the same point the
+    record cites from go-annotation#390.
+  fix: |
+    Remove the row and keep `GO:0051539` 4 iron, 4 sulfur cluster binding, which the gene carries.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CHLRE/psaC/psaC-ai-review.yaml#L187
+- id: IEA-8-E3
+  title: Apoptosis keyword on an autophagy protease that caspase-3 cleaves
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q86TL0
+      symbol: ATG4D
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006915
+      label: apoptotic process
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000043
+  explanation: |
+    ATG4D carried apoptotic process from the apoptosis keyword. The review found that its link to
+    apoptosis is that it is a caspase-3 substrate, while its function is ATG8 processing in
+    autophagosome biogenesis, and marked the row as an over-annotation. Being cleaved during a process
+    is not taking part in it, the regulator-or-bystander error the record describes for apoptosis
+    keywords.
+  fix: |
+    Do not keep apoptotic process as a participation claim for ATG4D; the review's
+    MARK_AS_OVER_ANNOTATED records that.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ATG4D/ATG4D-ai-review.yaml#L325

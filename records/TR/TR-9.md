@@ -78,6 +78,15 @@ mechanism rather than choosing a direction ([YEAST_EPIGENETICS_HISTONE_INHERITAN
 | Date | 2026-11-15 |
 | Evidence codes | IBA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-9-E1](TR-9.examples.yaml): Positive regulation from a reporter carrying the target gene's regulatory sites | Conformant | FOXE1 involved_in GO:0045893 positive regulation of DNA-templated transcription (IDA, PMID:9697705) |
+| [TR-9-E2](TR-9.examples.yaml): An electronic activator-only row on a MADS factor that both activates and represses | Non-conformant | PI involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (IEA, GO_REF:0000002) |
+| [TR-2-E1](TR-2.examples.yaml): An ETS repressor shown to act through its binding site in a reporter (from [TR-2](TR-2.md)) | Conformant | ERF enables GO:0001227 DNA-binding transcription repressor activity, RNA polymerase II-specific (IDA, PMID:7588608) |
+| [TR-14-E1](TR-14.examples.yaml): A forkhead activator row with its directly regulated target gene as input (from [TR-14](TR-14.md)) | Conformant | FOXC1 enables GO:0001228 DNA-binding transcription activator activity, RNA polymerase II-specific (IDA, PMID:17993506) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

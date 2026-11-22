@@ -43,6 +43,14 @@ Rules violations are cheaper to prevent in the pipeline than to filter after rel
 | Related | [IEA-4](../IEA/IEA-4.md) |
 | Enforced by | <https://github.com/geneontology/go-site/tree/master/metadata/rules> |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PIPE-3-E1](PIPE-3.examples.yaml): A combined-pipeline row propagated from a donor set that contains a curated NOT | Non-conformant | UniProt combined automatic annotation (GO_REF:0000120) |
+| [PIPE-3-E2](PIPE-3.examples.yaml): A curated rule checked against the taxon constraint of its process term | Conformant | curated rules (ai-gene-review rules/curated) |
+| [IEA-11-E2](../IEA/IEA-11.examples.yaml): Viral entry inferred from a virus receptor row that contradicts its own donor (from [IEA-11](../IEA/IEA-11.md)) | Non-conformant | Hyal2 involved_in GO:0046718 symbiont entry into host cell (IEA, GO_REF:0000108) |
+
 ## Sources
 
 - drive: [GO annotation pipeline proposed rubrics and MOU (GOC meeting, Cambridge 2025)](https://docs.google.com/presentation/d/1YudLhxPskOiptyhBkUo5sN6GkMjQWB4PIdM0_dNSZkw/edit)

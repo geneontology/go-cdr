@@ -36,6 +36,12 @@ Each pipeline costs curator attention to maintain; one that only repeats others 
 | Provenance | [NEW] Proposed at the GOC meeting, Cambridge 2025; not yet adopted. |
 | Date | 2026-11-21 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PIPE-8-E1](PIPE-8.examples.yaml): TreeGrafter supplies hundreds of reviewed annotations no other source carries | Conformant | TreeGrafter |
+
 ## Sources
 
 - drive: [GO annotation pipeline proposed rubrics and MOU (GOC meeting, Cambridge 2025)](https://docs.google.com/presentation/d/1YudLhxPskOiptyhBkUo5sN6GkMjQWB4PIdM0_dNSZkw/edit)

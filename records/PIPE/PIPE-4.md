@@ -42,6 +42,12 @@ A curator who disputes an annotation must be able to see which premise was wrong
 | Date | 2026-11-21 |
 | Related | [IEA-5](../IEA/IEA-5.md) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PIPE-4-E1](PIPE-4.examples.yaml): EC2GO on a TrEMBL entry whose EC number came from an imported record | Non-conformant | EC2GO |
+
 ## Sources
 
 - drive: [GO annotation pipeline proposed rubrics and MOU (GOC meeting, Cambridge 2025)](https://docs.google.com/presentation/d/1YudLhxPskOiptyhBkUo5sN6GkMjQWB4PIdM0_dNSZkw/edit)

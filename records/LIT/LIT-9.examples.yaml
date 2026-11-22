@@ -1,0 +1,56 @@
+record: LIT-9
+examples:
+- id: LIT-9-E1
+  title: Ethanol catabolism for a sulfotransferase the paper did not find active
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O43704
+      symbol: SULT1B1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006068
+      label: ethanol catabolic process
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:23207770
+  explanation: |
+    The record's own case. The cited abstract names the ethanol-sulfating SULTs explicitly and SULT1B1 is not
+    among them, so the row looks like the screen's positive result transferred to every enzyme on the panel.
+    The cache is abstract-only, so the review marked the row over-annotated rather than removing it, as
+    LIT-13 requires.
+  fix: |
+    A curator with the full text should confirm and retire the row, or record a NOT if the paper shows a clear
+    negative for SULT1B1.
+  see_also:
+  - LIT-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SULT1B1/SULT1B1-ai-review.yaml#L306
+- id: LIT-9-E2
+  title: A positive acyltransferase row citing the paper that found no activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NST1
+      symbol: PNPLA3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003841
+      label: 1-acylglycerol-3-phosphate O-acyltransferase activity
+    qualifier: enables
+    evidence_code: EXP
+    reference: PMID:21878620
+  explanation: |
+    The row asserts 1-acylglycerol-3-phosphate O-acyltransferase activity with EXP from PMID:21878620, the
+    paper by Huang et al. that assayed the reaction with purified and immunoisolated PNPLA3, with CGI-58 as a
+    positive control, and detected none. The review traced the error to UniProt tagging both this paper and
+    the positive Kumari et al. paper as experimental evidence, and marked the row over-annotated.
+  fix: |
+    NOT enables `GO:0003841` from PMID:21878620 (a `MISSING_NEGATION` defect on the positive row); the
+    positive claim rests only on PMID:22560221, and the pair is contested.
+  see_also:
+  - EV-1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PNPLA3/PNPLA3-ai-review.yaml#L471

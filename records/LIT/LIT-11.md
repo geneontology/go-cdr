@@ -62,6 +62,13 @@ introduction or discussion supports TAS or NAS at most.
 | Evidence codes | IEP, TAS, NAS |
 | GO terms | `GO:0009410` response to xenobiotic stimulus; `GO:0030855` epithelial cell differentiation |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-11-E1](LIT-11.examples.yaml): One of four response-to rows on a glutathione transferase | Non-conformant | Gstt1 involved_in GO:0010269 response to selenium ion (IEP, PMID:9331086) |
+| [LIT-11-E2](LIT-11.examples.yaml): Epithelial cell differentiation from a Caco-2 differentiation proteome | Non-conformant | ACADVL involved_in GO:0030855 epithelial cell differentiation (IEP, PMID:21492153) |
+
 ## Sources
 
 - web: [IEP](https://ai4curation.io/ai-gene-review/pages/projects/IEP.html)

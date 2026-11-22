@@ -66,6 +66,13 @@ Definitions are from the P2GO table and the wiki ([Drive: Annotation relations â
 | Date | 2026-11-15 |
 | GO terms | `GO:0097722` sperm motility; `GO:0009566` fertilization |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-5-E1](BP-5.examples.yaml): RDR6 acts upstream of siRNA-mediated translational repression by making the dsRNA precursor | Conformant | RDR6 acts_upstream_of_positive_effect GO:0070549 siRNA-mediated gene silencing by inhibition of translation (IMP, PMID:32376953) |
+| [BP-5-E2](BP-5.examples.yaml): acts_upstream_of on a regulation term for a transcription factor that induces NOS3 | Contested | Klf2 acts_upstream_of GO:0045429 positive regulation of nitric oxide biosynthetic process (ISO, GO_REF:0000121) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

@@ -1,0 +1,78 @@
+record: QN-7
+examples:
+- id: QN-7-E1
+  title: A relation-only MODIFY on SDHD, paired with a contributes_to NEW row
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O14521
+      symbol: SDHD
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008177
+      label: succinate dehydrogenase (quinone) activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The review marked this `enables` row MODIFY, said in its reason that it is a "relation-only
+    correction" and that "the term is kept", and recorded the `contributes_to` assertion as a paired NEW
+    row. That is the record's procedure: the term is sound, so the row is not removed, and the corrected
+    relation is in a structured field rather than in prose.
+  see_also: [QN-2]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SDHD/SDHD-ai-review.yaml#L314
+- id: QN-7-E2
+  title: A yeast SDH2 enables row accepted with the relation correction left in the summary
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P21801
+      symbol: SDH2
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0008177
+      label: succinate dehydrogenase (quinone) activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:13445213
+  explanation: |
+    The review's summary says that "'contributes_to' would be more exact" because the activity belongs
+    to the catalytic dimer and the quinone site needs Sdh3/Sdh4, and then ACCEPTs the `enables` row.
+    That is the failure the record describes from the SDH audit: arguing for `contributes_to` in prose
+    while the structured row still asserts `enables`.
+  fix: |
+    MODIFY the row, stating in `reason` that only the relation changes, and add a NEW row with the same
+    term and `qualifier: contributes_to`.
+  see_also: [QN-2]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/SDH2/SDH2-ai-review.yaml#L223
+- id: QN-7-E3
+  title: A wrong is_active_in relation handled by marking the term over-annotated
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q22038
+      symbol: rho-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0005829
+      label: cytosol
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review's objection is to the relation, not the term: the cytosolic pool of Rho GTPases is the
+    inactive GDI-bound pool, and "a located_in cytosol statement would be defensible; is_active_in
+    cytosol is not". It then marked the whole row MARK_AS_OVER_ANNOTATED. The record says a wrong relation
+    is corrected as a structured relation change, so that the true claim (`located_in` cytosol) survives
+    and the false one does not.
+  fix: |
+    MODIFY the row, stating in `reason` that only the relation changes, and add a NEW row on
+    `GO:0005829` cytosol with `located_in`.
+  see_also: [QN-4]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/rho-1/rho-1-ai-review.yaml#L306

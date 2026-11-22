@@ -1,0 +1,74 @@
+record: REV-3
+examples:
+- id: REV-3-E1
+  title: InterPro GPCR activity on NK3R kept because its signature names no ligand
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P47937
+      symbol: Tacr3
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0004930
+      label: G protein-coupled receptor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    This is the record's own case on a real row. Mouse Tacr3 carries `G protein-coupled receptor
+    activity` from IPR000276, and neuromedin K receptor activity on other rows. The review keeps the
+    InterPro row as it is: the signature "identifies no ligand, so this row's evidence does not
+    support GO:0016498", and GPCR activity "is a respectably specific statement". It neither
+    `MODIFY`s the row beyond its evidence nor calls it `TOO_GENERAL`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Tacr3/Tacr3-ai-review.yaml#L409
+- id: REV-3-E2
+  title: Bare membrane marked TOO_GENERAL beside an accepted ER membrane term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9US48
+      symbol: gaa1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0016020
+      label: membrane
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    Gaa1 is a multi-pass protein, so `membrane` is true, but the review notes the claim is entailed by
+    the accepted `endoplasmic reticulum membrane` and transamidase-complex rows and "adds nothing
+    beyond them". That is the kind of term the record reserves `TOO_GENERAL` for: imprecise on its own
+    once a specific term is asserted elsewhere.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/gaa1/gaa1-ai-review.yaml#L103
+- id: REV-3-E3
+  title: An InterPro rhodopsin-family row refined to the acetylcholine receptor term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P08482
+      symbol: Chrm1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0004930
+      label: G protein-coupled receptor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The review `MODIFY`s the InterPro2GO `G protein-coupled receptor activity` row on rat Chrm1 to
+    `G protein-coupled acetylcholine receptor activity`, because the gene "already carries [it] from
+    IDA, IBA and IEA rows". The reason itself says the rhodopsin-family mapping is correct; nothing
+    in this row's evidence identifies acetylcholine. The record makes `MODIFY` conditional on the
+    row's own evidence reaching the descendant, and gives this case (a generic GPCR signature) as one
+    to keep.
+  fix: |
+    Keep the row as it is (`ACCEPT`, or `KEEP_AS_NON_CORE` if the reviewer treats it as peripheral),
+    and state in the reason that the specific receptor activity is carried by the experimental rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Chrm1/Chrm1-ai-review.yaml#L19

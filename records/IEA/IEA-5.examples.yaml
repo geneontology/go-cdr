@@ -1,0 +1,53 @@
+record: IEA-5
+examples:
+- id: IEA-5-E1
+  title: A plasma membrane row reached through an ARBA-predicted subcellular location
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A2K3CTN0
+      symbol: BST1
+    taxon: NCBITaxon:3055
+    term:
+      term_id: GO:0005886
+      label: plasma membrane
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000044
+  explanation: |
+    The row is SubCell2GO (`GO_REF:0000044`) from `UniProtKB-SubCell:SL-0039`, and the review traced
+    that location to an ARBA prediction that applies the bestrophin default (animal and bacterial
+    plasma membrane) to a chloroplast paralog. The review removed it because BST1 is localised directly
+    to thylakoid membranes and has a predicted transit peptide. The chain is rule to location to GO, the
+    two-hop provenance the record rejects, and nothing in the GO row names the rule.
+  fix: |
+    Remove the row. SubCell2GO should map only curated or sequence-feature locations, not ARBA-predicted
+    ones.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CHLRE/BST1/BST1-ai-review.yaml#L239
+- id: IEA-5-E2
+  title: EC2GO NADase activity on a receptor TIR domain, from a ProRule-assigned EC number
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q62611
+      symbol: Il1rl1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0061809
+      label: NAD+ nucleosidase activity, cyclic ADP-ribose generating
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000003
+  explanation: |
+    The row's WITH/FROM is `EC:3.2.2.6`, and the review traced the EC number to the automatic
+    PROSITE-ProRule PRU00204 TIR rule. The review removed it because NAD+ hydrolysis is established for
+    SARM1 and plant and bacterial TIR domains, not for IL-1 receptor-family TIR domains, and no study
+    reports NADase activity for ST2. The GO term was reached through a rule-predicted EC number, a
+    chain the record names as unacceptable.
+  fix: |
+    Remove the row. EC2GO should not fire on EC numbers that are themselves rule predictions.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Il1rl1/Il1rl1-ai-review.yaml#L776

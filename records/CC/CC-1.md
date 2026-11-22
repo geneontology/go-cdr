@@ -84,6 +84,13 @@ substrates there ([wiki: Is active in](https://wiki.geneontology.org/index.php/I
 | Evidence codes | HTP |
 | GO terms | `GO:0032991` protein-containing complex; `GO:0005829` cytosol |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-1-E1](CC-1.examples.yaml): An is_active_in lysosomal membrane row backed by an activity measured there | Conformant | ATXN3 is_active_in GO:0005765 lysosomal membrane (IDA, PMID:33157014) |
+| [CC-1-E2](CC-1.examples.yaml): An is_active_in nucleus row from a tagged-protein screen of a mitochondrial enzyme | Non-conformant | hem14 is_active_in GO:0005634 nucleus (HDA, PMID:16823372) |
+
 ## Sources
 
 - wiki: [Is active in](https://wiki.geneontology.org/index.php/Is_active_in)

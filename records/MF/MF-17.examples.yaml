@@ -1,0 +1,69 @@
+record: MF-17
+examples:
+- id: MF-17-E1
+  title: PIAS1 inhibition of STAT1 and p65 by binding, independent of SUMOylation
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O88907
+      symbol: Pias1
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0140416
+      label: transcription regulator inhibitor activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review accepted the inhibitor term as core because PIAS1 binds activated STAT1 and p65 and blocks
+    their DNA binding and promoter recruitment, independently of STAT1 SUMOylation. That is the record's
+    case for a regulator MF: direct, non-covalent action on an identified target activity.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Pias1/Pias1-ai-review.yaml#L1762
+- id: MF-17-E2
+  title: A phosphatase regulator row removed from a kinase that phosphorylates the regulatory subunit
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P19525
+      symbol: EIF2AK2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0019888
+      label: protein phosphatase regulator activity
+    qualifier: enables
+    evidence_code: TAS
+    reference: PMID:10866685
+  explanation: |
+    The review removed the regulator row because PKR does not bind PP2A to regulate it; it acts as a
+    kinase on the B56alpha subunit, which its protein serine/threonine kinase activity rows already
+    capture. The record's second worked example: a product that covalently modifies its target gets
+    the catalytic activity, not a regulator term.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/EIF2AK2/EIF2AK2-ai-review.yaml#L2039
+- id: MF-17-E3
+  title: A SUMO ligase's transcription regulator inhibitor IBA left undecided
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q94361
+      symbol: gei-17
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0140416
+      label: transcription regulator inhibitor activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review withdrew an earlier over-annotation call on the grounds that `GO:0140416` explicitly
+    covers inhibition "by post-translational modification", so ligase-dependent inhibition by GEI-17 is
+    within the term. Under the record's regulator principle, inhibition by SUMOylation would instead be
+    the catalytic activity. Which reading holds depends on the record's open question: whether the
+    definition should drop "and/or post-translational modification".
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/gei-17/gei-17-ai-review.yaml#L681

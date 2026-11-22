@@ -1,0 +1,25 @@
+record: PH-11
+examples:
+- id: PH-11-E1
+  title: An extracellular IBA on a secreted mosquito CLIP protease that cites itself
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A1S4H5S2
+      symbol: CLIPA8
+    taxon: NCBITaxon:7165
+    term:
+      term_id: GO:0005576
+      label: extracellular region
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review accepted the IBA because CLIPA8 is secreted into the hemolymph and acts in the
+    extracellular melanization cascade, and said that "CLIPA8 appearing in its own WITH/FROM reflects that
+    experimental grounding, not circularity". The record says exactly this: a gene's own experimental row
+    legitimately helps seed the IBD, and self-reference is not a reason to call the IBA circular or to
+    remove it.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ANOGA/CLIPA8/CLIPA8-ai-review.yaml#L62

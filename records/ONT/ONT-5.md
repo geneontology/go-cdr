@@ -81,6 +81,13 @@ activity for the alanine term) in the comment
 | Date | 2026-11-15 |
 | GO terms | `GO:0099022`  (obsolete); `GO:7770062` vesicle membrane tethering activity; `GO:0099023` vesicle tethering complex; `GO:0006418` tRNA aminoacylation for protein translation; `GO:0070127` tRNA aminoacylation for mitochondrial protein translation; `GO:0004813` alanine-tRNA ligase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-5-E1](ONT-5.examples.yaml): An obsolete vesicle docking process on USO1 moved to the tethering activity through consider | Conformant | USO1 involved_in GO:0048211 Golgi vesicle docking (IBA, GO_REF:0000033) |
+| [ONT-5-E2](ONT-5.examples.yaml): An obsolete vesicle tethering row on a TRAPP subunit moved to the transport process | Conformant | TRAPPC1 involved_in GO:0099022 obsolete vesicle tethering (NAS, PMID:27066478) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

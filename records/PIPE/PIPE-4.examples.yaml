@@ -1,0 +1,28 @@
+record: PIPE-4
+examples:
+- id: PIPE-4-E1
+  title: EC2GO on a TrEMBL entry whose EC number came from an imported record
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: EC2GO
+    refs:
+    - GO_REF:0000003
+    - EC:3.2.2.6
+    - UniProtKB:F1QMN8
+    description: |
+      Zebrafish tlr21 (TrEMBL F1QMN8) carries `GO:0061809` NAD+ nucleosidase activity, cyclic
+      ADP-ribose generating by EC2GO, with only `EC:3.2.2.6` in WITH/FROM.
+  explanation: |
+    The review traced the EC number to the TrEMBL description line, which carries it because the
+    underlying RefSeq record does, and removed the row as a mis-generalisation from TIR domains that do
+    hydrolyse NAD+. Nothing in the GO row says where the EC number came from, so a curator disputing it
+    has to reconstruct the chain. The record names "TrEMBL plus a mapping pipeline" as the
+    counter-example for this rubric.
+  fix: |
+    Supply the provenance of the EC assignment with the row, or do not map EC numbers that were
+    imported or predicted rather than curated.
+  see_also:
+  - IEA-5
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DANRE/tlr21/tlr21-ai-review.yaml#L285

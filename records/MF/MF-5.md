@@ -141,6 +141,16 @@ otherwise treat the row the way GO:0005515 is treated. Earlier GOC reviews moved
 | Evidence codes | IDA, ISS, TAS, NAS, IEA |
 | GO terms | `GO:0005515` protein binding; `GO:0042802` identical protein binding; `GO:0046983` protein dimerization activity; `GO:0140767` enzyme-substrate adaptor activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-5-E1](MF-5.examples.yaml): HuRI protein binding rows removed as uninformative, not false | Conformant | AARS2 enables GO:0005515 protein binding (IPI, PMID:32296183) |
+| [MF-5-E2](MF-5.examples.yaml): A DELLA protein binding row kept as non-core | Non-conformant | GAI enables GO:0005515 protein binding (IPI, PMID:15155881) |
+| [MF-5-E3](MF-5.examples.yaml): Identical protein binding kept for a trimer with shared active sites | Contested | ispF enables GO:0042802 identical protein binding (IDA, PMID:11829504) |
+| [MF-3-E1](MF-3.examples.yaml): A GRB2 protein binding row refined to receptor tyrosine kinase adaptor activity (from [MF-3](MF-3.md)) | Conformant | GRB2 enables GO:0005515 protein binding (IPI, PMID:19172738) |
+| [MF-6-E1](MF-6.examples.yaml): A RPTOR-S6K1 binding row refined to protein kinase binding (from [MF-6](MF-6.md)) | Conformant | RPTOR enables GO:0005515 protein binding (IPI, PMID:12150926) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

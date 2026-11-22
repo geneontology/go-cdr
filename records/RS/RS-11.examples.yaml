@@ -1,0 +1,70 @@
+record: RS-11
+examples:
+- id: RS-11-E1
+  title: Response to heat accepted on M. tuberculosis DnaK
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P9WMJ9
+      symbol: dnaK
+    taxon: NCBITaxon:83332
+    term:
+      term_id: GO:0009408
+      label: response to heat
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:1679042
+  explanation: |
+    DnaK "directly assists repair of heat-denatured client proteins". It is an effector whose
+    deployment is the heat response, so "response to heat" is its function and the review accepts it.
+    The record gives E. coli DnaK as the example.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/MYCTU/dnaK/dnaK-ai-review.yaml#L162
+- id: RS-11-E2
+  title: Response to iron(III) ion on the flippase ArnF marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P76474
+      symbol: arnF
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0010041
+      label: response to iron(III) ion
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IEP
+    reference: PMID:15322361
+  explanation: |
+    The record's example. arnF is induced by iron through BasS-BasR, so the IEP observation is real.
+    The review says ArnF "does not participate in iron sensing, binding, or detoxification": the
+    iron response belongs to the promoter, not to the protein.
+  see_also: [RS-12]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/arnF/arnF-ai-review.yaml#L432
+- id: RS-11-E3
+  title: Response to xenobiotic stimulus accepted on p53 because xenobiotics damage DNA
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P04637
+      symbol: TP53
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0009410
+      label: response to xenobiotic stimulus
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    The review accepts the row as "part of p53's broad stress response function", because "many
+    xenobiotics activate p53 through DNA damage or other stress pathways". p53 does not detect
+    xenobiotics or carry out a xenobiotic-specific response. It responds to the DNA damage they cause,
+    which has its own terms. The record reserves "response to X" for products that detect or transduce
+    X, or carry out a response specific to X.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`. The DNA-damage response terms already describe what p53 does.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TP53/TP53-ai-review.yaml#L453

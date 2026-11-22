@@ -1,0 +1,47 @@
+record: CC-16
+examples:
+- id: CC-16-E1
+  title: A bacterial lipoyl synthase's cytoplasm row refined to cytosol
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P60716
+      symbol: lipA
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0005737
+      label: cytoplasm
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:15157071
+  explanation: |
+    The record's example. LipA is a soluble protein with no TM segment and already carries
+    `GO:0005829` cytosol by IDA from a cytosolic proteome measurement, so the cytoplasm row is
+    under-described; the review modified it and its IEA twin to cytosol.
+  fix: |
+    `GO:0005829` cytosol, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/lipA/lipA-ai-review.yaml#L99
+- id: CC-16-E2
+  title: Nucleus rows of a DNA methyltransferase replaced by chromatin alone
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The mouse Dnmt3a review `MODIFY`s all its `GO:0005634` nucleus rows (EXP, IBA, IDA, IEA, ISO) to
+      `GO:0000785` chromatin as the sole replacement.
+    refs:
+    - UniProtKB:O88508
+    - GO:0005634
+    - GO:0000785
+  explanation: |
+    Chromatin is the right place for the enzyme's activity, as the review argues. But the record keeps the
+    nucleus row when the refinement is chromatin, because chromatin is `part_of` chromosome and chromosome
+    is not `part_of` nucleus, so a chromatin row does not imply the nucleus. After this change no
+    remaining row says Dnmt3a is nuclear.
+  fix: |
+    Keep the nucleus rows (`ACCEPT`) and add chromatin as its own row, or use nuclear chromosome where it
+    fits.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Dnmt3a/Dnmt3a-ai-review.yaml#L877

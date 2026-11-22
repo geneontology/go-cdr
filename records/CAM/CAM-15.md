@@ -60,6 +60,15 @@ unevidenced edges also silently remove standard annotations.
 | Date | 2026-11-15 |
 | Evidence codes | IEA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-15-E1](CAM-15.examples.yaml): An IRAK1 to TAK1 edge with no evidence | Non-conformant | gomodel:59cc772c00000000 |
+| [CAM-15-E2](CAM-15.examples.yaml): A STAT1 to EP300 edge citing a paper that assays no coactivator | Non-conformant | gomodel:62b4ffe300004489 |
+| [CAM-8-E3](CAM-8.examples.yaml): A cholesterol-esterifying enzyme drawn as directly inhibiting a viral fusion protein (from [CAM-8](CAM-8.md)) | Non-conformant | gomodel:6796b94c00004996 |
+| [CAM-11-E2](CAM-11.examples.yaml): A coactivator removes input for a ligase, with no shared input stated and no evidence (from [CAM-11](CAM-11.md)) | Non-conformant | gomodel:6606056e00000678 |
+
 ## Sources
 
 - drive: [GO-CAM Curation Documentation](https://drive.google.com/open?id=18ihslb7prB6CWtu2yjF-pMHZBTY1-AdXJAu-ZyuyXS4)

@@ -1,0 +1,51 @@
+record: REV-15
+examples:
+- id: REV-15-E1
+  title: DR6 neuron apoptosis kept after checking that no row rests on the retracted paper
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O75509
+      symbol: TNFRSF21
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0051402
+      label: neuron apoptotic process
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The DR6-APP paper (PMID:19225519) was retracted in 2024. The review flags it (`DISPUTED`, with the
+    notice PMID:38110576 as its own reference) and then asks what rests on it: no GO annotation on the
+    human gene or the mouse donor cites it. It keeps the row on the independent mouse source,
+    PMID:23559013. This is the scoped response the record asks for.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TNFRSF21/TNFRSF21-ai-review.yaml#L285
+- id: REV-15-E2
+  title: A BACE1 IGI whose only evidence is a retracted paper, kept as non-core
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P56817
+      symbol: BACE1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0043525
+      label: positive regulation of neuron apoptotic process
+    qualifier: involved_in
+    evidence_code: IGI
+    reference: PMID:29371969
+  explanation: |
+    This row's sole evidence, PMID:29371969 (miR-124 and BACE1), was retracted (notice PMID:42664430;
+    listed in the repository's retraction scan). It is the only `positive regulation of neuron
+    apoptotic process` row on BACE1. The review keeps it as `KEEP_AS_NON_CORE`, with a templated reason,
+    and the reference carries no `is_invalid` flag or notice. The record calls this the real case: an
+    `original_reference_id` that is retracted.
+  fix: |
+    Set `is_invalid: true` and `correctness: DISPUTED` on PMID:29371969, with the notice in
+    `review_notes` and as its own reference. Look for independent support; if none exists, make the row
+    `UNDECIDED` (or a proposed `REMOVE`) with the retraction cited, and send it upstream.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/BACE1/BACE1-ai-review.yaml#L2236

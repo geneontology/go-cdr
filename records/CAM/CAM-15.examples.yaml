@@ -1,0 +1,39 @@
+record: CAM-15
+examples:
+- id: CAM-15-E1
+  title: An IRAK1 to TAK1 edge with no evidence
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:59cc772c00000000
+    description: |
+      Activity gomodel:59cc772c00000000/59cc772c00000024: UniProtKB:P51617 (IRAK1) GO:0016301 kinase
+      activity, with an outgoing RO:0002304 causally upstream of, positive effect edge to TAK1 that carries no
+      evidence.
+  explanation: |
+    Every asserted triple, causal edges included, needs an ECO class and a reference. The review flagged
+    MISSING_EVIDENCE on this edge. Without evidence the edge also cannot support exported annotations.
+  fix: |
+    Attach the evidence that IRAK1 acts upstream of TAK1 to the edge itself; the review adds that TRAF6,
+    which lies between them, is missing from the model.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/59cc772c00000000/59cc772c00000000-review.yaml#L117
+- id: CAM-15-E2
+  title: A STAT1 to EP300 edge citing a paper that assays no coactivator
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:62b4ffe300004489
+    description: |
+      The causal edge from STAT1 GO:0000981 activity (gomodel:62b4ffe300004489/62b4ffe300004627) to EP300
+      GO:0003713 transcription coactivator activity (gomodel:62b4ffe300004489/62b4ffe300004844), evidenced
+      by PMID:11972023 with a direct-assay code.
+  explanation: |
+    An edge's evidence must show the causal relation, not just the activities. The review found the edge
+    biologically right but its evidence wrong: PMID:11972023 "assays no coactivator", while the reference
+    that does (PMID:16257975) is already on the EP300 node.
+  fix: |
+    Cite PMID:16257975 on the STAT1 -> EP300 edge.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-review.yaml#L34
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-review.yaml#L250

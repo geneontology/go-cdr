@@ -1,0 +1,47 @@
+record: PH-15
+examples:
+- id: PH-15-E1
+  title: DNAH12's inner dynein arm assembly proposed from experimental data, with the family split named
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6ZR08
+      symbol: DNAH12
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0036159
+      label: inner dynein arm assembly
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:40146200
+  explanation: |
+    The review proposed the term from an IMP row (PMID:40146200) and noted that PAINT already asserts it at node
+    PTN008951089 and mouse Dnah12 carries it by IBA; human DNAH12 lacks it "only because PANTHER 19 places
+    the human protein in PTHR46532 rather than PTHR10676". It checked that the seeds are structural
+    inner-arm heavy chains. The record asks exactly this when a gene has no IBA but its one-to-one ortholog
+    does, and uses DNAH12 as its worked example.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DNAH12/DNAH12-ai-review.yaml#L357
+- id: PH-15-E2
+  title: DNAH12's microtubule motor activity not carried over from the mouse ortholog's IBA
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6ZR08
+      symbol: DNAH12
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008569
+      label: minus-end-directed microtubule motor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The review marked the electronic motor-activity row over-annotated: "directional microtubule motor
+    activity needs a microtubule-binding domain", DNAH12 lacks one, and mouse Dnah12 inherits the term
+    only from a deep heavy-chain node. The record says not to assume all of the ortholog's IBA terms carry
+    over across a family split and names this term as the one that should not transfer.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DNAH12/DNAH12-ai-review.yaml#L178

@@ -93,6 +93,16 @@ Where the absent activity is likely to be re-predicted, propose a NOT ([REV-14](
 | Evidence codes | IDA, IPI, TAS, IEA |
 | GO terms | `GO:0016491` oxidoreductase activity; `GO:0051213` dioxygenase activity; `GO:0032454` histone H3K9 demethylase activity; `GO:0006468` protein phosphorylation; `GO:0003924` GTPase activity; `GO:0004129` cytochrome-c oxidase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-6-E1](REV-6.examples.yaml): Epe1 JmjC oxidoreductase IEA removed on its non-canonical iron site | Conformant | Epe1 enables GO:0016491 oxidoreductase activity (IEA, GO_REF:0000043) |
+| [REV-6-E2](REV-6.examples.yaml): A protein phosphorylation IDA on CREB1 removed because CREB1 is the substrate | Conformant | CREB1 acts_upstream_of_or_within GO:0006468 protein phosphorylation (IDA, PMID:8798441) |
+| [REV-6-E3](REV-6.examples.yaml): Cytochrome-c oxidase activity removed from the assembly factor SURF1 | Conformant | SURF1 enables GO:0004129 cytochrome-c oxidase activity (IEA, GO_REF:0000107) |
+| [REV-8-E1](REV-8.examples.yaml): Epe1 H3K9 demethylase IDA left UNDECIDED rather than removed (from [REV-8](REV-8.md)) | Conformant | Epe1 enables GO:0032454 histone H3K9 demethylase activity (IDA, PMID:25838386) |
+| [REV-17-E2](REV-17.examples.yaml): A GDSL esterase mapping on the pseudoenzyme MVP1 filed to InterPro, a MUTAGEN note to UniProt (from [REV-17](REV-17.md)) | Conformant | MVP1 enables GO:0016788 hydrolase activity, acting on ester bonds (IEA, GO_REF:0000002) |
+
 ## Sources
 
 - web: [CONTESTED_FUNCTION](https://ai4curation.io/ai-gene-review/pages/projects/CONTESTED_FUNCTION.html)

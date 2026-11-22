@@ -1,0 +1,49 @@
+record: BP-9
+examples:
+- id: BP-9-E1
+  title: ASCL1 kept in neuron fate commitment
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P50553
+      symbol: ASCL1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0048663
+      label: neuron fate commitment
+    qualifier: involved_in
+    evidence_code: ISS
+    reference: GO_REF:0000024
+  explanation: |
+    The record names ASCL1 and GO:0048663 neuron fate commitment as an exemplar: a cell-level fate
+    decision that the proneural factor performs. The review accepted the ISS row as a core function. The
+    review's reason ("multiple evidence types and extensive literature") is thin, but the verdict rests on
+    the record's own assessment of this gene and term.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ASCL1/ASCL1-ai-review.yaml#L1031
+- id: BP-9-E2
+  title: An IEP time-course read as a role in heart development
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09605
+      symbol: Ckmt2
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0007507
+      label: heart development
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:8086475
+  explanation: |
+    This is the record's IEP worked example. Sarcomeric mitochondrial creatine kinase mRNA is undetectable
+    in prenatal heart and rises postnatally; the review read that as the maturing heart's growing need for
+    phosphocreatine buffering, not as a step in building the heart. An expression time-course does not
+    show the gene performs a developmental step, so GO:0007507 heart development is not supported.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`, as the review did. Do not make new development annotations from expression
+    time-courses of metabolic enzymes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Ckmt2/Ckmt2-ai-review.yaml#L301

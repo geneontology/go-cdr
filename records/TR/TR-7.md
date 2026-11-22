@@ -82,6 +82,14 @@ regulator (a kinase or SUMO ligase acting on a dbTF), annotate the catalytic act
 | Related | [MF-17](../MF/MF-17.md) |
 | GO terms | `GO:0140416` transcription regulator inhibitor activity; `GO:0140537` transcription regulator activator activity; `GO:0051090`  (obsolete) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-7-E1](TR-7.examples.yaml): Glutamine synthetase inhibiting TnrA DNA binding | Conformant | glnA enables GO:0140416 transcription regulator inhibitor activity (IDA, PMID:11719184) |
+| [TR-7-E2](TR-7.examples.yaml): An Id protein annotated as a transcription corepressor | Non-conformant | id3-a enables GO:0003714 transcription corepressor activity (IBA, GO_REF:0000033) |
+| [TR-7-E3](TR-7.examples.yaml): A single-repeat MYB protein that competes for bHLH partners, annotated as a dbTF | Non-conformant | CPC enables GO:0003700 DNA-binding transcription factor activity (ISS, PMID:11118137) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

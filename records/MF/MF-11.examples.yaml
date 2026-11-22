@@ -1,0 +1,49 @@
+record: MF-11
+examples:
+- id: MF-11-E1
+  title: Residual TsaC-like activity of the paralog YciO removed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0AFR4
+      symbol: yciO
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0061710
+      label: L-threonylcarbamoyladenylate synthase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:37963869
+  explanation: |
+    The activity was measured, but the review applied the noise tier: TsaC is the essential dedicated
+    enzyme in the same cell, YciO's rate is about 10^4-fold lower, YciO lacks the KRSN tetrad and sits
+    in another subfamily, and no in vivo phenotype links it to t6A. All four of the record's indicators
+    hold, so `REMOVE` on an IDA row is the record's prescribed action. The review notes that an
+    independent analysis would have chosen `MARK_AS_OVER_ANNOTATED`, the boundary the tiers are meant to
+    settle.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/yciO/yciO-ai-review.yaml#L136
+- id: MF-11-E2
+  title: In vitro phosphonoacetate hydrolysis by YjdM marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0AFJ1
+      symbol: yjdM
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0047400
+      label: phosphonoacetate hydrolase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:37963869
+  explanation: |
+    The review found the in vitro activity real but unconnected to biology: disruption of yjdM has no
+    phosphonate phenotype, the protein is unrelated to the PhnA hydrolase family, and its "phnA"
+    synonym is a positional label. It chose the middle tier rather than `REMOVE` because E. coli has no
+    dedicated phosphonoacetate hydrolase to which the activity can be assigned, which is the
+    distinction the record draws between YjdM and YciO.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/yjdM/yjdM-ai-review.yaml#L114

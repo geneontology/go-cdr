@@ -80,6 +80,15 @@ only fractionation was two-way, so there was one functional hint and nothing els
 | Evidence codes | IC, IEA |
 | GO terms | `GO:0005759` mitochondrial matrix; `GO:0005789` endoplasmic reticulum membrane; `GO:0005788` endoplasmic reticulum lumen; `GO:0070971` endoplasmic reticulum exit site; `GO:0016020` membrane |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-8-E1](CC-8.examples.yaml): A NEW mitochondrial matrix row from three independent lines | Conformant | MMADHC located_in GO:0005759 mitochondrial matrix (IC, PMID:42709793) |
+| [CC-8-E2](CC-8.examples.yaml): An HDA mitochondrion row replaced by the inner-membrane term | Non-conformant | The Drosophila MCU review's `MODIFY` of an HDA `GO:0005739` mitochondrion row (PMID:25294944, organelle proteomics) to `GO:0005743` mitochondrial inner membrane, a term the gene already carries. |
+| [CC-7-E2](CC-7.examples.yaml): An IEA mitochondrion row traced to its keyword source and accepted (from [CC-7](CC-7.md)) | Conformant | PYCR2 located_in GO:0005739 mitochondrion (IEA, GO_REF:0000120) |
+| [CC-19-E1](CC-19.examples.yaml): MMADHC's core function names the cytosol, not its well-supported matrix pool (from [CC-19](CC-19.md)) | Conformant | The `locations` of MMADHC's cobalamin branch-point core function in the human review, which list only `GO:0005829` cytosol although the review adds a `NEW` mitochondrial matrix row. |
+
 ## Sources
 
 - web: [ORGANELLES](https://ai4curation.io/ai-gene-review/pages/projects/ORGANELLES.html)

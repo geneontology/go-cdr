@@ -57,6 +57,13 @@ choose among the obsolete term's `replaced_by` and `consider` targets is in
 | Date | 2026-11-15 |
 | Related | [ONT-3](../ONT/ONT-3.md) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-20-E1](REV-20.examples.yaml): An obsolete unfolded protein binding IDA on an sHSP mapped to a holdase NTR | Conformant | HSP17.7 enables GO:0051082 unfolded protein binding (IDA, PMID:11576425) |
+| [REV-20-E2](REV-20.examples.yaml): Bovine alpha-crystallin moved to protein folding chaperone while it lacks refolding activity | Contested | CRYAA enables GO:0051082 unfolded protein binding (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - repo: [go-annotation issue template](https://github.com/geneontology/go-annotation/blob/master/.github/ISSUE_TEMPLATE/annotation-review-for-obsoletion.md)

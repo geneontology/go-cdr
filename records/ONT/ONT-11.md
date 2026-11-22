@@ -75,6 +75,13 @@ no annotation cleared the evidence bar ([NEURAL_CREST_FORMATION_OBSOLETION](http
 | Date | 2026-11-15 |
 | GO terms | `GO:0014029` neural crest formation |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-11-E1](ONT-11.examples.yaml): A proposed neural plate border formation term for border specifiers such as Pax3 | Conformant | GO:0014029 neural crest formation |
+| [ONT-15-E1](ONT-15.examples.yaml): A Pax3 neural crest formation row remapped while the term is proposed for obsoletion (from [ONT-15](ONT-15.md)) | Conformant | pax3-a involved_in GO:0014029 neural crest formation (IGI, PMID:15691759) |
+
 ## Sources
 
 - repo: [go-annotation CONTRIBUTING](https://github.com/geneontology/go-annotation/blob/master/CONTRIBUTING.md)

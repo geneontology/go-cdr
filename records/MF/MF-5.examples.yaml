@@ -1,0 +1,73 @@
+record: MF-5
+examples:
+- id: MF-5-E1
+  title: HuRI protein binding rows removed as uninformative, not false
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5JTZ9
+      symbol: AARS2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:32296183
+  explanation: |
+    The row comes from the HuRI binary interactome. The review found that neither partner points to an
+    adaptor, complex or catalytic role for AARS2, so no informative MF was available and it removed the
+    row. Its reason states, as the record requires, that the removal is not a claim that the
+    interactions are false.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AARS2/AARS2-ai-review.yaml#L678
+- id: MF-5-E2
+  title: A DELLA protein binding row kept as non-core
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9LQT8
+      symbol: GAI
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:15155881
+  explanation: |
+    The review recognised that "protein binding conveys no specific function" for this GAI-SLY1
+    interaction and still kept the row as non-core supporting evidence. The record rules out
+    `KEEP_AS_NON_CORE` for bare `GO:0005515`: the row is either refined to an informative MF the paper
+    supports or removed.
+  fix: |
+    `MODIFY` to an informative MF if PMID:15155881 supports one for GAI; otherwise `REMOVE`, stating that the interaction itself is not
+    in doubt.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/GAI/GAI-ai-review.yaml#L62
+- id: MF-5-E3
+  title: Identical protein binding kept for a trimer with shared active sites
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P62617
+      symbol: ispF
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0042802
+      label: identical protein binding
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:11829504
+  explanation: |
+    Every E. coli IspF structure is a homotrimer whose active sites form between two subunits, so the
+    review kept the self-association row as non-core. That meets the record's interim rule for
+    `GO:0042802` (keep only when the oligomer is functionally informative and shown). Under the 2026
+    proposal the record's open question asks GO to adopt, the term would be do-not-annotate and the row
+    would go regardless.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/ispF/ispF-ai-review.yaml#L226

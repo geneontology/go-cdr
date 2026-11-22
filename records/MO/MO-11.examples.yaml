@@ -1,0 +1,23 @@
+record: MO-11
+examples:
+- id: MO-11-E1
+  title: Rice CERK1 given arbuscular mycorrhizal association separately from chitin immunity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0P0XII1
+      symbol: CERK1
+    taxon: NCBITaxon:39947
+    term:
+      term_id: GO:0036377
+      label: arbuscular mycorrhizal association
+    evidence_code: IMP
+    reference: PMID:25231970
+  explanation: |
+    OsCERK1 takes part in both chitin-triggered immunity and the common symbiosis pathway. The record asks that
+    the symbiosis programme be annotated separately from defence. The review added GO:0036377 as a NEW row because OsCERK1
+    phosphorylates OsMYR1 in symbiotic receptor signalling, ran the comparator check (D14L, CYCLOPS, CNGC15), and kept it
+    "distinct from the immune terms, which are supported by separate evidence".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ORYSJ/CERK1/CERK1-ai-review.yaml#L476

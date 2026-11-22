@@ -1,0 +1,52 @@
+record: REV-2
+examples:
+- id: REV-2-E1
+  title: ATP binding kept as non-core, with the reason saying why it is not TOO_GENERAL
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8LEA0
+      symbol: LPXK
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0005524
+      label: ATP binding
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The review keeps the InterPro2GO `ATP binding` row on Arabidopsis LPXK as `KEEP_AS_NON_CORE` and
+    argues exactly that statement: the binding is true (P-loop kinase), is a sub-function rather than
+    the core lipid-A 4'-kinase activity, and "is not an is_a ancestor of the kinase term, so it is kept
+    as non-core and not marked too general". The action and its reason make the same claim, which is
+    what the record asks.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/LPXK/LPXK-ai-review.yaml#L17
+- id: REV-2-E2
+  title: A membrane row kept as non-core while the reason calls it uninformative
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O23006
+      symbol: LYM2
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0016020
+      label: membrane
+    qualifier: located_in
+    evidence_code: TAS
+    reference: PMID:12068095
+  explanation: |
+    The reason on this Arabidopsis LYM2 row reads "Correct but uninformative; fully subsumed by the
+    experimentally supported plasma membrane and plasmodesma annotations", but the action is
+    `KEEP_AS_NON_CORE`, which asserts a term that is as precise as warranted but peripheral. This is
+    the first failure mode the record names: an action that contradicts its own reason. The reason
+    describes `TOO_GENERAL`, which is the record's own example for `GO:0016020` membrane.
+  fix: |
+    `TOO_GENERAL`, keeping the reason as written. The plasma membrane rows on the same gene are
+    accepted, so the broad term is entailed.
+  see_also: [REV-3]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/LYM2/LYM2-ai-review.yaml#L208

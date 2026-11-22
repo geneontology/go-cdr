@@ -1,0 +1,58 @@
+record: AE-14
+examples:
+- id: AE-14-E1
+  title: A protease row accepted with its substrate, process and location extensions checked
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P36776
+      symbol: LONP1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004176
+      label: ATP-dependent peptidase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:37327776
+    extension: RO:0002233(UniProtKB:Q14154),BFO:0000050(GO:0030163),BFO:0000066(GO:0005739)
+  explanation: |
+    The record's first case: the extension is true and informative, so ACCEPT the row and record the
+    extension. The review checked each atom against PMID:37327776 (LONP1 degrades imported DELE1 in the
+    mitochondrial matrix) and found that the extensions "accurately identify DELE1 as input and locate the
+    activity within mitochondrial protein catabolism in mitochondria".
+  see_also: [AE-3]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LONP1/LONP1-ai-review.yaml#L740
+- id: AE-14-E2
+  title: A meiotic-stage extension doubted by the review but left on the row
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    description: |
+      In GOA (QuickGO) the PomBase row carries `existence_overlaps(GO:0098762)`. The review calls it the
+      "exists_during meiotic-cell-cycle extension" and does not record it in `extensions`.
+    gene:
+      gene_id: UniProtKB:P30776
+      symbol: rad21
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:1990342
+      label: heterochromatin island
+    qualifier: is_active_in
+    evidence_code: IDA
+    reference: PMID:22144463
+  explanation: |
+    The review found from the recovered full text that the ChIP showing Rad21 at heterochromatin islands
+    used vegetatively growing cells, so the meiotic-stage extension is not what the paper shows, while
+    the bare location holds. In the record's table, an extension that makes the claim wrong while the bare
+    term holds calls for MODIFY with corrected `extensions`. The review kept the row as non-core unchanged,
+    and only raised the extension as a suggested question to PomBase.
+  fix: |
+    Record the extension, then MODIFY: keep GO:1990342 is_active_in and drop `existence_overlaps`(GO:0098762),
+    or replace it with the vegetative stage the paper assayed. Keep the question to PomBase.
+  see_also: [AE-12, AE-13]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/rad21/rad21-ai-review.yaml#L381
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/rad21/rad21-ai-review.yaml#L1116
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=P30776&goId=GO:1990342

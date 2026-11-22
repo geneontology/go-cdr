@@ -1,0 +1,21 @@
+record: PC-14
+examples:
+- id: PC-14-E1
+  title: The FSH heterodimer as the enabler of hormone activity in a GO-CAM
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:69b3372b00003343
+    description: |
+      Activity `gomodel:69b3372b00003343/69b3372b00003379`: `GO:0016914` follicle-stimulating hormone
+      complex enables `GO:0016913` follicle-stimulating hormone activity in the extracellular region,
+      with FSHB and CGA as `has_part` and FSHR as input.
+  explanation: |
+    FSH is a heterodimer with an indispensable common alpha subunit, so the hormone activity is
+    emergent: neither chain has it alone. The model uses the complex as the enabler with the two
+    participating subunits as parts, and the reviewer judged the complex the right enabler, citing a
+    structure of FSH with both subunits bound to FSHR. That is the record's second rule. The
+    reviewer's UNCERTAIN verdict on the activity concerns a missing process, not the complex.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/69b3372b00003343/69b3372b00003343-review.yaml#L277
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/69b3372b00003343/69b3372b00003343-src.yaml#L329

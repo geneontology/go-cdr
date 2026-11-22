@@ -75,6 +75,13 @@ GO's development node has a fixed pattern. `x development` has parts: morphogene
 | Evidence codes | IEP |
 | GO terms | `GO:0045165` cell fate commitment; `GO:0030154` cell differentiation; `GO:0048663` neuron fate commitment |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-9-E1](BP-9.examples.yaml): ASCL1 kept in neuron fate commitment | Conformant | ASCL1 involved_in GO:0048663 neuron fate commitment (ISS, GO_REF:0000024) |
+| [BP-9-E2](BP-9.examples.yaml): An IEP time-course read as a role in heart development | Non-conformant | Ckmt2 involved_in GO:0007507 heart development (IEP, PMID:8086475) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

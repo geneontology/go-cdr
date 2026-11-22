@@ -84,6 +84,16 @@ descendant ([MF-11](MF-11.md)).
 | Evidence codes | IDA, IEA |
 | GO terms | `GO:0004930` G protein-coupled receptor activity; `GO:0004941` beta2-adrenergic receptor activity; `GO:0003674` molecular_function; `GO:0005488` binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-2-E1](MF-2.examples.yaml): A generic GPCR signature row kept at GO:0004930 | Conformant | Tacr3 enables GO:0004930 G protein-coupled receptor activity (IEA, GO_REF:0000002) |
+| [MF-2-E2](MF-2.examples.yaml): A GPCR signature row refined from other rows' evidence | Non-conformant | ADRB2 enables GO:0004930 G protein-coupled receptor activity (IEA, GO_REF:0000002) |
+| [MF-2-E3](MF-2.examples.yaml): A family-level transporter IBA refined to the member's substrate | Non-conformant | betT enables GO:0022857 transmembrane transporter activity (IBA, GO_REF:0000033) |
+| [MF-9-E1](MF-9.examples.yaml): An IPI row refined to a peroxiredoxin catalytic term (from [MF-9](MF-9.md)) | Non-conformant | TSA2 enables GO:0008379 thioredoxin peroxidase activity (IPI, PMID:41807831) |
+| [MF-16-E1](MF-16.examples.yaml): A Spätzle Toll binding row refined to receptor ligand activity (from [MF-16](MF-16.md)) | Conformant | spz5 enables GO:0005121 Toll binding (IDA, PMID:31088910) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

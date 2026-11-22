@@ -75,6 +75,18 @@ The NOT qualifier is for absence that has been shown. Negative and inconclusive 
 | Evidence codes | IMP, IEP, IKR |
 | GO terms | `GO:0000719` photoreactive repair; `GO:0004672` protein kinase activity; `GO:1903412` response to bile acid |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-8-E1](QN-8.examples.yaml): CRY2 does not do photoreactive repair, shown by assay on a photolyase homologue | Conformant | CRY2 NOT involved_in GO:0000719 photoreactive repair (IDA, PMID:12627958) |
+| [QN-8-E2](QN-8.examples.yaml): A NOT located_in cilium from a screen in which the protein was simply not enriched | Non-conformant | ARL6 NOT located_in GO:0005929 cilium (IDA, PMID:17646400) |
+| [QN-8-E3](QN-8.examples.yaml): A NOT response to salicylic acid resting on an unchanged transcript level | Non-conformant | RDR2 NOT involved_in GO:0009751 response to salicylic acid (IEP, PMID:15024409) |
+| [QN-9-E2](QN-9.examples.yaml): A NOT located_in endoplasmic reticulum kept while the ER membrane is annotated positively (from [QN-9](QN-9.md)) | Non-conformant | DNM1L NOT located_in GO:0005783 endoplasmic reticulum (IDA, PMID:11514614) |
+| [QN-11-E1](QN-11.examples.yaml): A NOT response to bile acid that rests only on an unchanged protein level, removed (from [QN-11](QN-11.md)) | Conformant | FGFR4 NOT involved_in GO:1903412 response to bile acid (IMP, PMID:19085950) |
+| [QN-11-E2](QN-11.examples.yaml): A NOT response to lipopolysaccharide kept from an expression null (from [QN-11](QN-11.md)) | Non-conformant | GCH1 NOT involved_in GO:0032496 response to lipopolysaccharide (IEP, PMID:15604419) |
+| [QN-16-E1](QN-16.examples.yaml): A sound NOT protein kinase activity accepted for a small heat shock protein (from [QN-16](QN-16.md)) | Conformant | HSPB8 NOT enables GO:0004672 protein kinase activity (IDA, PMID:14985082) |
+
 ## Open questions
 
 1. **Proposing NOT in a review.** The repo has no structured way to propose a new NOT annotation, since `NEW` adds positive claims. Should the schema allow `NEW` with `negated: true` under the [QN-8](QN-8.md) bar, or should NOT proposals stay in TOP_NOTS?

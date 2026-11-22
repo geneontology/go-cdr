@@ -81,6 +81,15 @@ figure you could not see, the experiment that is missing).
 | Related | [REV-6](REV-6.md) |
 | Evidence codes | IDA, IPI, IMP, IGI |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-8-E1](REV-8.examples.yaml): Epe1 H3K9 demethylase IDA left UNDECIDED rather than removed | Conformant | Epe1 enables GO:0032454 histone H3K9 demethylase activity (IDA, PMID:25838386) |
+| [REV-8-E2](REV-8.examples.yaml): Galactokinase IMP on GalT removed where the abstract names the galK knockout | Conformant | galT enables GO:0004335 galactokinase activity (IMP, PMID:18263746) |
+| [REV-8-E3](REV-8.examples.yaml): A swarming-motility IMP removed because the cached title is about FlgM | Non-conformant | swrD involved_in GO:0071978 bacterial-type flagellum-dependent swarming motility (IMP, PMID:25313396) |
+| [REV-6-E1](REV-6.examples.yaml): Epe1 JmjC oxidoreductase IEA removed on its non-canonical iron site (from [REV-6](REV-6.md)) | Conformant | Epe1 enables GO:0016491 oxidoreductase activity (IEA, GO_REF:0000043) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

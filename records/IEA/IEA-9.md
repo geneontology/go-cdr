@@ -81,6 +81,14 @@ proteins matching one FunFam in vertebrates
 | Date | 2026-11-15 |
 | Evidence codes | IBA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-9-E1](IEA-9.examples.yaml): Fission-yeast Cps1 inherits adaptive thermogenesis from an older ARBA condition set | Non-conformant | SPAC24C9.08 involved_in GO:1990845 adaptive thermogenesis (IEA, GO_REF:0000117) |
+| [IEA-9-E2](IEA-9.examples.yaml): An ARBA rule upheld by reading its single condition set as a conjunction | Conformant | ARBA |
+| [IEA-4-E2](IEA-4.examples.yaml): A withdrawn ARBA rule whose only consequent is an obsolete term (from [IEA-4](IEA-4.md)) | Non-conformant | ARBA |
+
 ## Sources
 
 - repo: [docs: rule review receipts](https://github.com/ai4curation/ai-gene-review/blob/main/docs/rule_review_receipts.md)

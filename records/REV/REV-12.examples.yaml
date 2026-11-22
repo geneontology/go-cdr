@@ -1,0 +1,67 @@
+record: REV-12
+examples:
+- id: REV-12-E1
+  title: An accepted BP ND that cites its literature search
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9FFN0
+      symbol: At5g03810
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0008150
+      label: biological_process
+    qualifier: involved_in
+    evidence_code: ND
+    reference: GO_REF:0000015
+  explanation: |
+    The review accepts the ND and cites the search: PubMed and Europe PMC queries by locus and
+    accession, with their dates and hit counts, and the two family surveys that omit the gene. It
+    explicitly declines to treat the IBA and IEA rows in the same aspect as making the ND stale, and
+    pairs the row with a biology knowledge gap.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/At5g03810/At5g03810-ai-review.yaml#L105
+- id: REV-12-E2
+  title: A stale BP ND on rat Aga removed, quoting the paper
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P30919
+      symbol: Aga
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0008150
+      label: biological_process
+    qualifier: involved_in
+    evidence_code: ND
+    reference: GO_REF:0000015
+  explanation: |
+    Here literature on the gene in the species exists: the rat enzyme was purified from liver and
+    assayed on its glycoasparagine substrate (PMID:2775174). The review removes the ND with
+    `nd_case: STALE` and cites that paper, which is the record's condition for removal.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Aga/Aga-ai-review.yaml#L338
+- id: REV-12-E3
+  title: A NEW ND row proposed for a microprotein of unknown function
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A087WWA1
+      symbol: P3R3URF
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003674
+      label: molecular_function
+    evidence_code: ND
+  explanation: |
+    The review proposes a new `molecular_function` row with ND to record that no molecular activity is
+    known for P3R3URF. The record says plainly that "a `NEW` ND is never proposed": ND is a statement
+    a curator makes about the literature, and the absence it records belongs in a knowledge gap.
+  fix: |
+    Withdraw the `NEW` row and record the unknown activity as a `knowledge_gaps` entry with a BIOLOGY
+    `gap_kind` and `dark_aspect` molecular function, citing the searches that found nothing.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/P3R3URF/P3R3URF-ai-review.yaml#L82

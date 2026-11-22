@@ -22,4 +22,29 @@ examples:
     The matrix location was added as a separate row rather than substituted for this one (see CC-6).
   see_also: [CC-6]
   derived_from:
-  - https://github.com/monarch-initiative/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AARS2/AARS2-ai-review.yaml#L23
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AARS2/AARS2-ai-review.yaml#L23
+- id: CC-7-E2
+  title: An IEA mitochondrion row traced to its keyword source and accepted
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q96C36
+      symbol: PYCR2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005739
+      label: mitochondrion
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    For an IEA root row the record asks the reviewer to check the mapping and whether the gene has the
+    feature it assumes. The review traced the WITH/FROM (ARBA00026962 plus SubCell SL-0173) to UniProt's
+    curated location, which rests on two whole-organelle IDA papers, and found that no source in the
+    chain resolved a sub-compartment, so the coarse term lost nothing. It recorded the check in `reason`
+    and accepted the row.
+  see_also:
+  - CC-8
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PYCR2/PYCR2-ai-review.yaml#L101

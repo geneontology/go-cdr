@@ -1,0 +1,79 @@
+record: QN-16
+examples:
+- id: QN-16-E1
+  title: A sound NOT protein kinase activity accepted for a small heat shock protein
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9UJY1
+      symbol: HSPB8
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004672
+      label: protein kinase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:14985082
+    negated: true
+  explanation: |
+    The review accepted the NOT because direct experimental evidence refutes protein kinase activity for
+    HSPB8. The record's rule detail says ACCEPT when QN-8 is met and the term is at the right level: this
+    is an activity assay on a protein for which kinase activity had been claimed, so a reader would
+    expect the property.
+  see_also: [QN-8]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HSPB8/HSPB8-ai-review.yaml#L415
+- id: QN-16-E2
+  title: A correct NOT protein refolding marked non-core
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02489
+      symbol: CRYAA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0042026
+      label: protein refolding
+    qualifier: involved_in
+    evidence_code: ISS
+    reference: GO_REF:0000024
+    negated: true
+  explanation: |
+    The review says the negated row "correctly states that CRYAA does not perform active protein
+    refolding" and is useful because it blocks a foldase reading, and then marks it KEEP_AS_NON_CORE.
+    The record says core and non-core describe functions and a NOT is not one: a NOT row is ACCEPTed,
+    MODIFYed, REMOVEd or left UNDECIDED. The review's own reasoning is an ACCEPT.
+  fix: |
+    ACCEPT the NOT row, keeping the reason as written.
+  see_also: [PH-10]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CRYAA/CRYAA-ai-review.yaml#L1408
+- id: QN-16-E3
+  title: A NOT mannosidase activity kept as non-core although later evidence supersedes it
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q92611
+      symbol: EDEM1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004571
+      label: mannosyl-oligosaccharide 1,2-alpha-mannosidase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:12610306
+    negated: true
+  explanation: |
+    The review calls the row a "genuine historical experimental (IDA) annotation that conflicts with
+    later endogenous-KO evidence" and flags it "as superseded by PMID:25092655", but keeps it as non-core
+    out of deference. The record rules out KEEP_AS_NON_CORE for a NOT. A positive-versus-NOT conflict is
+    settled under QN-10: REMOVE the NOT if the later evidence refutes it, otherwise leave it UNDECIDED.
+  fix: |
+    REMOVE the NOT row if PMID:25092655 refutes it, as the review's own "superseded" says; otherwise mark
+    it UNDECIDED. Do not use KEEP_AS_NON_CORE.
+  see_also: [QN-10]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/EDEM1/EDEM1-ai-review.yaml#L353

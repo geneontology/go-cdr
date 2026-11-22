@@ -90,6 +90,14 @@ The default needs a decision because the sources disagree. The current wiki mark
 | Evidence codes | IMP, IBA, IBD |
 | GO terms | `GO:0004842` ubiquitin-protein transferase activity; `GO:0006511` ubiquitin-dependent protein catabolic process |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-3-E1](QN-3.examples.yaml): A depalmitoylase placed upstream of sperm mitochondrial sheath assembly, with a direction | Conformant | Abhd10 acts_upstream_of_positive_effect GO:0120317 sperm mitochondrial sheath assembly (IMP, PMID:41285782) |
+| [QN-3-E2](QN-3.examples.yaml): A receptor's involved_in neuron projection development moved to the regulation term | Conformant | Ntrk1 involved_in GO:0031175 neuron projection development (IEA, GO_REF:0000117) |
+| [QN-3-E3](QN-3.examples.yaml): A loss-of-function conidiation defect proposed with the bare upstream relation | Non-conformant | acon-3 acts_upstream_of_or_within GO:0048315 conidium formation (IMP, PMID:15126394) |
+
 ## Sources
 
 - repo: [CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blob/main/CLAUDE.md)

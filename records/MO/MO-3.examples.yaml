@@ -1,0 +1,74 @@
+record: MO-3
+examples:
+- id: MO-3-E1
+  title: A host corepressor bound by E1A, kept off viral genome replication
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q13363
+      symbol: CTBP1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0019079
+      label: viral genome replication
+    qualifier: involved_in
+    evidence_code: TAS
+    reference: PMID:7479821
+  explanation: |
+    CTBP1 is a host transcriptional corepressor whose interaction with adenovirus E1A potentiates viral
+    replication. The row was made by a curator from a
+    paper (TAS), not by an electronic mapping, so the record's action for a host protein on a symbiont-process term is
+    MARK_AS_OVER_ANNOTATED rather than REMOVE. The review marked it so, for the record's reason: "CTBP1 is a host transcriptional
+    corepressor, not a replication factor".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CTBP1/CTBP1-ai-review.yaml#L1308
+- id: MO-3-E2
+  title: An inferred symbiont-entry row on CDK1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P06493
+      symbol: CDK1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0046718
+      label: symbiont entry into host cell
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000108
+  explanation: |
+    The row is electronic (GO_REF:0000108, inferred from another annotation), and its claim is that CDK1 takes
+    part in symbiont entry because viruses exploit it. The review gave the record's reason ("Viral exploitation of host cell
+    cycle machinery does not represent an evolved function of CDK1") but chose MARK_AS_OVER_ANNOTATED; the record reserves
+    that action for rows that rest on an experiment and asks for REMOVE when the row comes from an electronic mapping or
+    propagation.
+  fix: |
+    REMOVE the GO:0046718 row; CDK1 keeps its own kinase and cell-cycle annotations.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CDK1/CDK1-ai-review.yaml#L134
+- id: MO-3-E3
+  title: CD4 kept on symbiont entry into host cell because it does the first step of HIV entry
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P01730
+      symbol: CD4
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0046718
+      label: symbiont entry into host cell
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:9641677
+  explanation: |
+    The record says a host receptor a virus enters through keeps its normal function and is not annotated to
+    GO:0046718; the dependence belongs on the viral side or in GO:0001618 virus receptor activity as non-core. The review
+    kept the IDA row as non-core on a participation argument: "CD4 performs the first step of HIV-1 entry: it binds gp120 and
+    remodels the envelope". The same reading recurs across the corpus (CR2, MYH9, SLC10A1, where a NEW GO:0046718 row is
+    proposed). The question of when a host protein may carry a viral-process term is open in go-annotation#1507.
+  discussion: https://github.com/geneontology/go-annotation/issues/1507
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CD4/CD4-ai-review.yaml#L2322

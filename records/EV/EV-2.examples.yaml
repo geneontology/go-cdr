@@ -1,0 +1,54 @@
+record: EV-2
+examples:
+- id: EV-2-E1
+  title: An IDA process row from deletion and complementation
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9HTB5
+      symbol: PA5455
+    taxon: NCBITaxon:208964
+    term:
+      term_id: GO:0009243
+      label: O antigen biosynthetic process
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:23341552
+  explanation: |
+    IDA is for a direct measurement of the gene product's activity, location or complex membership;
+    process inferences from perturbation phenotypes are IMP. The review accepted the O-antigen biosynthesis
+    claim on the strength of deletion, complementation and the GT4 domain, and noted that "the evidence
+    code should be IMP, not IDA".
+  fix: |
+    The same term and reference with IMP.
+  see_also:
+  - EV-4
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEAE/PA5455/PA5455-ai-review.yaml#L81
+- id: EV-2-E2
+  title: An IDA protein binding row on a Cascade subunit
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P76632
+      symbol: casB
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:18703739
+  explanation: |
+    IDA must not be used for `GO:0005515` protein binding (GORULE:0000003), and the record names the case
+    of a complex assayed directly as IDA for the complex term instead. The review found the underlying
+    observation to be an intra-complex structural contact (two CasB copies bridging the head and tail of
+    Cascade along the CasC backbone) and modified the row to the activity that contact contributes,
+    applying the same replacement to the other Cascade subunits.
+  fix: |
+    `GO:0005198` structural molecule activity, the review's replacement; the complex membership itself
+    belongs on a CC complex row.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/casB/casB-ai-review.yaml#L76

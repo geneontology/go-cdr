@@ -41,6 +41,14 @@ On CC annotations, use `part_of` with a cell or anatomy term for the cell or tis
 | Date | 2026-11-15 |
 | GO terms | `GO:0031966` mitochondrial membrane; `GO:0051329` mitotic interphase |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-6-E1](AE-6.examples.yaml): A telomere location limited to S phase with an existence relation | Conformant | H3-3A located_in GO:0000781 chromosome, telomeric region (IDA, PMID:20110566) |
+| [AE-6-E2](AE-6.examples.yaml): A protein complex given part_of a kidney cell type and tissue | Non-conformant | FXYD2 part_of GO:0005890 sodium:potassium-exchanging ATPase complex (ISS, GO_REF:0000024) |
+| [AE-6-E3](AE-6.examples.yaml): An existence relation filled with a signalling pathway, not a stage | Non-conformant | LRP6 located_in GO:0031410 cytoplasmic vesicle (IDA, PMID:20093472) |
+
 ## Sources
 
 - wiki: [Supplying temporal location information](https://wiki.geneontology.org/index.php/Annotation_Extension_field%3A_Supplying_temporal_location_information_to_a_GO_annotation)

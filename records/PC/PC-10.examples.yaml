@@ -1,0 +1,47 @@
+record: PC-10
+examples:
+- id: PC-10-E1
+  title: A photosystem I assembly factor annotated as part of photosystem I
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A4GYS2
+      symbol: ycf4
+    taxon: NCBITaxon:3694
+    term:
+      term_id: GO:0009522
+      label: photosystem I
+    qualifier: part_of
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The InterPro2GO row places poplar Ycf4 in photosystem I. The review removed it because Ycf4 is a
+    PSI assembly factor rather than a structural component, and added a NEW photosystem I assembly row.
+    The record says assembly factors get assembly processes and are not `part_of` the mature complex.
+  fix: |
+    Remove the `part_of` row and annotate `GO:0048564` photosystem I assembly, as the review does.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/POPTR/ycf4/ycf4-ai-review.yaml#L11
+- id: PC-10-E2
+  title: SURF1's complex IV assembly row accepted as its core process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q15526
+      symbol: SURF1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0033617
+      label: mitochondrial respiratory chain complex IV assembly
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The IBA row gives SURF1 mitochondrial respiratory chain complex IV assembly. The review accepted it
+    as SURF1's core process, citing assembly-factor studies across yeast, fission yeast and human, and
+    in the same review removed the Compara cytochrome-c oxidase activity row. An assembly process for
+    the assembly factor, and none of the mature complex's activity, is the record's pattern.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SURF1/SURF1-ai-review.yaml#L35

@@ -104,6 +104,15 @@ of STING's activity.
 | Date | 2026-11-15 |
 | GO terms | `GO:0098772` molecular function regulator activity; `GO:0004708` MAP kinase kinase activity; `GO:0004707` MAP kinase activity; `GO:0061501` 2',3'-cyclic GMP-AMP synthase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-8-E1](CAM-8.examples.yaml): A MAPKK directly activating its cognate p38 MAPK | Conformant | gomodel:568b0f9600000284 |
+| [CAM-8-E2](CAM-8.examples.yaml): Protein kinase D drawn as directly activating p38 with the mechanism unknown | Non-conformant | gomodel:568b0f9600000284 |
+| [CAM-8-E3](CAM-8.examples.yaml): A cholesterol-esterifying enzyme drawn as directly inhibiting a viral fusion protein | Non-conformant | gomodel:6796b94c00004996 |
+| [CAM-2-E1](CAM-2.examples.yaml): Calmodulin drawn as two nodes, calcium binding directly activating its own kinase-activator node (from [CAM-2](CAM-2.md)) | Non-conformant | gomodel:62b4ffe300004489 |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

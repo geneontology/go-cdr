@@ -42,6 +42,13 @@ fits is `ONTOLOGY_BLOCKED`, not a true gap in knowledge ([CLAUDE.md](https://git
 | Date | 2026-11-15 |
 | Evidence codes | ND |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-14-E1](ONT-14.examples.yaml): A missing RhoA-specific GEF term filed as a knowledge gap | Non-conformant | A `knowledge_gaps` entry in the ARHGEF19 review with `gap_kind: [ONTOLOGY]`: the protein is a RhoA exchange factor, and not a Rac1 or Cdc42 one, but this "cannot be stated in a GO term". |
+| [ONT-14-E2](ONT-14.examples.yaml): A missing CoQ synthome component term filed as a knowledge gap as well as a proposal | Non-conformant | A `knowledge_gaps` entry in the *C. |
+
 ## Sources
 
 - repo: [CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blob/main/CLAUDE.md)

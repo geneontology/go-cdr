@@ -1,0 +1,48 @@
+record: EV-13
+examples:
+- id: EV-13-E1
+  title: A biological-process ND accepted with the searches recorded
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9FFN0
+      symbol: At5g03810
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0008150
+      label: biological_process
+    qualifier: involved_in
+    evidence_code: ND
+    reference: GO_REF:0000015
+  explanation: |
+    The review applied the record's test and cited the search: PubMed and Europe PMC queries on the locus and
+    accession found no paper on this gene in this species (the two Europe PMC hits are studies of other
+    plants), and the gene is absent from the GDSL family surveys. It stated that the IBA and IEA rows in the
+    same aspect are not literature on the gene and paired the ND with a BIOLOGY knowledge gap.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/At5g03810/At5g03810-ai-review.yaml#L105
+- id: EV-13-E2
+  title: A molecular-function ND beside an experimental tether activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P18409
+      symbol: MDM10
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0003674
+      label: molecular_function
+    qualifier: enables
+    evidence_code: ND
+    reference: GO_REF:0000015
+  explanation: |
+    The record's own example of a stale ND. Kornmann et al. 2009 showed that the Mmm1/Mdm10/Mdm12/Mdm34
+    complex connects the ER and mitochondria, which can be bypassed by a synthetic tether, so literature on
+    this gene product now identifies a molecular function. The review removed the ND with `nd_case: STALE`
+    and quoted the paper.
+  fix: |
+    Remove the ND; the molecular function is carried by the experimental tether annotation.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/MDM10/MDM10-ai-review.yaml#L91

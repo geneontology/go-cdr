@@ -1,0 +1,49 @@
+record: EV-1
+examples:
+- id: EV-1-E1
+  title: An EXP helicase row read as the enzyme assay it is
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P03018
+      symbol: uvrD
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0043138
+      label: 3'-5' DNA helicase activity
+    qualifier: enables
+    evidence_code: EXP
+    reference: PMID:8419285
+  explanation: |
+    The record asks a reviewer to judge an EXP row as though it carried the code its method warrants. The
+    review identified the method, purified wild-type and uvrD252 DNA helicase II compared for
+    ATP-dependent unwinding, which is a direct activity assay (IDA in all but name), and on that reading
+    accepted the 3'-5' helicase activity as core.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/uvrD/uvrD-ai-review.yaml#L856
+- id: EV-1-E2
+  title: An EXP outer membrane row whose experiment shows surface accessibility
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q74A86
+      symbol: omcS
+    taxon: NCBITaxon:243231
+    term:
+      term_id: GO:0009279
+      label: cell outer membrane
+    qualifier: located_in
+    evidence_code: EXP
+    reference: PMID:16332857
+  explanation: |
+    Reading the bare EXP as a specific method exposes the gap. The proteins were obtained by shearing the
+    outside of intact cells, which assays surface exposure, and the paper's own word for the outer
+    membrane assignment is "predicted". The review concluded that the EXP code is carrying a prediction
+    the experiment did not test, and marked the row over-annotated.
+  fix: |
+    Annotate what the shearing assay shows, `GO:0009986` cell surface, which the review accepts from the
+    same paper; the outer membrane assignment needs its own evidence.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/GEOSL/omcS/omcS-ai-review.yaml#L238

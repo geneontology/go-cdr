@@ -1,0 +1,54 @@
+record: BP-1
+examples:
+- id: BP-1-E1
+  title: MEK1 involved in the MAPK cascade through its own kinase step
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q02750
+      symbol: MAP2K1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000165
+      label: MAPK cascade
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    This is the record's own worked example. The step can be named: MEK1 phosphorylates and activates
+    ERK1/2, and that kinase activity is a step of GO:0000165 MAPK cascade. The review kept the IBA because
+    MAPK-cascade participation is inherited across the MAP2K clade, noting that the more specific
+    ERK1 and ERK2 cascade is carried in core functions.
+  see_also:
+  - BP-12
+  - BP-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MAP2K1/MAP2K1-ai-review.yaml#L26
+- id: BP-1-E2
+  title: INSIG1 annotated as involved in cholesterol biosynthesis it only restrains
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O15503
+      symbol: INSIG1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006695
+      label: cholesterol biosynthetic process
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:32322062
+  explanation: |
+    No activity of INSIG1 is a step of GO:0006695 cholesterol biosynthetic process. The review found that
+    INSIGs lower sterol synthesis by retaining SCAP-SREBP in the ER and by adapting HMGCR to ER-associated
+    degradation, and that PCK1 phosphorylation of INSIG lowers sterol binding and increases lipogenesis.
+    Those are regulatory activities with a negative sign, so `involved_in` the biosynthetic process fails
+    the record's test of naming a step.
+  fix: |
+    MODIFY to GO:0045541 negative regulation of cholesterol biosynthetic process, as the review proposes.
+  see_also:
+  - BP-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/INSIG1/INSIG1-ai-review.yaml#L466

@@ -44,6 +44,13 @@ These are Guidelines 1 and 2 of [wiki: Annotating regulation](https://wiki.geneo
 | Provenance | [GOC] |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-1-E1](RS-1.examples.yaml): Regulation of stomatal closure on the SLAC1 anion channel moved to the process | Conformant | SLAC1 involved_in GO:0090333 regulation of stomatal closure (IMP, PMID:29463779) |
+| [RS-1-E2](RS-1.examples.yaml): Camalexin biosynthesis on MPK6 moved to its positive regulation | Conformant | MPK6 acts_upstream_of_or_within GO:0010120 camalexin biosynthetic process (IMP, PMID:18378893) |
+
 ## Sources
 
 - wiki: [Annotating regulation](https://wiki.geneontology.org/index.php/Annotating_regulation)

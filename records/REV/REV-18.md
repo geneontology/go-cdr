@@ -54,6 +54,14 @@ features (signal peptides, TM helices) are valid support for what they say
 | Provenance | [NEW] |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-18-E1](REV-18.examples.yaml): An APP row accepted with an evidence-code template as its only reasoning | Non-conformant | APP involved_in GO:1904646 cellular response to amyloid-beta (IDA, PMID:29518356) |
+| [REV-9-E2](REV-9.examples.yaml): A photosystem I assembly IBA on PsbP1 removed without examining its PAINT seed (from [REV-9](REV-9.md)) | Non-conformant | PSBP1 involved_in GO:0048564 photosystem I assembly (IBA, GO_REF:0000033) |
+| [REV-11-E3](REV-11.examples.yaml): Melanin biosynthesis proposed for POMC with a boilerplate reason (from [REV-11](REV-11.md)) | Non-conformant | POMC GO:0042438 melanin biosynthetic process (NAS) |
+
 ## Sources
 
 - web: [REVIEW_QUALITY_AUDIT](https://ai4curation.io/ai-gene-review/pages/projects/REVIEW_QUALITY_AUDIT.html)

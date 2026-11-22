@@ -1,0 +1,75 @@
+record: ONT-7
+examples:
+- id: ONT-7-E1
+  title: TOMM20's mitochondrion targeting sequence binding migrated with MODIFY
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q15388
+      symbol: TOMM20
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0030943
+      label: mitochondrion targeting sequence binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:35733257
+  explanation: 'After `GO:0030943` was obsoleted, the review marked TOMM20''s IDA row MODIFY with `GO:0140436`
+
+    mitochondrial signal sequence receptor activity, because TOMM20 is a cytosolic-side presequence
+
+    receptor, and kept the GOA-sourced term id on the row. The record''s own example is this migration:
+
+    MODIFY when the claim is sound and only the term is wrong, never ACCEPT.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TOMM20/TOMM20-ai-review.yaml#L515
+- id: ONT-7-E2
+  title: An obsolete NAD+ biosynthesis term kept with ACCEPT because the pinned ontology still lists it
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O74940
+      symbol: SPCC553.02
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0034354
+      label: '''de novo'' NAD+ biosynthetic process from L-tryptophan'
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: 'The review''s summary says `GO:0034354` "is obsolete in current GO (replaced by GO:0034628)
+    but live in
+
+    the pinned ontology; it is kept", and the row is ACCEPTed. The record says an existing annotation
+    on an
+
+    obsolete term is MODIFY, REMOVE or UNDECIDED, never ACCEPT, because ACCEPT marks it as a core function,
+
+    and that the term must also move out of modules and core functions; the summary names a module that
+
+    still uses it.
+
+
+    Note: GOA and QuickGO label `GO:0034354` obsolete, but the GO release used to check labels here (2026-07-26)
+    still has it live as "''de novo'' NAD+ biosynthetic process from L-tryptophan"; the verdict assumes
+    the obsoletion reaches a GO release.
+
+    '
+  fix: 'MODIFY the row to the `replaced_by` target the summary names, after checking under ONT-3 that
+    it fits
+
+    Qns1''s role, and move the module''s use of the obsolete id with it. Leave the GOA-sourced term id
+    on the
+
+    row unchanged.
+
+    '
+  see_also:
+  - ONT-3
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/SPCC553.02/SPCC553.02-ai-review.yaml#L206

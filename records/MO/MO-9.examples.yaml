@@ -1,0 +1,46 @@
+record: MO-9
+examples:
+- id: MO-9-E1
+  title: The camalexin enzyme on defense response to fungus
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9LW27
+      symbol: CYP71B15
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0050832
+      label: defense response to fungus
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IMP
+    reference: PMID:26813622
+  explanation: |
+    The record's ladder gives effector-level defence terms to genes that do part of the work, and names
+    CYP71B15 as such a case. The review accepted the row because "PAD3 itself makes the antifungal phytoalexin", so the
+    contribution is enzymatic rather than regulatory.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/CYP71B15/CYP71B15-ai-review.yaml#L586
+- id: MO-9-E2
+  title: A susceptibility factor annotated to defense response to fungus
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9SXB6
+      symbol: MLO2
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0050832
+      label: defense response to fungus
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IMP
+    reference: PMID:16732289
+  explanation: |
+    Loss of MLO2 gives powdery mildew resistance, so MLO2 is a susceptibility factor, which the record says is a
+    negative regulator, not a defence participant. The review modified the row for that reason ("establishes that MLO2 is a
+    susceptibility factor, not a participant in defense"), matching the barley MLO review.
+  fix: |
+    GO:0031348 negative regulation of defense response, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/MLO2/MLO2-ai-review.yaml#L315

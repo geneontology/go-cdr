@@ -41,6 +41,13 @@ Curator feedback is how GO improves the precision and recall of automated annota
 | Requirement | MUST |
 | Date | 2026-11-21 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PIPE-1-E1](PIPE-1.examples.yaml): InterPro2GO removes kinase activity from the kinase domain within a week of a tracker report | Conformant | InterPro2GO |
+| [PIPE-1-E2](PIPE-1.examples.yaml): Ensembl Compara answers a relation-upgrade report at once but changes output slowly | Contested | Ensembl Compara |
+
 ## Sources
 
 - drive: [GO annotation pipeline proposed rubrics and MOU (GOC meeting, Cambridge 2025)](https://docs.google.com/presentation/d/1YudLhxPskOiptyhBkUo5sN6GkMjQWB4PIdM0_dNSZkw/edit)

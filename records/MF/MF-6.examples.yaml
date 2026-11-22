@@ -1,0 +1,27 @@
+record: MF-6
+examples:
+- id: MF-6-E1
+  title: A RPTOR-S6K1 binding row refined to protein kinase binding
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8N122
+      symbol: RPTOR
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:12150926
+  explanation: |
+    The partner is RPS6KB1 (S6K1), which RPTOR binds through its TOS motif as an mTORC1 substrate. The
+    review judged that a binary interaction evidences binding, not bridging, and refined the row to the
+    class-level child `GO:0019901` protein kinase binding rather than to a partner-specific term; the
+    adaptor activity itself sits on separate IDA rows. Note that MF-5's Application describes this
+    group of RPTOR rows as `MODIFY` to enzyme-substrate adaptor activity, which is not what the review
+    did: all 27 refined RPTOR rows went to protein kinase binding.
+  see_also: [MF-5, MF-8]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/RPTOR/RPTOR-ai-review.yaml#L78

@@ -56,6 +56,13 @@ date: '2026-11-15'
 | Evidence codes | IDA, IMP |
 | GO terms | `GO:0006412` translation; `GO:0000398` mRNA splicing, via spliceosome |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-8-E1](BP-8.examples.yaml): A proteasome subunit's spermatogenesis row demoted to non-core | Conformant | rpn-10 involved_in GO:0007283 spermatogenesis (IGI, PMID:17050737) |
+| [BP-8-E2](BP-8.examples.yaml): A ribosome-biogenesis ATPase annotated to positive regulation of translation | Non-conformant | ruvb-1 involved_in GO:0045727 positive regulation of translation (IMP, PMID:18804378) |
+
 ## Sources
 
 - wiki: [Annotating downstream processes](https://wiki.geneontology.org/index.php/Annotating_downstream_processes)

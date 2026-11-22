@@ -1,0 +1,81 @@
+record: MF-9
+examples:
+- id: MF-9-E1
+  title: An IPI row refined to a peroxiredoxin catalytic term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q04120
+      symbol: TSA2
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0008379
+      label: thioredoxin peroxidase activity
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:41807831
+  explanation: 'The row is an IPI with Tsa1 (SGD:S000004490) as the interactor, on a term that is now
+    obsolete.
+
+    The review replaced the obsolete term with its successor, thioredoxin-dependent peroxiredoxin
+
+    activity, and supported the change with kinetic data from other papers. The record forbids IPI on
+
+    catalytic activity terms (gorule-0000007): a binding interaction cannot show catalysis, so the IPI
+
+    row cannot carry the catalytic term whatever its label.
+
+
+    Note: GOA and QuickGO label `GO:0008379` obsolete, but the GO release used to check labels here (2026-07-26)
+    still has it live as "thioredoxin peroxidase activity"; the verdict assumes the obsoletion reaches
+    a GO release.
+
+    '
+  fix: '`REMOVE` the IPI row (or replace it with a binding or complex term the interaction does support).
+
+    `GO:0140824` thioredoxin-dependent peroxiredoxin activity is already carried on an EXP row in
+
+    this review.
+
+    '
+  see_also:
+  - MF-2
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/TSA2/TSA2-ai-review.yaml#L295
+- id: MF-9-E2
+  title: The NAD(P)+ glutamate dehydrogenase term chosen as core because the enzyme uses both
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P49448
+      symbol: GLUD2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004353
+      label: L-glutamate dehydrogenase [NAD(P)+] activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000003
+  explanation: 'The review accepted this EC-mapped row as "the chosen core molecular function" because
+    UniProt
+
+    records both NAD+ and NADP+ reactions, reading the bracketed label as "uses both". The record says
+
+    the opposite: in a GO label NAD(P) means the cofactor is unknown, and an enzyme known to use both
+
+    gets the NAD+ and the NADP+ terms. The review in fact accepts both specific terms on other rows,
+
+    so the error lies in the core choice and its stated reason, not in the evidence.
+
+    '
+  fix: 'Name `GO:0004352` L-glutamate dehydrogenase (NAD+) activity and `GO:0004354` L-glutamate
+
+    dehydrogenase (NADP+) activity, both accepted in this review, as the core activities. The EC2GO
+
+    row can stay, but not as the core statement of cofactor use.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GLUD2/GLUD2-ai-review.yaml#L92

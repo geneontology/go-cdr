@@ -111,6 +111,13 @@ dbTF annotation was removed.
 | Date | 2026-11-15 |
 | GO terms | `GO:0003899` DNA-directed RNA polymerase activity; `GO:0140223` general transcription initiation factor activity; `GO:0016251` RNA polymerase II general transcription initiation factor activity; `GO:0006366` transcription by RNA polymerase II; `GO:0003700` DNA-binding transcription factor activity; `GO:0000981` DNA-binding transcription factor activity, RNA polymerase II-specific; `GO:0001228` DNA-binding transcription activator activity, RNA polymerase II-specific; `GO:0001227` DNA-binding transcription repressor activity, RNA polymerase II-specific; `GO:0004879` nuclear receptor activity; `GO:0016987` sigma factor activity; `GO:0003712` transcription coregulator activity; `GO:0003713` transcription coactivator activity; `GO:0003714` transcription corepressor activity; `GO:0140416` transcription regulator inhibitor activity; `GO:0140537` transcription regulator activator activity; `GO:0140110` transcription regulator activity; `GO:0006355` regulation of DNA-templated transcription; `GO:0006351` DNA-templated transcription |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-1-E1](TR-1.examples.yaml): A Mediator subunit annotated as a transcription coactivator | Conformant | MED13L enables GO:0003713 transcription coactivator activity (IDA, PMID:22249253) |
+| [TR-1-E2](TR-1.examples.yaml): An Aux/IAA repressor annotated as a DNA-binding transcription factor from a genome-wide classification | Non-conformant | IAA17 enables GO:0003700 DNA-binding transcription factor activity (ISS, PMID:11118137) |
+
 ## Sources
 
 - drive: [MF guidelines for GO-CAM](https://drive.google.com/open?id=1DWvc_g5yH4S8-Tc2rPtaAyPOIkYzITagK1sXysj0CY4)

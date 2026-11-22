@@ -1,0 +1,49 @@
+record: TR-2
+examples:
+- id: TR-2-E1
+  title: An ETS repressor shown to act through its binding site in a reporter
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P50548
+      symbol: ERF
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0001227
+      label: DNA-binding transcription repressor activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:7588608
+  explanation: |
+    ERF is an ETS-domain protein, a well-characterised dbTF family, and the cited paper shows both parts of the
+    test: removing the ETS-binding site from the GATA1 promoter reduces ERF repression, and DNA-binding-domain deletion and
+    GAL4 tethering separate sequence recognition from the repression domain. The review read the full text and accepted the
+    repressor term.
+  see_also:
+  - TR-9
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ERF/ERF-ai-review.yaml#L183
+- id: TR-2-E2
+  title: A dbTF row from an author calling the protein a transcription factor
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8IP19
+      symbol: dac
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0000981
+      label: DNA-binding transcription factor activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: TAS
+    reference: PMID:38528987
+  explanation: |
+    The record requires that the protein itself binds a specific cis-regulatory sequence. The TAS row rests on
+    a paper that "refers to Dac as a 'transcription factor' but presents no DNA-binding data"; its experiment is a direct
+    interaction with the corepressor CtBP.
+  fix: |
+    GO:0003712 transcription coregulator activity, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/dac/dac-ai-review.yaml#L69

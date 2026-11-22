@@ -100,6 +100,15 @@ biology
 | Evidence codes | IDA |
 | GO terms | `GO:0016032` viral process; `GO:0019058` viral life cycle; `GO:0075522` IRES-dependent viral translational initiation; `GO:0046718` symbiont entry into host cell; `GO:0001618` virus receptor activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MO-3-E1](MO-3.examples.yaml): A host corepressor bound by E1A, kept off viral genome replication | Conformant | CTBP1 involved_in GO:0019079 viral genome replication (TAS, PMID:7479821) |
+| [MO-3-E2](MO-3.examples.yaml): An inferred symbiont-entry row on CDK1 | Non-conformant | CDK1 involved_in GO:0046718 symbiont entry into host cell (IEA, GO_REF:0000108) |
+| [MO-3-E3](MO-3.examples.yaml): CD4 kept on symbiont entry into host cell because it does the first step of HIV entry | Contested | CD4 involved_in GO:0046718 symbiont entry into host cell (IDA, PMID:9641677) |
+| [MO-1-E2](MO-1.examples.yaml): A bacterial host factor annotated to the phage's own transcription process (from [MO-1](MO-1.md)) | Non-conformant | PSPPH_4093 acts_upstream_of_or_within_positive_effect GO:0039696 RNA-templated viral transcription (IDA, PMID:18836083) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

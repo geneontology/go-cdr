@@ -80,6 +80,16 @@ have been a different process, takes a replacement that is not a descendant.
 | Date | 2026-11-15 |
 | GO terms | `GO:0016498` neuromedin K receptor activity; `GO:0004930` G protein-coupled receptor activity; `GO:0016020` membrane; `GO:0005886` plasma membrane; `GO:0005739` mitochondrion |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-3-E1](REV-3.examples.yaml): InterPro GPCR activity on NK3R kept because its signature names no ligand | Conformant | Tacr3 enables GO:0004930 G protein-coupled receptor activity (IEA, GO_REF:0000002) |
+| [REV-3-E2](REV-3.examples.yaml): Bare membrane marked TOO_GENERAL beside an accepted ER membrane term | Conformant | gaa1 located_in GO:0016020 membrane (IEA, GO_REF:0000002) |
+| [REV-3-E3](REV-3.examples.yaml): An InterPro rhodopsin-family row refined to the acetylcholine receptor term | Non-conformant | Chrm1 enables GO:0004930 G protein-coupled receptor activity (IEA, GO_REF:0000002) |
+| [REV-2-E2](REV-2.examples.yaml): A membrane row kept as non-core while the reason calls it uninformative (from [REV-2](REV-2.md)) | Non-conformant | LYM2 located_in GO:0016020 membrane (TAS, PMID:12068095) |
+| [RS-5-E3](../RS/RS-5.examples.yaml): An InterPro-derived positive regulation of transcription on SVP flipped to negative (from [RS-5](../RS/RS-5.md)) | Non-conformant | SVP involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (IEA, GO_REF:0000002) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

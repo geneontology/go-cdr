@@ -1,0 +1,52 @@
+record: PH-19
+examples:
+- id: PH-19-E1
+  title: SSB1's refolding IBA generalized to protein folding under the fungal IRD
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P11484
+      symbol: SSB1
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0042026
+      label: protein refolding
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review found that current PAINT places an IRD for `GO:0042026` at the fungal node PTN001065099 and
+    carries the broader `GO:0006457` protein folding through that branch, and followed the node: it
+    MODIFYed the row to protein folding rather than keeping a term a phylogenetic curator had withdrawn.
+    The record asks reviewers to check for such a loss before keeping or adding the term.
+  see_also:
+  - PH-9
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/SSB1/SSB1-ai-review.yaml#L384
+- id: PH-19-E2
+  title: SSA3's refolding IBA kept while arguing explicitly against the IRD that withdrew it
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09435
+      symbol: SSA3
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0042026
+      label: protein refolding
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review saw that the IRD at PTN001065099 withdraws this IBA, and argued with the loss in writing,
+    citing the PTHR19375 family review's `LOSS_TOO_BROAD` verdict that the SSA subfamilies should again
+    inherit refolding. That is the first branch of the record's decision. The review also states that
+    "no study found here assays refolding by Ssa3 on its own", so its argument rests on SSA-subfamily
+    inheritance and SSA1's IDA rows; the record's worked example notes that SSA3's nearest experimental rows
+    support only protein folding, which a curator weighing the IRD dispute should take into account.
+  see_also:
+  - PH-9
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/SSA3/SSA3-ai-review.yaml#L524

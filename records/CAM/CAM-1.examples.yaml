@@ -1,0 +1,42 @@
+record: CAM-1
+examples:
+- id: CAM-1-E1
+  title: A substrate-adaptor activity with one enabler, one location and one nested process chain
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:69729a3800005900
+    description: |
+      Activity gomodel:69729a3800005900/69729a3800005916 in "KCTD10-mediated degradation of SLC7A11 leading
+      to regulation of ferroptosis (Human)": UniProtKB:Q9H3F6 (KCTD10) enables GO:1990756
+      ubiquitin-like ligase-substrate adaptor activity, has_input SLC7A11, occurs_in GO:0005737 cytoplasm,
+      part_of GO:0043161 proteasome-mediated ubiquitin-dependent protein catabolic process, itself part_of
+      GO:0160020 positive regulation of ferroptosis.
+  explanation: |
+    The unit has the shape the record asks for: one MF term, one gene-product enabler, one location and a
+    single process chain in which the larger process is reached by nesting rather than by a second
+    `part_of`. The review judged the activity OK and consistent with the KCTD10 gene review's core
+    function, and found the adaptor correctly typed with the substrate as input.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/69729a3800005900/69729a3800005900-review.yaml#L37
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/69729a3800005900/69729a3800005900-src.yaml#L104
+- id: CAM-1-E2
+  title: A lipid carrier activity with no process
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:5fb9cc0600000727
+    description: |
+      Activity gomodel:5fb9cc0600000727/5fce9b7300000008 in "Triacyl lipopetide activation of TLR1-TLR2
+      complex (Human)": UniProtKB:P18428 (LBP) enables GO:0140104 molecular carrier activity, has_input the
+      lipopeptide, occurs_in GO:0005576 extracellular region, with a `provides input for` edge to the
+      TLR1-TLR2 receptor activity and no `part_of`.
+  explanation: |
+    The record requires each activity unit to carry a process chain. The review accepted the carrier typing
+    and the edge to the receptor, but flagged the unit MISSING_PROCESS: nothing says which process LBP's
+    lipopeptide transfer is part of, so the unit cannot export an `involved_in` row.
+  fix: |
+    Add a `part_of` to the innate-immune signalling process the rest of the model belongs to, so the
+    unit has function, enabler, location and process.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/5fb9cc0600000727/5fb9cc0600000727-review.yaml#L14

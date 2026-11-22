@@ -385,6 +385,6 @@ def test_cli_aigr_example(tmp_path: Path) -> None:
         "extension": "RO:0002233(UniProtKB:Q1)",
     }
     assert drafted["derived_from"] == [
-        "https://github.com/monarch-initiative/ai-gene-review/blob/abc/genes/human/ABC1/ABC1-ai-review.yaml#L16"
+        "https://github.com/ai4curation/ai-gene-review/blob/abc/genes/human/ABC1/ABC1-ai-review.yaml#L16"
     ]
     assert drafted["aigr_review"]["action"] == "ACCEPT"

@@ -1,0 +1,26 @@
+record: EV-15
+examples:
+- id: EV-15-E1
+  title: A SynGO presynaptic cytosol row carrying IEP through ECO:0000279
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q96LT7
+      symbol: C9orf72
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0099523
+      label: presynaptic cytosol
+    qualifier: is_active_in
+    evidence_code: IEP
+    reference: PMID:30075745
+  explanation: |
+    The GOA row carries ECO:0000279 (qualitative western immunoblotting), which projects to IEP and so puts a
+    CC term under an expression code; SynGO also made an IDA row from the same paper with ECO:0005589. The
+    review judged the row as the localisation assay it is (antibodies with knockout controls, brain
+    fractionation, iPSC motor-neuron staining) and accepted the location without treating it as
+    expression evidence.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/C9orf72/C9orf72-ai-review.yaml#L1935
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/C9orf72/C9orf72-goa.tsv#L73

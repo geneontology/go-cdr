@@ -78,6 +78,14 @@ destination term ([SUBSTRATE_LOCALIZATION_TO_AUTOPHAGOSOME_OBSOLETION](https://a
 | Date | 2026-11-15 |
 | GO terms | `GO:0008139`  (obsolete); `GO:0140142` nucleocytoplasmic carrier activity; `GO:0017056` structural constituent of nuclear pore; `GO:0030943`  (obsolete); `GO:0140436` mitochondrial signal sequence receptor activity; `GO:0008320` transmembrane protein transporter activity; `GO:0061753` substrate localization to autophagosome |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-4-E1](ONT-4.examples.yaml): The TOM40 channel's mitochondrion targeting sequence binding sent to protein transporter activity | Conformant | TOMM40 enables GO:0030943 mitochondrion targeting sequence binding (IBA, GO_REF:0000033) |
+| [ONT-4-E2](ONT-4.examples.yaml): An Acl4 row on mitochondrion targeting sequence binding removed with no destination | Conformant | ACL4 enables GO:0030943 mitochondrion targeting sequence binding (IBA, GO_REF:0000033) |
+| [ONT-4-E3](ONT-4.examples.yaml): TIMM22's targeting-signal row sent to the transporter rather than the receptor | Conformant | TIMM22 enables GO:0030943 mitochondrion targeting sequence binding (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - wiki: [Obsoleting an Existing Ontology Term](https://wiki.geneontology.org/index.php/Obsoleting_an_Existing_Ontology_Term)

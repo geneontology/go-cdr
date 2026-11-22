@@ -73,6 +73,14 @@ receptor activity.
 | Date | 2026-11-15 |
 | GO terms | `GO:0004396` hexokinase activity; `GO:0005009` insulin receptor activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-5-E1](CAM-5.examples.yaml): A neuropeptide ligand whose input is its receptor | Conformant | gomodel:68d5ebd600000736 |
+| [CAM-5-E2](CAM-5.examples.yaml): Lipopeptide and bacteriocin ligands attached as inputs of the TLR2-TLR6 receptor activity | Non-conformant | gomodel:5fce9b7300000030 |
+| [CAM-9-E2](CAM-9.examples.yaml): A bacterial response regulator whose input is a protein, not its target operon (from [CAM-9](CAM-9.md)) | Non-conformant | gomodel:671ae02600002832 |
+
 ## Sources
 
 - wiki: [Has input](https://wiki.geneontology.org/index.php/Has_input)

@@ -1,0 +1,27 @@
+record: MO-15
+examples:
+- id: MO-15-E1
+  title: A miRNA target protein annotated to miRNA-mediated silencing
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P24704
+      symbol: CSD1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0035195
+      label: miRNA-mediated post-transcriptional gene silencing
+    evidence_code: IEP
+    reference: PMID:16861386
+  explanation: |
+    The record annotates the miRNA with the silencing BP and names the target as its `has_input`; the target
+    itself does none of the silencing. Here the target protein, CSD1, carries GO:0035195 by IEP. The review removed it:
+    "CSD1 mRNA is the cleaved substrate of miR398-guided ARGONAUTE1 RISC", and most other Arabidopsis miRNA targets do not
+    carry the term.
+  fix: |
+    No silencing row on CSD1. If the miR398 RNA is annotated, it takes GO:0035195 with `has_input` CSD1.
+  see_also:
+  - MO-16
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/CSD1/CSD1-ai-review.yaml#L508

@@ -1,0 +1,81 @@
+record: QN-8
+examples:
+- id: QN-8-E1
+  title: CRY2 does not do photoreactive repair, shown by assay on a photolyase homologue
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q49AN0
+      symbol: CRY2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000719
+      label: photoreactive repair
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:12627958
+    negated: true
+  explanation: |
+    The review accepted the NOT because Ozgur and Sancar assayed human CRY2 and found it "lacks
+    photorepair activity despite its structural similarity to photolyases". This is the record's own
+    example of an absence that was tested for and found, on a property a reader would expect from the
+    protein family.
+  see_also: [QN-11]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CRY2/CRY2-ai-review.yaml#L1200
+- id: QN-8-E2
+  title: A NOT located_in cilium from a screen in which the protein was simply not enriched
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9H0F7
+      symbol: ARL6
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005929
+      label: cilium
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:17646400
+    negated: true
+  explanation: |
+    The review's own summary says the row comes from an overexpression screen in which ARL6 was not
+    enriched at cilia, and that the result "is contradicted by multiple direct endogenous localization
+    studies showing ARL6 in cilia"; it then ACCEPTed the row "as a faithful record of that overexpression
+    screen". The record lists "not detected in" a location as evidence that does not support a NOT, and
+    ARL6 carries accepted positive cilium and axoneme rows, so the NOT also contradicts the gene's own
+    positive annotations (QN-9).
+  fix: |
+    REMOVE the NOT row: the evidence is a negative screening result, not a demonstrated absence
+    (QN-16, rule detail).
+  see_also: [QN-9, QN-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARL6/ARL6-ai-review.yaml#L310
+- id: QN-8-E3
+  title: A NOT response to salicylic acid resting on an unchanged transcript level
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O82504
+      symbol: RDR2
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0009751
+      label: response to salicylic acid
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:15024409
+    negated: true
+  explanation: |
+    The row records that RDR2 transcript levels are unchanged by salicylic acid, unlike RDR1. The review
+    kept it as non-core because the observation "is correctly reported in the paper". The record says
+    expression unchanged after a stimulus never supports a NOT (IEP evidence), whatever the quality of
+    the paper; the result distinguishes RDR2 from RDR1 but does not show that RDR2 lacks a property.
+  fix: |
+    REMOVE the NOT row; if the contrast with RDR1 matters, say so in the review's notes.
+  see_also: [QN-11, QN-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/RDR2/RDR2-ai-review.yaml#L228

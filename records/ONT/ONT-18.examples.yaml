@@ -1,0 +1,51 @@
+record: ONT-18
+examples:
+- id: ONT-18-E1
+  title: A Dictyostelium STAT's JAK-STAT pathway row moved to the STAT-only sibling
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q54BD4
+      symbol: statC
+    taxon: NCBITaxon:44689
+    term:
+      term_id: GO:0007259
+      label: cell surface receptor signaling pathway via JAK-STAT
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    *Dictyostelium* has STATs and no JAK, and statC inherits `GO:0007259` cell surface receptor signaling
+    pathway via JAK-STAT by IBA. The review MODIFYs the row to `GO:0097696` cell surface receptor
+    signaling pathway via STAT, which presupposes no JAK. That is the record's decision and its worked
+    example.
+  see_also:
+  - PH-4
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DICDI/statC/statC-ai-review.yaml#L94
+- id: ONT-18-E2
+  title: A worm STAT's JAK-STAT pathway row removed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NAD6
+      symbol: sta-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0007259
+      label: cell surface receptor signaling pathway via JAK-STAT
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review removed the IBA because "the term presupposes a receptor-associated JAK that phosphorylates
+    the STAT. No such kinase exists in C. elegans", and modelled STA-1's JAK-independent signalling in a
+    module instead. The record removes inherited rows to the component-specific term in a lineage that
+    lacks the component; the worm rows are its example.
+  see_also:
+  - PH-4
+  - PH-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/sta-1/sta-1-ai-review.yaml#L435

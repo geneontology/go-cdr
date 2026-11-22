@@ -1,0 +1,54 @@
+record: AE-1
+examples:
+- id: AE-1-E1
+  title: A neuronal occurs_in on an enzyme activity, which survives the delete-the-extension test
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P04062
+      symbol: GBA1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004348
+      label: glucosylceramidase activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:21700325
+    extension: BFO:0000066(CL:0000540)
+  explanation: |
+    Delete the `occurs_in`(CL:0000540 neuron) extension and the row still says something true: GBA1 has
+    glucosylceramidase activity. With the extension it says less broadly where the activity was shown,
+    which is the narrowing the record allows. The review accepted the row, noting that the paper measured
+    reduced GCase activity in primary-neuron knockdowns and in Gaucher iPSC-derived neurons, so the
+    extension describes where the evidence was obtained and carries no condition.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GBA1/GBA1-ai-review.yaml#L494
+- id: AE-1-E2
+  title: A cofactor-dependent Cdc42 arm kept as a bare annotation rather than given a condition extension
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    description: |
+      The review kept the row without an extension and demoted it. Separately, in `suggested_questions`,
+      it asked whether the row should carry an extension naming the HPV16 E6 context.
+    gene:
+      gene_id: UniProtKB:Q5VV41
+      symbol: ARHGEF16
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0032489
+      label: regulation of Cdc42 protein signal transduction
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:21139582
+  explanation: |
+    In PMID:21139582 every Cdc42-positive result needed Tip-1 or HPV16 E6, and PMID:20679435 found no cellular
+    Cdc42 activation. The review judged the bare annotation, kept it as non-core, and recorded the
+    conditionality in its reason, which is what the record's test calls for. It then asked whether an
+    extension naming the HPV16 E6 context should be added. The record answers no: an extension that states
+    a condition is not a narrowing. If the claim is false without the cofactor, the row is wrong, and the
+    extension would only hide that.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARHGEF16/ARHGEF16-ai-review.yaml#L1331
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARHGEF16/ARHGEF16-ai-review.yaml#L1564

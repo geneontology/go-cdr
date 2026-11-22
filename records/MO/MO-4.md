@@ -87,6 +87,14 @@ chitinases, and its recognition by Cf-4 is a host process
 | Date | 2026-11-15 |
 | GO terms | `GO:0044416`  (obsolete); `GO:0080185` effector-mediated activation of plant hypersensitive response by symbiont; `GO:0052170` symbiont-mediated suppression of host innate immune response |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MO-4-E1](MO-4.examples.yaml): A LysM effector that sequesters the chitin elicitor, on effector-mediated suppression of PTI | Conformant | ECP6 involved_in GO:0140423 effector-mediated suppression of host pattern-triggered immunity signaling (EXP, PMID:23840930) |
+| [MO-4-E2](MO-4.examples.yaml): AVR4 on effector-mediated activation of plant hypersensitive response | Non-conformant | AVR4 involved_in GO:0080185 effector-mediated activation of plant hypersensitive response by symbiont (EXP, PMID:10998185) |
+| [MO-4-E3](MO-4.examples.yaml): AVR9 accepted on effector-mediated activation of plant hypersensitive response | Contested | AVR9 involved_in GO:0080185 effector-mediated activation of plant hypersensitive response by symbiont (EXP, PMID:10998185) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

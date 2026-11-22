@@ -1,0 +1,62 @@
+record: AE-2
+examples:
+- id: AE-2-E1
+  title: One has_input group per target gene on a transcription factor activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    description: |
+      In GOA (QuickGO) the ParkinsonsUK-UCL row is written as five pipe-separated groups,
+      `has_input(UniProtKB:P04628) | has_input(UniProtKB:O75364) | ...`. The `extension` string below
+      joins them with commas because the review stores extensions as a flat list.
+    gene:
+      gene_id: UniProtKB:O60663
+      symbol: LMX1B
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0000981
+      label: DNA-binding transcription factor activity, RNA polymerase II-specific
+    qualifier: enables
+    evidence_code: ISS
+    reference: GO_REF:0000024
+    extension: RO:0002233(UniProtKB:P04628),RO:0002233(UniProtKB:O75364),RO:0002233(UniProtKB:P43354),RO:0002233(UniProtKB:Q8TE12),RO:0002233(UniProtKB:P28360)
+  explanation: |
+    A transcription factor with several targets needs one group per target, because a comma group would
+    say that all five genes are inputs of a single act of regulation. The source row in GOA does exactly
+    what the record asks: five independent `has_input` groups. The review accepted the row. Note that the
+    review's flat `extensions` list, and the subject drafted from it, cannot show the pipes (see AE-13).
+  see_also: [AE-3, AE-13]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LMX1B/LMX1B-ai-review.yaml#L633
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=O60663&goId=GO:0000981
+- id: AE-2-E2
+  title: Two regulated genes placed in one comma group on a gene-expression row
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    description: |
+      In GOA (QuickGO) the UniProt row carries one comma group,
+      `has_input(UniProtKB:Q99626),has_input(UniProtKB:P15514)`. The review did not record it.
+    gene:
+      gene_id: UniProtKB:O95994
+      symbol: AGR2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0010628
+      label: positive regulation of gene expression
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:22184114
+  explanation: |
+    The GOA row puts two regulated genes in one comma group. Read as the record defines a comma group,
+    that is one regulation of gene expression with two inputs, not two regulated genes. The record asks
+    for one group per target. The review marked the row over-annotated on other grounds (AGR2 is not a
+    transcriptional regulator) and did not record or discuss the extension.
+  fix: |
+    Write one pipe-separated group per regulated gene:
+    `has_input(UniProtKB:Q99626) | has_input(UniProtKB:P15514)`. Whether the row should stand at all is
+    a separate question, which the review answered on other grounds.
+  see_also: [AE-13]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AGR2/AGR2-ai-review.yaml#L623
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=O95994&goId=GO:0010628

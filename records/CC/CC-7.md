@@ -77,6 +77,8 @@ brefeldin A moves CPT1 but not CEPT1, which sits in the ER and nuclear membranes
 | Example | Verdict | Subject |
 |---|---|---|
 | [CC-7-E1](CC-7.examples.yaml): An IBA mitochondrion row kept after checking its PAINT seed | Conformant | AARS2 is_active_in GO:0005739 mitochondrion (IBA, GO_REF:0000033) |
+| [CC-7-E2](CC-7.examples.yaml): An IEA mitochondrion row traced to its keyword source and accepted | Conformant | PYCR2 located_in GO:0005739 mitochondrion (IEA, GO_REF:0000120) |
+| [CC-17-E1](CC-17.examples.yaml): A Golgi IBA row propagated from the cholinephosphotransferase paralog (from [CC-17](CC-17.md)) | Non-conformant | CEPT1 is_active_in GO:0005794 Golgi apparatus (IBA, GO_REF:0000033) |
 
 ## Open questions
 

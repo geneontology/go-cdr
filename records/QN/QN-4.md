@@ -63,6 +63,15 @@ Use `is_active_in` only when the evidence places the activity, not just the prot
 | Date | 2026-11-15 |
 | GO terms | `GO:0012505` endomembrane system; `GO:0005829` cytosol; `GO:0005635` nuclear envelope |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-4-E1](QN-4.examples.yaml): A lipid-synthesizing enzyme is active in the membrane its substrate lives in | Conformant | cdsA is_active_in GO:0005886 plasma membrane (IBA, GO_REF:0000033) |
+| [QN-4-E2](QN-4.examples.yaml): An ortholog-transferred is_active_in kept although the review says it overstates the evidence | Non-conformant | vms1 is_active_in GO:0005789 endoplasmic reticulum membrane (ISO, GO_REF:0000024) |
+| [QN-5-E1](QN-5.examples.yaml): A colocalizes_with cytosol row accepted as the core location of a cytosolic enzyme (from [QN-5](QN-5.md)) | Non-conformant | HPR2 colocalizes_with GO:0005829 cytosol (IDA, PMID:30233632) |
+| [QN-7-E3](QN-7.examples.yaml): A wrong is_active_in relation handled by marking the term over-annotated (from [QN-7](QN-7.md)) | Non-conformant | rho-1 is_active_in GO:0005829 cytosol (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - web: [ORGANELLES](https://ai4curation.io/ai-gene-review/pages/projects/ORGANELLES.html)

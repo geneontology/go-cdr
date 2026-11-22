@@ -1,0 +1,51 @@
+record: AE-10
+examples:
+- id: AE-10-E1
+  title: Generic proliferation refined to the recognised T cell proliferation term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P42081
+      symbol: CD86
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008284
+      label: positive regulation of cell population proliferation
+    qualifier: involved_in
+    evidence_code: TAS
+    reference: PMID:7513726
+  explanation: |
+    The row has no extension, and on its own the broad readout term says little. The cell type is a
+    recognised concept with its own term, so the record prefers the precomposed term to an extension. The
+    review MODIFYed the row to GO:0042102 positive regulation of T cell proliferation because the paper shows
+    enhanced CD4 T cell proliferation.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CD86/CD86-ai-review.yaml#L738
+- id: AE-10-E2
+  title: A bare cell population proliferation row kept with no cell type
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P50596
+      symbol: Lep
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0008284
+      label: positive regulation of cell population proliferation
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:18978578
+  explanation: |
+    The record treats broad readout terms such as cell population proliferation as uninformative without
+    context: an extension is required, or the term is refined or the row removed. The RGD row has no
+    extension in GOA. The review knew which cells were tested ("Leptin increased proliferation of rat nucleus
+    pulposus cells") and kept the row as non-core without adding the cell type.
+  fix: |
+    Add an `acts_on_population_of` extension naming the nucleus pulposus cell, or refine the row to a
+    cell-type-specific proliferation term if one exists. Otherwise remove the row.
+  see_also: [AE-13]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Lep/Lep-ai-review.yaml#L1378
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=P50596&goId=GO:0008284

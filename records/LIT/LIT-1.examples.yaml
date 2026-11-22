@@ -1,0 +1,26 @@
+record: LIT-1
+examples:
+- id: LIT-1-E1
+  title: Negative regulation of wound healing from a scratch-migration assay
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09038
+      symbol: FGF2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0061045
+      label: negative regulation of wound healing
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:19577615
+  explanation: |
+    The record's first example: a scratch "wound-healing assay" measures cell motility, not the organismal
+    process. The review found that the cited assay measures cell migration into a scratch, noted that in
+    vivo FGF2 promotes wound healing (knockouts heal more slowly), and modified the row to the process the
+    readout measures.
+  fix: |
+    `GO:0010764` negative regulation of fibroblast migration, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FGF2/FGF2-ai-review.yaml#L5330

@@ -1,0 +1,27 @@
+record: PC-12
+examples:
+- id: PC-12-E1
+  title: A NEW homodimerization row proposed from an X-ray structure
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8S307
+      symbol: BZR1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0042803
+      label: protein homodimerization activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:30287951
+  explanation: |
+    The review proposed a NEW `GO:0042803` protein homodimerization activity row for BZR1, citing an
+    X-ray structure paper (whose full text was not cached) for dimerization that underlies DNA binding.
+    The record treats oligomeric state as out of scope, says never to propose a NEW row on these terms,
+    and removes rows that rest on crystallography alone.
+  fix: |
+    Do not add the row. If dimerization is the mechanism of DNA binding, the specific DNA-binding
+    transcription factor MF carries the function.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/BZR1/BZR1-ai-review.yaml#L575

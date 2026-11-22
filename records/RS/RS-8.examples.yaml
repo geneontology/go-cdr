@@ -1,0 +1,75 @@
+record: RS-8
+examples:
+- id: RS-8-E1
+  title: Kit signaling pathway proposed for KITLG, the gap the ligand survey found
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P21583
+      symbol: KITLG
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0038109
+      label: Kit signaling pathway
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:17662946
+  explanation: |
+    The record names this as the one exception in the ligand survey: human KITLG had no Kit signaling
+    pathway annotation. The review proposes it with the record's reasoning (ligands that bind and
+    activate the receptor are annotated to the pathway) and the evidence: crystallographic and cellular
+    demonstration of SCF-induced KIT dimerisation and activation, with mouse Kitl already carrying the
+    term experimentally.
+  see_also: [REV-11]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/KITLG/KITLG-ai-review.yaml#L920
+- id: RS-8-E2
+  title: Positive regulation of PLC-activating GPCR signalling on GRP moved to the pathway
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P07492
+      symbol: GRP
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:1900738
+      label: positive regulation of phospholipase C-activating G protein-coupled receptor signaling pathway
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    GRP binds and activates GRPR, a Gq/11-coupled receptor. The review says that because "the
+    endogenous peptide ligand is an integral initiating component of the signaling pathway rather than
+    an external modulator", the pathway term is more accurate than its regulation, and `MODIFY`s to
+    `phospholipase C-activating G protein-coupled receptor signaling pathway`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GRP/GRP-ai-review.yaml#L512
+- id: RS-8-E3
+  title: Positive regulation of Notch signaling kept as non-core on the ligand Jag1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q63722
+      symbol: Jag1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0045747
+      label: positive regulation of Notch signaling pathway
+    qualifier: involved_in
+    evidence_code: ISO
+    reference: GO_REF:0000121
+  explanation: |
+    The review agrees that Jag1, "as the ligand, ... is a component of the Notch signaling pathway
+    itself" and accepts that term, but keeps `positive regulation of Notch signaling pathway` as
+    non-core because it "is not wrong". The record says ligands get the pathway term, "not 'positive
+    regulation of' that pathway"; regulation is reserved for factors that change ligand-receptor
+    engagement.
+  fix: |
+    `MARK_AS_OVER_ANNOTATED` (the pathway term the review accepts already records the role), or a
+    lateral `MODIFY` to Notch signaling pathway as GRP's review does.
+  see_also: [RS-4]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Jag1/Jag1-ai-review.yaml#L1260

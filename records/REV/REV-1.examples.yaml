@@ -1,0 +1,78 @@
+record: REV-1
+examples:
+- id: REV-1-E1
+  title: Gaa1 transamidase-complex rows from IBA, IEA and NAS judged as one claim
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9US48
+      symbol: gaa1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0042765
+      label: GPI-anchor transamidase complex
+    qualifier: part_of
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The record's own worked case. Fission yeast Gaa1 carries `GPI-anchor transamidase complex`
+    three times (IBA, InterPro2GO IEA and NAS). The review accepts all three with one argument, and on
+    this IEA row says the InterPro assignment agrees with the IBA and "the two lines of evidence
+    reinforce each other", rather than removing it as redundant.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/gaa1/gaa1-ai-review.yaml#L116
+- id: REV-1-E2
+  title: An IEA kinase row removed as redundant while the same term is accepted on EXP rows
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q09137
+      symbol: Prkaa2
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0106310
+      label: protein serine kinase activity
+    evidence_code: IEA
+    reference: GO_REF:0000116
+  explanation: |
+    Rat Prkaa2 carries `protein serine kinase activity` on this IEA row and on two EXP, an IEA and two
+    ISO rows, all accepted. This row alone is `REMOVE`, with the summary "Redundant with 'protein
+    serine/threonine kinase activity' which is more complete and has better evidence". That is the
+    failure the record names: `REMOVE` used to keep the better-evidenced rows, so the review says the
+    claim is both true and false. The row is now marked `retired` (no longer in GOA), which does not
+    change what the action asserts.
+  fix: |
+    Give the row the same action as its siblings (`ACCEPT`), with the same argument. If the review
+    wanted to say the term is subsumed, that is a term-level judgement for every row, not a
+    `REMOVE` on one evidence line.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Prkaa2/Prkaa2-ai-review.yaml#L533
+- id: REV-1-E3
+  title: FGG matrix-constituent rows split between UNDECIDED and KEEP_AS_NON_CORE
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02679
+      symbol: FGG
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005201
+      label: extracellular matrix structural constituent
+    qualifier: enables
+    evidence_code: HDA
+    reference: PMID:28344315
+    extension: occurs_in(UBERON:0002371)
+  explanation: |
+    Human FGG has four `extracellular matrix structural constituent` rows: two `KEEP_AS_NON_CORE` and
+    two `UNDECIDED`. The PR reviewer first flagged the `UNDECIDED` rows as inconsistent with their
+    siblings. The author then restored the rows' source extensions (this HDA row asserts the term
+    `occurs_in` bone marrow) and scoped `UNDECIDED` to "the complete extended assertion", while the
+    reason affirms the generic claim. The reviewer accepted that as "the correct shape". REV-1 speaks
+    of rows with "the same GO term (and compatible qualifiers)" and does not say whether an
+    annotation extension makes a row a separate claim.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/5614
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FGG/FGG-ai-review.yaml#L85

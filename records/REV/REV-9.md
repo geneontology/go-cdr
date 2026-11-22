@@ -67,6 +67,13 @@ November 2026 ([TAXON_PATHWAY_VARIANCE](https://ai4curation.io/ai-gene-review/pa
 | Evidence codes | IBA, IEA |
 | GO terms | `GO:0007259` cell surface receptor signaling pathway via JAK-STAT |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-9-E1](REV-9.examples.yaml): JAK-STAT IBA on worm STA-1 removed by arguing with the node | Conformant | sta-1 involved_in GO:0007259 cell surface receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+| [REV-9-E2](REV-9.examples.yaml): A photosystem I assembly IBA on PsbP1 removed without examining its PAINT seed | Non-conformant | PSBP1 involved_in GO:0048564 photosystem I assembly (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - web: [IBA_REVIEW](https://ai4curation.io/ai-gene-review/pages/projects/IBA_REVIEW.html)

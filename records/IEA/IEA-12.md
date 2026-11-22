@@ -79,6 +79,13 @@ on a protein with no RNP association the same row would be wrong and removed.
 | Evidence codes | ISS, IEA |
 | GO terms | `GO:0005829` cytosol; `GO:0005737` cytoplasm; `GO:1990904` ribonucleoprotein complex |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-12-E1](IEA-12.examples.yaml): TreeGrafter cytosol on a soluble bacterial polymerase kept as non-core | Conformant | dinB located_in GO:0005829 cytosol (IEA, GO_REF:0000118) |
+| [IEA-12-E2](IEA-12.examples.yaml): A generic small-molecule binding parent kept after re-review | Conformant | ALB enables GO:0036094 small molecule binding (IEA, GO_REF:0000118) |
+
 ## Sources
 
 - issue: [go-annotation#615](https://github.com/geneontology/go-annotation/issues/615)

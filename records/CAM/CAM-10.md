@@ -53,6 +53,12 @@ edge is `constitutively upstream of` (model `635b1e3e00001677`, PMID:26493479).
 | Date | 2026-11-15 |
 | GO terms | `GO:0019706` protein-cysteine S-palmitoyltransferase activity; `GO:0003925` G protein activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-10-E1](CAM-10.examples.yaml): A small TOM subunit needed for the translocase, drawn as constitutively upstream | Conformant | gomodel:69729a3800007453 |
+
 ## Sources
 
 - wiki: [Constitutively upstream of](https://wiki.geneontology.org/index.php/Constitutively_upstream_of)

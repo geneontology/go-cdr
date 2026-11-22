@@ -86,6 +86,20 @@ What to capture.
 | Evidence codes | IDA, IPI |
 | GO terms | `GO:0004143` ATP-dependent diacylglycerol kinase activity; `GO:0004674` protein serine/threonine kinase activity; `GO:0005515` protein binding; `GO:0005488` binding; `GO:0008047` enzyme activator activity; `GO:0004396` hexokinase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-3-E1](AE-3.examples.yaml): Target genes named on the regulation-of-transcription BP row as well as on the MF row | Conformant | LMX1B involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (ISS, GO_REF:0000024) |
+| [AE-3-E2](AE-3.examples.yaml): The GTPase acted on, recorded as has_input on a GEF activity | Conformant | ARHGEF16 enables GO:0005085 guanyl-nucleotide exchange factor activity (IDA, PMID:20679435) |
+| [AE-3-E3](AE-3.examples.yaml): Substrate and products that the enzyme term's definition already names | Non-conformant | GALC enables GO:0004336 galactosylceramidase activity (IDA, PMID:8281145) |
+| [AE-2-E1](AE-2.examples.yaml): One has_input group per target gene on a transcription factor activity (from [AE-2](AE-2.md)) | Conformant | LMX1B enables GO:0000981 DNA-binding transcription factor activity, RNA polymerase II-specific (ISS, GO_REF:0000024) |
+| [AE-4-E2](AE-4.examples.yaml): Water recorded as an output of a peroxidase (from [AE-4](AE-4.md)) | Non-conformant | LPO enables GO:0004601 peroxidase activity (IDA, PMID:6295491) |
+| [AE-8-E1](AE-8.examples.yaml): An activator activity part_of heme biosynthesis, with the matching BP row from the same paper (from [AE-8](AE-8.md)) | Conformant | FXN enables GO:0008047 enzyme activator activity (IDA, PMID:15123683) |
+| [AE-11-E3](AE-11.examples.yaml): An enzyme row that also asserts it is causally upstream of its substrate's activity (from [AE-11](AE-11.md)) | Non-conformant | AASDHPPT enables GO:0008897 holo-[acyl-carrier-protein] synthase activity (IDA, PMID:19933275) |
+| [AE-12-E2](AE-12.examples.yaml): A substrate extension authored onto IBA, IEA and ISS GEF rows (from [AE-12](AE-12.md)) | Non-conformant | DOCK11 enables GO:0005085 guanyl-nucleotide exchange factor activity (IBA, GO_REF:0000033) |
+| [AE-14-E1](AE-14.examples.yaml): A protease row accepted with its substrate, process and location extensions checked (from [AE-14](AE-14.md)) | Conformant | LONP1 enables GO:0004176 ATP-dependent peptidase activity (IDA, PMID:37327776) |
+
 ## Sources
 
 - wiki: [Annotation Conf. Call 2020-02-04](https://wiki.geneontology.org/index.php/Annotation_Conf._Call_2020-02-04)

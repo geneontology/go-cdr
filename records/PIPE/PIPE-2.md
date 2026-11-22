@@ -41,6 +41,12 @@ The ontology, the sequence databases and the experimental record all change. The
 | Requirement | MUST |
 | Date | 2026-11-21 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PIPE-2-E1](PIPE-2.examples.yaml): An ARBA rule whose conditions were rebuilt between two reviews | Conformant | ARBA |
+
 ## Sources
 
 - drive: [GO annotation pipeline proposed rubrics and MOU (GOC meeting, Cambridge 2025)](https://docs.google.com/presentation/d/1YudLhxPskOiptyhBkUo5sN6GkMjQWB4PIdM0_dNSZkw/edit)

@@ -1,0 +1,26 @@
+record: CC-10
+examples:
+- id: CC-10-E1
+  title: A generic membrane IBA row refined to the leaflet and the TGN membrane
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8IV36
+      symbol: HID1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0016020
+      label: membrane
+    qualifier: is_active_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    `GO:0016020` membrane on a gene whose membrane is known is `MODIFY` to the specific membrane. The review
+    did that: HID1 is not an integral protein but associates with the cytoplasmic face of Golgi and TGN
+    membranes through its myristoylated, polybasic N-terminus, so the replacements are the side term and
+    the TGN membrane, both already on the gene.
+  see_also:
+  - CC-9
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HID1/HID1-ai-review.yaml#L451

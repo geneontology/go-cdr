@@ -1,0 +1,27 @@
+record: QN-10
+examples:
+- id: QN-10-E1
+  title: COQ8B's NOT protein kinase activity kept beside a positive row, reconciled in writing
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q96D53
+      symbol: COQ8B
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004672
+      label: protein kinase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:27499294
+    negated: true
+  explanation: |
+    The review keeps this NOT (no canonical kinase activity in trans toward general substrates) and the
+    positive IDA from PMID:38425362 (COQ3 phosphorylated by reconstructed COQ8B), and says in the NOT
+    row's summary that it "refers to general in-trans kinase behaviour" and "does not contradict" the
+    specific COQ3 result. The record asks for each pair to be reconciled in writing and the NOT narrowed
+    where possible; no descendant term expresses this distinction, so keeping both with the distinction
+    explained is the outcome the record describes for this worked example.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/COQ8B/COQ8B-ai-review.yaml#L292

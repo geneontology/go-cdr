@@ -78,6 +78,12 @@ mappings InterPro had already removed; they are corepressors and the rows were r
 | Evidence codes | ISS, ISO, ISA, ISM, IC, IEA |
 | GO terms | `GO:0000981` DNA-binding transcription factor activity, RNA polymerase II-specific |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-15-E1](IEA-15.examples.yaml): A GEF activity by similarity to RCC1 that experiments on UVR8 refute | Non-conformant | UVR8 enables GO:0005085 guanyl-nucleotide exchange factor activity (ISS, PMID:12226503) |
+
 ## Sources
 
 - wiki: [IEA](https://wiki.geneontology.org/index.php/Inferred_from_Electronic_Annotation_%28IEA%29)

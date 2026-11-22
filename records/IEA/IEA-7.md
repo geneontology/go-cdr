@@ -65,6 +65,12 @@ pair together.
 | Date | 2026-11-15 |
 | GO terms | `GO:0044024` histone H2AS1 kinase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-7-E1](IEA-7.examples.yaml): Rhea2GO acyl-CoA hydrolase term from a non-physiological substrate | Non-conformant | OLAH enables GO:0052816 long-chain fatty acyl-CoA hydrolase activity (IEA, GO_REF:0000116) |
+
 ## Sources
 
 - issue: [go-annotation#5432](https://github.com/geneontology/go-annotation/issues/5432)

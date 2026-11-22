@@ -67,6 +67,12 @@ readout measures, or nothing.
 | Date | 2026-11-15 |
 | GO terms | `GO:0048870` cell motility; `GO:0042060` wound healing; `GO:0006309` apoptotic DNA fragmentation; `GO:0004531` deoxyribonuclease II activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-1-E1](LIT-1.examples.yaml): Negative regulation of wound healing from a scratch-migration assay | Non-conformant | FGF2 involved_in GO:0061045 negative regulation of wound healing (IDA, PMID:19577615) |
+
 ## Sources
 
 - issue: [go-annotation#1005](https://github.com/geneontology/go-annotation/issues/1005)

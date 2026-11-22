@@ -63,6 +63,14 @@ with it ([ISO](https://ai4curation.io/ai-gene-review/pages/projects/ISO.html)).
 | Evidence codes | ISO, IEA |
 | GO terms | `GO:0004096` catalase activity; `GO:0098869` cellular oxidant detoxification |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-11-E1](IEA-11.examples.yaml): Proton transport inferred from a cytochrome-c oxidase activity the assembly factor lacks | Non-conformant | SURF1 involved_in GO:1902600 proton transmembrane transport (IEA, GO_REF:0000108) |
+| [IEA-11-E2](IEA-11.examples.yaml): Viral entry inferred from a virus receptor row that contradicts its own donor | Non-conformant | Hyal2 involved_in GO:0046718 symbiont entry into host cell (IEA, GO_REF:0000108) |
+| [PIPE-3-E1](../PIPE/PIPE-3.examples.yaml): A combined-pipeline row propagated from a donor set that contains a curated NOT (from [PIPE-3](../PIPE/PIPE-3.md)) | Non-conformant | UniProt combined automatic annotation (GO_REF:0000120) |
+
 ## Sources
 
 - wiki: [IEA](https://wiki.geneontology.org/index.php/Inferred_from_Electronic_Annotation_%28IEA%29)

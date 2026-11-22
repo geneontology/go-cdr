@@ -84,6 +84,15 @@ constraint on the pathway term, which GO accepted; the node-level fix is a move 
 | Evidence codes | IBD |
 | GO terms | `GO:0007259` cell surface receptor signaling pathway via JAK-STAT; `GO:0046426` negative regulation of receptor signaling pathway via JAK-STAT |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-4-E1](PH-4.examples.yaml): A JAK-STAT pathway term inherited by a Dictyostelium STAT, moved to the STAT-only term | Conformant | statA involved_in GO:0007259 cell surface receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+| [ONT-18-E1](../ONT/ONT-18.examples.yaml): A Dictyostelium STAT's JAK-STAT pathway row moved to the STAT-only sibling (from [ONT-18](../ONT/ONT-18.md)) | Conformant | statC involved_in GO:0007259 cell surface receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+| [ONT-18-E2](../ONT/ONT-18.examples.yaml): A worm STAT's JAK-STAT pathway row removed (from [ONT-18](../ONT/ONT-18.md)) | Conformant | sta-1 involved_in GO:0007259 cell surface receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+| [PH-14-E1](PH-14.examples.yaml): A JAK-STAT negative regulation IBA on worm GEI-17 removed, with the fix routed to the node (from [PH-14](PH-14.md)) | Conformant | gei-17 involved_in GO:0046426 negative regulation of receptor signaling pathway via JAK-STAT (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

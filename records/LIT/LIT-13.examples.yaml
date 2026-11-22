@@ -1,0 +1,24 @@
+record: LIT-13
+examples:
+- id: LIT-13-E1
+  title: An IDA nucleolar inclusion row left undecided on an abstract-only cache
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94641
+      symbol: hsp104
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0140602
+      label: nucleolar peripheral inclusion body
+    qualifier: is_active_in
+    evidence_code: IDA
+    reference: PMID:33176152
+  explanation: |
+    An abstract can confirm, but only the full text can refute. The cached abstract shows that recovery from
+    heat-induced nucleolar rings depends on Hsf1 and Hsp104 but does not say that Hsp104 is in the inclusion.
+    The review neither removed PomBase's IDA nor accepted it: it used UNDECIDED, saying the full-text
+    observation may be correct but cannot be verified from the cache.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/hsp104/hsp104-ai-review.yaml#L783

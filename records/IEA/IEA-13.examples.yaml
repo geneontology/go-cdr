@@ -1,0 +1,47 @@
+record: IEA-13
+examples:
+- id: IEA-13-E1
+  title: Narrow, not remove, a mapping that is the sole source of the term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: InterPro2GO
+    refs:
+    - InterPro:IPR002956
+    - GO:0005118
+    description: |
+      The repo's InterPro2GO mapping review row for `IPR002956` (Bride of sevenless protein) to
+      `GO:0005118` sevenless binding, recorded as `skos:broadMatch` with the verdict NARROW.
+  explanation: |
+    The row records the change against the entry and term in the SSSOM mapping set, with counts of
+    which members are wrong (172 of 414 matching entries in the GPRC5 family). Its rule-cover check
+    found that no other InterPro entry carries `GO:0005118`, so BOSS would lose the term if the mapping
+    were removed. It therefore asks for replacement by curated rule CR-0006 and for a tighter PRINTS
+    integration, rather than a removal, as the record prescribes when nothing else covers the members
+    that should keep the term.
+  see_also:
+  - IEA-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/INTERPRO/interpro2go.sssom.yaml#L757
+- id: IEA-13-E2
+  title: Removing protein phosphorylation from the kinase domain, with the cover stated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: InterPro2GO
+    refs:
+    - InterPro:IPR000719
+    - GO:0006468
+    - InterPro:IPR008271
+    - InterPro:IPR008266
+    description: |
+      The repo's mapping review row proposing removal of `IPR000719` (Protein kinase domain) to
+      `GO:0006468` protein phosphorylation.
+  explanation: |
+    The removal is argued on pseudokinases, which match the domain but do not phosphorylate. Its
+    rule-cover note, checked against UniRule and current interpro2go, records that the active-site
+    entries `IPR008271` and `IPR008266` both carry the term, so catalytic members keep it and no new
+    rule is needed. That is the record's second case: right for a subset that another source already
+    covers, so remove and cite the cover.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/INTERPRO/interpro2go.sssom.yaml#L80

@@ -1,0 +1,74 @@
+record: REV-16
+examples:
+- id: REV-16-E1
+  title: An ELOVL3 elongase EXP citing the paper that cloned ELOVL5, kept with the citation flagged
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9HB03
+      symbol: ELOVL3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0009922
+      label: fatty acid elongase activity
+    qualifier: enables
+    evidence_code: EXP
+    reference: PMID:10970790
+  explanation: |
+    The record's paralog-substitution case. PMID:10970790 cloned "HELO1" (ELOVL5). The review keeps
+    GOA's reference, marks it `WRONG_IDENTIFIER` in `reference_review`, and judges the claim on the
+    independent assays: the term is right for ELOVL3, so the row is accepted.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ELOVL3/ELOVL3-ai-review.yaml#L336
+- id: REV-16-E2
+  title: A protein farnesylation IDA on COX17 citing a COX10 paper, removed on the biology
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q12287
+      symbol: COX17
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0018343
+      label: protein farnesylation
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IDA
+    reference: PMID:8078902
+  explanation: |
+    The record's off-by-one case. The review documents the miscitation in the reference's findings
+    ("Nothing in this work concerns COX17"). It removes the row on the claim, not on the citation: the
+    term is wrong even for COX10, whose enzyme farnesylates heme, and Cox17 is a copper chaperone
+    with no farnesyltransferase activity.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/COX17/COX17-ai-review.yaml#L283
+- id: REV-16-E3
+  title: A true Pld4 exonuclease row removed because its paper did not show the activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8BG07
+      symbol: Pld4
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0045145
+      label: single-stranded DNA 5'-3' DNA exonuclease activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:22102906
+  explanation: |
+    The review says the term "is correct for PLD4", but removes this IMP row because PMID:22102906
+    localised PLD4 in microglia "and did not demonstrate exonuclease activity". That is a `MISCITED`
+    finding about the citation. The record keys it on the citation: keep GOA's reference, record the
+    finding in `reference_review`, and judge the claim on the real evidence, which here supports it.
+    `REMOVE` instead asserts the claim is unlikely to be true, so the action also conflicts with the
+    accepted IEA row for the same term (REV-1).
+  fix: |
+    Keep the row with the same action as the other `GO:0045145` row, record PMID:22102906 as
+    `MISCITED` in `reference_review` (with what the paper does show), and add a `source_defects` entry
+    for the assigning group.
+  see_also: [REV-1, REV-17]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Pld4/Pld4-ai-review.yaml#L368

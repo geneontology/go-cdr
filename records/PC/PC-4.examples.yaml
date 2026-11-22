@@ -1,0 +1,57 @@
+record: PC-4
+examples:
+- id: PC-4-E1
+  title: Surf1 knockout loss of complex IV activity annotated as the oxidase activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09925
+      symbol: Surf1
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0004129
+      label: cytochrome-c oxidase activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:23838831
+  explanation: |
+    The IMP row gives mouse Surf1 `enables` cytochrome-c oxidase activity from a mutant phenotype. The
+    review found that SURF1 is neither a catalytic nor a structural complex IV subunit and that the
+    phenotype supports a role in complex IV assembly, not oxidase activity. The record's rubric sends a
+    knockout that lowers complex activity by impairing assembly to assembly terms, not to the activity.
+  fix: |
+    MODIFY to `GO:0033617` mitochondrial respiratory chain complex IV assembly, as the review proposes.
+  see_also:
+  - PC-10
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Surf1/Surf1-ai-review.yaml#L235
+- id: PC-4-E2
+  title: Complex I activity on an accessory subunit from a cDNA sequencing paper
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O43678
+      symbol: NDUFA2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008137
+      label: NADH dehydrogenase (ubiquinone) activity
+    qualifier: enables
+    evidence_code: NAS
+    reference: PMID:9878551
+  explanation: |
+    The NAS row's paper reports cDNA sequences for eight Complex I subunits and assays no activity, so,
+    as the review notes, the MF reflects the name of the parent enzyme rather than a measurement.
+    NDUFA2 has a thioredoxin-like fold, but no redox activity has been shown and UniProt states it is
+    believed not to be involved in catalysis. Membership alone supports CC and BP terms only, which is
+    the record's rule.
+  fix: |
+    Do not give NDUFA2 `enables` Complex I activity. The review's own proposal, `contributes_to`
+    the activity with a structural MF, goes further than PC-7 allows unless NDUFA2 is shown to be in
+    the electron-transfer mechanism.
+  see_also:
+  - PC-7
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NDUFA2/NDUFA2-ai-review.yaml#L555

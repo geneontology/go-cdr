@@ -1,0 +1,47 @@
+record: EV-12
+examples:
+- id: EV-12-E1
+  title: A nucleoplasm IC row inferred from the gene's transcription factor activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9PWC2
+      symbol: mitfa
+    taxon: NCBITaxon:7955
+    term:
+      term_id: GO:0005654
+      label: nucleoplasm
+    qualifier: located_in
+    evidence_code: IC
+    reference: PMID:11543618
+  explanation: |
+    The record's canonical IC: a one-step inference from another annotation on the same gene product plus
+    general knowledge. The review accepted it as "a reasonable IC from GO:0000981", the gene's
+    sequence-specific DNA-binding transcription factor activity, consistent with its nuclear rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DANRE/mitfa/mitfa-ai-review.yaml#L146
+- id: EV-12-E2
+  title: A chitin catabolic process IC row inferred from a chitinase activity the gene lacks
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9C105
+      symbol: SPAPB1E7.04c
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0006032
+      label: chitin catabolic process
+    qualifier: involved_in
+    evidence_code: IC
+    reference: GO_REF:0000111
+  explanation: |
+    IC must rest on an evidenced annotation of the same gene product. The review found this process row to
+    be a downstream inference from a chitinase activity that the same review removes (the protein lacks a
+    catalytic residue), in an organism whose vegetative walls lack chitin. An IC built on an inference that
+    does not hold has nothing left under it.
+  fix: |
+    Remove the IC row together with the chitinase activity it was inferred from, as the review does.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/cts2/cts2-ai-review.yaml#L238

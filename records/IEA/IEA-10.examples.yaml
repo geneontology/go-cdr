@@ -1,0 +1,79 @@
+record: IEA-10
+examples:
+- id: IEA-10-E1
+  title: Compara projects a nematode cuticle process onto mouse Duox1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A2AQ92
+      symbol: Duox1
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0042335
+      label: cuticle development
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The row is an Ensembl Compara projection from human DUOX1, whose own cuticle development row came
+    from a C. elegans bli-3 RNAi phenotype. The review removed it because mammals have no collagenous
+    cuticle. This is an organism-specific process term transferred by orthology, which the record says
+    an automated projection must not carry, and the donor row was not direct evidence on a mammalian
+    protein.
+  fix: |
+    Remove the row, and exclude organism-specific and phenotype-derived process terms from the
+    projection.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Duox1/Duox1-ai-review.yaml#L832
+- id: IEA-10-E2
+  title: A budding-yeast nitrogen-starvation response projected onto Candida Bcy1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9HEW1
+      symbol: BCY1
+    taxon: NCBITaxon:237561
+    term:
+      term_id: GO:0006995
+      label: cellular response to nitrogen starvation
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The EnsemblFungi row transfers cellular response to nitrogen starvation from S. cerevisiae Bcy1
+    (YIL033C). The review removed it as an over-transfer of a condition-specific budding-yeast process,
+    with no Candida evidence for the response. "Response to" terms are among those the record says an
+    automated projection should not carry.
+  fix: |
+    Remove the row; keep the Candida rows on direct PKA regulation and on phenotypes assayed in
+    Candida.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CANAL/BCY1/BCY1-ai-review.yaml#L490
+- id: IEA-10-E3
+  title: Developmental terms projected onto mouse Wdpcp, true by the mouse's own IMP
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8C456
+      symbol: Wdpcp
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0042733
+      label: embryonic digit morphogenesis
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The Compara row transfers embryonic digit morphogenesis to mouse Wdpcp as `involved_in` from a
+    human `involved_in` IMP row, so the relation was preserved. The record says such developmental
+    terms should not be projected at all. The review kept it as non-core because mouse has its own IMP
+    evidence (as `acts_upstream_of_or_within`) for the same term, so the projected claim is true for
+    mouse even though the projection, by the record, should not have made it. Whether a projection that
+    happens to be independently supported is still a violation is not settled by the record; the
+    consortium thread on Ensembl projection of developmental terms is the place it was raised.
+  discussion: https://github.com/geneontology/go-annotation/issues/1344
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Wdpcp/Wdpcp-ai-review.yaml#L542

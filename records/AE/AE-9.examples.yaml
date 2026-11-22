@@ -1,0 +1,55 @@
+record: AE-9
+examples:
+- id: AE-9-E1
+  title: The record's own CMA example decomposed into a GO-CAM and a module, with no extension
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P11142
+      symbol: HSPA8
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0061740
+      label: protein targeting to lysosome involved in chaperone-mediated autophagy
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:11559757
+  explanation: |
+    The review MODIFYed the precomposed term to its genus, GO:0006622 protein targeting to lysosome, and did
+    not rebuild Y as `part_of`(GO:0061684). Instead it recorded where the CMA context went in
+    `decomposed_into`: the HSPA8 activity in production model gomodel:63c0ac2b00001252, the
+    `chaperone_mediated_autophagy` module, and `in_core_functions`. That is the procedure the record gives.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HSPA8/HSPA8-ai-review.yaml#L1496
+- id: AE-9-E2
+  title: canonical Wnt signaling part_of neural crest cell differentiation, rebuilding an obsoleted term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O75581
+      symbol: LRP6
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0060070
+      label: canonical Wnt signaling pathway
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:11029007
+    extension: BFO:0000050(GO:0014029),BFO:0000050(GO:0014033)
+  explanation: |
+    In GOA this BHF-UCL row has two groups, `part_of(GO:0014029) | part_of(GO:0014033)`. The second, GO:0060070
+    `part_of` GO:0014033 neural crest cell differentiation, is the class GO obsoleted as GO:0044335
+    "canonical Wnt signaling pathway involved in neural crest cell differentiation". The obsoletion comment
+    says "This term was obsoleted because it represents a GO-CAM model", and `consider` lists the same two
+    halves. The review accepted the row on the strength of the canonical Wnt evidence and did not address
+    the extension.
+  fix: |
+    Keep `involved_in` GO:0060070 without the `part_of`(GO:0014033) group. The neural crest context belongs in a
+    GO-CAM or, in the review, in `decomposed_into`.
+  see_also: [AE-13]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LRP6/LRP6-ai-review.yaml#L1451
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=O75581&goId=GO:0060070
+  - https://www.ebi.ac.uk/QuickGO/term/GO:0044335

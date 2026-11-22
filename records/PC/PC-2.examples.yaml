@@ -1,0 +1,51 @@
+record: PC-2
+examples:
+- id: PC-2-E1
+  title: Caspase-9 annotated to an unnamed complex when the apoptosome is known
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9JHK1
+      symbol: Casp9
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0032991
+      label: protein-containing complex
+    qualifier: part_of
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The Compara row places rat caspase-9 in `GO:0032991` protein-containing complex. The review called
+    it correct but uninformative: the complex is the apoptosome, which the gene already carries and to
+    which caspase-9 is recruited through CARD-CARD binding to Apaf-1. When the complex is known the
+    record treats the root complex term as a placeholder to refine.
+  fix: |
+    MODIFY to `GO:0043293` apoptosome, as the review proposes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Casp9/Casp9-ai-review.yaml#L1171
+- id: PC-2-E2
+  title: An ARBA root-complex row on naked mole-rat CD44 resolved to the receptor complex
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0AAX6R0R7
+      symbol: Cd44
+    taxon: NCBITaxon:10181
+    term:
+      term_id: GO:0032991
+      label: protein-containing complex
+    qualifier: part_of
+    evidence_code: IEA
+    reference: GO_REF:0000117
+  explanation: |
+    The ARBA row says only that CD44 is in some complex. The review found that the one specific
+    complex supported anywhere in the gene's annotation set is the macrophage migration inhibitory
+    factor receptor complex, whose GO definition names CD44, and modified the row to it. That is the
+    record's handling of a bare `GO:0032991` row when the complex is known.
+  fix: |
+    MODIFY to `GO:0035692` macrophage migration inhibitory factor receptor complex, as the review
+    proposes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/HETGA/Cd44/Cd44-ai-review.yaml#L437

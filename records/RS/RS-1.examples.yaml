@@ -1,0 +1,46 @@
+record: RS-1
+examples:
+- id: RS-1-E1
+  title: Regulation of stomatal closure on the SLAC1 anion channel moved to the process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9LD83
+      symbol: SLAC1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0090333
+      label: regulation of stomatal closure
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:29463779
+  explanation: |
+    SLAC1 "is the channel that carries out the anion efflux that constitutes the closing movement",
+    so its activity lies between the start and the end of stomatal closure. The review `MODIFY`s the
+    regulation term to `stomatal closure`, the term used for SLAC1 elsewhere.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/SLAC1/SLAC1-ai-review.yaml#L881
+- id: RS-1-E2
+  title: Camalexin biosynthesis on MPK6 moved to its positive regulation
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q39026
+      symbol: MPK6
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0010120
+      label: camalexin biosynthetic process
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IMP
+    reference: PMID:18378893
+  explanation: |
+    The paper shows the MPK3/MPK6 cascade controlling camalexin synthesis by regulating transcription
+    of the biosynthetic genes, through WRKY33. The review names the entities that perform the steps
+    (the P450s CYP79B2/B3, CYP71A13 and PAD3) and moves MPK6 to `positive regulation of camalexin
+    biosynthetic process`, because the kinase acts on the process from outside.
+  see_also: [RS-10]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/MPK6/MPK6-ai-review.yaml#L1070

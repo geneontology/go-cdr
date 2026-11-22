@@ -1,0 +1,25 @@
+record: EV-16
+examples:
+- id: EV-16-E1
+  title: An IEA cytoplasm row given the same action as its IDA twin
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P60716
+      symbol: lipA
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0005737
+      label: cytoplasm
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    Rows that share a term reinforce each other and get consistent actions whatever their codes. The review
+    modified this IEA row to cytosol with the reason "the two rows share a term and must share an action",
+    matching its treatment of the IDA cytoplasm row from a cytosolic proteome (CC-16).
+  see_also:
+  - CC-16
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/lipA/lipA-ai-review.yaml#L126

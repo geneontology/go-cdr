@@ -86,6 +86,14 @@ The review keeps the IBA and IEA rows for it as non-core.
 | Evidence codes | IDA, IBA, IC, IEA |
 | GO terms | `GO:0061710` L-threonylcarbamoyladenylate synthase activity; `GO:0047400` phosphonoacetate hydrolase activity; `GO:0004358` L-glutamate N-acetyltransferase activity, acting on acetyl-L-ornithine as donor; `GO:0004042` L-glutamate N-acetyltransferase activity, acting on acetyl-CoA as donor |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-3-E1](LIT-3.examples.yaml): Threonylcarbamoyladenylate synthase activity on the TsaC paralog YciO | Non-conformant | yciO enables GO:0061710 L-threonylcarbamoyladenylate synthase activity (IDA, PMID:37963869) |
+| [LIT-3-E2](LIT-3.examples.yaml): Phosphonoacetate hydrolase activity on a zinc-ribbon protein | Non-conformant | yjdM enables GO:0047400 phosphonoacetate hydrolase activity (IDA, PMID:37963869) |
+| [LIT-3-E3](LIT-3.examples.yaml): The acetyl-CoA-donor activity of fission-yeast ArgJ | Contested | aga1 enables GO:0004042 L-glutamate N-acetyltransferase activity, acting on acetyl-CoA as donor (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - repo: [CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blob/main/CLAUDE.md)

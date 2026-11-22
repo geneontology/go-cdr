@@ -68,6 +68,14 @@ When P2 contradicts a finding in P1, record it on P1's finding (`finding_review`
 | Date | 2026-11-15 |
 | Evidence codes | IDA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-16-E1](REV-16.examples.yaml): An ELOVL3 elongase EXP citing the paper that cloned ELOVL5, kept with the citation flagged | Conformant | ELOVL3 enables GO:0009922 fatty acid elongase activity (EXP, PMID:10970790) |
+| [REV-16-E2](REV-16.examples.yaml): A protein farnesylation IDA on COX17 citing a COX10 paper, removed on the biology | Conformant | COX17 acts_upstream_of_or_within GO:0018343 protein farnesylation (IDA, PMID:8078902) |
+| [REV-16-E3](REV-16.examples.yaml): A true Pld4 exonuclease row removed because its paper did not show the activity | Non-conformant | Pld4 enables GO:0045145 single-stranded DNA 5'-3' DNA exonuclease activity (IMP, PMID:22102906) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

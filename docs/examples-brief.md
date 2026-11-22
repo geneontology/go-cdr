@@ -20,7 +20,7 @@ examples:
   open_question: 2            # CONTESTED only: 1-based number of the record's open question
   discussion: https://...     # CONTESTED only: issue/PR/thread URL (one of these two is required)
   derived_from:               # pinned URL(s) of what the example was taken from
-  - https://github.com/monarch-initiative/ai-gene-review/blob/<commit>/genes/...#L123
+  - https://github.com/ai4curation/ai-gene-review/blob/<commit>/genes/...#L123
 ```
 
 The schema is `src/go_cdr/schema/go_cdr.yaml` (classes `ExampleSet`, `Example`, `Subject`).
@@ -47,7 +47,8 @@ Every kind may also carry `description` (Markdown) and `refs` (CURIEs or URLs).
    uv run go-cdr aigr-example <review path> --index N --aigr-root <AIGR> --commit <COMMIT>  # draft one
    ```
 
-   and paste its `subject` and `derived_from` unchanged (drop `aigr_review`, which is there for
+   with the review path relative to the checkout and spelled exactly as `git ls-files` shows it (macOS
+   ignores case, GitHub does not), and paste its `subject` and `derived_from` unchanged (drop `aigr_review`, which is there for
    you to read). For other kinds, copy ids from the source file and pin `derived_from` to the
    same commit, with a `#L<line>` anchor where it helps. A term id in a `fix` must come from the
    source (e.g. the review's `proposed_replacement_terms`) with its label as written there.
@@ -62,7 +63,7 @@ Every kind may also carry `description` (Markdown) and `refs` (CURIEs or URLs).
    present its judgment as a consortium ruling.
 4. **CONTESTED needs a real anchor.** Use `open_question: N` when the case bears on one of the
    record's own open questions, or `discussion:` with an issue or PR URL you have checked exists
-   (`gh issue view <n> -R monarch-initiative/ai-gene-review`). Good contested cases: an `UNDECIDED`
+   (`gh issue view <n> -R ai4curation/ai-gene-review`). Good contested cases: an `UNDECIDED`
    row the record does not settle, a row where two reviews or a reviewer and a curator disagreed,
    a case the record's open question names.
 5. **Prefer variety.** Aim for at least one example per record where a good case exists, ideally

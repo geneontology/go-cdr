@@ -101,6 +101,15 @@ Worked examples (proposals in [INTERPRO](https://ai4curation.io/ai-gene-review/p
 | Date | 2026-11-15 |
 | GO terms | `GO:0005524` ATP binding; `GO:0006468` protein phosphorylation; `GO:0006801` superoxide metabolic process; `GO:0019430` removal of superoxide radicals; `GO:0046961` proton-transporting ATPase activity, rotational mechanism; `GO:0006754` ATP biosynthetic process; `GO:0008564` protein-exporting ATPase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-2-E1](IEA-2.examples.yaml): Domain-level kinase activity on a catalytically dead LysM receptor | Non-conformant | LYK4 enables GO:0004672 protein kinase activity (IEA, GO_REF:0000002) |
+| [IEA-2-E2](IEA-2.examples.yaml): A PRINTS fingerprint carries sevenless binding to a mouse GPRC5 receptor | Non-conformant | Gprc5c enables GO:0005118 sevenless binding (IEA, GO_REF:0000002) |
+| [IEA-1-E2](IEA-1.examples.yaml): Kinase ATP binding read from the site entry in WITH/FROM, not the domain entry (from [IEA-1](IEA-1.md)) | Conformant | MPK6 enables GO:0005524 ATP binding (IEA, GO_REF:0000002) |
+| [PIPE-1-E1](../PIPE/PIPE-1.examples.yaml): InterPro2GO removes kinase activity from the kinase domain within a week of a tracker report (from [PIPE-1](../PIPE/PIPE-1.md)) | Conformant | InterPro2GO |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

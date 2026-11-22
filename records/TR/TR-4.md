@@ -84,6 +84,12 @@ promoter regulator rather than a dbTF ([TRANSCRIPTION_FACTORS](https://ai4curati
 | Date | 2026-11-15 |
 | GO terms | `GO:0003680` minor groove of adenine-thymine-rich DNA binding; `GO:0008327` methyl-CpG binding; `GO:0032448` DNA hairpin binding; `GO:0003697` single-stranded DNA binding; `GO:0051880` G-quadruplex DNA binding; `GO:0003713` transcription coactivator activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-4-E1](TR-4.examples.yaml): A G-quadruplex binder kept on DNA-binding transcription activator activity | Non-conformant | NME2 enables GO:0001216 DNA-binding transcription activator activity (IDA, PMID:8392752) |
+
 ## Sources
 
 - drive: [human TF catalogue talk](https://drive.google.com/open?id=11wth1xVtY8S5U93KHsiklVWWaa_ORs_CkbRHLV2ewNE)

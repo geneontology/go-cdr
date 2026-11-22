@@ -52,6 +52,15 @@ Since GAF 2.2 and GPAD 2.0, column 4 always holds a relation. A relation from th
 | Date | 2026-11-15 |
 | GO terms | `GO:0032991` protein-containing complex; `GO:0005739` mitochondrion |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-1-E1](QN-1.examples.yaml): An is_active_in relation kept on a protein-complex term | Non-conformant | EXT1 is_active_in GO:1902494 catalytic complex (IDA, PMID:36593275) |
+| [QN-1-E2](QN-1.examples.yaml): A located_in relation kept on a respiratory-chain complex term for a non-subunit | Non-conformant | sod-2 located_in GO:0098803 respiratory chain complex (IDA, PMID:23895727) |
+| [QN-1-E3](QN-1.examples.yaml): A proposed SDHA succinate dehydrogenase row with no relation | Non-conformant | SDHA GO:0000104 succinate dehydrogenase activity (IDA, PMID:7550341) |
+| [ONT-13-E2](../ONT/ONT-13.examples.yaml): TMF1's core function moved to the newly minted vesicle membrane tethering activity (from [ONT-13](../ONT/ONT-13.md)) | Conformant | TMF1 GO:7770062 vesicle membrane tethering activity (NAS) |
+
 ## Sources
 
 - wiki: [Annotation Relations](https://wiki.geneontology.org/index.php/Annotation_Relations)

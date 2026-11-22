@@ -1,0 +1,71 @@
+record: REV-7
+examples:
+- id: REV-7-E1
+  title: Noise-level GAPDH activity of the E. coli paralog Epd removed despite IDA
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0A9B6
+      symbol: epd
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0004365
+      label: glyceraldehyde-3-phosphate dehydrogenase (NAD+) (phosphorylating) activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:9182530
+  explanation: |
+    The review gives the numbers the record asks for: 0.12 s-1, at least 2000-fold less efficient
+    than the physiological erythrose-4-phosphate reaction, and a dedicated GAPDH (GapA) in the
+    organism. It removes the IDA "not disput[ing] the measurement" but judging the activity not to
+    be Epd's function. This is the record's third tier.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/epd/epd-ai-review.yaml#L104
+- id: REV-7-E2
+  title: Mannose isomerase activity of YihS marked over-annotated as unknown-relevance
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P32140
+      symbol: yihS
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0050089
+      label: mannose isomerase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:18328504
+  explanation: |
+    Purified YihS isomerises mannose, but with a Km of 108 mM, and sulfoquinovose is a 178-fold better
+    substrate by kcat/Km. The enzyme is induced and required only for sulfoquinovose catabolism. The
+    review calls this "genuine in vitro activity of unknown physiological relevance" and marks the
+    row over-annotated, which is the record's middle tier.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/yihS/yihS-ai-review.yaml#L98
+- id: REV-7-E3
+  title: 'Glucokinase mannokinase activity: kinetically near glucose, relevance unknown'
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P35557
+      symbol: GCK
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0019158
+      label: mannokinase activity
+    qualifier: enables
+    evidence_code: EXP
+    reference: PMID:7742312
+  explanation: |
+    The review's kinetics put mannose (kcat/Km about 13 mM-1 s-1) level with glucose (11 mM-1 s-1),
+    so the activity is "substantial, not noise". It still marks the row over-annotated, because no
+    physiological GCK contribution to mannose flux is shown. Kinetics alone would place this in the
+    "genuine secondary activity" tier (`KEEP_AS_NON_CORE`). The review uses in vivo use instead, which
+    is the judgement the record's open question asks about: whether the tiers can have a principled
+    cutoff.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GCK/GCK-ai-review.yaml#L1024

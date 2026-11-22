@@ -1,0 +1,50 @@
+record: BP-10
+examples:
+- id: BP-10-E1
+  title: An effector caspase's apoptotic process row refined to the execution phase
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P42574
+      symbol: CASP3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006915
+      label: apoptotic process
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:15565177
+  explanation: |
+    GO:0006915 is for cases where the phase cannot be told. For CASP3 it can: the review found that the
+    effector protease performs the substrate breakdown of apoptotic execution, as the record's CASP3 example
+    says, and cited human-enzyme substrate-cleavage data (PMID:18723680). The row's own paper reports CASP3
+    activation and PARP cleavage after DIP/E2F1 manipulation.
+  fix: |
+    MODIFY to GO:0097194 execution phase of apoptosis, which the gene already carries.
+  see_also:
+  - BP-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CASP3/CASP3-ai-review.yaml#L2431
+- id: BP-10-E2
+  title: BCL2 kept on negative regulation of apoptotic process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P10415
+      symbol: BCL2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0043066
+      label: negative regulation of apoptotic process
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:9027314
+  explanation: |
+    The record's "restraint is regulation" case. The review accepted the IDA row because the paper shows
+    BCL2 blocking cytochrome c release and preventing apoptosis initiation. That is a specific modulation
+    of the process by the gene product, which is what the regulation terms are reserved for. It is not a
+    side effect of disrupting another pathway.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/BCL2/BCL2-ai-review.yaml#L1290

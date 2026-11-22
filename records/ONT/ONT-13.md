@@ -74,6 +74,14 @@ to the new id and dropped its "vesicle tethering activity" proposal
 | Related | [ONT-1](ONT-1.md) |
 | GO terms | `GO:0051082`  (obsolete); `GO:0044183` protein folding chaperone; `GO:0140309` unfolded protein holdase activity; `GO:7770062` vesicle membrane tethering activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-13-E1](ONT-13.examples.yaml): A zebrafish alpha-crystallin holdase row moved to an NTR placeholder | Conformant | cryaba enables GO:0140309 unfolded protein holdase activity (IDA, PMID:15692462) |
+| [ONT-13-E2](ONT-13.examples.yaml): TMF1's core function moved to the newly minted vesicle membrane tethering activity | Conformant | TMF1 GO:7770062 vesicle membrane tethering activity (NAS) |
+| [ONT-1-E1](ONT-1.examples.yaml): A migrated holdase row on a zebrafish alpha-crystallin judged against the term's definition (from [ONT-1](ONT-1.md)) | Conformant | cryabb enables GO:0140309 unfolded protein holdase activity (IDA, PMID:16420472) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

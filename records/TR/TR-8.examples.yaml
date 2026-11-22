@@ -1,0 +1,47 @@
+record: TR-8
+examples:
+- id: TR-8-E1
+  title: A bacterial response regulator on the unqualified dbTF term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P06534
+      symbol: spo0A
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    For bacteria the record uses the dbTF terms without polymerase qualification. Spo0A carries GO:0003700,
+    which the review accepted as a core MF: it has an HTH DNA-binding domain and represses abrB and activates the spoIIA
+    operon.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/spo0A/spo0A-ai-review.yaml#L73
+- id: TR-8-E2
+  title: A plant MADS-box factor on the unqualified dbTF term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P17839
+      symbol: AG
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    AGAMOUS regulates nuclear protein-coding developmental genes, which Pol II transcribes. The record says
+    eukaryotic regulators take the Pol II-specific terms without the paper naming the polymerase. The review modified the
+    IEA row because GO:0000981 "better captures the same core molecular function with the appropriate Pol II
+    specificity".
+  fix: |
+    GO:0000981 DNA-binding transcription factor activity, RNA polymerase II-specific, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/AG/AG-ai-review.yaml#L145

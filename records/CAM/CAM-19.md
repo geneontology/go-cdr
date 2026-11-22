@@ -57,6 +57,15 @@ precomposed "X involved in Y" term, record a GO-CAM that models Y in
 | Provenance | [NEW] |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-19-E1](CAM-19.examples.yaml): A TOLLIP adaptor activity consistent with its gene review but carrying the wrong edge sign | Conformant | gomodel:59cc772c00000000 |
+| [CAM-19-E2](CAM-19.examples.yaml): A GO-CAM enabler checked against the gene review that removes the same claims | Conformant | gomodel:6796b94c00004996 |
+| [CAM-19-E3](CAM-19.examples.yaml): A precomposed CMA targeting term decomposed with a pointer to the GO-CAM that models the context | Conformant | HSPA8 involved_in GO:0061740 protein targeting to lysosome involved in chaperone-mediated autophagy (IDA, PMID:11559757) |
+| [CAM-8-E3](CAM-8.examples.yaml): A cholesterol-esterifying enzyme drawn as directly inhibiting a viral fusion protein (from [CAM-8](CAM-8.md)) | Non-conformant | gomodel:6796b94c00004996 |
+
 ## Sources
 
 - repo: [CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blob/main/CLAUDE.md)

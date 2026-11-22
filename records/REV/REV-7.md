@@ -58,6 +58,14 @@ assay artefact of a hydrolase ([go-annotation#1519](https://github.com/geneontol
 | Date | 2026-11-15 |
 | Evidence codes | IDA |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-7-E1](REV-7.examples.yaml): Noise-level GAPDH activity of the E. coli paralog Epd removed despite IDA | Conformant | epd enables GO:0004365 glyceraldehyde-3-phosphate dehydrogenase (NAD+) (phosphorylating) activity (IDA, PMID:9182530) |
+| [REV-7-E2](REV-7.examples.yaml): Mannose isomerase activity of YihS marked over-annotated as unknown-relevance | Conformant | yihS enables GO:0050089 mannose isomerase activity (IDA, PMID:18328504) |
+| [REV-7-E3](REV-7.examples.yaml): Glucokinase mannokinase activity: kinetically near glucose, relevance unknown | Contested | GCK enables GO:0019158 mannokinase activity (EXP, PMID:7742312) |
+
 ## Open questions
 
 1. Is there a principled cutoff for "noise-level" promiscuous activity ([REV-7](REV-7.md)), or must it stay a stated judgement?

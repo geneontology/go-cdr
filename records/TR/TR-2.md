@@ -92,6 +92,13 @@ activity ([go-annotation#3168](https://github.com/geneontology/go-annotation/iss
 | Evidence codes | IDA, IMP |
 | GO terms | `GO:0003700` DNA-binding transcription factor activity; `GO:0003714` transcription corepressor activity; `GO:0000976` transcription cis-regulatory region binding; `GO:0003713` transcription coactivator activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-2-E1](TR-2.examples.yaml): An ETS repressor shown to act through its binding site in a reporter | Conformant | ERF enables GO:0001227 DNA-binding transcription repressor activity, RNA polymerase II-specific (IDA, PMID:7588608) |
+| [TR-2-E2](TR-2.examples.yaml): A dbTF row from an author calling the protein a transcription factor | Non-conformant | dac enables GO:0000981 DNA-binding transcription factor activity, RNA polymerase II-specific (TAS, PMID:38528987) |
+
 ## Sources
 
 - drive: [TF annotation guidelines](https://drive.google.com/open?id=1bqCxx7QUblrc9q4PIynbJzoCXv248UWBxJa7fguJyXs)

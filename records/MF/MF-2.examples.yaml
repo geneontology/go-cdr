@@ -1,0 +1,78 @@
+record: MF-2
+examples:
+- id: MF-2-E1
+  title: A generic GPCR signature row kept at GO:0004930
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P47937
+      symbol: Tacr3
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0004930
+      label: G protein-coupled receptor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The review accepted this InterPro2GO row unchanged. It rests only on IPR000276, a generic
+    rhodopsin-family signature that identifies no ligand, so it cannot support the neuromedin K
+    receptor activity the gene carries on other rows. The review also judged GPCR activity a
+    respectably specific statement of the receptor's function rather than `TOO_GENERAL`. This is the
+    record's own worked case in another species.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Tacr3/Tacr3-ai-review.yaml#L409
+- id: MF-2-E2
+  title: A GPCR signature row refined from other rows' evidence
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P07550
+      symbol: ADRB2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004930
+      label: G protein-coupled receptor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    This is the row the record uses as its worked example. The review changed it to beta2-adrenergic
+    receptor activity on the grounds that the specific term is "already supported for ADRB2", that is,
+    by other rows. The InterPro2GO signature behind this row cannot identify the ligand, and under the
+    record `MODIFY` needs this row's own evidence for the deeper term. The review predates the
+    2026-11-14 ruling the record restates, so this is a case to revisit, not a defect in the review.
+  fix: |
+    `ACCEPT` the row at `GO:0004930` G protein-coupled receptor activity. The ligand-specific term
+    stays on the IDA, IMP and IBA rows that support it.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ADRB2/ADRB2-ai-review.yaml#L465
+- id: MF-2-E3
+  title: A family-level transporter IBA refined to the member's substrate
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0ABC9
+      symbol: betT
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0022857
+      label: transmembrane transporter activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review itself says the IBA term is "correct, and substrate-neutral by design", because the BCCT
+    family carries choline, glycine betaine, carnitine and other solutes. It then refined the row to
+    choline transmembrane transporter activity because the substrate "is established experimentally",
+    on an EXP row elsewhere in the review. The family node cannot support the substrate, so the record
+    keeps the IBA at the family term and leaves the specific term to the EXP row.
+  fix: |
+    Keep the IBA row at `GO:0022857` transmembrane transporter activity; `GO:0015220` choline
+    transmembrane transporter activity is carried by the row whose evidence shows it.
+  see_also: [MF-15, MF-18]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/betT/betT-ai-review.yaml#L164

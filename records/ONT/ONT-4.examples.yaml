@@ -1,0 +1,93 @@
+record: ONT-4
+examples:
+- id: ONT-4-E1
+  title: The TOM40 channel's mitochondrion targeting sequence binding sent to protein transporter activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O96008
+      symbol: TOMM40
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0030943
+      label: mitochondrion targeting sequence binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: 'For the obsolete `GO:0030943`, whose `consider` list offers the receptor and the channel
+    activities,
+
+    the review sorted TOMM40 by mechanism: it "is the beta-barrel import channel, not a receptor", so
+    the
+
+    row maps to `GO:0008320` transmembrane protein transporter activity rather than `GO:0140436`. The
+
+    record''s application gives this exact triage (TOM20/TOM22 to the receptor, TOM40 to the transporter).
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TOMM40/TOMM40-ai-review.yaml#L22
+- id: ONT-4-E2
+  title: An Acl4 row on mitochondrion targeting sequence binding removed with no destination
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q03771
+      symbol: ACL4
+    taxon: NCBITaxon:559292
+    term:
+      term_id: GO:0030943
+      label: mitochondrion targeting sequence binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: 'The review found no destination for this obsolete-term row: it is a historical TOM70-family
+    IBA, absent
+
+    from the current PAINT table, and Acl4''s established role is binding and shielding an internal loop
+    of
+
+    Rpl4, not presequence binding. It removed the row "and no replacement is proposed". The record says
+
+    some rows on a `consider`-only obsoletion will have no destination and should be removed.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/yeast/ACL4/ACL4-ai-review.yaml#L131
+- id: ONT-4-E3
+  title: TIMM22's targeting-signal row sent to the transporter rather than the receptor
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9Y584
+      symbol: TIMM22
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0030943
+      label: mitochondrion targeting sequence binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: 'The record notes that TIM22, a carrier-pathway channel whose substrates use internal signals,
+    "may fit
+
+    neither" consider target. The review decided: TIMM22 "is the carrier-pathway channel/insertase, not
+    a
+
+    targeting-signal receptor", its response to internal signals is part of its channel activity, and
+    the
+
+    row folds into the `GO:0008320` IBA it already carries. That is a mechanism-based destination for
+    the
+
+    class the record left open.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/TIMM22/TIMM22-ai-review.yaml#L10

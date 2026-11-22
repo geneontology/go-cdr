@@ -1,0 +1,51 @@
+record: BP-14
+examples:
+- id: BP-14-E1
+  title: Drinking behavior transferred to the AT1A receptor although the paralog AT1B carries it
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P29754
+      symbol: Agtr1a
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0042756
+      label: drinking behavior
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    This is the record's contradicted-claim example. The review found that direct central angiotensin II
+    experiments separate AT1A-dependent blood-pressure responses from drinking behavior, which requires
+    AT1B. That is a paralog assignment contradicting the claim, which is the record's ground for `REMOVE`.
+    The review left the gene's three experimental rows for the same term `UNDECIDED` because their papers
+    are abstract-only in the cache, which matches the record's last row for inaccessible evidence.
+  fix: |
+    REMOVE this IEA row (and the ISO row from the same projection).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Agtr1a/Agtr1a-ai-review.yaml#L538
+- id: BP-14-E2
+  title: Tuba1a locomotory behavior kept as a distal, non-core process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P68369
+      symbol: Tuba1a
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0007626
+      label: locomotory behavior
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:22101068
+  explanation: |
+    The record's distal-effect example. The review judged locomotory behavior defects real but downstream
+    of impaired neuronal migration and brain malformation, the proximal defect it names in its reason. The
+    record asks for `KEEP_AS_NON_CORE` in that case, not `REMOVE`, and the review kept the gene's other
+    behaviour rows the same way.
+  see_also:
+  - BP-7
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Tuba1a/Tuba1a-ai-review.yaml#L603

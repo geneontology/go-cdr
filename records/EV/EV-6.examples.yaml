@@ -1,0 +1,47 @@
+record: EV-6
+examples:
+- id: EV-6-E1
+  title: A heat-shock chaperone annotated to response to heat by IEP
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P06582
+      symbol: hsp-16.2
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0009408
+      label: response to heat
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:1550963
+  explanation: |
+    The record's model case: the gene product exists for the response, so its induction is informative.
+    The review accepted the row from the foundational hsp16-lacZ fusion work showing heat-shock-dependent
+    expression.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/hsp-16.2/hsp-16.2-ai-review.yaml#L196
+- id: EV-6-E2
+  title: Heart development from a postnatal rise in creatine kinase expression
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09605
+      symbol: Ckmt2
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0007507
+      label: heart development
+    qualifier: involved_in
+    evidence_code: IEP
+    reference: PMID:8086475
+  explanation: |
+    The record's own "do not annotate" case: a developmental time-course read as a tissue-building role.
+    The review found that sMtCK mRNA is undetectable in prenatal heart and rises after birth, which
+    reflects the maturing heart's demand for phosphocreatine buffering, not an instructive role in heart
+    morphogenesis, and marked the row over-annotated.
+  fix: |
+    No heart development row; the expression pattern is kept as an observation, not a process.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Ckmt2/Ckmt2-ai-review.yaml#L301

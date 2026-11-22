@@ -1,0 +1,48 @@
+record: LIT-2
+examples:
+- id: LIT-2-E1
+  title: VEGFA's anti-apoptotic row kept as non-core
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P15692
+      symbol: VEGFA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0043066
+      label: negative regulation of apoptotic process
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:11461089
+  explanation: |
+    Apoptosis readouts are phenotypic hub readouts; they support at most a non-core process term unless the
+    gene is in the recognised machinery. The review kept this IMP row as non-core because generic
+    anti-apoptosis reflects downstream PI3K-Akt survival signalling, while the ligand's signature output,
+    endothelial cell proliferation, stays core. The record cites this pair of decisions.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/VEGFA/VEGFA-ai-review.yaml#L1482
+- id: LIT-2-E2
+  title: Transcription coactivator activity for a co-chaperone from a reporter assay
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O00170
+      symbol: AIP
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003713
+      label: transcription coactivator activity
+    qualifier: enables
+    evidence_code: TAS
+    reference: PMID:9447995
+  explanation: |
+    A reporter does not support coactivator activity for a protein that does not bind DNA unless other
+    evidence places it in the transcriptional machinery; the record names AIP as over-annotated this way.
+    The review found that the twofold enhancement of AhR-driven reporter activity reflects AIP's co-chaperone
+    role in stabilising the AHR-HSP90 complex, not direct coactivation.
+  fix: |
+    No coactivator row; AIP's molecular function is its co-chaperone activity in the AHR-HSP90 complex.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AIP/AIP-ai-review.yaml#L808

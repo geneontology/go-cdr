@@ -1,0 +1,49 @@
+record: REV-13
+examples:
+- id: REV-13-E1
+  title: A Pelle-Tube protein binding IPI replaced by death domain binding
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q05652
+      symbol: pll
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    qualifier: enables
+    evidence_code: IPI
+    reference: PMID:10589682
+  explanation: |
+    The IPI comes from the crystal structure of the Pelle-Tube death-domain heterodimer. Rather than
+    keeping bare protein binding, the review uses the interaction evidence for an informative term:
+    "The structure defines a death domain-death domain interface that is required in vivo. Replace
+    protein binding with death domain binding."
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/pll/pll-ai-review.yaml#L283
+- id: REV-13-E2
+  title: Bare protein binding proposed as a NEW core function for worm MKS-1
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A679L8Q5
+      symbol: mks-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0005515
+      label: protein binding
+    evidence_code: NAS
+  explanation: |
+    The review adds a `NEW` `protein binding` row, with the reason "Core function term not present in
+    existing_annotations", to align `core_functions` with the annotation list. The record says bare
+    protein binding identifies no function. Proposing one is worse than keeping an existing row,
+    because it manufactures the uninformative claim.
+  fix: |
+    Withdraw the row. If the interaction evidence identifies something informative (a partner-class
+    or complex-binding term), propose that instead. Otherwise leave the molecular function
+    unannotated.
+  see_also: [REV-11]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/mks-1/mks-1-ai-review.yaml#L202

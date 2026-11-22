@@ -1,0 +1,49 @@
+record: RS-10
+examples:
+- id: RS-10-E1
+  title: Canonical Wnt signaling on endothelin-1 marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P05305
+      symbol: EDN1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0060070
+      label: canonical Wnt signaling pathway
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    ET-1 is a ligand of EDNRA/EDNRB, not of Frizzled/LRP5/6. The review reads the transferred Wnt row
+    as "secondary cross-talk or Wnt-regulated Edn1 expression", a link through transcription, and
+    marks it over-annotated. Regulation and pathway membership do not cross transcription.
+  see_also: [RS-6]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/EDN1/EDN1-ai-review.yaml#L1791
+- id: RS-10-E2
+  title: Canonical Wnt signaling kept as non-core on the general coactivator p300
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q09472
+      symbol: EP300
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0060070
+      label: canonical Wnt signaling pathway
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:12408825
+  explanation: |
+    The paper shows p300 in beta-catenin/LEF transcription complexes. The review keeps the pathway
+    term as "context-dependent transcriptional coactivation". p300 is a general chromatin modifier
+    that coactivates many pathways' transcription factors. The record keeps such generic regulators
+    off specific pathways, "even when authors call them essential for it".
+  fix: |
+    `MARK_AS_OVER_ANNOTATED`. p300's role is carried by its acetyltransferase and coactivator terms.
+  see_also: [RS-6]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/EP300/EP300-ai-review.yaml#L7975

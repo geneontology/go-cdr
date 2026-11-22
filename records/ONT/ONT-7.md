@@ -73,6 +73,14 @@ When a review decomposes a precomposed "X involved in Y" term, it says where Y w
 | Evidence codes | IDA, IBA |
 | GO terms | `GO:0030943`  (obsolete); `GO:0140436` mitochondrial signal sequence receptor activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-7-E1](ONT-7.examples.yaml): TOMM20's mitochondrion targeting sequence binding migrated with MODIFY | Conformant | TOMM20 enables GO:0030943 mitochondrion targeting sequence binding (IDA, PMID:35733257) |
+| [ONT-7-E2](ONT-7.examples.yaml): An obsolete NAD+ biosynthesis term kept with ACCEPT because the pinned ontology still lists it | Non-conformant | SPCC553.02 involved_in GO:0034354 'de novo' NAD+ biosynthetic process from L-tryptophan (IBA, GO_REF:0000033) |
+| [ONT-6-E1](ONT-6.examples.yaml): Transcobalamin's cargo receptor ligand activity accepted as its core function (from [ONT-6](ONT-6.md)) | Non-conformant | TCN2 enables GO:0140355 cargo receptor ligand activity (EXP, PMID:3782074) |
+
 ## Sources
 
 - repo: [ontology changes](https://github.com/ai4curation/ai-gene-review/blob/main/docs/ontology_changes.md)

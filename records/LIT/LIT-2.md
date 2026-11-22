@@ -80,6 +80,13 @@ signature output, stayed core ([ASSAY_TO_FUNCTION/EDITS](https://ai4curation.io/
 | Date | 2026-11-15 |
 | GO terms | `GO:0003700` DNA-binding transcription factor activity; `GO:0003713` transcription coactivator activity; `GO:0072126` positive regulation of glomerular mesangial cell proliferation; `GO:0043066` negative regulation of apoptotic process |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-2-E1](LIT-2.examples.yaml): VEGFA's anti-apoptotic row kept as non-core | Conformant | VEGFA involved_in GO:0043066 negative regulation of apoptotic process (IMP, PMID:11461089) |
+| [LIT-2-E2](LIT-2.examples.yaml): Transcription coactivator activity for a co-chaperone from a reporter assay | Non-conformant | AIP enables GO:0003713 transcription coactivator activity (TAS, PMID:9447995) |
+
 ## Sources
 
 - web: [ASSAY_TO_FUNCTION rubric](https://ai4curation.io/ai-gene-review/pages/projects/ASSAY_TO_FUNCTION/RUBRIC.html)

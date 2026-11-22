@@ -68,6 +68,13 @@ Three checks:
 | Related | [LIT-8](LIT-8.md), [EV-5](../EV/EV-5.md) |
 | Evidence codes | IDA, IMP, IGI |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-5-E1](LIT-5.examples.yaml): Epe1's boundary function annotated from the deletion, not the overexpression | Conformant | Epe1 involved_in GO:0033696 heterochromatin boundary formation (IMP, PMID:31206516) |
+| [EV-5-E1](../EV/EV-5.examples.yaml): A plant arginase annotated by IGI from complementation of yeast (from [EV-5](../EV/EV-5.md)) | Conformant | ARGAH1 enables GO:0004053 arginase activity (IGI, PMID:7770544) |
+
 ## Sources
 
 - wiki: [IMP](https://wiki.geneontology.org/index.php/Inferred_from_Mutant_Phenotype_%28IMP%29)

@@ -1,0 +1,46 @@
+record: IEA-12
+examples:
+- id: IEA-12-E1
+  title: TreeGrafter cytosol on a soluble bacterial polymerase kept as non-core
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q88NK4
+      symbol: dinB
+    taxon: NCBITaxon:160488
+    term:
+      term_id: GO:0005829
+      label: cytosol
+    qualifier: located_in
+    evidence_code: IEA
+    reference: GO_REF:0000118
+  explanation: |
+    The review found that Pol IV is a soluble monomer with a cytoplasmic UniProt location, so the
+    TreeGrafter cytosol call is true, and that redundancy with the parent cytoplasm term is not grounds
+    for rejection. It kept the row as non-core because the polymerase activity and repair processes
+    are the informative annotations. That is the record's action for a correct but general IEA.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEPK/dinB/dinB-ai-review.yaml#L112
+- id: IEA-12-E2
+  title: A generic small-molecule binding parent kept after re-review
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P49822
+      symbol: ALB
+    taxon: NCBITaxon:9615
+    term:
+      term_id: GO:0036094
+      label: small molecule binding
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000118
+  explanation: |
+    The TreeGrafter row on dog albumin was first marked as an over-annotation and, on re-review, moved
+    to non-core: the term is a true ancestor of albumin's demonstrated fatty acid and enterobactin
+    binding, and redundancy with those rows does not make it false. The record says a correct but
+    general IEA is kept, never removed or downgraded for being general.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CANLF/ALB/ALB-ai-review.yaml#L63

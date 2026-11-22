@@ -1,0 +1,83 @@
+record: AE-3
+examples:
+- id: AE-3-E1
+  title: Target genes named on the regulation-of-transcription BP row as well as on the MF row
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O60663
+      symbol: LMX1B
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: ISS
+    reference: GO_REF:0000024
+    extension: RO:0002233(UniProtKB:P04628),RO:0002233(UniProtKB:O75364),RO:0002233(UniProtKB:P43354),RO:0002233(UniProtKB:Q8TE12)
+  explanation: |
+    The record asks for the target genes of a transcription regulator on both the MF row and the
+    "regulation of transcription" BP row, because standard annotations are not linked. LMX1B's
+    ParkinsonsUK-UCL rows do this: the BP row names four target genes as `has_input`, and the
+    GO:0000981 MF row (AE-2-E1) names the same four plus one more. The fillers are human gene products, as
+    a human row requires. The review kept the BP row as non-core and kept the extensions.
+  see_also: [AE-2, AE-12]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LMX1B/LMX1B-ai-review.yaml#L803
+- id: AE-3-E2
+  title: The GTPase acted on, recorded as has_input on a GEF activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    description: |
+      The `has_input` was added by the review; the GOA row (UniProt, IDA) has no extension.
+    gene:
+      gene_id: UniProtKB:Q5VV41
+      symbol: ARHGEF16
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005085
+      label: guanyl-nucleotide exchange factor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:20679435
+    extension: RO:0002233(UniProtKB:P84095)
+  explanation: |
+    GO has merged the substrate-specific GEF terms into GO:0005085, so the GTPase a GEF acts on can only be
+    said with `has_input`, the pattern the record gives for the gene product a regulator acts on. The
+    review recorded RHOG as the input because PMID:20679435 measured exchange on purified protein, with the
+    negative arm run in the same experiment. The input therefore comes from the row's own paper, as AE-12
+    requires. Because the extension is not in GOA, it is a proposal for the row, not a record of it.
+  see_also: [AE-12, AE-13]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARHGEF16/ARHGEF16-ai-review.yaml#L66
+- id: AE-3-E3
+  title: Substrate and products that the enzyme term's definition already names
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P54803
+      symbol: GALC
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004336
+      label: galactosylceramidase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:8281145
+    extension: RO:0002233(CHEBI:143593),RO:0002234(CHEBI:12936),RO:0002234(CHEBI:52639)
+  explanation: |
+    GO:0004336 is defined as "Catalysis of the reaction: D-galactosyl-N-acylsphingosine + H2O = D-galactose +
+    N-acylsphingosine". The UOS_MCB row's `has_input` beta-galactosylceramide and its `has_output` D-galactose
+    and N-acylsphingosine restate the reaction. The record excludes an input already in the term
+    definition, and AE-4 excludes products the term names. The review accepted the row and kept all three
+    atoms "together", describing them as matching the hydrolysis, without noting that they add nothing.
+  fix: |
+    Annotate GO:0004336 galactosylceramidase activity with no extension, as the UniProt IDA row from the
+    same paper already does. Under AE-14, the review would ACCEPT the row and note the extension as
+    redundant.
+  see_also: [AE-4, AE-14]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GALC/GALC-ai-review.yaml#L468

@@ -1,0 +1,28 @@
+record: PH-14
+examples:
+- id: PH-14-E1
+  title: A JAK-STAT negative regulation IBA on worm GEI-17 removed, with the fix routed to the node
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q94361
+      symbol: gei-17
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0046426
+      label: negative regulation of receptor signaling pathway via JAK-STAT
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review grounded the node (PTN000845825, sound for human PIAS1 and fly Su(var)2-10), checked the
+    target's lineage (no JAK in *C. elegans*), the target's literature (none involving STAT), and the
+    subfamilies (GEI-17 and the fly seed share SF94, so no subfamily scope separates them). It then named
+    the node-level fix, an IRD on the nematode branch, and cites the PTHR10782 family review that rates the
+    node `NEEDS_PRUNING`. This is the record's checklist and its worked example.
+  see_also:
+  - PH-4
+  - ONT-18
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/gei-17/gei-17-ai-review.yaml#L505

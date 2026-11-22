@@ -1,0 +1,23 @@
+record: CC-19
+examples:
+- id: CC-19-E1
+  title: MMADHC's core function names the cytosol, not its well-supported matrix pool
+  verdict: CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The `locations` of MMADHC's cobalamin branch-point core function in the human review, which list
+      only `GO:0005829` cytosol although the review adds a `NEW` mitochondrial matrix row.
+    refs:
+    - UniProtKB:Q9H3L0
+    - GO:0005829
+    - GO:0005759
+  explanation: |
+    The record's own case. The matrix location is well supported and kept as a `NEW` row, but no
+    matrix-side partner or carrier step has been shown, and the review records that as a knowledge gap
+    on the core function. The function the review describes, receiving cob(II)alamin from MMACHC and
+    partitioning it, is placed in the cytosol, so the core function names only the cytosol.
+  see_also:
+  - CC-8
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MMADHC/MMADHC-ai-review.yaml#L607

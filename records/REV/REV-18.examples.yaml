@@ -1,0 +1,29 @@
+record: REV-18
+examples:
+- id: REV-18-E1
+  title: An APP row accepted with an evidence-code template as its only reasoning
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P05067
+      symbol: APP
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:1904646
+      label: cellular response to amyloid-beta
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:29518356
+  explanation: |
+    The row's reason is "IDA annotation supported by direct experimental evidence", and its summary
+    "IDA annotation based on direct experimental assay". The same pair appears on 33 different terms in
+    the APP review. Neither says anything about `cellular response to amyloid-beta`, or about what
+    it means to annotate APP as responding to a product of its own cleavage. This is the boilerplate
+    the record says is not curation.
+  fix: |
+    Re-review the row: state what PMID:29518356 showed APP doing, whether that meets the "response to"
+    bar (RS-11), and quote the paper.
+  see_also: [RS-11]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/APP/APP-ai-review.yaml#L2669

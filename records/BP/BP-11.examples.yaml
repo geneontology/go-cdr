@@ -1,0 +1,78 @@
+record: BP-11
+examples:
+- id: BP-11-E1
+  title: HSPA8 protein targeting to lysosome involved in chaperone-mediated autophagy, decomposed to a
+    module
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P11142
+      symbol: HSPA8
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0061740
+      label: protein targeting to lysosome involved in chaperone-mediated autophagy
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:11559757
+  explanation: |
+    This is the record's worked example. X, GO:0006622 protein targeting to lysosome, still says what
+    HSPA8 does: it delivers substrates. Y, chaperone-mediated autophagy, is a mechanism with a model. The
+    review recorded in `decomposed_into` the CMA production GO-CAM, the module element
+    `hspa8_substrate_adaptor`, and the core functions. It did not split the row or re-encode Y as an
+    extension.
+  fix: |
+    MODIFY to GO:0006622 protein targeting to lysosome, with `decomposed_into` naming the chaperone-mediated
+    autophagy module and GO-CAM.
+  see_also:
+  - AE-9
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HSPA8/HSPA8-ai-review.yaml#L1496
+- id: BP-11-E2
+  title: An engulfment receptor's precomposed developmental pro-apoptotic term, with the context dropped
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9XWD6
+      symbol: ced-1
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:1904747
+      label: positive regulation of apoptotic process involved in development
+    qualifier: involved_in
+    evidence_code: IGI
+    reference: PMID:23505386
+  explanation: |
+    The record's second worked example. The review judged that the developmental half of GO:1904747 is
+    only where the engulfment genes' pro-death role was measured, not a mechanism, so it decomposed to
+    the regulation genus and set `context_dropped: true`. It also justified the genus half on its own,
+    citing Reddien 2001 and Hoeppner 2001, because the row's paper uses ced-1 only as an engulfment-defective
+    background.
+  fix: |
+    MODIFY to GO:0043065 positive regulation of apoptotic process, with `decomposed_into.context_dropped: true`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/ced-1/ced-1-ai-review.yaml#L880
+- id: BP-11-E3
+  title: An "involved in" term kept because it names editing, which has no other term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5JTZ9
+      symbol: AARS2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0106074
+      label: aminoacyl-tRNA metabolism involved in translational fidelity
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000108
+  explanation: |
+    The record names GO:0106074 aminoacyl-tRNA metabolism involved in translational fidelity as the right
+    grain despite its label: it names tRNA editing, which no other GO term covers. The review accepted it
+    for AARS2 because the protein removes or prevents incorrect amino acids on mitochondrial tRNA(Ala), a
+    function demonstrated for the human enzyme.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AARS2/AARS2-ai-review.yaml#L644

@@ -1,0 +1,52 @@
+record: EV-7
+examples:
+- id: EV-7-E1
+  title: Cadherin binding on aldolase A from E-cadherin proximity labelling
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P04075
+      symbol: ALDOA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0045296
+      label: cadherin binding
+    qualifier: enables
+    evidence_code: HDA
+    reference: PMID:25468996
+  explanation: |
+    The record's table rates proximity labelling used to infer binding as unreliable, citing this dataset,
+    which gave `GO:0045296` cadherin binding to 255 genes. The review called aldolase A a bystander detection
+    in a large proximity proteome, not a binding activity of a glycolytic enzyme, and marked the row
+    over-annotated rather than removing a real dataset.
+  fix: |
+    No cadherin binding row; proximity to E-cadherin supports at most a location near adherens junctions,
+    and for an abundant glycolytic enzyme not even that.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ALDOA/ALDOA-ai-review.yaml#L491
+- id: EV-7-E2
+  title: A response to copper row from a fall in CRAC abundance
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P35401
+      symbol: dagA
+    taxon: NCBITaxon:44689
+    term:
+      term_id: GO:0046688
+      label: response to copper ion
+    qualifier: acts_upstream_of_or_within
+    evidence_code: HDA
+    reference: PMID:40863941
+  explanation: |
+    Differential abundance coded HDA and read as a process is the record's worst-performing use of omics
+    data (wrong code, wrong inference). The review found that the proteomic study only shows CRAC abundance
+    reduced under copper stress, interpreted as copper disrupting aggregation-related proteins, and not
+    that CRAC acts in a copper response.
+  fix: |
+    No process row from this dataset; an abundance change is at most HEP for a response term, and here the
+    gene's role in the response is not shown.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DICDI/dagA/dagA-ai-review.yaml#L112

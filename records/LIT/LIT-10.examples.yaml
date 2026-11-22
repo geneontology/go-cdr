@@ -1,0 +1,50 @@
+record: LIT-10
+examples:
+- id: LIT-10-E1
+  title: Immune response projected from a SNP association with bacteremia
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A8C4M6Z6
+      symbol: TGFBR3
+    taxon: NCBITaxon:9793
+    term:
+      term_id: GO:0006955
+      label: immune response
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    A disease association is not annotatable on its own. The review traced this Ensembl projection to a human
+    annotation based on an association of TGFBR3 SNPs, with other pathway genes, with bacteremia in sickle
+    cell anaemia, which does not show that TGFBR3 carries out an immune response.
+  fix: |
+    No immune response row, on the human source or on its projections.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/EQUAS/TGFBR3/TGFBR3-ai-review.yaml#L154
+- id: LIT-10-E2
+  title: Protein homodimerization activity from a monomer-dimer mixture
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P60716
+      symbol: lipA
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0042803
+      label: protein homodimerization activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:11106496
+  explanation: |
+    Oligomeric state is out of GO scope. The review found that purified LipA ran as a monomer-dimer mixture,
+    that the stoichiometric argument for an obligate dimer was retired when each polypeptide was shown to
+    supply both sulfurs of a lipoyl group, and that the only defined complex is a LipA-NfuA heterodimer. It
+    marked the row over-annotated.
+  fix: |
+    No homodimerization row; record the oligomeric state outside GO. (The review instead records it as a
+    knowledge gap.)
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/lipA/lipA-ai-review.yaml#L356

@@ -41,6 +41,12 @@ An explanation in biological terms lets curators judge an annotation and lets us
 | Provenance | [NEW] Proposed at the GOC meeting, Cambridge 2025; not yet adopted. |
 | Date | 2026-11-21 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PIPE-5-E1](PIPE-5.examples.yaml): A curated rule whose inference is a conjunction of named families and a taxon | Conformant | curated rules (ai-gene-review rules/curated) |
+
 ## Sources
 
 - drive: [GO annotation pipeline proposed rubrics and MOU (GOC meeting, Cambridge 2025)](https://docs.google.com/presentation/d/1YudLhxPskOiptyhBkUo5sN6GkMjQWB4PIdM0_dNSZkw/edit)

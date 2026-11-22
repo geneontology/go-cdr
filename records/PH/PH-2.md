@@ -86,6 +86,12 @@ oxidant detoxification as IEA. Withdrawing the seed must withdraw both
 | Evidence codes | EXP, IDA, IPI, IMP, IGI, IEP, HTP, IBD, IEA |
 | GO terms | `GO:0004096` catalase activity; `GO:0098869` cellular oxidant detoxification |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-2-E1](PH-2.examples.yaml): A catalase IBD seeded by one IMP row from a pleiotropic cytochrome c maturation mutant | Conformant | ccmC enables GO:0004096 catalase activity (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

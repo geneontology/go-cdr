@@ -1,0 +1,53 @@
+record: PC-3
+examples:
+- id: PC-3-E1
+  title: Ran annotated as part of the importin complex that it dissociates
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9VZ23
+      symbol: Ran
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0042564
+      label: NLS-dependent protein nuclear import complex
+    qualifier: part_of
+    evidence_code: NAS
+    reference: PMID:17287812
+  explanation: |
+    The NAS row places Drosophila Ran in the NLS-dependent protein nuclear import complex, the importin
+    alpha/beta heterodimer that carries cargo. The review removed it: RanGTP binding to importin beta in
+    the nucleus dissociates the complex and releases cargo, so Ran is a separate player, not a subunit.
+    A protein that binds a complex without belonging to it does not get `part_of`, which is the
+    record's rule.
+  fix: |
+    Remove the `part_of` row; describe Ran's interaction with importin beta with a binding term
+    rather than complex membership.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/Ran/Ran-ai-review.yaml#L730
+- id: PC-3-E2
+  title: Cargo transporter given membership of the AP-1 adaptor complex by IBA
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q16572
+      symbol: SLC18A3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0030121
+      label: AP-1 adaptor complex
+    qualifier: part_of
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The IBA row (ancestral node PANTHER:PTN000607168) makes the vesicular acetylcholine transporter part
+    of the four-subunit AP-1 adaptor complex. The review removed it because the primary study shows
+    cytoplasmic-tail binding and co-immunoprecipitation with adaptins during cargo sorting, which makes
+    VAChT a cargo of the complex, not one of its subunits. Under the record a cargo that binds the
+    complex gets a binding term, not `part_of`.
+  fix: |
+    Remove the `part_of` row; keep the binding and trafficking annotations the review retains.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SLC18A3/SLC18A3-ai-review.yaml#L574

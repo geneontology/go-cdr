@@ -99,6 +99,15 @@ the parent term may now subsume a sibling).
 | Date | 2026-11-15 |
 | GO terms | `GO:0070680`  (obsolete); `GO:0070981` L-asparagine biosynthetic process; `GO:0070681` glutaminyl-tRNAGln biosynthesis via transamidation; `GO:0043039` tRNA aminoacylation; `GO:0036378`  (obsolete); `GO:1901755` vitamin D3 biosynthetic process; `GO:0042369` vitamin D catabolic process |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-3-E1](ONT-3.examples.yaml): A methionine salvage enzyme moved off a replaced_by target that names the SAM cycle | Conformant | Adi1 involved_in GO:0033353 L-methionine cycle (IBA, GO_REF:0000033) |
+| [ONT-3-E2](ONT-3.examples.yaml): GatCAB's glutaminyl-tRNA transamidation term moved to charged-tRNA amino acid modification | Contested | gatA involved_in GO:0070681 glutaminyl-tRNAGln biosynthesis via transamidation (IEA, GO_REF:0000104) |
+| [ONT-2-E2](ONT-2.examples.yaml): A methionine salvage redirect checked in QuickGO and OLS against a named release (from [ONT-2](ONT-2.md)) | Conformant | Enoph involved_in GO:0033353 L-methionine cycle (IBA, GO_REF:0000033) |
+| [ONT-7-E2](ONT-7.examples.yaml): An obsolete NAD+ biosynthesis term kept with ACCEPT because the pinned ontology still lists it (from [ONT-7](ONT-7.md)) | Non-conformant | SPCC553.02 involved_in GO:0034354 'de novo' NAD+ biosynthetic process from L-tryptophan (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

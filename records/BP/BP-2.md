@@ -90,6 +90,17 @@ In process terms under GO:0006508 proteolysis and similar transformation process
 | Related | [BP-3](BP-3.md) |
 | GO terms | `GO:0006508` proteolysis; `GO:0002003` angiotensin maturation; `GO:0016486` peptide hormone processing; `GO:0030070` insulin processing; `GO:0034205` amyloid-beta formation; `GO:0006590` thyroid hormone generation; `GO:0042730` fibrinolysis; `GO:0006956` complement activation; `GO:0016540` protein autoprocessing |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-2-E1](BP-2.examples.yaml): A ubiquitination substrate annotated to protein ubiquitination | Non-conformant | ACD6 involved_in GO:0016567 protein ubiquitination (IDA, PMID:24923602) |
+| [BP-2-E2](BP-2.examples.yaml): Fibrin(ogen) alpha chain kept in fibrinolysis as the cofactor case | Conformant | FGA involved_in GO:0042730 fibrinolysis (IDA, PMID:16846481) |
+| [BP-2-E3](BP-2.examples.yaml): Growth on glycerol read as COQ3 participation in glycerol metabolism | Non-conformant | COQ3 involved_in GO:0006071 glycerol metabolic process (IGI, PMID:10777520) |
+| [BP-1-E2](BP-1.examples.yaml): INSIG1 annotated as involved in cholesterol biosynthesis it only restrains (from [BP-1](BP-1.md)) | Non-conformant | INSIG1 involved_in GO:0006695 cholesterol biosynthetic process (IDA, PMID:32322062) |
+| [BP-3-E1](BP-3.examples.yaml): The renin-angiotensin GO-CAM represents angiotensinogen without placing it in angiotensin maturation (from [BP-3](BP-3.md)) | Conformant | gomodel:6246724f00000549 |
+| [BP-3-E2](BP-3.examples.yaml): A new keratinization row for a wool KAP, after a same-role comparator check (from [BP-3](BP-3.md)) | Conformant | KRTAP3-1 involved_in GO:0031424 keratinization (TAS, PMID:27240405) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

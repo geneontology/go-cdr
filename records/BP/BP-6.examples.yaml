@@ -1,0 +1,51 @@
+record: BP-6
+examples:
+- id: BP-6-E1
+  title: An SRE-luciferase readout of RhoA activation annotated as transcription regulation
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q22354
+      symbol: rhgf-2
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:22363657
+  explanation: |
+    The review read the full text: the SRE-luciferase reporter was used in a heterologous human cell line
+    as a readout of RhoA activation by the GEF. Reporter output depends on endogenous SRF downstream of Rho,
+    so annotating RHGF-2 to GO:0045944 positive regulation of transcription by RNA polymerase II takes the
+    readout for the conclusion: what the reporter measured was activation of the GTPase.
+  fix: |
+    REMOVE the transcription row. The experiment bears on RHGF-2 activating RhoA, not on regulation of
+    transcription.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/rhgf-2/rhgf-2-ai-review.yaml#L254
+- id: BP-6-E2
+  title: An IP3 biosensor readout annotated as regulation of IP3 biosynthesis
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P29066
+      symbol: Arrb1
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0032960
+      label: regulation of inositol trisphosphate biosynthetic process
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:20705669
+  explanation: |
+    The IMP measured P2Y2 receptor desensitization, with an IP3 biosensor as the readout. The review found
+    that beta-arrestin-1 acts on the receptor, not on IP3-synthesizing enzymes. The process closest to its
+    activity is receptor desensitization, not GO:0032960 regulation of inositol trisphosphate
+    biosynthetic process.
+  fix: |
+    MODIFY to GO:0002029 desensitization of G protein-coupled receptor signaling pathway.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Arrb1/Arrb1-ai-review.yaml#L1768

@@ -1,0 +1,49 @@
+record: PIPE-1
+examples:
+- id: PIPE-1-E1
+  title: InterPro2GO removes kinase activity from the kinase domain within a week of a tracker report
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: InterPro2GO
+    refs:
+    - InterPro:IPR000719
+    - GO:0004672
+    - https://github.com/geneontology/go-annotation/issues/6273
+    description: |
+      go-annotation#6273, opened 2026-02-12, reported `GO:0004672` protein kinase activity by IEA from
+      `IPR000719` on pseudokinase subunits of the PAN complex.
+  explanation: |
+    An InterPro curator replied that the Pfam entry behind `IPR000719` was too large to fix without
+    side effects, removed the kinase term from `IPR000719`, added it to child entries that lacked it,
+    and said the change would be in the next InterPro release; the issue was closed on 2026-02-17. A
+    mapping changed in response to a curator report within days is the behaviour the rubric describes,
+    and the record names InterPro2GO mapping removals as its example.
+  see_also:
+  - IEA-2
+  derived_from:
+  - https://github.com/geneontology/go-annotation/issues/6273
+- id: PIPE-1-E2
+  title: Ensembl Compara answers a relation-upgrade report at once but changes output slowly
+  verdict: CONTESTED
+  subject:
+    subject_kind: pipeline_config
+    pipeline: Ensembl Compara
+    refs:
+    - GO_REF:0000107
+    - https://github.com/geneontology/go-annotation/issues/5411
+    description: |
+      go-annotation#5411 (2024-08-12) reported that the Ensembl IEA pipeline turned a mouse
+      `acts_upstream_of_or_within` row into an `involved_in` row on human TFAM.
+  explanation: |
+    The pipeline's maintainer replied within an hour and offered to apply agreed restrictions, but asked
+    for a consortium decision on which relations to propagate, and the thread then waited on input from
+    other groups. In November 2025 a curator wrote that the issue "is now (or will be shortly)
+    addressed", and the issue is still open. The contact was responsive; whether a change about fifteen
+    months after the report is "timely" is the judgement the rubric leaves open, and the thread is where
+    it was argued.
+  see_also:
+  - IEA-10
+  discussion: https://github.com/geneontology/go-annotation/issues/5411
+  derived_from:
+  - https://github.com/geneontology/go-annotation/issues/5411

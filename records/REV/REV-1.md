@@ -89,6 +89,15 @@ positive in shoots), record a per-annotation `consistency_exception` with the re
 | Evidence codes | IDA, IBA, NAS, IEA |
 | GO terms | `GO:0005929` cilium; `GO:0005515` protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-1-E1](REV-1.examples.yaml): Gaa1 transamidase-complex rows from IBA, IEA and NAS judged as one claim | Conformant | gaa1 part_of GO:0042765 GPI-anchor transamidase complex (IEA, GO_REF:0000002) |
+| [REV-1-E2](REV-1.examples.yaml): An IEA kinase row removed as redundant while the same term is accepted on EXP rows | Non-conformant | Prkaa2 GO:0106310 protein serine kinase activity (IEA, GO_REF:0000116) |
+| [REV-1-E3](REV-1.examples.yaml): FGG matrix-constituent rows split between UNDECIDED and KEEP_AS_NON_CORE | Contested | FGG enables GO:0005201 extracellular matrix structural constituent (HDA, PMID:28344315) |
+| [REV-16-E3](REV-16.examples.yaml): A true Pld4 exonuclease row removed because its paper did not show the activity (from [REV-16](REV-16.md)) | Non-conformant | Pld4 enables GO:0045145 single-stranded DNA 5'-3' DNA exonuclease activity (IMP, PMID:22102906) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

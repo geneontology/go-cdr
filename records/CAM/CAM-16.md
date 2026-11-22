@@ -58,6 +58,12 @@ activities) and `orphan_activity` lint findings are prompts to check this.
 | Provenance | [GOC+] [GOC] for modules and reuse; [GOC+] for the linking convention, which is a 2021 draft; [GOC+] for the no-edges rule, which follows the 2026 evidence-unwinding binning of standard versus GO-CAM models. |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-16-E1](CAM-16.examples.yaml): Four calmodulin-JAK-STAT models that never connect to the interferon pathway they modulate | Non-conformant | gomodel:62b4ffe300004489 |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

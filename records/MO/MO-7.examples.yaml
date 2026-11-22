@@ -1,0 +1,45 @@
+record: MO-7
+examples:
+- id: MO-7-E1
+  title: A malaria invasion ligand located in the host cell plasma membrane
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8IFM5
+      symbol: RH5
+    taxon: NCBITaxon:36329
+    term:
+      term_id: GO:0020002
+      label: host cell plasma membrane
+    qualifier: located_in
+    evidence_code: EXP
+    reference: PMID:25583518
+  explanation: |
+    RH5 is a Plasmodium protein that inserts into the erythrocyte membrane, so its location there takes the
+    host term GO:0020002 host cell plasma membrane rather than plain plasma membrane. The review accepted the row because
+    "the host-side location term is used correctly here", and kept the parasite-side secreted pool separately as
+    GO:0005576.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PLAF7/RH5/RH5-ai-review.yaml#L552
+- id: MO-7-E2
+  title: A fungal effector placed in the host apoplast
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q00363
+      symbol: AVR4
+    taxon: NCBITaxon:5499
+    term:
+      term_id: GO:0140593
+      label: host apoplast
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:12736265
+  explanation: |
+    AVR4 acts in the tomato leaf apoplast. The review added GO:0140593 host apoplast as a NEW row, "a more
+    specific, symbiont-side location than extracellular region", supported by detection of AVR4 in apoplastic fluid; this is
+    the host-compartment term the record asks for.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/FULFL/AVR4/AVR4-ai-review.yaml#L355

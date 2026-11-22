@@ -69,6 +69,14 @@ persuaded by a paper whatever its method.
 | Related | [LIT-8](../LIT/LIT-8.md) |
 | Evidence codes | IDA, IMP, IGI |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-4-E1](EV-4.examples.yaml): An IMP polymerase row resting on catalytic-residue mutants | Conformant | P2 enables GO:0003968 RNA-directed RNA polymerase activity (IMP, PMID:18614640) |
+| [EV-4-E2](EV-4.examples.yaml): A kinase inhibitor activity row from a genetic requirement for ERK2 adaptation | Non-conformant | pkaC enables GO:0004860 protein kinase inhibitor activity (IMP, PMID:8670837) |
+| [EV-2-E1](EV-2.examples.yaml): An IDA process row from deletion and complementation (from [EV-2](EV-2.md)) | Non-conformant | PA5455 involved_in GO:0009243 O antigen biosynthetic process (IDA, PMID:23341552) |
+
 ## Sources
 
 - issue: [go-annotation#1407](https://github.com/geneontology/go-annotation/issues/1407)

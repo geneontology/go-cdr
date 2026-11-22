@@ -56,6 +56,14 @@ A comma group is one class: "calcium ion sequestering activity, `occurs_in` sarc
 | Evidence codes | IMP |
 | GO terms | `GO:0140314` calcium ion sequestering activity; `GO:0016529` sarcoplasmic reticulum |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-2-E1](AE-2.examples.yaml): One has_input group per target gene on a transcription factor activity | Conformant | LMX1B enables GO:0000981 DNA-binding transcription factor activity, RNA polymerase II-specific (ISS, GO_REF:0000024) |
+| [AE-2-E2](AE-2.examples.yaml): Two regulated genes placed in one comma group on a gene-expression row | Non-conformant | AGR2 involved_in GO:0010628 positive regulation of gene expression (IMP, PMID:22184114) |
+| [AE-3-E1](AE-3.examples.yaml): Target genes named on the regulation-of-transcription BP row as well as on the MF row (from [AE-3](AE-3.md)) | Conformant | LMX1B involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (ISS, GO_REF:0000024) |
+
 ## Sources
 
 - wiki: [Has input](https://wiki.geneontology.org/index.php/Has_input)

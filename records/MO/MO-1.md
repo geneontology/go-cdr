@@ -82,6 +82,13 @@ symbiont term.
 | Date | 2026-11-15 |
 | GO terms | `GO:0052041` symbiont-mediated suppression of host programmed cell death; `GO:0046718` symbiont entry into host cell; `GO:0051607` defense response to virus; `GO:0045071` negative regulation of viral genome replication; `GO:0035738` venom-mediated perturbation of biological process; `GO:0044793` host-mediated suppression of viral proces; `GO:0140740` ADP-riboxanase-[protein] activity; `GO:0030430` host cell cytoplasm; `GO:0004197` cysteine-type endopeptidase activity; `GO:0070269` pyroptotic inflammatory response |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MO-1-E1](MO-1.examples.yaml): A fungal effector given the symbiont-side immune-suppression term | Conformant | PIT2 GO:0140403 effector-mediated suppression of host innate immune response (IMP, PMID:23459172) |
+| [MO-1-E2](MO-1.examples.yaml): A bacterial host factor annotated to the phage's own transcription process | Non-conformant | PSPPH_4093 acts_upstream_of_or_within_positive_effect GO:0039696 RNA-templated viral transcription (IDA, PMID:18836083) |
+
 ## Sources
 
 - drive: [Interspecies interaction - level of granularity](https://drive.google.com/open?id=1035MddHFPgk1n2v1TnOTAqFS6FTymDqk2dw76lsZ48E)

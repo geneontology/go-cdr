@@ -77,6 +77,13 @@ relation (see [qualifiers-and-negation.md](../QN/README.md)).
 | Date | 2026-11-15 |
 | GO terms | `GO:0044877` protein-containing complex binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-2-E1](CC-2.examples.yaml): A colocalizes_with row on the P-TEFb complex resting on an interaction | Non-conformant | RB1 colocalizes_with GO:0008024 cyclin/CDK positive transcription elongation factor complex (IDA, PMID:12037672) |
+| [CC-2-E2](CC-2.examples.yaml): A colocalizes_with lysosome row from marginal marker overlap | Non-conformant | MYO5A colocalizes_with GO:0005764 lysosome (IDA, PMID:24006491) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

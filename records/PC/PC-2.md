@@ -74,6 +74,14 @@ mitochondrial and plastid versions
 | Date | 2026-11-15 |
 | GO terms | `GO:0032991` protein-containing complex; `GO:0019773` proteasome core complex, alpha-subunit complex; `GO:0045273` respiratory chain complex II (succinate dehydrogenase) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-2-E1](PC-2.examples.yaml): Caspase-9 annotated to an unnamed complex when the apoptosome is known | Non-conformant | Casp9 part_of GO:0032991 protein-containing complex (IEA, GO_REF:0000107) |
+| [PC-2-E2](PC-2.examples.yaml): An ARBA root-complex row on naked mole-rat CD44 resolved to the receptor complex | Non-conformant | Cd44 part_of GO:0032991 protein-containing complex (IEA, GO_REF:0000117) |
+| [PC-1-E2](PC-1.examples.yaml): Chaperonin recovered with bait proteins annotated to a generic complex (from [PC-1](PC-1.md)) | Non-conformant | HSPD1 part_of GO:0032991 protein-containing complex (IDA, PMID:21328542) |
+
 ## Sources
 
 - wiki: [Protein complexes](https://wiki.geneontology.org/index.php/Protein_complexes)

@@ -1,0 +1,72 @@
+record: RS-5
+examples:
+- id: RS-5-E1
+  title: A sign-inverted motor neuron apoptosis row on MKK4 corrected from the knockout
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0ABK0L269
+      symbol: Map2k4
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:2000672
+      label: negative regulation of motor neuron apoptotic process
+    qualifier: acts_upstream_of_or_within
+    evidence_code: ISO
+    reference: GO_REF:0000121
+  explanation: |
+    The donor study shows MKK4-deficient mice have doubled facial motoneuron numbers and their
+    motoneurons resist axotomy-induced death. The review derives the sign from the gene's effect, not
+    the mutant's: MKK4 promotes motoneuron apoptosis. It `MODIFY`s to the positive-regulation term.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Map2k4/Map2k4-ai-review.yaml#L696
+- id: RS-5-E2
+  title: Sign-neutral dauer regulation on daf-7 refined to negative regulation
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P92172
+      symbol: daf-7
+    taxon: NCBITaxon:6239
+    term:
+      term_id: GO:0061065
+      label: regulation of dauer larval development
+    qualifier: involved_in
+    evidence_code: IGI
+    reference: PMID:1732156
+  explanation: |
+    daf-7 loss of function is dauer-constitutive, so the normal gene product suppresses dauer
+    formation. The review uses the signed term because the direction is known, replacing the
+    sign-neutral parent with `negative regulation of dauer larval development`, which the gene
+    already carries.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/worm/daf-7/daf-7-ai-review.yaml#L921
+- id: RS-5-E3
+  title: An InterPro-derived positive regulation of transcription on SVP flipped to negative
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9FVC1
+      symbol: SVP
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The row is InterPro2GO. The review's reason is that "domain-based InterPro evidence does not
+    justify positive regulatory direction for SVP", and it `MODIFY`s the row to the negative sign on
+    the strength of other Arabidopsis evidence. A MADS-box signature cannot give a direction either
+    way. RS-5 says a wrong-signed row with no sound source is `REMOVE`, and REV-3 makes a `MODIFY`
+    depend on this row's own evidence.
+  fix: |
+    `REMOVE`, with a `source_defects` entry to `INTERPRO` for a signed regulation term on a mapping.
+    The repressor role is carried by the experimental rows.
+  see_also: [REV-3, REV-17]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/SVP/SVP-ai-review.yaml#L746

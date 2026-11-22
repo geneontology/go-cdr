@@ -1,0 +1,47 @@
+record: RS-3
+examples:
+- id: RS-3-E1
+  title: Positive regulation of triglyceride synthesis on GPAT1 moved to the process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q61586
+      symbol: Gpam
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0010867
+      label: positive regulation of triglyceride biosynthetic process
+    qualifier: involved_in
+    evidence_code: ISO
+    reference: GO_REF:0000096
+  explanation: |
+    The row transfers "overexpression raises TAG synthesis" from rat. The review reads it as the
+    record's first case: GPAT1 catalyses the rate-limiting first step, so "increased flux on
+    overexpression reflects more catalyst". It `MODIFY`s laterally to `triglyceride biosynthetic
+    process`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Gpam/Gpam-ai-review.yaml#L801
+- id: RS-3-E2
+  title: Positive regulation of fatty acid beta-oxidation on CPT1A marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P32198
+      symbol: Cpt1a
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0032000
+      label: positive regulation of fatty acid beta-oxidation
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:19302064
+  explanation: |
+    CPT1A overexpression sustains hepatocyte beta-oxidation, which the IMP row read as regulation. The
+    review says CPT1A is "the regulated, rate-limiting enzyme ... not a regulator of the pathway": more
+    enzyme gives more flux because the enzyme performs a step. Participation is already annotated.
+    Unlike Gpam above, the review marks the row instead of modifying it; the record settles the term,
+    not which of the two actions to use.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Cpt1a/Cpt1a-ai-review.yaml#L1246

@@ -1,0 +1,39 @@
+record: CAM-5
+examples:
+- id: CAM-5-E1
+  title: A neuropeptide ligand whose input is its receptor
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:68d5ebd600000736
+    description: |
+      Activity gomodel:68d5ebd600000736/68d5ebd600000755: UniProtKB:Q9UHF0 (TAC3, neurokinin B) enables
+      GO:0048018 receptor ligand activity in the extracellular region, `has input` NK3R, directly positively
+      regulating TACR3 GO:0016498 neuromedin K receptor activity.
+  explanation: |
+    The ligand acts on its receptor, so the receptor is the ligand's input and the edge points from ligand
+    to receptor. The review called this "the GO-CAM ligand convention" with the direction correct, and found
+    it consistent with the TAC3 gene review.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/68d5ebd600000736/68d5ebd600000736-review.yaml#L52
+- id: CAM-5-E2
+  title: Lipopeptide and bacteriocin ligands attached as inputs of the TLR2-TLR6 receptor activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:5fce9b7300000030
+    description: |
+      Activity gomodel:5fce9b7300000030/663d668500002718 in "Diacyl lipopeptide and bacteriocin activation of
+      TLR6_TLR2 receptor (Human)": GO:0035355 Toll-like receptor 2-Toll-like receptor 6 protein complex
+      enables GO:0001875 lipopolysaccharide immune receptor activity, `has input` diacyl lipopeptide, a
+      bacteriocin and MYD88.
+  explanation: |
+    Putting the ligand on the receptor's input reverses the causal flow. The review flagged HAS_INPUT_MISUSE:
+    the two ligands "belong upstream of the receptor activity, while has_input MYD88 is the expected
+    effector". (It separately judged the MF wrong, since the ligand is a lipopeptide, not LPS.)
+  fix: |
+    Keep MYD88 as the only `has input`; link the diacyl lipopeptide to the receptor activity with
+    `is small molecule activator of`, and type the activity GO:0038187 pattern recognition receptor
+    activity as the review suggests.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/5fce9b7300000030/5fce9b7300000030-review.yaml#L12

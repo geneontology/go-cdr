@@ -1,0 +1,71 @@
+record: REV-10
+examples:
+- id: REV-10-E1
+  title: Protein ubiquitination removed from ACD6, the ubiquitinated substrate
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8LPS2
+      symbol: ACD6
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0016567
+      label: protein ubiquitination
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:24923602
+  explanation: |
+    The IDA shows ACD6 being ubiquitinated and degraded through ERAD. The review removes the process
+    row because "a substrate does none of the work of protein ubiquitination": ACD6 has no E2, E3 or
+    adaptor activity. It notes that the modification is recorded in UniProt. That is the record's test:
+    name the entity that does the step.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/ACD6/ACD6-ai-review.yaml#L301
+- id: REV-10-E2
+  title: Establishment of protein localization marked over-annotated on the cargo GluA2
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P19491
+      symbol: Gria2
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0045184
+      label: establishment of protein localization
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:11348590
+  explanation: |
+    The IMP shows that GluA2's C-tail interactions decide where the receptor goes. The review marks the
+    row over-annotated because "the receptor is the cargo whose localization is established, while
+    NSF and PDZ proteins move and anchor it". The record lists "annotating a cargo or target to a
+    process" as a recurring error class.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Gria2/Gria2-ai-review.yaml#L3198
+- id: REV-10-E3
+  title: 'Fibrinolysis on the fibrinogen chains: the record''s exception, applied chain by chain'
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02679
+      symbol: FGG
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0042730
+      label: fibrinolysis
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:16846481
+  explanation: |
+    The record lists fibrin as the cofactor exception, where the substrate does work. The reviews split
+    it by chain: FGA's fibrinolysis rows are accepted on αC-oligomer evidence for tPA-mediated
+    plasminogen activation, while this FGG row (and FGB's) is `UNDECIDED`, because no gamma-specific
+    cofactor assay is known and "being cleaved is insufficient". The PR discussion treats the gamma
+    contribution as an open claim. The record does not say whether the exception attaches to the
+    fibrin polymer or only to the chain shown to do the work.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/5614
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FGG/FGG-ai-review.yaml#L1553

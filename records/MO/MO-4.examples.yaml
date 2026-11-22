@@ -1,0 +1,74 @@
+record: MO-4
+examples:
+- id: MO-4-E1
+  title: A LysM effector that sequesters the chitin elicitor, on effector-mediated suppression of PTI
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:B3VBK9
+      symbol: ECP6
+    taxon: NCBITaxon:5499
+    term:
+      term_id: GO:0140423
+      label: effector-mediated suppression of host pattern-triggered immunity signaling
+    qualifier: involved_in
+    evidence_code: EXP
+    reference: PMID:23840930
+  explanation: |
+    The record allows an effector-mediated term when the effector acts on the host function. The review
+    accepted GO:0140423 because Ecp6 "performs the work of suppression directly (binding the elicitor ...)" with
+    experiments on the effector itself, and is specific to PTI, which is the kind of evidence the record lists.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/FULFL/ECP6/ECP6-ai-review.yaml#L96
+- id: MO-4-E2
+  title: AVR4 on effector-mediated activation of plant hypersensitive response
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q00363
+      symbol: AVR4
+    taxon: NCBITaxon:5499
+    term:
+      term_id: GO:0080185
+      label: effector-mediated activation of plant hypersensitive response by symbiont
+    qualifier: involved_in
+    evidence_code: EXP
+    reference: PMID:10998185
+  explanation: |
+    The record uses AVR4 as its own case: its evolved function is protecting hyphae from plant chitinases, and
+    its recognition by Cf-4 is a host process, so GO:0080185 (which also inherits a suppression parent) does not apply. The
+    review reached the same diagnosis ("a consequence of host recognition by Cf-4 that is ... separable from AVR4's intrinsic
+    function (chitin shielding)") but kept the rows as non-core.
+  fix: |
+    No GO:0080185 row on AVR4; its function is carried by GO:0008061 chitin binding, which the review accepts, and the
+    host recognition belongs to Cf-4.
+  see_also:
+  - MO-5
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/FULFL/AVR4/AVR4-ai-review.yaml#L165
+- id: MO-4-E3
+  title: AVR9 accepted on effector-mediated activation of plant hypersensitive response
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P22287
+      symbol: AVR9
+    taxon: NCBITaxon:5499
+    term:
+      term_id: GO:0080185
+      label: effector-mediated activation of plant hypersensitive response by symbiont
+    qualifier: involved_in
+    evidence_code: EXP
+    reference: PMID:10998185
+  explanation: |
+    The review accepted the row because the GO:0080185 definition covers recognition of an effector by a plant
+    resistance protein, and "in GO the effector that is recognised is treated as a participant". The record takes the
+    opposite view: recognition is a host process, and GO:0080185 is for effectors whose evolved role is to trigger the
+    response. A 2020 ontology request asked for "avirulence protein" as a synonym of GO:0080185, because that is how such
+    effectors are named in publications; that is the reading the review applies. The review itself flags the inherited suppression parent as a misfit.
+  discussion: https://github.com/geneontology/go-ontology/issues/18669
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/FULFL/AVR9/AVR9-ai-review.yaml#L96

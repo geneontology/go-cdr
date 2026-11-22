@@ -64,6 +64,13 @@ cerebral cortex development is flagged as debated because avian pallium homology
 | Date | 2026-11-15 |
 | GO terms | `GO:0005118` sevenless binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-19-E1](ONT-19.examples.yaml): A sevenless binding IEA on a vertebrate GPRC5 receptor removed for a mapping reason | Contested | Gprc5c enables GO:0005118 sevenless binding (IEA, GO_REF:0000002) |
+| [ONT-19-E2](ONT-19.examples.yaml): BOSS keeps sevenless binding under the narrowed curated rule | Conformant | boss enables GO:0005118 sevenless binding (IEA, GO_REF:0000002) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

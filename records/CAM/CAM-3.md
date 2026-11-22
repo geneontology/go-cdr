@@ -117,6 +117,13 @@ activity, `GO:0004742` dihydrolipoyllysine-residue acetyltransferase activity,
 | Related | [CAM-6](CAM-6.md) |
 | GO terms | `GO:0032991` protein-containing complex; `GO:0031464` Cul4A-RING E3 ubiquitin ligase complex; `GO:1990756` ubiquitin-like ligase-substrate adaptor activity; `GO:0045254` pyruvate dehydrogenase complex; `GO:0004739` pyruvate dehydrogenase (acetyl-transferring) activity; `GO:0004742` dihydrolipoyllysine-residue acetyltransferase activity; `GO:0004148` dihydrolipoyl dehydrogenase (NADH) activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CAM-3-E1](CAM-3.examples.yaml): FSH hormone activity enabled by the heterodimeric complex | Conformant | gomodel:69b3372b00003343 |
+| [CAM-3-E2](CAM-3.examples.yaml): FSH hormone activity enabled by the beta subunit alone | Non-conformant | gomodel:59dc728000000351 |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

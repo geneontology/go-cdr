@@ -1,0 +1,48 @@
+record: RS-13
+examples:
+- id: RS-13-E1
+  title: GTPase activator activity on the GEF ARHGEF16 replaced by GEF activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5VV41
+      symbol: ARHGEF16
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005096
+      label: GTPase activator activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:21139582
+    extension: RO:0002233(UniProtKB:P60953)
+  explanation: |
+    The paper calls ARHGEF16 a GEF and the protein has DH, PH and SH3 domains but no GAP domain. The
+    review calls the row "a term-choice error, not a doubt about the experiment" and `MODIFY`s to
+    `guanyl-nucleotide exchange factor activity` with CDC42 as `has_input`. That is the record's
+    standard case: a GEF is not a GTPase activator.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARHGEF16/ARHGEF16-ai-review.yaml#L102
+- id: RS-13-E2
+  title: GTPase activator activity on the cAMP receptor cAR3 marked over-annotated
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P35352
+      symbol: carC
+    taxon: NCBITaxon:44689
+    term:
+      term_id: GO:0005096
+      label: GTPase activator activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:21103944
+  explanation: |
+    The IDA shows Rap1 activation lost in cells lacking the receptors or Gα2. The review says the
+    receptor "does not have intrinsic GTPase activator (GAP) activity; the effect is indirect", and
+    that Rap1 activation is GTP loading, the opposite of GAP activity. It marks the MF row
+    over-annotated and points to the GPCR pathway term. The regulator is not given the activity of
+    the protein it ultimately regulates.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DICDI/carC/carC-ai-review.yaml#L240

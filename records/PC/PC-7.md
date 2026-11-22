@@ -126,6 +126,15 @@ row ACCEPTed with a reason arguing for `contributes_to`. Each should be revised 
 | Evidence codes | TAS |
 | GO terms | `GO:1990756` ubiquitin-like ligase-substrate adaptor activity; `GO:0030234` enzyme regulator activity; `GO:0019887` protein kinase regulator activity; `GO:0004679` AMP-activated protein kinase activity; `GO:0001671` ATPase activator activity; `GO:0060090` molecular adaptor activity; `GO:0030674` protein-macromolecule adaptor activity; `GO:0140756` structural constituent of proteasome; `GO:0003735` structural constituent of ribosome; `GO:0046933` proton-transporting ATP synthase activity, rotational mechanism; `GO:0008121` quinol-cytochrome-c reductase activity; `GO:0004298` threonine-type endopeptidase activity; `GO:0004129` cytochrome-c oxidase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PC-7-E1](PC-7.examples.yaml): A structural cytochrome-c oxidase subunit given the oxidase activity | Non-conformant | COX7B enables GO:0004129 cytochrome-c oxidase activity (TAS, PMID:8382530) |
+| [PC-7-E2](PC-7.examples.yaml): A regulatory phosphorylase kinase subunit given the holoenzyme's kinase activity | Non-conformant | PHKA2 enables GO:0004689 phosphorylase kinase activity (IEA, GO_REF:0000117) |
+| [PC-7-E3](PC-7.examples.yaml): A cofactor-free Complex I subunit with contributes_to in its core functions | Contested | The `core_functions` entry of the human NDUFA5 review: `molecular_function` `GO:0005198` structural molecule activity and `contributes_to_molecular_function` `GO:0008137` NADH dehydrogenase (ubiquinone) activity, for a non-catalytic accessory subunit that carries no redox cofactor. |
+| [PC-4-E2](PC-4.examples.yaml): Complex I activity on an accessory subunit from a cDNA sequencing paper (from [PC-4](PC-4.md)) | Non-conformant | NDUFA2 enables GO:0008137 NADH dehydrogenase (ubiquinone) activity (NAS, PMID:9878551) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

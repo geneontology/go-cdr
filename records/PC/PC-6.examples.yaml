@@ -1,0 +1,49 @@
+record: PC-6
+examples:
+- id: PC-6-E1
+  title: SDHB given enables on the whole-complex succinate:quinone reaction
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P21912
+      symbol: SDHB
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008177
+      label: succinate dehydrogenase (quinone) activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:26925370
+  explanation: |
+    `GO:0008177` succinate dehydrogenase (quinone) activity is the overall reaction of complex II, which
+    no single subunit carries out. The review kept the term but changed the relation: SDHB relays
+    electrons through its iron-sulfur clusters as part of that reaction, so the row should be
+    `contributes_to`, recorded as a paired NEW row pending the upstream GOA change (go-annotation#6414).
+    That is the record's compound-activity case.
+  fix: |
+    Keep `GO:0008177` succinate dehydrogenase (quinone) activity with the `contributes_to` qualifier.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SDHB/SDHB-ai-review.yaml#L889
+- id: PC-6-E2
+  title: The catalytic A subunit of V-ATPase contributes to the rotary activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q5AJB1
+      symbol: TFP1
+    taxon: NCBITaxon:237561
+    term:
+      term_id: GO:0046961
+      label: proton-transporting ATPase activity, rotational mechanism
+    qualifier: contributes_to
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The IBA row from PANTHER node PTN000389800 gives Candida Tfp1 `contributes_to` proton-transporting
+    ATPase activity, rotational mechanism. The review accepted it because Tfp1 is the V1 A subunit that
+    hydrolyses ATP in the complex. The record lists the rotary ATPases as coupled machines whose
+    catalytic, rotor, stator and channel subunits each take `contributes_to`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CANAL/TFP1/TFP1-ai-review.yaml#L354

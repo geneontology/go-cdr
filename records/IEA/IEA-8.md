@@ -94,6 +94,15 @@ cytoplasmic pattern recognition receptor signaling pathway via inhibition of TRA
 | Date | 2026-11-15 |
 | GO terms | `GO:0005794` Golgi apparatus; `GO:0051536` iron-sulfur cluster binding; `GO:0005506` iron ion binding; `GO:0006915` apoptotic process; `GO:0039527`  (obsolete); `GO:0140476` symbiont-mediated suppression of host cytoplasmic pattern recognition receptor signaling pathway via inhibition of TRAF activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-8-E1](IEA-8.examples.yaml): Flowering keyword annotates a flowering-time regulator to flower development | Non-conformant | ELF4 involved_in GO:0009908 flower development (IEA, GO_REF:0000043) |
+| [IEA-8-E2](IEA-8.examples.yaml): Metal ion binding from the keyword for a protein that binds iron-sulfur clusters | Non-conformant | psaC GO:0046872 metal ion binding (IEA, GO_REF:0000043) |
+| [IEA-8-E3](IEA-8.examples.yaml): Apoptosis keyword on an autophagy protease that caspase-3 cleaves | Non-conformant | ATG4D involved_in GO:0006915 apoptotic process (IEA, GO_REF:0000043) |
+| [IEA-6-E1](IEA-6.examples.yaml): A retired-keyword row reviewed for the record and recognised as historical (from [IEA-6](IEA-6.md)) | Conformant | GI GO:0009908 flower development (IEA, GO_REF:0000043) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

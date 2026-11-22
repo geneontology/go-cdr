@@ -73,6 +73,13 @@ spatial model; edges into them cross organisms
 | Date | 2026-11-15 |
 | GO terms | `GO:0018995` host cellular component; `GO:0030430` host cell cytoplasm; `GO:0042025` host cell nucleus; `GO:0020002` host cell plasma membrane; `GO:0033644` host cell membrane; `GO:0044423` virion component; `GO:0019028` viral capsid; `GO:0055036` virion membrane; `GO:0019031` viral envelope |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MO-7-E1](MO-7.examples.yaml): A malaria invasion ligand located in the host cell plasma membrane | Conformant | RH5 located_in GO:0020002 host cell plasma membrane (EXP, PMID:25583518) |
+| [MO-7-E2](MO-7.examples.yaml): A fungal effector placed in the host apoplast | Conformant | AVR4 located_in GO:0140593 host apoplast (IDA, PMID:12736265) |
+
 ## Sources
 
 - drive: [host_symbiont_annotation](https://drive.google.com/open?id=1NiJfYB4JmClhbsr4G3Xwwr-6Bw4GWXGJ)

@@ -53,6 +53,19 @@ A review judges claims. "SDHB enables GO:0008177" is false and "SDHB contributes
 | Date | 2026-11-15 |
 | GO terms | `GO:0008177` succinate dehydrogenase (quinone) activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-7-E1](QN-7.examples.yaml): A relation-only MODIFY on SDHD, paired with a contributes_to NEW row | Conformant | SDHD enables GO:0008177 succinate dehydrogenase (quinone) activity (IEA, GO_REF:0000107) |
+| [QN-7-E2](QN-7.examples.yaml): A yeast SDH2 enables row accepted with the relation correction left in the summary | Non-conformant | SDH2 enables GO:0008177 succinate dehydrogenase (quinone) activity (IDA, PMID:13445213) |
+| [QN-7-E3](QN-7.examples.yaml): A wrong is_active_in relation handled by marking the term over-annotated | Non-conformant | rho-1 is_active_in GO:0005829 cytosol (IBA, GO_REF:0000033) |
+| [QN-1-E1](QN-1.examples.yaml): An is_active_in relation kept on a protein-complex term (from [QN-1](QN-1.md)) | Non-conformant | EXT1 is_active_in GO:1902494 catalytic complex (IDA, PMID:36593275) |
+| [QN-2-E1](QN-2.examples.yaml): SDHB contributes to the whole-complex succinate:quinone activity (from [QN-2](QN-2.md)) | Conformant | SDHB contributes_to GO:0008177 succinate dehydrogenase (quinone) activity (IDA, PMID:37098072) |
+| [QN-2-E3](QN-2.examples.yaml): An enables row for a single SDH subunit accepted while its own text calls for contributes_to (from [QN-2](QN-2.md)) | Non-conformant | sdh2 enables GO:0008177 succinate dehydrogenase (quinone) activity (IEA, GO_REF:0000120) |
+| [QN-4-E2](QN-4.examples.yaml): An ortholog-transferred is_active_in kept although the review says it overstates the evidence (from [QN-4](QN-4.md)) | Non-conformant | vms1 is_active_in GO:0005789 endoplasmic reticulum membrane (ISO, GO_REF:0000024) |
+| [QN-5-E1](QN-5.examples.yaml): A colocalizes_with cytosol row accepted as the core location of a cytosolic enzyme (from [QN-5](QN-5.md)) | Non-conformant | HPR2 colocalizes_with GO:0005829 cytosol (IDA, PMID:30233632) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

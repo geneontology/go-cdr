@@ -79,6 +79,15 @@ DNA-dependent ATPase, which the label does not reveal
 | Date | 2026-11-15 |
 | GO terms | `GO:0140309` unfolded protein holdase activity; `GO:0140597` protein carrier activity; `GO:0102545` B-type glycerophospholipase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-1-E1](ONT-1.examples.yaml): A migrated holdase row on a zebrafish alpha-crystallin judged against the term's definition | Conformant | cryabb enables GO:0140309 unfolded protein holdase activity (IDA, PMID:16420472) |
+| [ONT-1-E2](ONT-1.examples.yaml): SecB's unfolded protein binding moved to the carrier-holdase term | Conformant | SecB enables GO:0051082 unfolded protein binding (IBA, GO_REF:0000033) |
+| [ONT-1-E3](ONT-1.examples.yaml): A small heat shock protein's unfolded protein binding moved to the carrier-holdase term | Contested | Hsp22 enables GO:0051082 unfolded protein binding (IDA, PMID:16572729) |
+| [ONT-13-E1](ONT-13.examples.yaml): A zebrafish alpha-crystallin holdase row moved to an NTR placeholder (from [ONT-13](ONT-13.md)) | Conformant | cryaba enables GO:0140309 unfolded protein holdase activity (IDA, PMID:15692462) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

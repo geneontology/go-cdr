@@ -106,6 +106,15 @@ Term-specific constraints, checked against the current ontology:
 | Evidence codes | IMP |
 | GO terms | `GO:0007610` behavior; `GO:0048856` anatomical structure development; `GO:0008219` cell death; `GO:0040007` growth; `GO:0007568`  (obsolete); `GO:0000003`  (obsolete); `GO:0008283` cell population proliferation; `GO:0050673` epithelial cell proliferation; `GO:0008284` positive regulation of cell population proliferation; `GO:0007626` locomotory behavior; `GO:0048512` circadian behavior |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [BP-7-E1](BP-7.examples.yaml): The polycystin sensory channel LOV-1 kept in mating behavior | Conformant | lov-1 involved_in GO:0007617 mating behavior (IMP, PMID:10517638) |
+| [BP-7-E2](BP-7.examples.yaml): An InterPro mapping to egg-laying behavior for a presenilin | Non-conformant | sel-12 involved_in GO:0018991 egg-laying behavior (IEA, GO_REF:0000002) |
+| [BP-7-E3](BP-7.examples.yaml): HGF kept on the bare positive regulation of cell population proliferation | Contested | Hgf involved_in GO:0008284 positive regulation of cell population proliferation (TAS, PMID:12181355) |
+| [BP-14-E2](BP-14.examples.yaml): Tuba1a locomotory behavior kept as a distal, non-core process (from [BP-14](BP-14.md)) | Conformant | Tuba1a involved_in GO:0007626 locomotory behavior (IMP, PMID:22101068) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

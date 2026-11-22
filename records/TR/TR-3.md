@@ -83,6 +83,13 @@ dbTF annotation ([go-annotation#3235](https://github.com/geneontology/go-annotat
 | Evidence codes | ISM |
 | GO terms | `GO:0000785` chromatin |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [TR-3-E1](TR-3.examples.yaml): Sequence-specific DNA binding from gel retardation and footprinting of purified SopB | Conformant | sopB GO:0043565 sequence-specific DNA binding (IDA, PMID:2670941) |
+| [TR-3-E2](TR-3.examples.yaml): A dbTF row from ChIP occupancy and a requirement for induced transcription | Non-conformant | AHDC1 enables GO:0003700 DNA-binding transcription factor activity (IDA, PMID:35585237) |
+
 ## Sources
 
 - wiki: [Annotation consistency: ChIP experiments](https://wiki.geneontology.org/index.php/Annotation_consistency_%3A_ChIP_experiments)

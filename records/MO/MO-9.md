@@ -116,6 +116,13 @@ exporting it) did.
 | Date | 2026-11-15 |
 | GO terms | `GO:0038187` pattern recognition receptor activity; `GO:0002221` pattern recognition receptor signaling pathway; `GO:0045087` innate immune response; `GO:0140374` antiviral innate immune response; `GO:0042742` defense response to bacterium; `GO:0050829` defense response to Gram-negative bacterium; `GO:0050830` defense response to Gram-positive bacterium; `GO:0050832` defense response to fungus; `GO:0051607` defense response to virus; `GO:0061844` antimicrobial humoral immune response mediated by antimicrobial peptide; `GO:0045071` negative regulation of viral genome replication; `GO:0009617` response to bacterium; `GO:0009615` response to virus; `GO:0140546` defense response to symbiont |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MO-9-E1](MO-9.examples.yaml): The camalexin enzyme on defense response to fungus | Conformant | CYP71B15 acts_upstream_of_or_within GO:0050832 defense response to fungus (IMP, PMID:26813622) |
+| [MO-9-E2](MO-9.examples.yaml): A susceptibility factor annotated to defense response to fungus | Non-conformant | MLO2 acts_upstream_of_or_within GO:0050832 defense response to fungus (IMP, PMID:16732289) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

@@ -1,0 +1,60 @@
+record: CAM-8
+examples:
+- id: CAM-8-E1
+  title: A MAPKK directly activating its cognate p38 MAPK
+  verdict: CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:568b0f9600000284
+    description: |
+      Activity gomodel:568b0f9600000284/57ec3a7e00000119: WB:WBGene00004758 (SEK-1) GO:0004708 MAP kinase
+      kinase activity `directly positively regulates` PMK-1 GO:0004707 MAP kinase activity, part_of
+      GO:0140367 antibacterial innate immune response.
+  explanation: |
+    All four conditions hold: no activity intervenes, SEK-1 acts on PMK-1 itself, the enablers differ, and
+    the mechanism is known. The review called it "the paradigm case for a direct edge", citing the sek-1
+    review's evidence that SEK-1 phosphorylates PMK-1 (PMID:11751572).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/568b0f9600000284/568b0f9600000284-review.yaml#L219
+- id: CAM-8-E2
+  title: Protein kinase D drawn as directly activating p38 with the mechanism unknown
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:568b0f9600000284
+    description: |
+      Activity gomodel:568b0f9600000284/5745387b00000588: WB:WBGene00012019 (DKF-2) GO:0004674 protein
+      serine/threonine kinase activity `directly positively regulates` (RO:0002629) PMK-1 MAP kinase
+      activity.
+  explanation: |
+    A direct edge needs a known mechanism in which the upstream activity acts on the downstream enabler.
+    The review found that DKF-2 raises phosphorylated PMK-1 but "a PKD does not phosphorylate the p38 TGY
+    activation loop" and the paper does not identify the intermediate. The model comment shows the edge was
+    RO:0002213 until an automated 2023-03-16 swap to the direct relation.
+  fix: |
+    `indirectly positively regulates` (RO:0002407), as the review recommends.
+  see_also: [CAM-7]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/568b0f9600000284/568b0f9600000284-review.yaml#L128
+- id: CAM-8-E3
+  title: A cholesterol-esterifying enzyme drawn as directly inhibiting a viral fusion protein
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:6796b94c00004996
+    description: |
+      Activity gomodel:6796b94c00004996/6796b94c00005069 in "Sars-CoV2 entry into host cell (HUman-SARS-CoV-2)":
+      UniProtKB:P24752 enables GO:0034736 cholesterol O-acyltransferase activity in GO:0005783 endoplasmic
+      reticulum, `directly negatively regulates` (RO:0002630) the S2 GO:0140522 fusogenic activity.
+  explanation: |
+    The enzyme acts by changing a small molecule, not by touching the viral protein: the review notes that
+    "the enzyme never touches the viral fusion protein", and that the step the model omits is the depletion
+    of accessible plasma-membrane cholesterol. The record says such effects go through the molecule, not a
+    direct edge. The review also found the edge has an empty evidence list, and filed a WRONG_GENE_PRODUCT
+    defect: the enzyme meant is SOAT1 (UniProtKB:P35610), not P24752.
+  fix: |
+    Re-point the enabler to SOAT1 as the review requests, and replace the direct edge with an
+    `indirectly negatively regulates` relation (or route it through the cholesterol pool), with evidence.
+  see_also: [CAM-15, CAM-19]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/6796b94c00004996/6796b94c00004996-review.yaml#L23

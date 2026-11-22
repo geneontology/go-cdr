@@ -1,0 +1,52 @@
+record: PH-6
+examples:
+- id: PH-6-E1
+  title: A ceramide kinase activity inherited by AGK from a node that lumps lipid kinases
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q53H12
+      symbol: AGK
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0001729
+      label: ceramide kinase activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review removed the IBA because human AGK expressed in mammalian cells phosphorylated MAG and DAG
+    but gave no significant ceramide product, and a second assay was also negative. It stated that the
+    disagreement is "with inheritance of this substrate activity on the human branch, not with donor
+    count". That is the record's case: a substrate-specific term that should descend only within the
+    subclade that shares the specificity, which AGK does not.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AGK/AGK-ai-review.yaml#L22
+- id: PH-6-E2
+  title: NQO2 keeps the inherited NAD(P)H quinone reductase activity as non-core
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P16083
+      symbol: NQO2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003955
+      label: NAD(P)H dehydrogenase (quinone) activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record uses NQO2 as its worked example of a specificity leak: NQO2 uses dihydronicotinamide
+    riboside, not NAD(P)H, so the review action should be a lateral MODIFY to `GO:0001512`. The review,
+    re-examined in the 2026-09 IBA re-review, instead keeps `GO:0003955` as non-core: it reads PMID:35517822
+    as showing measurable, if "extremely inefficient", NADH/NADPH turnover, and argues that the reaction
+    term "specifies chemistry without an efficiency threshold". Whether noise-level activity on the
+    ancestral co-substrate should keep the ancestral term is the point at issue, and the record and the
+    review answer it differently.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/3214
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NQO2/NQO2-ai-review.yaml#L22
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/projects/IBA_REVIEW/rereview-2026-09-20/biochemical-specificity.yaml#L10

@@ -70,6 +70,13 @@ requires the motif. The first fails for pseudokinases; the second does not
 | Evidence codes | IEA |
 | GO terms | `GO:0005524` ATP binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-1-E1](IEA-1.examples.yaml): A combined-pipeline enzyme row judged by the reactions in its WITH/FROM | Conformant | Has2 enables GO:0050501 hyaluronan synthase activity (IEA, GO_REF:0000120) |
+| [IEA-1-E2](IEA-1.examples.yaml): Kinase ATP binding read from the site entry in WITH/FROM, not the domain entry | Conformant | MPK6 enables GO:0005524 ATP binding (IEA, GO_REF:0000002) |
+
 ## Sources
 
 - wiki: [IEA](https://wiki.geneontology.org/index.php/Inferred_from_Electronic_Annotation_%28IEA%29)

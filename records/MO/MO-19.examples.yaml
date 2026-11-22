@@ -1,0 +1,25 @@
+record: MO-19
+examples:
+- id: MO-19-E1
+  title: A Dicer-1 partner annotated to miRNA metabolic process
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:X2J5X6
+      symbol: loqs
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0010586
+      label: miRNA metabolic process
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:20037596
+  explanation: |
+    The record says not to use GO:0010586 miRNA metabolic process for biogenesis, and to annotate processing
+    proteins to the step they act on. The review modified the row because the authors place Loqs-PB "at processing of miRNA
+    precursors by Dcr-1, not at Ago1 loading".
+  fix: |
+    GO:0031054 pre-miRNA processing, already on the gene.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/loqs/loqs-ai-review.yaml#L196

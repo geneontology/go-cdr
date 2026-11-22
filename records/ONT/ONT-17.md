@@ -80,6 +80,13 @@ constraint.
 | Evidence codes | IBA, IEA |
 | GO terms | `GO:0007179` transforming growth factor beta receptor signaling pathway |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-17-E1](ONT-17.examples.yaml): An inflammatory response IBA on a mosquito Toll receptor removed for a Vertebrata constraint | Conformant | TOLL9 involved_in GO:0006954 inflammatory response (IBA, GO_REF:0000033) |
+| [ONT-17-E2](ONT-17.examples.yaml): A bacterial flagellar regulator's experimental row on a cilium motility term | Conformant | fleQ involved_in GO:2000155 positive regulation of cilium-dependent cell motility (IMP, PMID:12218010) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

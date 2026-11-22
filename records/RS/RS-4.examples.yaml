@@ -1,0 +1,73 @@
+record: RS-4
+examples:
+- id: RS-4-E1
+  title: Positive regulation of ERK1/2 cascade on MEK1 moved to the cascade
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q02750
+      symbol: MAP2K1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0070374
+      label: positive regulation of ERK1 and ERK2 cascade
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:24375836
+  explanation: |
+    The IMP uses a MEK1/2 inhibitor that reduces ERK1/2-AP1 signalling. The review reads this as MEK1
+    being part of the cascade, "a core cascade kinase, not a regulator", and `MODIFY`s laterally to
+    `ERK1 and ERK2 cascade`. This is the record's MAP2K1 worked example applied to a real row.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MAP2K1/MAP2K1-ai-review.yaml#L2989
+- id: RS-4-E2
+  title: Positive regulation of MAPK cascade on MKK6 refined to positive regulation of p38 cascade
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0ABK0M3C5
+      symbol: Map2k6
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0043410
+      label: positive regulation of MAPK cascade
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000117
+  explanation: |
+    The review's reason says MKK6 "is the MAP2K of the p38 cascade and drives p38 activation, a role
+    captured by GO:0038066 p38MAPK cascade, which the gene carries". It then refines the row to
+    `positive regulation of p38MAPK cascade`. The record says a component is not annotated to
+    positive regulation of its pathway because it activates the next member, and the refinement makes
+    that claim more specific instead of correcting it.
+  fix: |
+    `MODIFY` laterally to `GO:0038066` p38MAPK cascade, the term the review names, or
+    `MARK_AS_OVER_ANNOTATED` if the cascade term is already carried.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Map2k6/Map2k6-ai-review.yaml#L635
+- id: RS-4-E3
+  title: 'Positive regulation of JNK cascade on MKK7: reversed in review to the curator convention'
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q4KSH7
+      symbol: Map2k7
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0046330
+      label: positive regulation of JNK cascade
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:10051439
+  explanation: |
+    The first draft of the rat Map2k7 review `MODIFY`d its five `positive regulation of JNK cascade`
+    rows to JNK cascade, as RS-4 would. The PR reviewer noted that the rat Map3k5 review in the same
+    batch kept the same term, saying that "GO conventionally also gives MAP3Ks the positive-regulation
+    term". The author aligned Map2k7 with Map3k5: these
+    rows are now `KEEP_AS_NON_CORE`. Curators' practice and the record disagree here.
+  discussion: https://github.com/ai4curation/ai-gene-review/pull/5679
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Map2k7/Map2k7-ai-review.yaml#L1047

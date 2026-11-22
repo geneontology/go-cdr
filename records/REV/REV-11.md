@@ -53,6 +53,16 @@ experimental evidence. Record such an upgrade in the existing row's `reason` and
 | Date | 2026-11-15 |
 | Related | [REV-10](REV-10.md) |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-11-E1](REV-11.examples.yaml): CRISPR-cas system proposed for Cas10 with a participation test and comparators | Conformant | cas10 involved_in GO:0099048 CRISPR-cas system (IDA, PMID:27105119) |
+| [REV-11-E2](REV-11.examples.yaml): Nodulation proposed for the CASTOR channel, not from the mutant phenotype alone | Conformant | CASTOR GO:0009877 nodulation (IMP, PMID:31420535) |
+| [REV-11-E3](REV-11.examples.yaml): Melanin biosynthesis proposed for POMC with a boilerplate reason | Non-conformant | POMC GO:0042438 melanin biosynthetic process (NAS) |
+| [REV-13-E2](REV-13.examples.yaml): Bare protein binding proposed as a NEW core function for worm MKS-1 (from [REV-13](REV-13.md)) | Non-conformant | mks-1 GO:0005515 protein binding (NAS) |
+| [RS-8-E1](../RS/RS-8.examples.yaml): Kit signaling pathway proposed for KITLG, the gap the ligand survey found (from [RS-8](../RS/RS-8.md)) | Conformant | KITLG involved_in GO:0038109 Kit signaling pathway (IDA, PMID:17662946) |
+
 ## Sources
 
 - repo: [CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blob/main/CLAUDE.md)

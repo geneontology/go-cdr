@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
-AIGR_REPO = "https://github.com/monarch-initiative/ai-gene-review"
+AIGR_REPO = "https://github.com/ai4curation/ai-gene-review"
 
 
 def gene_curie(gene_id: str) -> str:
@@ -40,6 +40,20 @@ def extension_text(extensions: List[Dict[str, Any]]) -> str:
     return ",".join(f"{e['predicate']}({e['term']['id']})" for e in extensions)
 
 
+def relative_review_path(aigr_root: Path, review_path: str) -> str:
+    """The review path relative to the checkout, so that pinned links never hold local paths.
+
+    >>> relative_review_path(Path("/x/aigr"), "/x/aigr/genes/human/A/A-ai-review.yaml")
+    'genes/human/A/A-ai-review.yaml'
+    >>> relative_review_path(Path("/x/aigr"), "genes/human/A/A-ai-review.yaml")
+    'genes/human/A/A-ai-review.yaml'
+    """
+    path = Path(review_path)
+    if path.is_absolute():
+        path = path.resolve().relative_to(aigr_root.resolve())
+    return path.as_posix()
+
+
 def _annotation_lines(text: str) -> List[int]:
     """1-based line of each ``existing_annotations`` item, in order."""
     node = yaml.compose(text)
@@ -58,6 +72,7 @@ def draft_example(aigr_root: Path, review_path: str, index: int, commit: str) ->
     ``reason`` under ``aigr_review`` for whoever writes the verdict (drop that
     key before saving).
     """
+    review_path = relative_review_path(aigr_root, review_path)
     text = (aigr_root / review_path).read_text()
     doc = yaml.safe_load(text)
     row = doc["existing_annotations"][index]

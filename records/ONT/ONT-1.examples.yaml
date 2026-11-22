@@ -1,0 +1,101 @@
+record: ONT-1
+examples:
+- id: ONT-1-E1
+  title: A migrated holdase row on a zebrafish alpha-crystallin judged against the term's definition
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A8M9Q8E3
+      symbol: cryabb
+    taxon: NCBITaxon:7955
+    term:
+      term_id: GO:0140309
+      label: unfolded protein holdase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:16420472
+  explanation: 'The row had been migrated by label from obsolete `GO:0051082` to `GO:0140309` unfolded
+    protein holdase
+
+    activity. The review read the definition: the term "is defined as a carrier activity that escorts
+    the
+
+    unfolded protein to an acceptor molecule or location, which was not tested and is not what crystallins
+
+    do", whereas the assay measured suppression of aggregation. It kept the activity and replaced the
+    term
+
+    with the holdase NTR. This is the error the record exists to prevent, caught by reading the
+
+    definition rather than the new label.
+
+    '
+  see_also:
+  - ONT-13
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DANRE/cryabb/cryabb-ai-review.yaml#L498
+- id: ONT-1-E2
+  title: SecB's unfolded protein binding moved to the carrier-holdase term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0AG86
+      symbol: SecB
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0051082
+      label: unfolded protein binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: 'The review moved the obsolete `GO:0051082` row to `GO:0140309` after quoting its definition
+    ("a
+
+    protein carrier activity that binds to a protein in an unfolded state and escorts it between two
+
+    different cellular components") and the evidence that SecB passes precursors on to membrane-bound
+
+    SecA. The record says the term fits carrier-holdases such as SecB, Skp and the small TIMs; the review
+
+    reached that by the definition, not the label.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/SecB/SecB-ai-review.yaml#L143
+- id: ONT-1-E3
+  title: A small heat shock protein's unfolded protein binding moved to the carrier-holdase term
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P02515
+      symbol: Hsp22
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0051082
+      label: unfolded protein binding
+      obsolete: true
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:16572729
+  explanation: 'The record names small heat shock proteins as in-situ holdases that `GO:0140309` does
+    not fit. The
+
+    Hsp22 review read the same definition differently: it "allows delivery to an acceptor molecule OR
+    a
+
+    specific location" and does not require transport between compartments, and the paper shows client
+
+    holding followed by recovery by the reticulocyte chaperone machinery, which the review takes as
+
+    delivery to an acceptor. Its zebrafish crystallin counterparts went to the holdase NTR instead
+
+    (ONT-1-E1). Which reading of the definition governs sHSP rows is the open question tracked upstream.
+
+    '
+  discussion: https://github.com/ai4curation/ai-gene-review/issues/2222
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/Hsp22/Hsp22-ai-review.yaml#L183

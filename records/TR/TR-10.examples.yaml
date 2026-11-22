@@ -1,0 +1,25 @@
+record: TR-10
+examples:
+- id: TR-10-E1
+  title: Ecdysone receptor binding to an upstream response element annotated as core promoter binding
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P34021
+      symbol: EcR
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0001046
+      label: core promoter sequence-specific DNA binding
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:22628309
+  explanation: |
+    Core promoter binding belongs to GTFs and sigma factors; a dbTF's binding to its response element takes the
+    cis-regulatory term. The review found that the assay shows binding to the hsp27 EcRE, "an upstream regulatory element
+    rather than part of the core promoter".
+  fix: |
+    GO:0000978 RNA polymerase II cis-regulatory region sequence-specific DNA binding, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/EcR/EcR-ai-review.yaml#L175

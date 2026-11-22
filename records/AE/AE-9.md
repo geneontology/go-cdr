@@ -57,6 +57,14 @@ Do not use `part_of(Y)` to rebuild a precomposed "X involved in Y" term that GO 
 | Related | [AE-8](AE-8.md) |
 | GO terms | `GO:0061740` protein targeting to lysosome involved in chaperone-mediated autophagy; `GO:0006622` protein targeting to lysosome; `GO:0061684` chaperone-mediated autophagy |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-9-E1](AE-9.examples.yaml): The record's own CMA example decomposed into a GO-CAM and a module, with no extension | Conformant | HSPA8 involved_in GO:0061740 protein targeting to lysosome involved in chaperone-mediated autophagy (IDA, PMID:11559757) |
+| [AE-9-E2](AE-9.examples.yaml): canonical Wnt signaling part_of neural crest cell differentiation, rebuilding an obsoleted term | Non-conformant | LRP6 involved_in GO:0060070 canonical Wnt signaling pathway (IMP, PMID:11029007) |
+| [BP-11-E1](../BP/BP-11.examples.yaml): HSPA8 protein targeting to lysosome involved in chaperone-mediated autophagy, decomposed to a module (from [BP-11](../BP/BP-11.md)) | Non-conformant | HSPA8 involved_in GO:0061740 protein targeting to lysosome involved in chaperone-mediated autophagy (IDA, PMID:11559757) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

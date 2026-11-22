@@ -68,6 +68,13 @@ yet been verified and submitted. See [qualifiers-and-negation.md](../QN/README.m
 | Evidence codes | IEA |
 | GO terms | `GO:0005929` cilium |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-14-E1](REV-14.examples.yaml): ARL3 NOT cilium removed because the negative result does not exclude | Conformant | ARL3 NOT located_in GO:0005929 cilium (IDA, PMID:17646400) |
+| [REV-14-E2](REV-14.examples.yaml): A NOT galactokinase row on GLCAK1 kept: galactose tested, below 0.1% of GlcA | Conformant | GLCAK1 NOT enables GO:0004335 galactokinase activity (IDA, PMID:19951951) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

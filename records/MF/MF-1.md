@@ -79,6 +79,15 @@ the complex membership (CC) and the process (BP)
 | Date | 2026-11-15 |
 | GO terms | `GO:0060090` molecular adaptor activity; `GO:0004679` AMP-activated protein kinase activity; `GO:0019887` protein kinase regulator activity; `GO:0000030` mannosyltransferase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [MF-1-E1](MF-1.examples.yaml): Kinase activity removed from a cyclin regulatory subunit | Conformant | CCNE1 enables GO:0016301 kinase activity (IEA, GO_REF:0000107) |
+| [MF-1-E2](MF-1.examples.yaml): GTPase activity removed from a G beta subunit despite an IDA row | Conformant | GNB1 enables GO:0003924 GTPase activity (IDA, PMID:1543505) |
+| [MF-14-E1](MF-14.examples.yaml): The RCK regulatory subunit of a potassium transporter given a regulator term (from [MF-14](MF-14.md)) | Conformant | khtT enables GO:0008324 monoatomic cation transmembrane transporter activity (IEA, GO_REF:0000002) |
+| [MF-14-E2](MF-14.examples.yaml): A PP2A B subunit kept as contributes_to the phosphatase activity (from [MF-14](MF-14.md)) | Non-conformant | PPP2R2A contributes_to GO:0004721 phosphoprotein phosphatase activity (IDA, PMID:30595372) |
+
 ## Sources
 
 - wiki: [Enables](https://wiki.geneontology.org/index.php/Enables)

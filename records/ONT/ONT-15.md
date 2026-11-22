@@ -70,6 +70,13 @@ replacement or a merge, so those are carried in the structured slots
 | Date | 2026-11-15 |
 | GO terms | `GO:0014029` neural crest formation |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-15-E1](ONT-15.examples.yaml): A Pax3 neural crest formation row remapped while the term is proposed for obsoletion | Conformant | pax3-a involved_in GO:0014029 neural crest formation (IGI, PMID:15691759) |
+| [ONT-11-E1](ONT-11.examples.yaml): A proposed neural plate border formation term for border specifiers such as Pax3 (from [ONT-11](ONT-11.md)) | Conformant | GO:0014029 neural crest formation |
+
 ## Sources
 
 - wiki: [Obsoleting an Existing Ontology Term](https://wiki.geneontology.org/index.php/Obsoleting_an_Existing_Ontology_Term)

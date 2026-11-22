@@ -60,6 +60,15 @@ so walk the branch before claiming a gap.
 | Date | 2026-11-15 |
 | GO terms | `GO:0061753` substrate localization to autophagosome; `GO:0140355` cargo receptor ligand activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [ONT-2-E1](ONT-2.examples.yaml): GTPase-specific GEF terms confirmed merged in three services, with QuickGO's behaviour noted | Conformant | GO:0005089 |
+| [ONT-2-E2](ONT-2.examples.yaml): A methionine salvage redirect checked in QuickGO and OLS against a named release | Conformant | Enoph involved_in GO:0033353 L-methionine cycle (IBA, GO_REF:0000033) |
+| [ONT-3-E1](ONT-3.examples.yaml): A methionine salvage enzyme moved off a replaced_by target that names the SAM cycle (from [ONT-3](ONT-3.md)) | Conformant | Adi1 involved_in GO:0033353 L-methionine cycle (IBA, GO_REF:0000033) |
+| [ONT-12-E3](ONT-12.examples.yaml): Merged GTPase-specific GEF terms not re-requested for a RhoA-specific GEF (from [ONT-12](ONT-12.md)) | Conformant | GO:0005089 |
+
 ## Sources
 
 - repo: [action consistency](https://github.com/ai4curation/ai-gene-review/blob/main/docs/action_consistency.md)

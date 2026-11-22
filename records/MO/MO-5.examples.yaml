@@ -1,0 +1,49 @@
+record: MO-5
+examples:
+- id: MO-5-E1
+  title: A secreted chorismate mutase with its activity, host locations and effector process
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0D1DWQ2
+      symbol: CMU1
+    taxon: NCBITaxon:5270
+    term:
+      term_id: GO:0140502
+      label: effector-mediated suppression of host salicylic acid-mediated innate immune signaling
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:30651637
+  explanation: |
+    The record calls an effector annotation set complete when it has the effector's MF, a host location and
+    the effector-mediated BP. CMU1's review accepts GO:0004106 chorismate mutase activity, GO:0044164 host cell cytosol and
+    GO:0140593 host apoplast, and this GO:0140502 row, with the participation argument that "CMU1 itself catalyses the step
+    (chorismate to prephenate) that drains the SA precursor pool".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/MYCMD/CMU1/CMU1-ai-review.yaml#L184
+- id: MO-5-E2
+  title: PWL2 given an effector process but still no molecular function
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:G5EI71
+      symbol: PWL2
+    taxon: NCBITaxon:242507
+    term:
+      term_id: GO:0052034
+      label: effector-mediated suppression of host pattern-triggered immunity
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:40341381
+  explanation: |
+    The review added this GO:0052034 row because PWL2 binds and relocalises the host protein HIPP43 and a
+    binding-dead variant loses virulence. With it, PWL2 has locations (host cell cytoplasm, extracellular region) and a
+    process, but its core function in the review still has no MF and no host target, so the mechanism the review describes
+    is not recorded as an annotation. A process term alone, the record says, hides the mechanism.
+  fix: |
+    Add an MF row for PWL2's action on HIPP43 with `has_input` HIPP43, alongside the process and host location
+    rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PYRO7/PWL2/PWL2-ai-review.yaml#L287

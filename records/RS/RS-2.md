@@ -81,6 +81,14 @@ The phenotype guideline asks for MF-level evidence and says mutant phenotypes "m
 | Related | [BP-4](../BP/BP-4.md) |
 | GO terms | `GO:0061501` 2',3'-cyclic GMP-AMP synthase activity; `GO:0140896` cGAS/STING signaling pathway; `GO:0016032` viral process; `GO:0005096` GTPase activator activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-2-E1](RS-2.examples.yaml): Regulation of beta-glucan biosynthesis on Cdc42 marked over-annotated | Conformant | cdc42 involved_in GO:0032951 regulation of beta-glucan biosynthetic process (IGI, PMID:8887550) |
+| [RS-2-E2](RS-2.examples.yaml): Ebola VP35 negative regulation of gene expression replaced by its IRF3 mechanism | Conformant | VP35 involved_in GO:0010629 negative regulation of gene expression (IDA, PMID:12829834) |
+| [RS-2-E3](RS-2.examples.yaml): Positive regulation of cell division kept on the kinetochore subunit SPC24 | Non-conformant | SPC24 acts_upstream_of_or_within GO:0051781 positive regulation of cell division (IMP, PMID:29356153) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

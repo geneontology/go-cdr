@@ -1,0 +1,53 @@
+record: IEA-14
+examples:
+- id: IEA-14-E1
+  title: Sevenless binding restricted by a second family entry and Diptera
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: curated rules (ai-gene-review rules/curated)
+    refs:
+    - InterPro:IPR002956
+    - InterPro:IPR050726
+    - NCBITaxon:7147
+    - GO:0005118
+    - GO:0045500
+    description: |
+      CR-0006 assigns sevenless binding and the sevenless signaling pathway when a protein matches
+      `IPR002956` and `IPR050726` (Metabotropic Glutamate Receptor) and is in Diptera, replacing the
+      unconditional InterPro2GO mapping of `IPR002956`.
+  explanation: |
+    The rule couples the signature with a sequence-feature condition that separates BOSS from the
+    GPRC5-family and bacterial false positives, which are not confined to one lineage, and adds a taxon
+    condition only to bound the positives to where Sevenless-binding BOSS is known. It names the
+    mapping it replaces and its review record. Choosing a feature where the wrong members are spread
+    across lineages, and a taxon only to restrict, is the choice the record describes.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/curated/CR-0006.yaml#L1
+- id: IEA-14-E2
+  title: Malonyl-CoA reductase separated from its same-genome paralog by a CDD model
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: curated rules (ai-gene-review rules/curated)
+    refs:
+    - ARBA:ARBA00067001
+    - ARBA:ARBA00052213
+    - CDD:cd23940
+    - CDD:cd24150
+    - NCBITaxon:2157
+    - EC:1.2.1.75
+    - RHEA:26446
+    description: |
+      CR-0004 names archaeal members of the aspartate-semialdehyde dehydrogenase FunFam
+      (3.40.50.720:FF:000411) as malonyl-CoA reductase only when they also match a
+      malonyl-CoA-reductase-type CDD model.
+  explanation: |
+    The two ARBA rules it replaces use the FunFam and taxon alone, so they also name the true
+    aspartate-semialdehyde dehydrogenase paralog in each genome. Because the right and wrong members
+    share genomes, a taxon cannot separate them; the rule adds a sequence feature, as the record advises
+    when paralogs share a genome. Its validation run records 19 matches and the 17 ASD-type entries it
+    drops. The rule assigns an EC number and reaction rather than a GO term, but the record's reasoning
+    about conditions applies the same way.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/curated/CR-0004.yaml#L1

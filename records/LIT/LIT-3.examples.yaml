@@ -1,0 +1,75 @@
+record: LIT-3
+examples:
+- id: LIT-3-E1
+  title: Threonylcarbamoyladenylate synthase activity on the TsaC paralog YciO
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0AFR4
+      symbol: yciO
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0061710
+      label: L-threonylcarbamoyladenylate synthase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:37963869
+  explanation: |
+    The record's promiscuous-noise tier, its own example. The activity was detected in vitro, but TsaC is the
+    essential dedicated enzyme in the same cell, YciO's rate is about 10^4-fold lower, YciO lacks the KRSN
+    tetrad and sits in a different subfamily, and no in vivo phenotype links it to t6A. The review removed the
+    row even though it is IDA.
+  fix: |
+    Remove the activity row; the reaction belongs to TsaC.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/yciO/yciO-ai-review.yaml#L136
+- id: LIT-3-E2
+  title: Phosphonoacetate hydrolase activity on a zinc-ribbon protein
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0AFJ1
+      symbol: yjdM
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0047400
+      label: phosphonoacetate hydrolase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:37963869
+  explanation: |
+    Real in vitro activity of unknown relevance. The review found that disrupting yjdM has no effect on
+    phosphonate metabolism, that YjdM is unrelated to the PhnA hydrolase family (its phnA synonym is a
+    positional label), and that its homologs are not near phosphonate genes. It used `MARK_AS_OVER_ANNOTATED`
+    rather than REMOVE because E. coli has no dedicated phosphonoacetate hydrolase to assign the reaction to,
+    which is the record's middle tier.
+  fix: |
+    Keep the observation flagged as over-annotation; do not treat it as the protein's function.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/yjdM/yjdM-ai-review.yaml#L114
+- id: LIT-3-E3
+  title: The acetyl-CoA-donor activity of fission-yeast ArgJ
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94346
+      symbol: aga1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0004042
+      label: L-glutamate N-acetyltransferase activity, acting on acetyl-CoA as donor
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The review keeps the IBA and IEA `GO:0004042` rows as a plausible family-conserved secondary activity,
+    while noting that no Aga1 turnover assay exists and the cited donor work is on budding yeast. In
+    go-annotation#5845 PomBase reports the IEA `GO:0004042` row on this gene as an incorrect Rhea mapping and
+    says the activity is `GO:0004358` (acetyl-L-ornithine donor), a sibling term. Whether the weak acetyl-CoA
+    activity is a genuine secondary activity or not this protein's function at all is the open dispute.
+  discussion: https://github.com/geneontology/go-annotation/issues/5845
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/aga1/aga1-ai-review.yaml#L15

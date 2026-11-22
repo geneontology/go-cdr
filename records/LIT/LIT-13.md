@@ -61,6 +61,14 @@ paralog often hides an assay of the gene being annotated. So:
 | Provenance | [NEW], from the repository's review experience. |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-13-E1](LIT-13.examples.yaml): An IDA nucleolar inclusion row left undecided on an abstract-only cache | Conformant | hsp104 is_active_in GO:0140602 nucleolar peripheral inclusion body (IDA, PMID:33176152) |
+| [LIT-6-E2](LIT-6.examples.yaml): Skeletal system development on PAPSS1 from a paper about PAPSS2 (from [LIT-6](LIT-6.md)) | Non-conformant | PAPSS1 involved_in GO:0001501 skeletal system development (TAS, PMID:9771708) |
+| [LIT-9-E1](LIT-9.examples.yaml): Ethanol catabolism for a sulfotransferase the paper did not find active (from [LIT-9](LIT-9.md)) | Non-conformant | SULT1B1 involved_in GO:0006068 ethanol catabolic process (IDA, PMID:23207770) |
+
 ## Sources
 
 - repo: [CLAUDE.md](https://github.com/ai4curation/ai-gene-review/blob/main/CLAUDE.md)

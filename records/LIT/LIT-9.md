@@ -74,6 +74,13 @@ the claim is contested; grade the pair `DISPUTED` and keep both visible.
 | Evidence codes | EXP, IDA |
 | GO terms | `GO:0006068` ethanol catabolic process; `GO:0003841` 1-acylglycerol-3-phosphate O-acyltransferase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-9-E1](LIT-9.examples.yaml): Ethanol catabolism for a sulfotransferase the paper did not find active | Non-conformant | SULT1B1 involved_in GO:0006068 ethanol catabolic process (IDA, PMID:23207770) |
+| [LIT-9-E2](LIT-9.examples.yaml): A positive acyltransferase row citing the paper that found no activity | Non-conformant | PNPLA3 enables GO:0003841 1-acylglycerol-3-phosphate O-acyltransferase activity (EXP, PMID:21878620) |
+
 ## Sources
 
 - web: [miscitation project](https://ai4curation.io/ai-gene-review/pages/projects/MISCITATIONS.html)

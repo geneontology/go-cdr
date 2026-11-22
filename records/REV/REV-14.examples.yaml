@@ -1,0 +1,48 @@
+record: REV-14
+examples:
+- id: REV-14-E1
+  title: ARL3 NOT cilium removed because the negative result does not exclude
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P36405
+      symbol: ARL3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005929
+      label: cilium
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:17646400
+    negated: true
+  explanation: |
+    The record's example. The review read the full text and found that the NOT rests on an overexpressed
+    EGFP-tagged construct in one cell line. That shows tagged ARL3 is not enriched in cilia under those
+    conditions, not that ARL3 is absent. ARL3-GTP is made inside the cilium by ARL13B. A failure to
+    detect is not an exclusion, so the NOT is removed.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/ARL3/ARL3-ai-review.yaml#L850
+- id: REV-14-E2
+  title: 'A NOT galactokinase row on GLCAK1 kept: galactose tested, below 0.1% of GlcA'
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q93ZC9
+      symbol: GLCAK1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0004335
+      label: galactokinase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:19951951
+    negated: true
+  explanation: |
+    This NOT is an exclusion. Recombinant GLCAK1 was assayed on D-galactose and gave no detectable ADP
+    (below 0.1% of the glucuronate rate) in the paper's substrate panel. The review keeps it as part
+    of what defines the enzyme as glucuronate-specific, and because it separates GlcAK from related
+    GHMP kinases when function is transferred to orthologs.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/GLCAK1/GLCAK1-ai-review.yaml#L32

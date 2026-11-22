@@ -41,6 +41,14 @@ Use `has_output` only for a specific product the term does not already name, and
 | Provenance | [GOC+] (the semantics-over-label reading is ours). |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-4-E1](AE-4.examples.yaml): A specific vitamin K epoxide recorded as the output of gamma-carboxylation | Conformant | GGCX enables GO:0008488 gamma-glutamyl carboxylase activity (IDA, PMID:17073445) |
+| [AE-4-E2](AE-4.examples.yaml): Water recorded as an output of a peroxidase | Non-conformant | LPO enables GO:0004601 peroxidase activity (IDA, PMID:6295491) |
+| [AE-3-E3](AE-3.examples.yaml): Substrate and products that the enzyme term's definition already names (from [AE-3](AE-3.md)) | Non-conformant | GALC enables GO:0004336 galactosylceramidase activity (IDA, PMID:8281145) |
+
 ## Sources
 
 - wiki: [Has output](https://wiki.geneontology.org/index.php/Has_output)

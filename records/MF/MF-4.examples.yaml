@@ -1,0 +1,23 @@
+record: MF-4
+examples:
+- id: MF-4-E1
+  title: ATP binding beside a receptor tyrosine kinase kept as non-core
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O08775
+      symbol: Kdr
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0005524
+      label: ATP binding
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The review judged ATP binding "true and required for catalysis, but subsumed in the kinase
+    activity" carried by the gene's protein tyrosine kinase rows, and kept it as non-core. The record
+    says an implied-binding row is true and is not `REMOVE`; `KEEP_AS_NON_CORE` is the action it names.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Kdr/Kdr-ai-review.yaml#L684

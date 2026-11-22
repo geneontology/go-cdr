@@ -1,0 +1,27 @@
+record: LIT-7
+examples:
+- id: LIT-7-E1
+  title: NLRP3 IDA rows citing a 1975 psychiatry abstract
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q96P20
+      symbol: NLRP3
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0060090
+      label: molecular adaptor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:1189953
+  explanation: |
+    The record's digit-error case. The review found that PMID:1189953 resolves to a 1975 Spanish-language
+    psychiatry abstract and is almost certainly a dropped digit of PMID:31189953, the NEK7-licensed NLRP3
+    activation structure that supports the gene's other annotations made on the same date. The review also
+    refines the term, but the citation error is independent of that.
+  fix: |
+    Cite PMID:31189953 and verify the new identifier resolves to the intended paper; the review's term
+    replacement is `GO:0035591` signaling adaptor activity.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/NLRP3/NLRP3-ai-review.yaml#L1218

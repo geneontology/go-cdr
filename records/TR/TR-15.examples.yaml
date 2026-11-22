@@ -1,0 +1,45 @@
+record: TR-15
+examples:
+- id: TR-15-E1
+  title: An anti-sigma factor on sigma factor antagonist activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P10728
+      symbol: spoIIAB
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0016989
+      label: sigma factor antagonist activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record gives anti-sigma factors GO:0016989. The review accepted it as "the defining molecular function
+    of SpoIIAB", which binds sigma F and inhibits holoenzyme formation.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/spoIIAB/spoIIAB-ai-review.yaml#L16
+- id: TR-15-E2
+  title: A sporulation sigma factor on the bare dbTF term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P06222
+      symbol: sigE
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    A sigma factor carrying bare GO:0003700 is refined to GO:0016987 when the evidence identifies it as a sigma
+    factor; the record uses SigE as its worked example. The review modified the InterPro row because sigma factors "are
+    subunits of the RNAP holoenzyme that confer promoter specificity".
+  fix: |
+    GO:0016987 sigma factor activity, already on the gene.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/sigE/sigE-ai-review.yaml#L44

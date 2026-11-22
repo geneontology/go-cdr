@@ -1,0 +1,25 @@
+record: QN-14
+examples:
+- id: QN-14-E1
+  title: An ND molecular_function row accepted beside two IKR NOT peptidase rows
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A0B4K7P3
+      symbol: CG43124
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0003674
+      label: molecular_function
+    qualifier: enables
+    evidence_code: ND
+    reference: GO_REF:0000015
+  explanation: |
+    CG43124 is a serine-protease homologue that carries NOT serine-type endopeptidase and NOT peptidase
+    rows by IKR. The review accepted the ND root after targeted searches on the symbol, synonym, FlyBase
+    id and accession found no study, and said the loss-of-peptidase rows "do not count as positive
+    annotations in this aspect". That is the record's worked case: a pseudoenzyme with an IKR NOT and no
+    known activity keeps the ND root, and the NOT does not make the ND stale.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/CG43124/CG43124-ai-review.yaml#L18

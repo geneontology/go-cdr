@@ -1,0 +1,24 @@
+record: PIPE-7
+examples:
+- id: PIPE-7-E1
+  title: ARBA's training-set agreement read as a benchmark
+  verdict: CONTESTED
+  subject:
+    subject_kind: pipeline_config
+    pipeline: ARBA
+    refs:
+    - ARBA:ARBA00090718
+    description: |
+      The repo's review of ARBA00090718 reports that all 17 reviewed entries matching the rule carry
+      its term.
+  explanation: |
+    The record counts ARBA as a pipeline that is benchmarked. The rule review states that its counts
+    come from Swiss-Prot, which is also what ARBA learns its rules from, so they show that the condition
+    sets are coherent rather than giving an independent error rate for the unreviewed entries the rule
+    mostly annotates (10,704 for this rule). Whether in-sample agreement meets the rubric depends on
+    what precision measure the consortium accepts, which is the record's open question.
+  see_also:
+  - IEA-16
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/arba/ARBA00090718/ARBA00090718-review.yaml#L48

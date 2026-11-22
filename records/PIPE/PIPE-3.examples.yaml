@@ -1,0 +1,49 @@
+record: PIPE-3
+examples:
+- id: PIPE-3-E1
+  title: A combined-pipeline row propagated from a donor set that contains a curated NOT
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: UniProt combined automatic annotation (GO_REF:0000120)
+    refs:
+    - GO_REF:0000120
+    - GO:0001618
+    - UniProtKB:A0A0P6J1Y4
+    - UniProtKB:O35632
+    - UniProtKB:Q12891
+    description: |
+      The naked mole-rat Hyal2 row `enables` `GO:0001618` virus receptor activity, with WITH/FROM
+      `UniProtKB:O35632|ensembl:ENSMUSP00000010191|UniProtKB:Q12891|ensembl:ENSP00000350387`.
+  explanation: |
+    The review found that GOA records `NOT|enables GO:0001618` by IDA on mouse Hyal2 (O35632), the
+    same protein listed in the row's WITH/FROM, so the pipeline asserted a positive annotation from a
+    donor set containing a curated negation for the identical term. The rubric asks that output pass
+    all GO rules, including existing NOT annotations.
+  fix: |
+    Exclude donors that carry a NOT for the term, and do not emit a positive row when the donor set
+    disagrees. The review removed the row and the `GO_REF:0000108` row inferred from it.
+  see_also:
+  - IEA-11
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/HETGA/Hyal2/Hyal2-ai-review.yaml#L463
+- id: PIPE-3-E2
+  title: A curated rule checked against the taxon constraint of its process term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: curated rules (ai-gene-review rules/curated)
+    refs:
+    - GO:0045500
+    - NCBITaxon:7147
+    description: |
+      CR-0006 assigns `GO:0045500` sevenless signaling pathway to Diptera only.
+  explanation: |
+    The rule's notes record that its Diptera restriction sits inside GO's `only_in_taxon` Arthropoda
+    constraint on `GO:0045500`, checked in QuickGO on 2026-11-06, and that the first version, which used
+    Arthropoda, was narrowed after the Drosophila boss review. Checking the taxon constraint before
+    the rule emits anything is the prospective conformance the rubric asks for.
+  see_also:
+  - IEA-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/curated/CR-0006.yaml#L33

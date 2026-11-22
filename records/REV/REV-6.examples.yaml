@@ -1,0 +1,69 @@
+record: REV-6
+examples:
+- id: REV-6-E1
+  title: Epe1 JmjC oxidoreductase IEA removed on its non-canonical iron site
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94603
+      symbol: Epe1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0016491
+      label: oxidoreductase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000043
+  explanation: |
+    The record's pseudoenzyme case. The review removes the keyword-derived `oxidoreductase activity`
+    row, citing the non-canonical Fe(II) triad (Tyr370 in place of the third His) and the absence of
+    detectable activity in purified Epe1. It says the removal concerns the electronic inference only
+    and leaves the experimental H3K9 demethylase rows `UNDECIDED` (REV-8).
+  see_also: [REV-8]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/Epe1/Epe1-ai-review.yaml#L324
+- id: REV-6-E2
+  title: A protein phosphorylation IDA on CREB1 removed because CREB1 is the substrate
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P16220
+      symbol: CREB1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006468
+      label: protein phosphorylation
+    qualifier: acts_upstream_of_or_within
+    evidence_code: IDA
+    reference: PMID:8798441
+  explanation: |
+    The record's substrate case. The review removes the IDA on the grounds that the paper shows
+    CREB1 phosphorylated by upstream kinases and CREB1 has no kinase domain. As the record allows,
+    an experimental row is removed because the error is in reading the result, not in the result. The
+    reason names the substrate sites but does not quote the paper, which the record also asks for.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/CREB1/CREB1-ai-review.yaml#L2339
+- id: REV-6-E3
+  title: Cytochrome-c oxidase activity removed from the assembly factor SURF1
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q15526
+      symbol: SURF1
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0004129
+      label: cytochrome-c oxidase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    The record's accessory-subunit case. The Ensembl Compara IEA gives SURF1 the holoenzyme's
+    catalytic activity. The review removes it because SURF1 is a MITRAC assembly factor and "does not
+    catalyze the reduction of oxygen or pump protons", quoting UniProt's curated description. The
+    record says assembly factors get nothing, not even `contributes_to`.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/SURF1/SURF1-ai-review.yaml#L266

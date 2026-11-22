@@ -1,0 +1,28 @@
+record: PC-9
+examples:
+- id: PC-9-E1
+  title: An archaeal AmoA row refined to the complex activity although the active subunit is unknown
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:D9J262
+      symbol: amoA
+    taxon: NCBITaxon:338192
+    term:
+      term_id: GO:0004497
+      label: monooxygenase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000043
+  explanation: |
+    The keyword row gives the archaeal AmoA subunit monooxygenase activity, and the review modified it
+    to ammonia monooxygenase activity, following the convention of an experimental annotation on
+    bacterial AmoA. The review's own reason states that the activity is a property of the multi-subunit
+    complex and that which subunit holds the catalytic copper site is unresolved. In that situation the
+    record says no subunit gets the complex's MF.
+  fix: |
+    Give AmoA no MF row for the complex activity; annotate its complex membership and the process, and
+    record the unknown active subunit as a knowledge gap.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/NITRP/amoA/amoA-ai-review.yaml#L138

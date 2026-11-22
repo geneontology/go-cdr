@@ -74,6 +74,13 @@ or `MARK_AS_OVER_ANNOTATED`.
 | Evidence codes | IPI, ND, IEA |
 | GO terms | `GO:0005488` binding; `GO:0006810` transport; `GO:0050896` response to stimulus |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-19-E1](REV-19.examples.yaml): An organ-growth TreeGrafter row on a choanoflagellate removed despite passing taxon checks | Conformant | warts involved_in GO:0046620 regulation of organ growth (IEA, GO_REF:0000118) |
+| [REV-19-E2](REV-19.examples.yaml): A root molecular_function row proposed by NAS for KCTD18 | Non-conformant | KCTD18 GO:0003674 molecular_function (NAS) |
+
 ## Sources
 
 - wiki: [GO Central QC Procedure](https://wiki.geneontology.org/index.php/GO_Central_%28GOC%29_QC_Procedure)

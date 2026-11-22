@@ -77,6 +77,13 @@ Retraction status changes after a review is written, so the check must be re-run
 | Evidence codes | IPI |
 | GO terms | `GO:0005515` protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [REV-15-E1](REV-15.examples.yaml): DR6 neuron apoptosis kept after checking that no row rests on the retracted paper | Conformant | TNFRSF21 involved_in GO:0051402 neuron apoptotic process (IBA, GO_REF:0000033) |
+| [REV-15-E2](REV-15.examples.yaml): A BACE1 IGI whose only evidence is a retracted paper, kept as non-core | Non-conformant | BACE1 involved_in GO:0043525 positive regulation of neuron apoptotic process (IGI, PMID:29371969) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

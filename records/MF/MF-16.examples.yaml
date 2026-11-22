@@ -1,0 +1,26 @@
+record: MF-16
+examples:
+- id: MF-16-E1
+  title: A Spätzle Toll binding row refined to receptor ligand activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9VZX1
+      symbol: spz5
+    taxon: NCBITaxon:7227
+    term:
+      term_id: GO:0005121
+      label: Toll binding
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:31088910
+  explanation: |
+    The review treated Toll binding as the binding step of a ligand activity and, because the same
+    assay showed reporter activation through full-length Toll-1 and Toll-7, refined the row to
+    receptor ligand activity. The record gives a protein ligand `GO:0048018` (which has part receptor
+    binding) instead of a receptor-specific binding term. The refinement rests on this row's own
+    assay, as [MF-2](MF-2.md) requires.
+  see_also: [MF-2]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/spz5/spz5-ai-review.yaml#L93

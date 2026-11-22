@@ -86,6 +86,12 @@ and do not expect it in the next release.
 | Evidence codes | IEA |
 | GO terms | `GO:0006915` apoptotic process |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [IEA-6-E1](IEA-6.examples.yaml): A retired-keyword row reviewed for the record and recognised as historical | Conformant | GI GO:0009908 flower development (IEA, GO_REF:0000043) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

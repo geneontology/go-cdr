@@ -1,0 +1,27 @@
+record: ONT-15
+examples:
+- id: ONT-15-E1
+  title: A Pax3 neural crest formation row remapped while the term is proposed for obsoletion
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q645N4
+      symbol: pax3-a
+    taxon: NCBITaxon:8355
+    term:
+      term_id: GO:0014029
+      label: neural crest formation
+    qualifier: involved_in
+    evidence_code: IGI
+    reference: PMID:15691759
+  explanation: |
+    The review gave this experimental row a destination rather than waiting for the obsoletion: Pax3 is a
+    neural plate border specifier, so the row goes to the proposed "neural plate border formation" NTR,
+    and its direct role in crest induction with Zic1 goes to `GO:0014034` neural crest cell fate
+    commitment. The record asks that an obsoletion proposal supply a destination for every experimental
+    annotation, and uses `GO:0014029` as its worked example.
+  see_also:
+  - ONT-11
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/XENLA/pax3-a/pax3-a-ai-review.yaml#L387

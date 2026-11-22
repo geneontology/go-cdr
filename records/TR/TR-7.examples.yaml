@@ -1,0 +1,70 @@
+record: TR-7
+examples:
+- id: TR-7-E1
+  title: Glutamine synthetase inhibiting TnrA DNA binding
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P12425
+      symbol: glnA
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0140416
+      label: transcription regulator inhibitor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:11719184
+  explanation: |
+    Feedback-inhibited GlnA binds the dbTF TnrA and blocks its DNA binding, acting on the regulator away from
+    its target genes. The record assigns GO:0140416 transcription regulator inhibitor activity to such proteins. The review
+    accepted the row on "native DNA-binding assays and interaction-disrupting mutants".
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/glnA/glnA-ai-review.yaml#L381
+- id: TR-7-E2
+  title: An Id protein annotated as a transcription corepressor
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q91399
+      symbol: id3-a
+    taxon: NCBITaxon:8355
+    term:
+      term_id: GO:0003714
+      label: transcription corepressor activity
+    qualifier: enables
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    Id proteins lack a basic region and heterodimerise with bHLH proteins off DNA, preventing E-box binding,
+    which is the record's own worked example. The review modified the IBA corepressor row because Id proteins "work the other
+    way round" from a corepressor bound at a locus.
+  fix: |
+    GO:0140416 transcription regulator inhibitor activity, the review's replacement, as for mammalian ID1, ID2 and
+    ID4.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/XENLA/id3-a/id3-a-ai-review.yaml#L188
+- id: TR-7-E3
+  title: A single-repeat MYB protein that competes for bHLH partners, annotated as a dbTF
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O22059
+      symbol: CPC
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: ISS
+    reference: PMID:11118137
+  explanation: |
+    CPC carries a Myb-like repeat but lacks an activation domain and acts by binding GL3/EGL3 and competing with
+    WER/GL1, so it blocks a transcription regulator rather than binding DNA. The review modified the ISS dbTF row for that
+    reason.
+  fix: |
+    GO:0140416 transcription regulator inhibitor activity, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/CPC/CPC-ai-review.yaml#L54

@@ -1,0 +1,71 @@
+record: TR-6
+examples:
+- id: TR-6-E1
+  title: TFIIF annotated to RNA polymerase II general transcription initiation factor activity
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P13984
+      symbol: GTF2F2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0016251
+      label: RNA polymerase II general transcription initiation factor activity
+    qualifier: enables
+    evidence_code: ISS
+    reference: GO_REF:0000024
+  explanation: |
+    TFIIF acts at every Pol II promoter as part of the initiation machinery, so it takes the polymerase-specific
+    GTF term. The review accepted the ISS row as "the appropriate, specific molecular function for the protein", backed by
+    biochemistry showing TFIIF is required for accurate initiation.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GTF2F2/GTF2F2-ai-review.yaml#L530
+- id: TR-6-E2
+  title: TFIIF annotated to positive regulation of transcription by RNA polymerase II
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P13984
+      symbol: GTF2F2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:15351637
+  explanation: |
+    The record says GTFs are core machinery annotated to transcription itself, not to its regulation. The review
+    accepted this row because TFIIF "positively contributes to Pol II transcription output", which is the general activity
+    of a GTF rather than gene-specific regulation.
+  fix: |
+    GO:0006367 transcription initiation at RNA polymerase II promoter, which the review accepts on IBA, IEA, ISS and IDA
+    rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GTF2F2/GTF2F2-ai-review.yaml#L434
+- id: TR-6-E3
+  title: A Mediator subunit annotated to DNA-templated transcription
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q71F56
+      symbol: MED13L
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0006351
+      label: DNA-templated transcription
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000043
+  explanation: |
+    The record keeps GO:0006351 and its children for RNA polymerase subunits and GTFs. Mediator is a coactivator,
+    and the review accepted this IEA row because "the Mediator complex is central to transcription by RNA polymerase II",
+    which is an argument for the regulation term rather than for transcription itself.
+  fix: |
+    GO:0006357 regulation of transcription by RNA polymerase II, which the review already accepts as MED13L's core
+    process.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MED13L/MED13L-ai-review.yaml#L82

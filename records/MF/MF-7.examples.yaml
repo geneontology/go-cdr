@@ -1,0 +1,49 @@
+record: MF-7
+examples:
+- id: MF-7-E1
+  title: Binding of a synthetic allosteric compound replaced by cAMP binding
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P12368
+      symbol: Prkar2a
+    taxon: NCBITaxon:10116
+    term:
+      term_id: GO:0036094
+      label: small molecule binding
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:21177871
+  explanation: |
+    The paper shows the PKA RIIalpha subunit binding a synthetic compound at an allosteric site. The
+    review called that a pharmacological property and refined the row to cAMP binding, the
+    physiological ligand whose binding the same paper measured by SPR. That is the record's rule:
+    annotate the natural ligand, not the probe. The review also flags that the SPR used the human
+    protein, so attribution to rat should be checked.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/rat/Prkar2a/Prkar2a-ai-review.yaml#L768
+- id: MF-7-E2
+  title: FK506 binding accepted as a characteristic FKBP function
+  verdict: CONTESTED
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q02790
+      symbol: FKBP4
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005528
+      label: FK506 binding
+    qualifier: enables
+    evidence_code: TAS
+    reference: PMID:1376003
+  explanation: |
+    The review accepted FK506 binding because the drug binds FKBP4 and inhibits its
+    peptidyl-prolyl isomerase activity, calling it "a characteristic molecular function". FK506 is an
+    exogenous compound, and the record's open question asks whether drug-named terms like this one
+    should fall under the 2020 drug-binding rules, which would make this a proxy or gain-of-function
+    binding rather than a function of the protein.
+  open_question: 1
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FKBP4/FKBP4-ai-review.yaml#L1201

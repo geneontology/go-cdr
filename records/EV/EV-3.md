@@ -129,6 +129,14 @@ policy and should not drive new curation.
 | Evidence codes | IDA, IPI, IMP |
 | GO terms | `GO:0003824` catalytic activity; `GO:0044877` protein-containing complex binding; `GO:0019901` protein kinase binding; `GO:0045296` cadherin binding; `GO:0004860` protein kinase inhibitor activity; `GO:0030674` protein-macromolecule adaptor activity; `GO:0005515` protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-3-E1](EV-3.examples.yaml): An IPI protein binding row whose WITH/FROM names haemoglobin beta | Non-conformant | GRID1 enables GO:0005515 protein binding (IPI, PMID:28514442) |
+| [EV-3-E2](EV-3.examples.yaml): A NEW signaling adaptor row from an IPI paper on RHIM recruitment | Contested | ZBP1 enables GO:0035591 signaling adaptor activity (IPI, PMID:19590578) |
+| [LIT-14-E2](../LIT/LIT-14.examples.yaml): A wrong IPI partner noted only in prose (from [LIT-14](../LIT/LIT-14.md)) | Non-conformant | The ZBP1 review's handling of its IPI protein binding row from PMID:19590578, whose WITH/FROM lists UniProtKB:Q13601 (KRR1) where the paper's partner is RIPK1 (Q13546). |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

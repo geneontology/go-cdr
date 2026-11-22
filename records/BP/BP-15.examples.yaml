@@ -1,0 +1,54 @@
+record: BP-15
+examples:
+- id: BP-15-E1
+  title: A JAK-STAT IBA on a Dictyostelium STAT, in an organism with no JAK
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O00910
+      symbol: statA
+    taxon: NCBITaxon:44689
+    term:
+      term_id: GO:0007259
+      label: cell surface receptor signaling pathway via JAK-STAT
+    qualifier: involved_in
+    evidence_code: IBA
+    reference: GO_REF:0000033
+  explanation: |
+    The record's worked example. GO:0007259 requires a JAK, and the review found that Dictyostelium has
+    none: amoebozoan STAT signalling is triggered by a serpentine receptor and predates the assembly of the
+    JAK-STAT pathway in the bilaterian lineage. The propagated term is unsatisfiable in the target taxon.
+  fix: |
+    MODIFY to the JAK-independent parent GO:0097696 cell surface receptor signaling pathway via STAT, which
+    statA already carries by IDA.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DICDI/statA/statA-ai-review.yaml#L92
+- id: BP-15-E2
+  title: A vagina development term transferred to mouse Tacr3 from a rat pubertal-timing readout
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P47937
+      symbol: Tacr3
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0060068
+      label: vagina development
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000107
+  explanation: |
+    A developmental term projected by orthology. The review found that the donor study used vaginal
+    opening and first oestrus as readouts of centrally driven pubertal timing, with the receptor acting in
+    the hypothalamus, so the donor row does not carry a conserved developmental mechanism. In mouse the
+    transfer is also contradicted by the null phenotype: Tacr3-null mice reach the maturation markers on
+    time.
+  fix: |
+    REMOVE the projected GO:0060068 vagina development row; the receptor's role in pubertal timing is
+    carried by GO:0033686 on the same gene.
+  see_also:
+  - BP-6
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Tacr3/Tacr3-ai-review.yaml#L1623

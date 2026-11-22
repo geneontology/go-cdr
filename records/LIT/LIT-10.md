@@ -94,6 +94,14 @@ absence may be a knowledge gap ([NO_DATA](https://ai4curation.io/ai-gene-review/
 | Evidence codes | IEP, HMP, ISS, IC, ND |
 | GO terms | `GO:0005515` protein binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [LIT-10-E1](LIT-10.examples.yaml): Immune response projected from a SNP association with bacteremia | Non-conformant | TGFBR3 involved_in GO:0006955 immune response (IEA, GO_REF:0000107) |
+| [LIT-10-E2](LIT-10.examples.yaml): Protein homodimerization activity from a monomer-dimer mixture | Non-conformant | lipA enables GO:0042803 protein homodimerization activity (IDA, PMID:11106496) |
+| [EV-11-E1](../EV/EV-11.examples.yaml): A cell-cell adhesion NAS row from a speculative discussion (from [EV-11](../EV/EV-11.md)) | Non-conformant | ADGRV1 involved_in GO:0098609 cell-cell adhesion (NAS, PMID:11606593) |
+
 ## Sources
 
 - wiki: [ND](https://wiki.geneontology.org/index.php/No_biological_Data_available_%28ND%29_evidence_code)

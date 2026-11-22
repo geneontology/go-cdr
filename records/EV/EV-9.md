@@ -58,6 +58,13 @@ GOC thread that called such rows "self-referential", is in
 | Date | 2026-11-15 |
 | Evidence codes | IBA, IBD, IKR, IRD |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [EV-9-E1](EV-9.examples.yaml): A nucleus IBA seeded by the target alone | Conformant | ADIRF is_active_in GO:0005634 nucleus (IBA, GO_REF:0000033) |
+| [EV-9-E2](EV-9.examples.yaml): A ribosome binding IBA carried across a subfamily boundary | Non-conformant | orb enables GO:0043022 ribosome binding (IBA, GO_REF:0000033) |
+
 ## Sources
 
 - web: [IRD_EVIDENCE](https://ai4curation.io/ai-gene-review/pages/projects/IRD_EVIDENCE.html)

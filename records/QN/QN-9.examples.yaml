@@ -1,0 +1,60 @@
+record: QN-9
+examples:
+- id: QN-9-E1
+  title: A NOT on dendrite accepted beside a positive dendritic spine row
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P05067
+      symbol: APP
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0030425
+      label: dendrite
+    qualifier: colocalizes_with
+    evidence_code: IDA
+    reference: PMID:17251419
+    negated: true
+  explanation: |
+    The review accepted the NOT as capturing that amyloid-beta oligomers bind dendritic spines rather
+    than dendrite shafts, while the same review ACCEPTs a positive `GO:0043197` dendritic spine row. A NOT
+    on dendrite negates every part of the dendrite, spines included, so it contradicts the positive row;
+    the record names this APP pair among those the consistency check found. The finding concerns the
+    binding specificity of a cleavage product, which the dendrite term cannot express.
+  fix: |
+    REMOVE the NOT row (or, if a narrower exclusion is really shown, MODIFY it to a term that does not
+    subsume `GO:0043197`). The deprecated `colocalizes_with` relation should not be carried forward
+    either (QN-5).
+  see_also: [QN-5, QN-16]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/APP/APP-ai-review.yaml#L4399
+- id: QN-9-E2
+  title: A NOT located_in endoplasmic reticulum kept while the ER membrane is annotated positively
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O00429
+      symbol: DNM1L
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005783
+      label: endoplasmic reticulum
+    qualifier: located_in
+    evidence_code: IDA
+    reference: PMID:11514614
+    negated: true
+  explanation: |
+    The review accepted the NOT from endogenous Drp1 staining in COS-7 cells that did not colocalize with
+    an ER marker, while the next row is MODIFYed to a positive `GO:0005789` endoplasmic reticulum membrane
+    from rat material. ER membrane is part of the ER, so the NOT on the parent contradicts the positive
+    child; the review itself says the negative "does not establish universal exclusion". The record
+    places a NOT on the most general term the evidence excludes and never on an ancestor of a positive
+    term, and a non-colocalization result does not exclude the organelle (QN-8).
+  fix: |
+    REMOVE the NOT row, or mark it UNDECIDED if the reviewer judges the conflict real and unresolved
+    (QN-10).
+  see_also: [QN-8, QN-10]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DNM1L/DNM1L-ai-review.yaml#L1793

@@ -81,6 +81,15 @@ A too-general term is still true. An inverted one is false, and it propagates in
 | Evidence codes | IMP, IBA, ISS, IEA |
 | GO terms | `GO:0007189` adenylate cyclase-activating G protein-coupled receptor signaling pathway; `GO:0007193` adenylate cyclase-inhibiting G protein-coupled receptor signaling pathway; `GO:0050728` negative regulation of inflammatory response; `GO:0050729` positive regulation of inflammatory response; `GO:0045668` negative regulation of osteoblast differentiation; `GO:0045669` positive regulation of osteoblast differentiation; `GO:0040017` positive regulation of locomotion; `GO:0040012` regulation of locomotion |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [RS-5-E1](RS-5.examples.yaml): A sign-inverted motor neuron apoptosis row on MKK4 corrected from the knockout | Conformant | Map2k4 acts_upstream_of_or_within GO:2000672 negative regulation of motor neuron apoptotic process (ISO, GO_REF:0000121) |
+| [RS-5-E2](RS-5.examples.yaml): Sign-neutral dauer regulation on daf-7 refined to negative regulation | Conformant | daf-7 involved_in GO:0061065 regulation of dauer larval development (IGI, PMID:1732156) |
+| [RS-5-E3](RS-5.examples.yaml): An InterPro-derived positive regulation of transcription on SVP flipped to negative | Non-conformant | SVP involved_in GO:0045944 positive regulation of transcription by RNA polymerase II (IEA, GO_REF:0000002) |
+| [RS-9-E3](RS-9.examples.yaml): An AC-activating pathway ISS on Gi1 removed: wrong sign, wrong donor (from [RS-9](RS-9.md)) | Conformant | GNAI1 involved_in GO:0007189 adenylate cyclase-activating G protein-coupled receptor signaling pathway (ISS, GO_REF:0000024) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

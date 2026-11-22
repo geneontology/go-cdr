@@ -1,0 +1,81 @@
+record: AE-11
+examples:
+- id: AE-11-E1
+  title: A target gene and a cell type on one transcription-regulation statement
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P23769
+      symbol: GATA2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    qualifier: involved_in
+    evidence_code: IDA
+    reference: PMID:21788589
+    extension: RO:0002233(UniProtKB:P09601),BFO:0000066(CL:0000071)
+  explanation: |
+    "Regulates transcription of gene G in cell type C" is the record's example of what one standard
+    annotation can hold. This row is that: `has_input` HMOX1 and `occurs_in` blood vessel endothelial cell.
+    The review accepted it on endogenous GATA2 ChIP at HMOX1 regulatory DNA and gain/loss effects on HMOX1
+    protein, and kept both atoms.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GATA2/GATA2-ai-review.yaml#L2569
+- id: AE-11-E2
+  title: A ligand's growth factor activity that "directly positively regulates" a receptor activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9UK05
+      symbol: GDF2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008083
+      label: growth factor activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:7664647
+    extension: RO:0002629(GO:0016362)
+  explanation: |
+    "A regulates B's activity" is, in the record's words, a GO-CAM edge and not
+    `directly_positively_regulates` in column 16. This UniProt row links two activities in one statement:
+    BMP9's growth factor activity directly positively regulates activin receptor activity, type II. The
+    record says to read such rows as legacy GO-CAM fragments. The review kept the row as non-core and called
+    the extension "the retained receptor-activation extension", treating it as part of the claim.
+  fix: |
+    Keep `enables` GO:0008083 growth factor activity on its own and model the receptor activation as a
+    causal edge in a GO-CAM, from the GDF2 activity to the type II receptor's GO:0016362 activity enabled
+    by the receptor gene product.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/GDF2/GDF2-ai-review.yaml#L819
+- id: AE-11-E3
+  title: An enzyme row that also asserts it is causally upstream of its substrate's activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9NRN7
+      symbol: AASDHPPT
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008897
+      label: holo-[acyl-carrier-protein] synthase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:19933275
+    extension: RO:0002233(UniProtKB:O75891),RO:0002411(GO:0016155)
+  explanation: |
+    The `has_input` ALDH1L1 is a single-statement extension: the protein substrate of the phosphopantetheinyl
+    transfer (AE-3). The second atom, `causally_upstream_of`(GO:0016155 formyltetrahydrofolate dehydrogenase
+    activity), chains AASDHPPT's activity to the activity of its substrate. That is a two-activity causal
+    statement, which the record sends to a GO-CAM. The review accepted the row on the enzyme evidence and
+    did not comment on the causal atom.
+  fix: |
+    Keep `enables` GO:0008897 with `has_input`(UniProtKB:O75891). Express the dependency of ALDH1L1's
+    GO:0016155 activity on its phosphopantetheinylation as a causal edge between the two activities in a GO-CAM.
+  see_also: [AE-3]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/AASDHPPT/AASDHPPT-ai-review.yaml#L505

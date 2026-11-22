@@ -1,0 +1,49 @@
+record: PH-16
+examples:
+- id: PH-16-E1
+  title: Calcium ion binding transferred to mouse Calm3 from all three rat calmodulin loci
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P0DP28
+      symbol: Calm3
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0005509
+      label: calcium ion binding
+    qualifier: enables
+    evidence_code: ISO
+    reference: GO_REF:0000096
+  explanation: |
+    The review accepted the row while recording that its `WITH/FROM` names rat Calm1, Calm2 and Calm3 and
+    that "only Calm3 is the ortholog", judging the transfer "valid regardless of rat paralog source". The
+    record uses Calm3 as its worked example: the three calmodulin proteins are identical, so a cross-locus
+    donor is harmless for a protein-level term such as calcium binding, though it would be wrong for
+    locus-level biology.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Calm3/Calm3-ai-review.yaml#L804
+- id: PH-16-E2
+  title: A stale ISO row on mouse Ang2 whose human donor no longer carries the term
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q64438
+      symbol: Ang2
+    taxon: NCBITaxon:10090
+    term:
+      term_id: GO:0001878
+      label: response to yeast
+    qualifier: involved_in
+    evidence_code: ISO
+    reference: GO_REF:0000119
+  explanation: |
+    The review removed the row because "the current human source no longer carries this term", on a
+    divergent rodent paralog with no mouse evidence for the process. The record requires an ISO donor
+    whose own experimental annotation is still present; a stale donor is a reason to look, and here the
+    look finds nothing on the target to keep the term.
+  see_also:
+  - PH-17
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/mouse/Ang2/Ang2-ai-review.yaml#L664

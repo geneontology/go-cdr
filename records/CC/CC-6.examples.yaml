@@ -1,0 +1,50 @@
+record: CC-6
+examples:
+- id: CC-6-E1
+  title: A MitoCoP mitochondrion row accepted although the matrix is known
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6PI48
+      symbol: DARS2
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005739
+      label: mitochondrion
+    qualifier: located_in
+    evidence_code: HTP
+    reference: PMID:34800366
+  explanation: |
+    Direct evidence from an assay that cannot resolve the sub-compartment is `ACCEPT` on the root term.
+    The review checked the MitoCoP supplementary table (class 1 subtractive proteomics, spatial
+    profiling and importomics for DARS2) and accepted the row, noting that the organelle annotation
+    remains useful and does not by itself resolve matrix versus intermembrane space. DARS2 is one of the
+    genes the record cites as carrying a matrix row beside its mitochondrion rows.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/DARS2/DARS2-ai-review.yaml#L771
+- id: CC-6-E2
+  title: An HPA Golgi apparatus row refined to cisternae by MODIFY
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The HID1 review's `MODIFY` of the Human Protein Atlas IDA row `GO:0005794` Golgi apparatus
+      (GO_REF:0000052) to Golgi trans cisterna, Golgi medial cisterna and trans-Golgi network membrane,
+      terms the gene already carries from higher-resolution studies.
+    refs:
+    - UniProtKB:Q8IV36
+    - GO:0005794
+    - GO_REF:0000052
+  explanation: |
+    The review called the row "correct but general" and moved it to the sub-compartments. The record says
+    a root organelle term is never `MODIFY`d to a sub-compartment: an immunofluorescence atlas call cannot
+    resolve cisternae, so the root term is the claim this evidence supports, and the finer locations
+    belong on their own rows, where HID1 already has them.
+  fix: |
+    `ACCEPT` the HPA Golgi apparatus row (or `KEEP_AS_NON_CORE`), and leave the cisterna and TGN membrane
+    rows to carry the sub-compartment.
+  see_also:
+  - CC-14
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HID1/HID1-ai-review.yaml#L279

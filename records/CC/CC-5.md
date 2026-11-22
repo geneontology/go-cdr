@@ -74,6 +74,13 @@ structure, are a defensible exception
 | Provenance | [GOC+] Resolves the 2014 PomBase-versus-location-of-action disagreement by relation choice. |
 | Date | 2026-11-15 |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [CC-5-E1](CC-5.examples.yaml): DAF-16 in the cytoplasm recorded with located_in | Conformant | daf-16 located_in GO:0005737 cytoplasm (IDA, PMID:11381260) |
+| [CC-5-E2](CC-5.examples.yaml): An is_active_in row for heat-stress sequestration in a nucleolar inclusion | Non-conformant | ark1 is_active_in GO:0140602 nucleolar peripheral inclusion body (IDA, PMID:33176152) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

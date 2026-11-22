@@ -1,0 +1,26 @@
+record: MO-6
+examples:
+- id: MO-6-E1
+  title: A phage endolysin on its own-organism peptidoglycan catabolism term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q6Y7T6
+      symbol: lysK
+    taxon: NCBITaxon:221915
+    term:
+      term_id: GO:0009253
+      label: peptidoglycan catabolic process
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    GO:0009253 peptidoglycan catabolic process is a single-organism metabolic term, so on a phage protein it
+    asserts that the phage degrades its own peptidoglycan. The review checked the ancestry in OLS ("no interspecies parent")
+    and found that LysK hydrolyses the host's sacculus; the row arrives by InterPro2GO, whose domain signature "cannot know
+    whose wall is being degraded".
+  fix: |
+    GO:0052009 symbiont-mediated disruption of host cell wall, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BPPGK/lysK/lysK-ai-review.yaml#L351

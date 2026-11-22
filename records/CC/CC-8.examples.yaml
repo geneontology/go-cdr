@@ -1,0 +1,51 @@
+record: CC-8
+examples:
+- id: CC-8-E1
+  title: A NEW mitochondrial matrix row from three independent lines
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9H3L0
+      symbol: MMADHC
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0005759
+      label: mitochondrial matrix
+    qualifier: located_in
+    evidence_code: IC
+    reference: PMID:42709793
+  explanation: |
+    The record adds a sub-compartment as a separate `NEW` row, usually IC, when at least two independent
+    lines agree. The review listed three: a cleavable N-terminal targeting sequence with no TM segment
+    whose deletion leaves the protein cytosolic, import that depends on the proton motive force, and
+    turnover by the matrix protease LONP1. It kept the root mitochondrion rows, did not use the matrix
+    AdoCbl enzymes as evidence of location, and coded the row IC because no sub-mitochondrial assay exists.
+  see_also:
+  - EV-12
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/MMADHC/MMADHC-ai-review.yaml#L551
+- id: CC-8-E2
+  title: An HDA mitochondrion row replaced by the inner-membrane term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: other
+    description: |
+      The Drosophila MCU review's `MODIFY` of an HDA `GO:0005739` mitochondrion row (PMID:25294944,
+      organelle proteomics) to `GO:0005743` mitochondrial inner membrane, a term the gene already carries.
+    refs:
+    - UniProtKB:Q8IQ70
+    - GO:0005739
+    - PMID:25294944
+  explanation: |
+    The inner-membrane location of the uniporter is not in doubt, and the review's reason ("correct but
+    general") follows the ordinary refinement rule. The record makes the root organelle terms an
+    exception: the sub-compartment is added beside the root, not substituted for it, and a proteomics
+    row from purified mitochondria is accepted at the resolution the assay has.
+  fix: |
+    `ACCEPT` the HDA mitochondrion row and keep the existing `GO:0005743` mitochondrial inner membrane
+    rows alongside it.
+  see_also:
+  - CC-6
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/DROME/MCU/MCU-ai-review.yaml#L106

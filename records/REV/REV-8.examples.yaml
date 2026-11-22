@@ -1,0 +1,74 @@
+record: REV-8
+examples:
+- id: REV-8-E1
+  title: Epe1 H3K9 demethylase IDA left UNDECIDED rather than removed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:O94603
+      symbol: Epe1
+    taxon: NCBITaxon:284812
+    term:
+      term_id: GO:0032454
+      label: histone H3K9 demethylase activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:25838386
+  explanation: |
+    The paper shows Epe1 needed to erase ectopic H3K9me in a way that depends on its predicted
+    iron-binding residues, but not that Epe1 catalyses demethylation, and purified Epe1 shows no
+    activity. The review does not overrule the PomBase curator. It records what is missing (direct
+    catalysis, the right evidence code for a genetic result) and leaves the row `UNDECIDED`, which is
+    the deferral the record describes.
+  see_also: [REV-6]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/SCHPO/Epe1/Epe1-ai-review.yaml#L674
+- id: REV-8-E2
+  title: Galactokinase IMP on GalT removed where the abstract names the galK knockout
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P09148
+      symbol: galT
+    taxon: NCBITaxon:83333
+    term:
+      term_id: GO:0004335
+      label: galactokinase activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:18263746
+  explanation: |
+    This removal falls under the record's exceptions. The cached abstract "states explicitly that the
+    strain studied is a galactose kinase gene knockout (DeltagalK)", and GalT has no kinase domain;
+    E. coli's galactokinase is GalK. The function is contradicted for this gene product, and the cached
+    text states the mis-attribution outright, so `REMOVE` is allowed.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ECOLI/galT/galT-ai-review.yaml#L27
+- id: REV-8-E3
+  title: A swarming-motility IMP removed because the cached title is about FlgM
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:C0H412
+      symbol: swrD
+    taxon: NCBITaxon:224308
+    term:
+      term_id: GO:0071978
+      label: bacterial-type flagellum-dependent swarming motility
+    qualifier: involved_in
+    evidence_code: IMP
+    reference: PMID:25313396
+  explanation: |
+    The review removes the IMP because PMID:25313396 is titled "FlgM is secreted by the flagellar
+    export apparatus in Bacillus subtilis" and "makes no mention of swrD". The cached copy of that
+    paper is abstract-only, so the review cannot know what the full text says. Experimental rows are
+    not to be removed, or called mis-attributed, because the title or abstract is about another
+    gene. Nothing in the reason says the swarming function is contradicted.
+  fix: |
+    `UNDECIDED`, recording that the full text was not available and which figure or strain list would
+    settle it (whether a swrD/ylzI mutant was tested for swarming).
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/BACSU/swrD/swrD-ai-review.yaml#L77

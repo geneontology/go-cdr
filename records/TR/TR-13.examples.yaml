@@ -1,0 +1,50 @@
+record: TR-13
+examples:
+- id: TR-13-E1
+  title: A class IIa deacetylase on DNA-binding transcription activator activity
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9UQL6
+      symbol: HDAC5
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0001216
+      label: DNA-binding transcription activator activity
+    qualifier: enables
+    evidence_code: IMP
+    reference: PMID:19071119
+  explanation: |
+    HDAC5 carries a catalytic activity and no DNA-binding domain, the combination the record treats as a probable
+    error. The review found the IMP evidence "describes coactivation of a DNA-binding factor, not DNA-binding activator
+    activity", consistent with the HDAC4 review of the same paper.
+  fix: |
+    GO:0003713 transcription coactivator activity, the review's replacement.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HDAC5/HDAC5-ai-review.yaml#L249
+- id: TR-13-E2
+  title: A proline dehydrogenase without the RHH DNA-binding module on a dbTF row
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q9I5F6
+      symbol: putA
+    taxon: NCBITaxon:208964
+    term:
+      term_id: GO:0003700
+      label: DNA-binding transcription factor activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    Some PutA enzymes are genuinely bifunctional, with an N-terminal DNA-binding domain, but this one is not.
+    The review found that P. aeruginosa PutA "is 1060 residues with only PRODH and P5CDH domains" and is itself regulated by
+    the separate activator PruR, so the InterPro mapping over-propagated from RHH-containing PutAs.
+  fix: |
+    Remove the dbTF row, as the review did; the enzyme activities remain.
+  see_also:
+  - TR-16
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/PSEAE/putA/putA-ai-review.yaml#L79

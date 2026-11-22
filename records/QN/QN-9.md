@@ -71,6 +71,15 @@ A NOT negates the term and all its descendants. Place it on the most general ter
 | Date | 2026-11-15 |
 | GO terms | `GO:0004672` protein kinase activity; `GO:0004674` protein serine/threonine kinase activity; `GO:1904161` DNA synthesis involved in UV-damage excision repair; `GO:0000731` DNA synthesis involved in DNA repair; `GO:0006303` double-strand break repair via nonhomologous end joining; `GO:0006281` DNA repair; `GO:0006289` nucleotide-excision repair; `GO:0005544` calcium-dependent phospholipid binding; `GO:0005543` phospholipid binding |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [QN-9-E1](QN-9.examples.yaml): A NOT on dendrite accepted beside a positive dendritic spine row | Non-conformant | APP NOT colocalizes_with GO:0030425 dendrite (IDA, PMID:17251419) |
+| [QN-9-E2](QN-9.examples.yaml): A NOT located_in endoplasmic reticulum kept while the ER membrane is annotated positively | Non-conformant | DNM1L NOT located_in GO:0005783 endoplasmic reticulum (IDA, PMID:11514614) |
+| [QN-8-E2](QN-8.examples.yaml): A NOT located_in cilium from a screen in which the protein was simply not enriched (from [QN-8](QN-8.md)) | Non-conformant | ARL6 NOT located_in GO:0005929 cilium (IDA, PMID:17646400) |
+| [QN-13-E1](QN-13.examples.yaml): A synaptotagmin's lost calcium-dependent phospholipid binding (from [QN-13](QN-13.md)) | Conformant | Syt4 NOT enables GO:0005544 calcium-dependent phospholipid binding (IDA, PMID:7791877) |
+
 ## Sources
 
 - issue: [go-annotation#1761](https://github.com/geneontology/go-annotation/issues/1761)

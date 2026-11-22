@@ -77,6 +77,13 @@ kinases; two direct assays found no ceramide phosphorylation ([IBA_REVIEW](https
 | Evidence codes | IDA |
 | GO terms | `GO:0003955` NAD(P)H dehydrogenase (quinone) activity; `GO:0001512` dihydronicotinamide riboside quinone reductase activity; `GO:0001729` ceramide kinase activity |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [PH-6-E1](PH-6.examples.yaml): A ceramide kinase activity inherited by AGK from a node that lumps lipid kinases | Conformant | AGK enables GO:0001729 ceramide kinase activity (IBA, GO_REF:0000033) |
+| [PH-6-E2](PH-6.examples.yaml): NQO2 keeps the inherited NAD(P)H quinone reductase activity as non-core | Contested | NQO2 enables GO:0003955 NAD(P)H dehydrogenase (quinone) activity (IBA, GO_REF:0000033) |
+
 ## Differences from prior guidance
 
 | Prior source | What it said | What we recommend | Why |

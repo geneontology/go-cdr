@@ -1,0 +1,70 @@
+record: MF-12
+examples:
+- id: MF-12-E1
+  title: Transaminase activity removed from a phospho-lyase in the aminotransferase family
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q8IUZ5
+      symbol: PHYKPL
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008483
+      label: transaminase activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000002
+  explanation: |
+    The mechanism axis. PHYKPL belongs to the aminotransferase class III family, but the review quoted
+    PMID:22241472 ("Unlike AGXT2, AGXT2L1 and AGXT2L2 did not act as transaminases") and the UniProt
+    caution, and removed the family-derived row: the enzyme is an ammoniophospholyase.
+  see_also: [MF-18]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/PHYKPL/PHYKPL-ai-review.yaml#L68
+- id: MF-12-E2
+  title: Thiolase activity removed from the trifunctional protein alpha subunit
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:P40939
+      symbol: HADHA
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0003985
+      label: acetyl-CoA C-acetyltransferase activity
+    qualifier: enables
+    evidence_code: TAS
+    reference: PMID:8135828
+  explanation: |
+    The subunit axis. The review found that subunit-specific expression and the structural assignment
+    place thiolase catalysis on HADHB, and that the purified complex lacked activity on C4 substrates
+    (PMID:1550553), and removed the row. It also declined to transfer the term to HADHB automatically,
+    because this term's C4 reaction scope differs from long-chain thiolysis, which is the substrate
+    axis checked on the same row.
+  see_also: [MF-14]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/HADHA/HADHA-ai-review.yaml#L364
+- id: MF-12-E3
+  title: NADP+ specificity of a 6-phosphogluconate dehydrogenase checked, not assumed
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:A0A1D8PFS4
+      symbol: GND1
+    taxon: NCBITaxon:237561
+    term:
+      term_id: GO:0004616
+      label: phosphogluconate dehydrogenase (decarboxylating) activity
+    qualifier: enables
+    evidence_code: IEA
+    reference: GO_REF:0000120
+  explanation: |
+    The cofactor axis, passed. The review accepted the family-derived term only after checking the
+    conserved NADP+-specificity motifs, and noted that the C. albicans lysate assay reports Zwf1 and
+    Gnd1 together, so the cofactor call rests on the sequence determinants rather than on that assay.
+    The record cites this review as the model for verifying a specific term that is probably right.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/CANAL/GND1/GND1-ai-review.yaml#L161

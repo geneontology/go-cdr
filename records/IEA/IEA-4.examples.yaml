@@ -1,0 +1,71 @@
+record: IEA-4
+examples:
+- id: IEA-4-E1
+  title: ARBA rule targeting an obsolete lipid X process term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:F4IAT8
+      symbol: LPXC1
+    taxon: NCBITaxon:3702
+    term:
+      term_id: GO:2001289
+      label: lipid X metabolic process
+    qualifier: involved_in
+    evidence_code: IEA
+    reference: GO_REF:0000117
+  explanation: 'The row comes from ARBA:ARBA00027142 and targets `GO:2001289` obsolete lipid X metabolic
+    process.
+
+    The review agreed that the biology is right (LpxC acts upstream of lipid X in lipid A synthesis)
+
+    and changed the term only because it is obsolete. A rule whose consequent is obsolete breaks the
+
+    record''s rule that no mapping or rule may target an obsolete term, whatever the biology.
+
+
+    Note: GOA and QuickGO label `GO:2001289` obsolete, but the GO release used to check labels here (2026-07-26)
+    still has it live as "lipid X metabolic process"; the verdict assumes the obsoletion reaches a GO
+    release.
+
+    '
+  fix: 'On the gene, MODIFY to `GO:0009245` lipid A biosynthetic process, which the review proposes and
+    the
+
+    gene already carries by IBA and IEA. Upstream, retarget or retire the rule''s consequent.
+
+    '
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/ARATH/LPXC1/LPXC1-ai-review.yaml#L300
+- id: IEA-4-E2
+  title: A withdrawn ARBA rule whose only consequent is an obsolete term
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: pipeline_config
+    pipeline: ARBA
+    refs:
+    - ARBA:ARBA00028538
+    - GO:0046467
+    description: 'ARBA00028538 assigned `GO:0046467` membrane lipid biosynthetic process through 51 condition
+
+      sets. UniProt returned 404 for the rule on 2026-11-09, and GO has made the term obsolete.
+
+      '
+  explanation: 'The rule review deprecated the rule because its only consequent is obsolete and UniProt
+    has
+
+    withdrawn it. It also recorded that the nine condition sets it checked selected proteins with
+
+    curated lipid-biosynthesis annotations, so the problem was the target term, not the conditions.
+
+    That is the record''s point: an obsolete target is disqualifying on its own.
+
+    '
+  fix: 'Keep the rule withdrawn. If the condition sets are re-derived, they need a live consequent.
+
+    '
+  see_also:
+  - IEA-9
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/rules/arba/ARBA00028538/ARBA00028538-review.yaml#L684

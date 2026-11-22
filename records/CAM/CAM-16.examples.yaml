@@ -1,0 +1,23 @@
+record: CAM-16
+examples:
+- id: CAM-16-E1
+  title: Four calmodulin-JAK-STAT models that never connect to the interferon pathway they modulate
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: gocam
+    model: gomodel:62b4ffe300004489
+    description: |
+      "Regulation of the JAK-STAT pathway by calmodulin in response to interferon-gamma (Human)" and its
+      siblings 62b4ffe300004525 (IFN-beta), 62b4ffe300005467 (OspC1) and 62b4ffe300005437 (OspC3), all built
+      on PMID:35568036.
+  explanation: |
+    The record asks that pathway models link through a shared activity. The review, incorporating a manual
+    review of all four, found that they "fragment one mechanism along a 2x2 of OspC effector and IFN
+    ligand" and that none contains the IFN -> receptor -> JAK -> STAT1 component, "which exists only in the
+    unconnected canonical model 62b4ffe300003747".
+  fix: |
+    Start each model with the same activity that ends or appears in the canonical IFN-JAK-STAT model (for
+    example the STAT1 transcription factor activity with the same location and process), or merge the
+    variants so the effector and ligand differences sit in one model.
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/gocams/62b4ffe300004489/62b4ffe300004489-review.yaml#L250

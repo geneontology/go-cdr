@@ -1,0 +1,56 @@
+record: AE-8
+examples:
+- id: AE-8-E1
+  title: An activator activity part_of heme biosynthesis, with the matching BP row from the same paper
+  verdict: CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q16595
+      symbol: FXN
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0008047
+      label: enzyme activator activity
+    qualifier: enables
+    evidence_code: IDA
+    reference: PMID:15123683
+    extension: RO:0002233(UniProtKB:P22830),BFO:0000066(GO:0005739),BFO:0000050(GO:0006783)
+  explanation: |
+    The BHF-UCL row says which process the activation of ferrochelatase serves, `part_of`(GO:0006783 heme
+    biosynthetic process), and the same curator made the separate `involved_in` GO:0006783 row from
+    PMID:15123683. That is the pairing the record asks for, so users who ignore column 16 still see the
+    process. The ontology does not entail the link from enzyme activator activity. The review kept the row
+    as non-core and kept the conjunction of input, location and process.
+  see_also: [AE-3]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/FXN/FXN-ai-review.yaml#L937
+- id: AE-8-E2
+  title: A part_of on reelin receptor activity that the ontology already entails
+  verdict: NON_CONFORMANT
+  subject:
+    subject_kind: annotation
+    gene:
+      gene_id: UniProtKB:Q14114
+      symbol: LRP8
+    taxon: NCBITaxon:9606
+    term:
+      term_id: GO:0038025
+      label: reelin receptor activity
+    qualifier: enables
+    evidence_code: ISS
+    reference: GO_REF:0000024
+    extension: BFO:0000050(GO:0021819),BFO:0000050(GO:0038026),RO:0002233(UniProtKB:P06241),RO:0002629(GO:0004713),BFO:0000050(GO:0038026),BFO:0000050(GO:1900006),RO:0002233(UniProtKB:P78509)
+  explanation: |
+    In GO, GO:0038025 reelin receptor activity already has GO:0038026 reelin-mediated signaling pathway among
+    its ancestors (through `part_of`), so `part_of`(GO:0038026) adds nothing. This is the
+    "kinase activity part_of phosphorylation" case the record calls harmless but empty. Both GOA source rows
+    (BHF-UCL and UniProt) carry it. The review accepted the row and merged the two rows' atoms into one list
+    without comment.
+  fix: |
+    Drop `part_of`(GO:0038026) from both rows and keep the atoms that narrow the claim, such as
+    `has_input`(UniProtKB:P78509) and `part_of`(GO:0021819 layer formation in cerebral cortex).
+  see_also: [AE-11, AE-13]
+  derived_from:
+  - https://github.com/ai4curation/ai-gene-review/blob/a0fef8e0aa0b75e1842f20a7795c1d413e0ff1ba/genes/human/LRP8/LRP8-ai-review.yaml#L729
+  - https://www.ebi.ac.uk/QuickGO/annotations?geneProductId=Q14114&goId=GO:0038025

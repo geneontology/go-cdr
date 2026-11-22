@@ -42,6 +42,13 @@ Use `happens_during` only for a biological phase or life stage, never for a proc
 | Date | 2026-11-15 |
 | GO terms | `GO:0044848` biological phase; `GO:0000090` mitotic anaphase; `GO:0000084` mitotic S phase |
 
+## Examples
+
+| Example | Verdict | Subject |
+|---|---|---|
+| [AE-7-E1](AE-7.examples.yaml): A checkpoint kinase activity placed in mitotic S phase in a GO-CAM | Conformant | gomodel:653b0ce600000721 |
+| [AE-6-E3](AE-6.examples.yaml): An existence relation filled with a signalling pathway, not a stage (from [AE-6](AE-6.md)) | Non-conformant | LRP6 located_in GO:0031410 cytoplasmic vesicle (IDA, PMID:20093472) |
+
 ## Sources
 
 - wiki: [Happens during](https://wiki.geneontology.org/index.php/Happens_during)
