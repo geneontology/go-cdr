@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GO Consortium Decision Records</title>
+<title>[DEMO] GO Consortium Decision Records</title>
 <style>
   :root {
     --bg: #f3f4f6; --panel: #fff; --ink: #111827; --muted: #6b7280; --line: #e5e7eb; --soft: #f9fafb;
@@ -17,7 +17,10 @@
   header { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: #fff; padding: 20px 28px; }
   header h1 { margin: 0 0 6px; font-size: 1.55rem; }
   header p { margin: 0; opacity: .92; max-width: 72rem; line-height: 1.45; }
-  .demo-banner { background: #fff7ed; color: #9a3412; border-bottom: 1px solid #fed7aa; padding: 6px 28px; font-size: .85rem; }
+  .demo-banner { background: #fff7ed; color: #9a3412; border-bottom: 1px solid #fed7aa; padding: 8px 28px; font-size: .88rem; }
+  .demo-banner b { color: #7c2d12; }
+  .demo-tag { display: inline-block; background: #f97316; color: #fff; border-radius: 4px; padding: 1px 8px; font-size: .8rem;
+              letter-spacing: .06em; text-transform: uppercase; vertical-align: middle; margin-right: 6px; }
   nav.links { padding: 8px 28px; background: var(--panel); border-bottom: 1px solid var(--line); display: flex; gap: 16px; flex-wrap: wrap; align-items: baseline; }
   nav.links a { color: var(--accent); }
   nav.links a.on { font-weight: 700; text-decoration: none; }
@@ -93,14 +96,15 @@
 </head>
 <body>
 <header>
-  <h1>GO Consortium Decision Records</h1>
+  <h1><span class="demo-tag">Demo</span> GO Consortium Decision Records</h1>
   <p>One record per consortium decision: annotation <span class="pill k-guideline">guidelines</span>, the
      <span class="pill k-commitment">commitments</span> of the memorandum of understanding, and the
      <span class="pill k-rubric">rubrics</span> annotation pipelines are judged by. Each record states the decision,
      why, how it applies, worked examples that follow it, break it or are disputed, how it departs from prior guidance,
      what is still open, and which groups have signed off.</p>
 </header>
-<div class="demo-banner" id="demo-banner" hidden></div>
+<div class="demo-banner" id="demo-banner"><b>Demo site.</b> This is a demonstration, not an official GO Consortium
+  resource: the records are drafts awaiting consortium review, and nothing here is adopted guidance.</div>
 <nav class="links">
   <a href="#" data-view="list">Records</a>
   <a href="#chapters" data-view="chapters">Chapters</a>
@@ -489,13 +493,10 @@ document.getElementById('clear').addEventListener('click', () => {
 });
 window.addEventListener('hashchange', route);
 const demo = DATA.groups.filter(g => g.demo).length;
-if (demo) {
-  const b = document.getElementById('demo-banner');
-  b.hidden = false;
-  const drafted = EXAMPLES.filter(e => (e.derived_from || []).some(u => /ai-gene-review/.test(u)) && !(e.reviews || []).length).length;
-  b.textContent = `Demonstration sign-off data: ${demo} of ${DATA.groups.length} groups are invented. Records are drafts (status proposed) awaiting consortium review.` +
-    (drafted ? ` ${drafted} examples were drafted from AI Gene Review and are not yet reviewed by curators.` : '');
-}
+const drafted = EXAMPLES.filter(e => (e.derived_from || []).some(u => /ai-gene-review/.test(u)) && !(e.reviews || []).length).length;
+document.getElementById('demo-banner').insertAdjacentText('beforeend',
+  (demo ? ` ${demo} of ${DATA.groups.length} groups and their sign-offs are invented.` : '') +
+  (drafted ? ` ${drafted} examples were drafted from AI Gene Review and are not yet reviewed by curators.` : ''));
 document.getElementById('meta').textContent = `${R.length} records · ${EXAMPLES.length} examples · ${DATA.chapters.length} chapters · ${DATA.groups.length} groups`;
 route();
 </script>

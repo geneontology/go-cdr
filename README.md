@@ -1,4 +1,8 @@
-# GO Consortium Decision Records (go-cdr)
+# GO Consortium Decision Records (go-cdr): demo
+
+> **Demo.** This repository and its site are a demonstration, not an official GO Consortium
+> resource. The records are drafts awaiting consortium review, the groups and their sign-offs
+> are invented, and the examples were drafted from AI Gene Review without curator review.
 
 One record per decision of the Gene Ontology Consortium, in the manner of architecture
 decision records (ADRs), with sign-off by the groups each decision applies to.
